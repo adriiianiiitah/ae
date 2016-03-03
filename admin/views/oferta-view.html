@@ -1,0 +1,71 @@
+    <div id="page-offert" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Offerts</h3>
+              </header>
+              <div class="panel-body">
+
+                <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <div>
+                          <img src="../img/200x200.png" alt="Avatar" class="img-thumbnail">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                    <table class="table table-hover">
+                      <tbody>
+                        <tr>
+                          <th class="col-xs-5 col-sm-3 col-md-3 col-lg-2" scope="row">No.</th>
+                          <td>{{id}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Código :</th>
+                          <td>{{codigo}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Cantidad :</th>
+                          <td>{{cantidad}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Producto :</th>
+                          <td>{{producto}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Precio :</th>
+                          <td>{{precio}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">De :</th>
+                          <td>{{de}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Hasta :</th>
+                          <td>
+                            {{hasta}}
+                          </td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Action </th>
+                          <td class=" last">
+                            <a href="{{oferta-view}}" class="btn btn-green btn-xs"><i class="fa fa-eye"></i> Ver </a>
+                            <a href="{{oferta-edit}}" class="btn btn-yellow btn-xs"> <i class="fa fa-pencil"></i> Editar </a>
+                            <a href="#" class="btn btn-red btn-xs"> <i class="fa fa-eraser"></i> Eliminar </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>

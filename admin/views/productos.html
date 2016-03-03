@@ -1,0 +1,107 @@
+      <?php 
+        require_once('views/navigation.html');
+      ?>
+      <div id="page-users" class="right-side">
+        <div class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <section class="panel">
+                <header class="panel-heading">
+                  <h3>Productos</h3>
+                  <div class="pull-right">
+                    <ul class="files">
+                      <li><button class="btn btn-green" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
+                      <li><button class="btn btn-green" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
+                      <li><button class="btn btn-green" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
+                      <li><button class="btn btn-green" title="Print"><i class="fa fa-print"></i></button></li>
+                    </ul>
+                  </div>
+                </header>
+                <div class="panel-body">
+                  <table class="table table-bordered table-hover table-condensed">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Código </th>
+                        <th>Modelo </th>
+                        <th>Nombre </th>
+                        <th>Categoria </th>
+                        <th>Subcategoria </th>
+                        <th>Descripción </th>
+                        <th>Color </th>
+                        <th>Material </th>
+                        <th>Marca </th>
+                        <th>Altura </th>
+                        <th>Talla </th>
+                        <th>Stock </th>
+                        <th>Price </th>
+                        <th class=" no-link last"><span class="nobr">Acción</span></th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>#</th>
+                        <th>Código </th>
+                        <th>Modelo </th>
+                        <th>Nombre </th>
+                        <th>Categoria </th>
+                        <th>Subcategoria </th>
+                        <th>Descripción </th>
+                        <th>Color </th>
+                        <th>Material </th>
+                        <th>Marca </th>
+                        <th>Altura </th>
+                        <th>Talla </th>
+                        <th>Stock </th>
+                        <th>Price </th>
+                        <th class=" no-link last"><span class="nobr">Acción</span></th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <!--row-->
+                      <tr>
+                        <td>{{id}}</td>
+                        <td>{{codigo}}</td>
+                        <td>{{modelo}}</td>
+                        <td>{{nombre}}</td>
+                        <td>{{categoria}}</td>
+                        <td>{{subcategoria}}</td>
+                        <td>{{descripcion}}</td>
+                        <td>{{color}}</td>
+                        <td>{{material}}</td>
+                        <td>{{marca}}</td>
+                        <td>{{altura}}</td>
+                        <td>{{talla}}</td>
+                        <td>{{stock}}</td>
+                        <td>{{precio}}</td>
+                        <td>
+                          <a href="index.php?ctrl=productos&action=view&id={{id}}"><i class="fa fa-eye"></i></a>
+                          <a href="index.php?ctrl=productos&action=view&id={{id}}"><i class="fa fa-pencil"></i></a>
+                          <a href="#"><i class="fa fa-trash-o"></i></a>
+                        </td>
+                      </tr>
+                      <!--.row-->
+                    </tbody>
+                  </table>
+                </div>
+                <div class="panel-body">
+                  <div class="pagination pull-right">
+                    <ul>
+                      <li><a href="#"><<</a></li>
+                      <li><a href="#"><</a></li>
+                      <li class="active">
+                        <a href="#">1</a>
+                      </li>
+                      <li><a href="#">2</a></li>
+                      <li><a href="#">3</a></li>
+                      <li><a href="#">4</a></li>
+                      <li><a href="#">></a></li>
+                      <li><a href="#">>></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>

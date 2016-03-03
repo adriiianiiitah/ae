@@ -1,0 +1,60 @@
+    <div id="page-users" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Subcategoria</h3>
+              </header>
+              <div class="panel-body">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <div>
+                          <img src="../img/200x200.png" alt="category" class="img-thumbnail">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                    <table class="table table-hover">
+                      <tbody>
+                        <tr>
+                          <th scope="row">ID :</th>
+                          <td>{{id}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Código :</th>
+                          <td>{{codigo}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Nombre :</th>
+                          <td>{{nombre}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Categoria :</th>
+                          <td>{{categoria}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Descripción :</th>
+                          <td>{{descripcion}}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Acción </th>
+                          <td class="last">
+                            <a href="{{subcategoria-view}}" class="btn btn-green btn-xs"><i class="fa fa-eye"></i> Ver </a>
+                            <a href="{{subcategoria-edit}}" class="btn btn-yellow btn-xs"><i class="fa fa-pencil"></i> Editar </a>
+                            <a href="#" id="{{id}}" data-toggle="modal" data-target="#delete-item" class="btn-delete-category btn btn-red btn-xs"> <i class="fa fa-eraser"></i> Eliminar </a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,76 @@
+.container-navbar-full {
+    width: 100%;
+    background: #fff;
+    border-bottom: 5px solid #E8EAEC;
+}
+
+.navbar-full {
+    margin-bottom: 0;
+    background: transparent;
+    border: none;
+}
+
+.no-shadow {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+#logo-small {
+    display: block;
+}
+
+#logo-big {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbar-default {
+}
+
+.navbar {
+}
+
+.navbar-nav {
+}
+
+.navbar-brand {
+}
+
+.navbar ul.nav > li {
+}
+
+.navbar-default .navbar-nav>li{
+}
+
+.navbar-default .navbar-nav>li:hover{
+}
+
+.navbar-default .navbar-nav>li>a{
+}
+
+.navbar-default .navbar-nav>li>a.icons{
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a.active{
+}
+
+.navbar-right>li a:hover {
+}
+
+.navbar ul.nav > li > a {
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.navbar-header {
+
+}
+
+.navbar-toggle {
+}
+
+.navbar-right li a img {
+}

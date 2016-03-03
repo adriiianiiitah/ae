@@ -1,0 +1,8 @@
+.modal-backdrop {
+	z-index: 0;
+}
+
+.modal-backdrop.in {
+  filter: alpha(opacity=70);
+  opacity: .7;
+}

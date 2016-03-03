@@ -1,0 +1,122 @@
+    <?php 
+      require_once('views/navigation.html');
+    ?>
+    <div id="page-special-prices" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Special Price</h3>
+              </header>
+              <div class="panel-body">
+                <form id="" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <!-- Current avatar -->
+                        <div>
+                          <img id="image-file" src="../img/categories/category.png" alt="category" class="img-thumbnail">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4 col-sm-4 col-xs-12" for="image">Image
+                      </label>
+                      <div class="col-md-7 col-sm-7 col-xs-12">
+                        <input type="file" id="image" name="image" class="form-control col-md-7 col-xs-12 btn"  accept="image/jpg,image/png" data-image/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="code">Code <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="code" name="code" class="form-control col-md-7 col-xs-12" data-required data-code/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="item">Item <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <select id="item" name="item" class="form-control col-md-7 col-xs-12" data-required>
+                          <option value="">Select an option</option>
+                          <option value="1">ITM123-9</option>
+                          <option value="2">PAN456-C</option>
+                          <option value="3">BRA4854-Z</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="discount">Discount (%) <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="discount" name="discount" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="number_articles">Up to (number articles) <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="number_articles" name="number_articles" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="date_start">From <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class='input-group date' id='datetimepickerdate_start'>
+                          <input type="text" id="date_start" name="date_start" class="form-control col-md-7 col-xs-12" data-required data-datetime/>
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar">
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="date_end">To <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class='input-group date' id='datetimepickerdate_end'>
+                          <input type="text" id="date_end" name="date_end" class="form-control col-md-7 col-xs-12" data-required data-datetime/>
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar">
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="price">Price <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" min="0" step="0.5" id="price" name="price" class="form-control col-md-7 col-xs-12" data-required data-money>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-green">Submit</button>
+                          <button type="submit" class="btn btn-red">Cancel</button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!--<div class="container-fluid" ></div>-->
+    </div>
+    <?php 
+      require_once('views/footer.html');
+    ?>
+  <script src="../js/moment-with-locales.js"></script>
+  <script src="../js/bootstrap-datetimepicker.js"></script>
+  <script src="../js/scripts.js"></script>
+</body>
+</html>
+

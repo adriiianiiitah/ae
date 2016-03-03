@@ -1,0 +1,56 @@
+<div class="container-contact">
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Contáctanos</h2>
+
+        <form class="form" role="form" onsubmit="return validate()" data-validate>
+          <div class="row">
+            <div class="col-md-6">
+              <div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Nombre" data-required data-name>
+              </div>
+              </div>
+              <div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Apellido" data-required data-lastname>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div>
+              <div class="form-group">
+                <input type="text" class="form-control input-lg" placeholder="Correo" data-required data-email>
+              </div>
+              </div>
+              <div>
+              <div class="form-group">
+                <input type="tel" class="form-control input-lg" placeholder="Teléfono" data-required>
+              </div>
+              </div>
+            </div>
+
+            <div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea class="form-control" rows="3" data-required> Mensaje ...</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn btn-red btn-lg margin-left-15" type="submit">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr>
+  </div> <!-- /container -->  
+  <div id="map_canvas" style="width:100%; height:900px">
+    <img id="map" src="img/map.png"/>
+  </div>
+  <!--<div id="map_canvas" style="width:100%; height:900px"></div>-->
+</div> 

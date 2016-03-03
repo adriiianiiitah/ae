@@ -1,0 +1,39 @@
+legend {
+  text-align: center;
+  background: #FF4242;
+  color: #fff;
+  padding: 5px 0;
+  display: block;
+}
+
+input, textarea, select {
+  border-radius: none; 
+}
+
+form  .form-control {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+}
+
+form label {
+  padding: 5px 0;
+  display: block;
+  background-color: #f9f9f9;
+}
+
+.text-center input[type=file] {
+      -webkit-appearance: push-button;
+      position: absolute;
+    clip: rect(0px 0px 0px 0px);
+    display: block;
+}
+
+.required {
+  font-weight: bold;
+  color: red;
+}
+
+.control-label {
+  text-align: left!important;
+}

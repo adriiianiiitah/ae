@@ -1,0 +1,114 @@
+    <?php 
+      require_once('views/navigation.html');
+    ?>
+    <div id="page-users" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Users</h3>
+              </header>
+              <div class="panel-body">
+                <form id="" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <div>
+                          <img id="image-file" src="../img/200x200.png" alt="category" class="img-thumbnail">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4 col-sm-4 col-xs-12" for="image">Image
+                      </label>
+                      <div class="col-md-7 col-sm-7 col-xs-12">
+                        <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                    
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="name">Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <input type="text" id="name" name="name" class="form-control col-md-7 col-xs-12" data-required data-name value="{{nombre}}" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="lastname">Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <input type="text" id="lastname" name="lastname" class="form-control col-md-7 col-xs-12" data-required data-lastname value="{{apellido}}"/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="mail">Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <input type="text" id="mail" name="mail" class="form-control col-md-7 col-xs-12" data-required data-email value="{{correo}}"/>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                       <label class="control-label col-md-3 col-sm-12 col-xs-12" for="phone">Phone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <input type="text" id="phone" name="phone" class="form-control col-md-7 col-xs-12" data-required value="{{telefono}}">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="gender">Gender <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div class="radio">
+                            <label>
+                              <input type="radio" class="checkbox" checked value="female" id="female" name="gender" checked>Female
+                            </label>
+                          </div>
+                          <div class="radio">
+                            <label>
+                              <input type="radio" class="checkbox" value="male" id="male" name="gender">Male
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="birthday">Birthday <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class='input-group date' id='datetimepickerdate_start'>
+                          <input type="text"  id="date_start" name="date_start" class="form-control col-md-7 col-xs-12" data-required data-datetime value={{fecha_nacimiento}}/>
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar">
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-green">Submit</button>
+                          <button type="submit" class="btn btn-red">Cancel</button>
+                        </div>
+                    </div>
+                    
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!--<div class="container-fluid" ></div>-->
+    </div>
+    <?php 
+      require_once('views/footer.html');
+    ?>
+    <script src="../js/moment-with-locales.js"></script>
+  <script src="../js/bootstrap-datetimepicker.js"></script>
+  <script src="../js/scripts.js"></script>
+</body>
+</html>
+

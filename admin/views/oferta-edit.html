@@ -1,0 +1,114 @@
+    <?php 
+      require_once('views/navigation.html');
+    ?>
+    <div id="page-offerts" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Oferta</h3>
+              </header>
+              <div class="panel-body">
+                <form id="" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <div>
+                          <img id="image-file" src="../img/200x200.png" alt="offerts" class="img-thumbnail">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4 col-sm-4 col-xs-12" for="image">Image
+                      </label>
+                      <div class="col-md-7 col-sm-7 col-xs-12">
+                        <input type="file" id="image" name="image" class="form-control col-md-7 col-xs-12 btn"  accept="image/jpg,image/png" data-image/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="codigo">Código <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="codigo" name="codigo" class="form-control col-md-7 col-xs-12"  data-required data-code value="{{codigo}}" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="cantidad">Cantidad <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="cantidad" name="cantidad" min="0" step="1" class="form-control col-md-7 col-xs-12"  data-required data-integer value="{{cantidad}}" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="item">Producto <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <select id="producto" name="producto" class="form-control col-md-7 col-xs-12" data-required>
+                          <option value="">Select an option</option>
+                          <option value="1">ITM123-9</option>
+                          <option value="2">PAN456-C</option>
+                          <option value="3">BRA4854-Z</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="de">Desde <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class='input-group date' id='datetimepickerdate_start'>
+                          <input type="text" id="de" name="de" class="form-control col-md-7 col-xs-12" data-required data-datetime />
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar">
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="date_end">Hasta <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <div class='input-group date' id='datetimepickerdate_end'>
+                          <input type="text" id="hasta" name="hasta" class="form-control col-md-7 col-xs-12" data-required  data-datetime/>
+                          <span class="input-group-addon">
+                            <span class="fa fa-calendar">
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="precio">Precio <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="precio" name="precio" min="0" step="0.5" class="form-control col-md-7 col-xs-12" data-required data-money value="{{precio}}"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-6 col-xs-12 col-md-offset-3">
+                          <button type="submit" class="btn btn-green">Submit</button>
+                          <button type="button" class="btn btn-red">Cancel</button>
+                        </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+      <!--<div class="container-fluid" ></div>-->
+    </div>
+    <?php 
+      require_once('views/footer.html');
+    ?>
+  <script src="../js/moment-with-locales.js"></script>
+  <script src="../js/bootstrap-datetimepicker.js"></script>
+  <script src="../js/scripts.js"></script>
+</body>
+</html>
+

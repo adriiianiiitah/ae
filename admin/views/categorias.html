@@ -1,0 +1,77 @@
+
+    <div id="page-categories" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Categorias</h3>
+                <div class="pull-right">
+                  <ul class="files">
+                    <li><button class="btn btn-dark" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
+                    <li><button class="btn btn-dark" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
+                    <li><button class="btn btn-dark" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
+                    <li><button class="btn btn-dark" title="Print"><i class="fa fa-print"></i></button></li>
+                  </ul>
+                </div>
+              </header>
+              <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Código </th>
+                      <th>Categoria </th>
+                      <th>Descripcion </th>
+                      <th class="no-link last"><span class="nobr">Acción</span></th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>Código </th>
+                      <th>Categoria </th>
+                      <th>Descripcion </th>
+                      <th class=" no-link last"><span class="nobr">Acción</span></th>
+                    </tr>
+                  </tfoot>
+                  <!--table.tbody-->
+                  <tbody>
+                    <!--row-->
+                    <tr>
+                      <td>{{id}}</td>
+                      <td>{{codigo}}</td>
+                      <td>{{nombre}}</td>
+                      <td>{{descripcion}}</td>
+                      <td>
+                        <a href="{{categoria-view}}"><i class="fa fa-eye"></i></a>
+                        <a href="{{categoria-edit}}"><i class="fa fa-pencil"></i></a>
+                        <a href="#" id="{{id}}" data-toggle="modal" data-target="#delete-item"><i class="fa fa-trash-o"></i></a>
+                      </td>
+                    </tr>
+                    <!--.row-->
+                  </tbody>
+                  <!--.table.tbody-->
+                </table>
+              </div>
+              <div class="panel-body">
+                <div class="pagination pull-right">
+                  <ul>
+                    <li><a href="#"><<</a></li>
+                    <li><a href="#"><</a></li>
+                    <li class="active">
+                      <a href="#">1</a>
+                    </li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">></a></li>
+                    <li><a href="#">>></a></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>

@@ -1,0 +1,192 @@
+    <div id="page-users" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3>Producto</h3>
+              </header>
+              <div class="panel-body">
+                <form id="" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                  <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                    <div class="profile_img">
+                      <div id="crop-avatar">
+                        <div>
+                          <img id="image-file" src="../img/200x200.png" alt="category" class="img-thumbnail">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-4 col-sm-4 col-xs-12" for="image">
+                      </label>
+                      <div class="col-md-7 col-sm-7 col-xs-12">
+                        <input type="file" id="image" name="image" class="form-control col-md-7 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="codigo">Código <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="code" name="codigo" class="form-control col-md-7 col-xs-12" data-required data-code value="{{codigo}}" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="modelo">Modelo <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="modelo" name="modelo" class="form-control col-md-7 col-xs-12" data-required data-code value="{{modelo}}"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="tallas">Tallas <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>12.0
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>12.5
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>13.0
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>13.5
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>14.0
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>14.5
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>15.0
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>15.5
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>16.0
+                          </label>
+                        </div>
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox" name="tallas" data-checked>16.5
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="nombre">Nombre <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="nombre" name="nombre" class="form-control col-md-7 col-xs-12" data-required data-name value="{{nombre}}"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="subcategoria">Subcategoría <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <select id="subcategoria" name="subcategoria" class="form-control col-md-7 col-xs-12" data-required>
+                          <option value="">Seleccione</option>
+                          <option value="dama">Dama</option>
+                          <option value="caballero">Caballero</option>
+                          <option value="infantil">Infantil</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="descripcion">Description
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                          <textarea id="descripcion" name="descripcion" class="form-control col-md-7 col-xs-12" rows="3"  data-required data-description>{{descripcion}}</textarea>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="color">Color <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <select id="color" name="color" class="form-control col-md-7 col-xs-12" multiple data-required>
+                          <option value="">Seleccione</option>
+                          <option value="dama">Negro</option>
+                          <option value="caballero">Negro-plata</option>
+                          <option value="infantil">Rojo</option>
+                        </select>
+                      </div>
+                    </div>
+              
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="material">Material 
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="material" name="material" class="form-control col-md-7 col-xs-12" data-required data-code value="{{material}}"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="marca">Marca <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="marca" name="marca" class="form-control col-md-7 col-xs-12" data-required data-code value="{{marca}}"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="altura">Altura 
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="altura" name="altura" class="form-control col-md-7 col-xs-12" data-required data-code value="{{altura}}"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="precio">Precio <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="precio" name="precio" min="0" step="0.5" class="form-control col-md-7 col-xs-12" data-required data-money value="{{precio}}" />
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="stock">Strock <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="number" id="stock" name="stock" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer value="{{stock}}"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-md-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-green">Submit</button>
+                        <button type="button" class="btn btn-red">Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>

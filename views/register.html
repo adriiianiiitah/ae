@@ -1,0 +1,87 @@
+
+<section class="container">  
+  <form class="form-horizontal col-md-12" method="post" role="form" onsubmit="return validate()" data-validate>
+    <fieldset>
+      <legend>Registro</legend>
+      <div class="col-md-4">
+        <figure class="thumbnail">
+          <label for="foto" class="text-left">Nombre</label>
+          <img src="img/200x250.png" alt="thumbnail">
+          <figcaption class="caption">
+            <div class="text-center">
+              <button type="button" class="btn btn-dark"><i class="fa fa-trash"></i> Eliminar</button>
+              <a href="#"  role="button"></a> <a href="#" class="btn btn-red" role="button"><i class="fa fa-upload"></i> Cargar</a>
+              <input type="file" id="image" name="image" class="btn btn-red" accept="image/jpg,image/png" data-image role="button"/>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="col-md-8">
+        <div  class="form-group">
+          <label for="name" class="col-md-3 control-label text-left">Nombre</label>
+          <div class="col-md-9">
+            <input class="form-control " id="name" name="name" type="text" placeholder="Name" data-required data-name/>
+          </div>
+        </div>
+
+        <div  class="form-group">      
+          <label for="lastname" class="col-md-3 control-label text-left">Apellido</label>
+          <div class="col-md-9">
+            <input class="form-control" id="lastname" name="lastname" type="text" placeholder="Last Name" data-required data-lastname/>
+          </div>
+        </div>
+
+        <div class="form-group">                      
+          <label for="email" class="col-md-3 control-label text-left"> Correo</label>
+          <div class="col-md-9">
+            <input class="form-control" type="text" name="email" id="email" placeholder="Email" data-required data-email/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="col-md-3 control-label text-left"> Contraseña </label>
+          <div class="col-md-9">
+            <input class="form-control" type="password" name="password" placeholder="Password" data-required data-password data-samepassword/>
+          </div>
+        </div>
+
+        <div  class="form-group">
+          <label type="Confirmpass" class="col-md-3 control-label text-left">Repetir contraseña</label>
+          <div class="col-md-9">
+            <input class="form-control" type="password" name="Confirmpass" placeholder="Confirm Passsword" data-required data-password data-samepassword/>
+          </div>
+        </div>
+
+        <div  class="form-group">
+          <label class="col-md-3 control-label text-left" for="gender">Género</label>
+          <div class="col-md-9">
+            <label class="radio-inline"  for="fem">Mujer</label>
+            <input type="radio" name="gender" id="fem" value="Female" checked="checked"/>              
+            <label class="radio-inline"  for="male">Hombre</label>  
+            <input type="radio" name="gender" id="male" value="Male"/>    
+          </div>      
+        </div>
+      
+        <div  class="form-group">
+          <label for="bday" class="col-md-3 control-label text-left">Fecha de nacimiento</label>
+          <div class="col-md-9">
+            <input class="form-control" type="date" id="bday" name="bday" placeholder="Birthday DD/MM/YY" data-required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone" class="col-md-3 control-label text-left">Teléfono</label>
+          <div class="col-md-9">
+            <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" data-required/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-6 col-md-offset-3">
+            <button class="btn btn-red btn-lg btn-block" type="submit"><i class="fa fa-paper-plane"></i> Guardar </button>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</section>

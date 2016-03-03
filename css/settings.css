@@ -1,0 +1,475 @@
+
+* {
+    /*border: 1px solid black;*/
+}
+
+html {
+    border: 1px solid transparent;
+    height: : 100%;
+}
+
+body {
+    height: : 100%;
+    background: #F0F2EB;
+    color: #474843;
+}
+
+footer {
+
+    background: gray;
+}
+
+img {
+    max-width: 100% !important;
+}
+
+.checkbox, .radio {
+    float: left;
+    margin-right: 20px;
+}
+
+.wrapper:before, .wrapper:after {
+    display: table;
+    content: " ";
+}
+
+.wrapper:after {
+    clear: both;
+}
+
+.user-panel {
+    padding: 10px;
+}
+
+.user-panel:before, .user-panel:after {
+    display: table;
+    content: " ";
+}
+
+.user-panel:after {
+    clear: both;
+}
+.user-profile > .image > img,
+.user-panel > .image > img {
+    width: 45px;
+    height: 45px;
+}
+
+.user-panel > .info {
+    font-weight: 600;
+    padding: 5px 5px 5px 15px;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.user-profile > .info p {
+    margin-left: 9px;
+    line-height: 32px;
+}
+
+.user-panel > .info > p {
+    margin-bottom: 9px;
+}
+
+.user-panel > .info > a {
+    text-decoration: none;
+    padding-right: 5px;
+    margin-top: 3px;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.user-panel > .info > a > .fa,
+.user-panel > .info > a > .ion,
+.user-panel > .info > a > .glyphicon {
+    margin-right: 5px;
+}
+
+.sidebar {
+    margin-bottom: 5px;
+}
+
+.sidebar .sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar .sidebar-menu > li {
+    margin: 0;
+    padding: 0;
+    border-top: 1px dotted #FFFFFF;
+}
+
+.sidebar .sidebar-menu > li > a {
+    padding: 15px 25px;
+    display: block;
+}
+
+.right-side, .left-side {
+    min-height: 100%;
+    display: block;
+}
+
+.left-side {
+    position: absolute;
+    width: 300px;
+    top: 0;
+    left: 0;
+    min-height: 3961px;
+}
+
+.right-side {
+    background-color: #f0f3f4;
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+.content {
+    padding: 20px 15px;
+    background: #F0F2EB;
+}
+
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.jumbotron {
+    background-color: #fff;
+}
+
+.navbar-right {
+    width: 220px;
+    float: right;
+}
+
+.navbar-right > li a {
+    width: 220px;
+}
+
+.navbar-right > li a .fa {
+    margin-right: 20px;
+}
+
+ul li button {
+    margin: 4px;
+}
+
+.error-message {
+    position: relative;
+    background-color: #FA5858;
+    padding: 6px 12px;
+    color: white;
+    font-weight: bold;
+    margin-left: 16px;
+    margin-top: 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+        clear: both;
+
+    transition: all 3s ease-in;
+    -o-transition: all 3s ease-in;
+    -moz-transition: all 3s ease-in;
+    -webkit-transition: all 3s ease-in;
+}
+
+.error-message:before {
+    position: absolute;
+    content: '';
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 2;
+    width: .6em;
+    height: .6em;
+    -webkit-transition: background .2s ease;
+    transition: background .2s ease;
+    background-color: #FA5858;
+    background-image: none;
+    top: -4px;
+}
+
+.succes-message {
+    position: relative;
+    background-color: #31B404;
+    padding: 6px 12px;
+    color: white;
+    font-weight: bold;
+    margin-left: 16px;
+    margin-top: 6px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    clear: both;
+
+    transition: all 3s ease-in;
+    -o-transition: all 3s ease-in;
+    -moz-transition: all 3s ease-in;
+    -webkit-transition: all 3s ease-in;
+}
+
+.succes-message:before {
+    position: absolute;
+    content: '';
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    z-index: 2;
+    width: .6em;
+    height: .6em;
+    -webkit-transition: background .2s ease;
+    transition: background .2s ease;
+    background-color: #31B404;;
+    background-image: none;
+    top: -4px;
+}
+
+
+
+
+
+
+
+
+
+.skin-orange .left-side {
+    background: #FF4242;
+}
+
+.skin-orange .sidebar {
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.skin-orange .user-panel > .image > img {
+    border: 1px solid #FFFFFF;
+}
+
+.skin-orange .user-panel > .info, .skin-orange .user-panel > .info > a {
+    color: #fff;
+}
+
+.skin-orange .sidebar > .sidebar-menu > li:first-of-type {
+    border-top: 1px solid #FFFFFF;
+}
+
+.skin-orange .sidebar > .sidebar-menu > li > a {
+    margin-right: 1px;
+    text-decoration: none;
+}
+
+.skin-orange .sidebar > .sidebar-menu > li > a:hover, 
+.skin-orange .sidebar > .sidebar-menu > li.active > a {
+    color: #FF0000;
+    background: #fff;
+}
+
+.right-side .panel .panel-heading .files {
+    padding: 0;
+    margin-top: 20px;
+    list-style-type: none;
+    float: left;
+}
+
+.right-side .panel .panel-heading .files li{
+    display: inline;
+}
+
+
+
+.btn-skyblue { 
+  color: #FFFFFF; 
+  background-color: #11C1F3; 
+  border-color: #11C1F3; 
+} 
+ 
+.btn-skyblue:hover, 
+.btn-skyblue:focus, 
+.btn-skyblue:active, 
+.btn-skyblue.active, 
+.open .dropdown-toggle.btn-skyblue { 
+  color: #11C1F3; 
+  background-color: #FFFFFF; 
+  border-color: #11C1F3; 
+} 
+ 
+.btn-skyblue:active, 
+.btn-skyblue.active, 
+.open .dropdown-toggle.btn-skyblue { 
+  background-image: none; 
+} 
+ 
+.btn-skyblue.disabled, 
+.btn-skyblue[disabled], 
+fieldset[disabled] .btn-skyblue, 
+.btn-skyblue.disabled:hover, 
+.btn-skyblue[disabled]:hover, 
+fieldset[disabled] .btn-skyblue:hover, 
+.btn-skyblue.disabled:focus, 
+.btn-skyblue[disabled]:focus, 
+fieldset[disabled] .btn-skyblue:focus, 
+.btn-skyblue.disabled:active, 
+.btn-skyblue[disabled]:active, 
+fieldset[disabled] .btn-skyblue:active, 
+.btn-skyblue.disabled.active, 
+.btn-skyblue[disabled].active, 
+fieldset[disabled] .btn-skyblue.active { 
+  background-color: #11C1F3; 
+  border-color: #11C1F3; 
+} 
+ 
+.btn-skyblue .badge { 
+  color: #11C1F3; 
+  background-color: #FFFFFF; 
+}
+
+
+.skin-orange .sidebar > .sidebar-menu > li > a .fa {
+    margin-right: 20px;
+}
+
+.skin-orange .user-settings > li > a {
+    color: #FF0000;
+    background: #fff;
+}
+
+.skin-orange .user-settings > li > a:hover {
+    color: #fff;
+    background: #FF0000;
+}
+
+.skin-orange .sidebar > .sidebar-menu > li:first-of-type > a {
+    border-top: 0px solid #FFFFFF;
+}
+
+.skin-orange .sidebar a {
+    color: #fff;
+}
+
+.skin-orange .user-settings:after {
+    bottom: 100%;
+    right: 10px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: #fff;
+    border-bottom-color: rgba(0, 0, 0, .075);
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+@media screen and (min-width: 992px)
+.left-side {
+    top: 50px;
+}
+
+.dropdown-menu {
+    border-radius: none;
+    box-shadow: none;
+    border: 1px solid rgba(0, 0, 0, .075);
+}
+
+.text-success {
+    color: #65CBCB;
+}
+
+#page-index {
+
+}
+
+.panel-heading {
+    border-bottom: 1px solid #ddd;
+}
+
+#menu_show {
+    background: red;
+    z-index: 50;
+    color: #000;
+    text-decoration: none;
+}
+
+#menu_show i {
+    background: #FFFFFF;
+    z-index: 50;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+#crop-avatar div {
+    text-align: center;
+}
+
+/**_____________________________________________________/
+
+
+
+    /*==========  Mobile First Method  ==========*/
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width : 320px) {
+        
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
+
+
+
+    /*==========  Non-Mobile First Method  ==========*/
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+        .navbar-right {
+            position: relative;
+            width: 100%;
+            clear: both;
+            float: none;
+            margin: 0;
+        }
+
+        .navbar-right > li a {
+            width: 100%;
+        }
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+        
+    }
