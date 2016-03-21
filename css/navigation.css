@@ -91,3 +91,47 @@
     color: #fff;
     font-weight: bold;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-tabs>li>a {
+  text-decoration: none;
+  color: #777;
+  font-weight: bold;
+  background: #fff;
+  border: none;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  background: #fff;
+  border: none;
+  border-bottom: 5px solid #E8EAEC;
+}
+
+.nav-tabs>li>a:focus, .nav-tabs>li>a:hover {
+  text-decoration: none;
+  background: #fff;
+  border: none;
+  border-bottom: 5px solid #FF4242;
+}
+
+    

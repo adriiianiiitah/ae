@@ -47,8 +47,8 @@ section {
 }
 
 .catalogo figure figcaption {
-  background: #9B9A9A;
-  color: #fff;
+  background: #fff;
+  color: #777;
   text-align: center;
   border-top: 3px solid #fff;
 }
