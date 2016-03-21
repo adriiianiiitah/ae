@@ -72,7 +72,24 @@
     }
 
     @media only screen and (max-width : 767px) {
+      .container-fluid.navbar-fixed-top.white {
+        top: 70px;
+      }
+      .container-navbar-full.white {
+        top: 115px;
+      }
 
+      #slider {
+        margin-top: 57px;
+      }
+
+      .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
+        max-height: none; 
+      }
+
+      .navbar ul.nav > li > a {
+        line-height: 20px;
+      }
     }
 
     @media only screen and (max-width : 480px) {

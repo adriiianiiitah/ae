@@ -7,6 +7,8 @@ legend {
 }
 
 input, textarea, select {
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
   border-radius: none; 
 }
 
@@ -37,3 +39,9 @@ form label {
 .control-label {
   text-align: left!important;
 }
+
+.input-group-btn {
+  background: #fff;
+  border-radius: 0;
+}
+

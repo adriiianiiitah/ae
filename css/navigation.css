@@ -1,7 +1,16 @@
 .container-navbar-full {
     width: 100%;
+}
+
+.container-fluid.visible-xs.white,
+.container-navbar-full.white {
+    width: 100%;
     background: #fff;
     border-bottom: 5px solid #E8EAEC;
+}
+
+.container-navbar-full.white {
+    top: 50px;
 }
 
 .navbar-full {
@@ -22,7 +31,7 @@
 
 #logo-big {
     display: block;
-    width: 100%;
+    width: auto;
     margin: 0 auto;
 }
 
@@ -73,4 +82,12 @@
 }
 
 .navbar-right li a img {
+}
+
+.navbar-inverse {
+}
+
+.navbar-inverse .navbar-text{
+    color: #fff;
+    font-weight: bold;
 }

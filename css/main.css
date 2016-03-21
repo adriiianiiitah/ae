@@ -93,6 +93,14 @@ table{
     color: #f00;
 }
 
+.fixed-top {
+    position: fixed;
+}
+
+.white {
+    background: #fff;
+}
+
 
 
 
