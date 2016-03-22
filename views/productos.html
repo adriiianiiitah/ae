@@ -4,7 +4,7 @@
     <nav class="categories">
       <ul>
         <li>
-          <ul class="categories">
+          <ul>
             <li><a href="#">Zapatilla</a></li>
             <li><a href="#">Bota</a></li>
             <li><a href="#">Sandalia</a></li>
@@ -16,13 +16,13 @@
       </ul>
     </nav>
     <h3>Filtros</h3>
-    <nav class="remove-filters">
+    <nav class="filters">
       <ul>
         <li><a href="#"><span class="btn btn-red"><i class="fa fa-trash"></i></span> Color: ficsia</a></li>
         <li><a href="#"><span class="btn btn-red"><i class="fa fa-trash"></i></span> Talla: 22.5</a></li>
       </ul>
     </nav>
-    <button class="btn btn-gray btn-lg btn-block">Eliminar filtros</button>
+    <button class="btn btn-red btn-lg btn-block">Eliminar filtros</button>
     <h3>Tallas</h3>
     <nav class="filters">
       <ul>
@@ -69,16 +69,19 @@
       </ul>
     </nav>
     <h3>Precios</h3>
-    <nav class="filters">
-      <ul>
-        <li><a href="#">$0 - $100</a></li>
-        <li><a href="#">$100 - $200</a></li>
-        <li><a href="#">$200 - $300</a></li>
-        <li><a href="#">$300 - $400</a></li>
-        <li><a href="#">$400 - $500</a></li>
-        <li><a href="#">$500 - $1000</a></li>
-      </ul>
-    </nav>
+    <div class="filters">
+      <div class="form-horizontal">
+        <div class="form-group">
+          <div class="col-xs-6">
+            <input type="number" class="form-control" id="inf" step="1" min="0" max="1000" placeholder="0"/>
+          </div>
+          <div class="col-xs-6">
+            <input type="number" class="form-control" id="sup" step="1" min="0"  max="1000" placeholder="1000"/>
+          </div>
+        </div>
+      </div>
+      <div class="flat-slider" id="flat-slider"></div>
+    </div>
   </aside>
   <section id="catalog" class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
     <section id="filter" class="row">
@@ -93,56 +96,96 @@
         </ul>
       </div>
     </section>
-    <article class="item col-sm-3">
-      <a href="index.php?ctrl=productos&action=show&id=1">
-        <figure>
-          <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-          <figcaption>
-            <h4 class="name">Zapatilla Mary Jane</h4>
-            <p class="price">$49.50</p>
-          </figcaption>
-        </figure>
-      </a>
-      <button href="#" class="btn btn-dark btn-lg btn-block"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Comprar</span></button>
+
+
+    <article class="item">
+      <figure class="col-sm-4 col-md-3">
+        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+        <figcaption>
+          <h4 class="name">Zapatilla Mary Jane</h4>
+          <p class="price">$49.50</p>
+        </figcaption>
+        <div class="overlay">
+          <ul>
+            <li>
+              <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+            </li>
+            <li>
+              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+            </li>
+          </ul>
+        </div>
+      </figure>
     </article>
 
-    <article class="item col-sm-3">
-      <a href="index.php?ctrl=productos&action=show&id=1">
-        <figure>
-          <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-          <figcaption>
-            <h4 class="name">Zapatilla Mary Jane</h4>
-            <p class="price">$49.50</p>
-          </figcaption>
-        </figure>
-      </a>
-      <button href="index.php?ctrl=productos&action=show&id=1" class="btn btn-dark btn-lg btn-block"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Comprar</span></button>
+    <article class="item">
+      <figure class="col-sm-4 col-md-3">
+        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+        <figcaption>
+          <h4 class="name">Zapatilla Mary Jane</h4>
+          <p class="price">$49.50</p>
+        </figcaption>
+        <div class="overlay">
+          <ul>
+            <li>
+              <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+            </li>
+            <li>
+              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+            </li>
+          </ul>
+        </div>
+      </figure>
     </article>
 
-    <article class="item col-sm-3">
-      <a href="#">
-        <figure>
-          <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-          <figcaption>
-            <h4 class="name">Zapatilla Mary Jane</h4>
-            <p class="price">$49.50</p>
-          </figcaption>
-        </figure>
-      </a>
-      <button href="index.php?ctrl=productos&action=show&id=1" class="btn btn-dark btn-lg btn-block"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Comprar</span></button>
+    <article class="item">
+      <figure class="col-sm-4 col-md-3">
+        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+        <figcaption>
+          <h4 class="name">Zapatilla Mary Jane</h4>
+          <p class="price">$49.50</p>
+        </figcaption>
+        <div class="overlay">
+          <ul>
+            <li>
+              <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+            </li>
+            <li>
+              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+            </li>
+          </ul>
+        </div>
+      </figure>
     </article>
 
-    <article class="item col-sm-3">
-      <a href="#">
-        <figure>
-          <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-          <figcaption>
-            <h4 class="name">Zapatilla Mary Jane</h4>
-            <p class="price">$49.50</p>
-          </figcaption>
-        </figure>
-      </a>
-      <button href="#" class="btn btn-dark btn-lg btn-block"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm">Comprar</span></button>
+    <article class="item">
+      <figure class="col-sm-4 col-md-3">
+        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+        <figcaption>
+          <h4 class="name">Zapatilla Mary Jane</h4>
+          <p class="price">$49.50</p>
+        </figcaption>
+        <div class="overlay" style="display:none">
+          <ul>
+            <li>
+              <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+            </li>
+            <li>
+              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+            </li>
+          </ul>
+        </div>
+      </figure>
     </article>
+
+
+
+
+
+
+
+    
+
+    
   </section>
 </div>

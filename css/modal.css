@@ -1,3 +1,53 @@
+.modal.in .modal-dialog {
+z-index: 10000;
+}
+
+.modal-body form span {
+  background: #fff;
+  color: #00bfff;
+}
+
+.modal-header, 
+.modal-footer {
+  background: #fff;
+  color: #FF6C60;
+}
+
+.modal-header-red, 
+.modal-footer-red {
+  background: #FF6C60;
+  color: #fff;
+}
+
+.modal-header-dark, 
+.modal-footer-dark {
+  background: #292522;
+  color: #fff;
+}
+
+.modal-header-white,
+.modal-footer-white {
+  background: #fff;
+  color: #00bfff;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: none;
+}
+
+.modal-footer a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.modal-footer a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+  color: #fff;
+}
+
 .modal-backdrop {
 	z-index: 0;
 }
@@ -7,6 +57,6 @@
   opacity: .7;
 }
 
-div#modalLogin {
+#modalLogin {
     background: rgba(0,0,0,.7);
 }

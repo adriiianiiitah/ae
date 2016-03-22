@@ -1,5 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url('flat-slider.css');
 @import url('forms.css');
 @import url('modal.css');
 @import url('footer.css');
@@ -11,9 +12,8 @@ html {
 body {
 	height: 100%;
 	font-family:Quicksand,sans-serif;
-  padding-top: 70px;
+  padding-top: 125px;
   background: #fff;
-  /*background: #f9f9f9;*/
 }
 
 h1 {
@@ -25,13 +25,14 @@ h1 {
   line-height: 40px;
 }
 
+section {
+  background: #fff;
+}
+
+
 #slider img {
   width: 100%;
   height: auto;
-}
-
-section {
-  background: #fff;
 }
 
 #catalogos .nav-tabs {
@@ -94,6 +95,8 @@ section {
    margin: 15px;
 }
 
+
+
 #slider-marcas .item{
   background: #f9f9f9;
   padding: 30px 0px;
@@ -109,6 +112,13 @@ section {
   width: 100px;
   margin: auto;
 }
+
+
+
+
+
+
+
 
 
 #filter {
@@ -129,7 +139,8 @@ section {
   padding: 5px 0;
 }
 
-#filter-bar nav{
+#filter-bar .filters,
+#filter-bar .categories {
   border: 1px solid #ccc;
   background: #fff;
   margin: 15px 0;
@@ -145,7 +156,7 @@ section {
 }
 
 #filter-bar nav ul li a{
-  color: #11C1F3;
+  color:  #000;;
   display: block;
   text-decoration: none;
   padding: 5px 0;
@@ -230,15 +241,21 @@ section {
 }
 
 
+
+
+
+
+
+
+
+
+
+
 /*  Productos */
 #catalog {
 }
 
 #catalog .item {
-}
-
-#catalog .item a {
-	text-decoration: none;
 }
 
 #catalog .item figure {
@@ -260,14 +277,28 @@ section {
   margin: 0;
 }
 
-
 #catalog .item figure figcaption .price {
 	width: 100%;
   color: #f00;
 }
 
+#catalog .item figure .overlay {
+  background: rgba(0,0,0,.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity .5s;
+}
+
 #catalog .item ul{
-	padding: 0;
+  padding: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 50% 15%;
 }
 
 #catalog .item ul li{
@@ -275,10 +306,6 @@ section {
 	float: left;
 	width: 50%;
 	text-align: center;
-}
-
-#catalog .item ul li a{
-	text-decoration: none;
 }
 
 #catalog .item .fa.fa-shopping-cart {
@@ -366,56 +393,6 @@ section {
 
 
 
-
-.modal.in .modal-dialog {
-	z-index: 10000;
-}
-
-.modal-body form span {
-  background: #fff;
-	color: #00bfff;
-}
-
-.modal-header, 
-.modal-footer {
-	background: #fff;
-	color: #FF6C60;
-}
-
-.modal-header-red, 
-.modal-footer-red {
-	background: #FF6C60;
-	color: #fff;
-}
-
-.modal-header-dark, 
-.modal-footer-dark {
-  background: #292522;
-  color: #fff;
-}
-
-.modal-header-white,
-.modal-footer-white {
-	background: #fff;
-	color: #00bfff;
-}
-
-.modal-footer {
-    padding: 15px;
-    text-align: right;
-    border-top: none;
-}
-
-.modal-footer a {
-	text-decoration: none;
-	color: #fff;
-}
-
-.modal-footer a:hover {
-	text-decoration: underline;
-	font-weight: bold;
-	color: #fff;
-}
 
 
 
@@ -601,3 +578,29 @@ section {
   color: #fff;
   background: #000;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

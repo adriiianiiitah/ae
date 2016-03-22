@@ -79,8 +79,8 @@
         top: 115px;
       }
 
-      #slider {
-        margin-top: 57px;
+      body {
+        padding-top: 170px;
       }
 
       .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
