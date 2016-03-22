@@ -9,12 +9,12 @@ footer nav {
 
 footer nav h4{
   font-weight: bolder;
-  border-bottom: 4px solid #FF4242;
+  border-bottom: 2px solid #FF4242;
   color: #fff;
   display: inline-block;
   letter-spacing: 1px;
-  padding-bottom: 10px;
-  line-height: 40px;
+  padding-bottom: 5px;
+  line-height: 30px;
   margin: 30px 0;
 }
 
