@@ -1,6 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
 @import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
 
+@import url('footer.css');
+
 html {
 	height: 100%;
 }
@@ -106,48 +108,6 @@ section {
   width: 100px;
   margin: auto;
 }
-
-footer {
-  background: #383838;
-  color: #fff;
-}
-
-footer nav {
-
-}
-
-footer nav ul {
-  
-}
-
-footer nav ul li {
-  list-style: none;
-}
-
-footer nav ul li a,
-footer nav ul li p {
-  text-decoration: none;
-  color: #c7c7c7;
-}
-
-footer nav ul li a { 
-  padding-bottom: 10px;
-  display: block;
-}
-
-footer nav ul li p {
-  margin: 0;
-}
-footer nav ul li a:hover,
-footer nav ul li a:focus {
-  text-decoration: none;
-  color: #000;
-}
-
-footer nav ul li h4 {
-  
-}
-
 
 
 #filter {

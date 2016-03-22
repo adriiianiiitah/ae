@@ -1,0 +1,44 @@
+footer {
+  background: #383838;
+  color: #fff;
+}
+
+footer nav {
+
+}
+
+footer nav h4{
+  font-weight: bolder;
+  border-bottom: 4px solid #FF4242;
+  color: #fff;
+  display: inline-block;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  line-height: 40px;
+  margin: 30px 0;
+}
+
+footer nav ul {
+  padding: 0;
+}
+
+footer nav ul li {
+  list-style: none;
+}
+
+footer nav ul li a {
+  text-decoration: none;
+  color: #c7c7c7;
+}
+
+footer nav ul li a { 
+  padding-bottom: 10px;
+  display: block;
+}
+
+
+footer nav ul li a:hover,
+footer nav ul li a:focus {
+  text-decoration: none;
+  color: #000;
+}
