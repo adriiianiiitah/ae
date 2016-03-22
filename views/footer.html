@@ -74,11 +74,11 @@
 
           var owl = $("#slider-marcas");
  
-          owl.owlCarousel({
+          owl.owlCarousel(/*{
               itemsCustom : [
                 [0, 1],
-                [450, 2],
-                [600, 3],
+                [450, 1],
+                [600, 2],
                 [700, 4],
                 [1000, 6],
                 [1200, 7],
@@ -86,7 +86,30 @@
                 [1600, 9]
               ],
               navigation : true
-          });
+          }*/{
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    navText: ['<i class="fa fa-arrow-left"></i>','<i class="fa fa-arrow-right"></i>'],
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        450:{
+            items:2,
+            nav:false
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:true
+        }
+    }
+});
       });
       /*
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
