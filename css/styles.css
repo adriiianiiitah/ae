@@ -336,6 +336,23 @@ section {
 
 
 
+/* CONTACTO */
+
+#gmap {
+  overflow:hidden;
+  height:500px;
+  width:100%;
+}
+
+#gmap_canvas img{
+  max-width:none!important;
+  background:none!important;
+}
+
+
+
+
+
 
 
 
