@@ -1,18 +1,40 @@
 <div class="container-contact">
-  <div class="row">
-      <div class="col-sm-12">
-        <div id="gmap">
-          <div id='gmap_canvas' style='height:500px;width:100%;'></div>
-        </div>
+  <section id="mapa" class="row">
+    <div class="col-sm-12">
+      <div id="gmap">
+        <div id='gmap_canvas' style='height:500px;width:100%;'></div>
       </div>
     </div>
+  </section>
   <div class="container">
-    <!-- Example row of columns -->
-
-
-    <div class="row">
+    <section id="info-contacto" class="row">
+      <hr/>
+      <h1>Contacto</h1>
+      <ul>
+        <li>
+          <span class="icon"><i class="fa fa-map-marker fa-3x"></i></span>
+          <span class="text">
+            Puerta de Hierro #549, Zona Residencial, Zapopan, Jalisco
+          </span>
+        </li>
+        <li>
+          <span class="icon"><i class="fa fa-mobile fa-3x"></i></span>
+          <span class="text">
+            01 33 1234 5700
+          </span>
+        </li>
+        <li>
+          <span class="icon"><i class="fa fa-envelope fa-2x"></i></span>
+          <span class="text">
+            contacto_info@ae.com
+          </span>
+        </li>
+      </ul>
+    </section>
+    <section class="row">
+      <hr/>
       <div class="col-sm-12">
-        <h1>Contacto</h1>
+        <h3>Envianos un mensaje</h3>
         <form class="form" role="form" onsubmit="return validate()" data-validate>
           <div class="col-sm-6">
             <div class="form-group">
@@ -51,7 +73,11 @@
           </div>
         </form>
       </div>
+    </section> <!-- /row --> 
+    <div class="row">
+      <hr/>
     </div>
-    <hr/>
+
+
   </div> <!-- /container -->  
 </div> 
