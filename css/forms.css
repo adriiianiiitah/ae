@@ -1,9 +1,12 @@
 legend {
-  text-align: center;
-  background: #FF4242;
-  color: #fff;
-  padding: 5px 0;
-  display: block;
+  color: #E0E3E6;
+  font-weight: bold;  
+  border-bottom: 1px solid  #eee;
+  padding: 10px;
+}
+
+fieldset {
+
 }
 
 input, textarea, select {
