@@ -55,6 +55,9 @@ table {
   float: right;
 }
 
+.clearfix {
+  clear: both;
+}
 
 
 
@@ -64,7 +67,7 @@ table {
 .fa {
   color: #f00;
 }
-
+.fa.fa-cloud-upload,
 .fa.fa-plus,
 .fa.fa-paper-plane,
 .fa.fa-times,
@@ -82,6 +85,13 @@ table {
 
 .white {
   background: #fff;
+}
+
+.thumbnail {
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 
