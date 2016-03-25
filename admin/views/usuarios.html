@@ -4,13 +4,13 @@
             <div class="col-xs-12">
               <section class="panel">
                 <header class="panel-heading">
-                  <h3>Usuarios</h3>
+                  <h1>Usuarios</h1>
                   <div class="pull-right">
                     <ul class="files">
-                      <li><button class="btn btn-green" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
-                      <li><button class="btn btn-green" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
-                      <li><button class="btn btn-green" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
-                      <li><button class="btn btn-green" title="Print"><i class="fa fa-print"></i></button></li>
+                      <li><button class="btn btn-red" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
+                      <li><button class="btn btn-red" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
+                      <li><button class="btn btn-red" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
+                      <li><button class="btn btn-red" title="Print"><i class="fa fa-print"></i></button></li>
                     </ul>
                   </div>
                 </header>
@@ -48,9 +48,9 @@
                         <td>{{nombre}}</td>
                         <td>{{apellido}}</td>
                         <td>{{correo}}</td>
-                        <td>{{telefono}}</td>
                         <td>{{genero}}</td>
                         <td>{{fecha_nacimiento}}</td>
+                        <td>{{telefono}}</td>
                         <td>
                           <a href="index.php?ctrl=usuarios&action=view&id={{id}}"><i class="fa fa-eye"></i></a>
                           <a href="index.php?ctrl=usuarios&action=edit&id={{id}}"><i class="fa fa-pencil"></i></a>

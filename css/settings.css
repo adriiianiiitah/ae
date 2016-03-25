@@ -1,40 +1,61 @@
-
-* {
-    /*border: 1px solid black;*/
-}
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url('buttons.css');
+@import url('forms.css');
+@import url('pager.css');
+@import url('modal.css');
 
 html {
-    border: 1px solid transparent;
-    height: : 100%;
+  height: : 100%;
 }
 
 body {
-    height: : 100%;
-    background: #F0F2EB;
-    color: #474843;
+  height: : 100%;
+  font-family:Quicksand,sans-serif;
+  background: #F2F2F2;
+  border: none;
+  color: #474843;
+}
+
+h1 {
+  border-bottom: 4px solid #FF4242;
+  color: #3b3b3b;
+  display: inline-block;
+  letter-spacing: 1px;
+  padding-bottom: 10px;
+  line-height: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #f00;
 }
 
 footer {
-
-    background: gray;
+  background: gray;
 }
 
 img {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .checkbox, .radio {
-    float: left;
-    margin-right: 20px;
+  float: left;
+  margin-right: 20px;
 }
 
 .wrapper:before, .wrapper:after {
-    display: table;
-    content: " ";
+  display: table;
+  content: " ";
 }
 
 .wrapper:after {
-    clear: both;
+  clear: both;
 }
 
 .user-panel {
@@ -127,7 +148,7 @@ img {
 
 .content {
     padding: 20px 15px;
-    background: #F0F2EB;
+    background: #F2F2F2;
 }
 
 .row {
@@ -155,7 +176,7 @@ img {
 ul li button {
     margin: 4px;
 }
-
+/*
 .error-message {
     position: relative;
     background-color: #FA5858;
@@ -225,14 +246,7 @@ ul li button {
     background-image: none;
     top: -4px;
 }
-
-
-
-
-
-
-
-
+*/
 
 .skin-orange .left-side {
     background: #FF4242;
@@ -382,7 +396,7 @@ fieldset[disabled] .btn-skyblue.active {
 }
 
 .panel-heading {
-    border-bottom: 1px solid #ddd;
+    /*border-bottom: 1px solid #ddd;*/
 }
 
 #menu_show {
