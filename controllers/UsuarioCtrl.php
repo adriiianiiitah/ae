@@ -38,9 +38,11 @@
     public function createUsuario() {
       $header = file_get_contents("views/header.html");
       $menu =  file_get_contents("views/menu.html");
+      $modal_address =  file_get_contents("views/modal_address.html");
+      $modal_phone =  file_get_contents("views/modal_phone.html");
       $view =  file_get_contents("views/register.html");
       $footer = file_get_contents("views/footer.html");
-      echo $header.$menu.$view.$footer;
+      echo $header.$menu.$modal_address.$modal_phone.$view.$footer;
     }
 
     public function showTokenForm() {

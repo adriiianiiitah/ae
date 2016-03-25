@@ -1,24 +1,3 @@
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
-      </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
 
 <section class="container">  
   <form method="post" role="form" onsubmit="return validate()" enctype="multipart/form-data" data-validate > 
@@ -28,42 +7,42 @@
         <div  class="form-group">
           <label for="nombre" class="control-label">Nombre <span class="required">*</span></label>
           <div>
-          <input class="form-control " id="nombre" name="nombre" type="text" data-required data-name/>
+            <input class="form-control " id="nombre" name="nombre" type="text" data-required data-name/>
           </div>
         </div>
 
         <div  class="form-group">      
           <label for="apellidos" class="control-label">Apellido <span class="required">*</span></label>
           <div>
-          <input class="form-control" id="apellidos" name="apellidos" type="text" data-required data-lastname/>
+            <input class="form-control" id="apellidos" name="apellidos" type="text" data-required data-lastname/>
           </div>
         </div>
 
         <div class="form-group">                      
           <label for="correo" class="control-label">Correo <span class="required">*</span></label>
           <div>
-          <input class="form-control" type="text" id="correo" name="correo" data-required data-email/>
+            <input class="form-control" type="text" id="correo" name="correo" data-required data-email/>
           </div>
         </div>
 
         <div class="form-group">
           <label for="contrasena" class="control-label">Contraseña <span class="required">*</span></label>
           <div>
-          <input class="form-control" type="password" name="contrasena" data-required data-password data-samepassword/>
+            <input class="form-control" type="password" name="contrasena" data-required data-password data-samepassword/>
           </div>
         </div>
 
         <div  class="form-group">
           <label for="repetir-contrasena" class="control-label">Repetir contraseña <span class="required">*</span></label>
           <div>
-          <input class="form-control" type="password" name="repetir-contrasena" data-required data-password data-samepassword/>
+            <input class="form-control" type="password" name="repetir-contrasena" data-required data-password data-samepassword/>
           </div>
         </div>
 
         <div  class="form-group">
           <label for="fecha_nacimiento" class="control-label">Fecha de nacimiento</label>
           <div>
-          <input class="form-control" type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/aaaa" data-required/>
+            <input class="form-control" type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/aaaa" data-required/>
           </div>
         </div>
 
@@ -92,11 +71,11 @@
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
             <div class="form-group">
-              <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Agregar domicilio </button>
+              <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#modal-address"><i class="fa fa-plus"></i> Agregar domicilio </button>
             </div>
 
             <div class="form-group">
-              <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Agregar teléfono </button>
+              <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#modal-phone"><i class="fa fa-plus"></i> Agregar teléfono </button>
             </div>
 
             <div class="form-group">

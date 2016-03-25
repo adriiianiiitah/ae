@@ -2,11 +2,6 @@
 z-index: 10000;
 }
 
-.modal-body form span {
-  background: #fff;
-  color: #00bfff;
-}
-
 .modal-header, 
 .modal-footer {
   background: #fff;
@@ -57,6 +52,6 @@ z-index: 10000;
   opacity: .7;
 }
 
-#modalLogin {
+.modal.fade.in {
     background: rgba(0,0,0,.7);
 }
