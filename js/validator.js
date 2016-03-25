@@ -35,7 +35,7 @@
 	}
 
 	function showOk(element) {
-		var message = 'Correct !';
+		var message = 'Correcto';
 		var parent = element.parentNode;
 		var message_ok = $('<div class="succes-message">'+message+'</div>',{
 							   'class': 'success'
@@ -44,13 +44,10 @@
 		message_ok.parent().parent().addClass('has-success');
 	}
 
-
-
-
 	function showErrorInputsPassword(inputs_password) {
 		for(var i = 0; i < inputs_password.length; i++) {
 			if(!isPassword(inputs_password[i].value.trim())) {
-				showError(inputs_password[i],"This value should be an password");
+				showError(inputs_password[i],"La contraseña debe contener mayúsculas, minúsculas, dígitos y caracteres de puntuación.");
 			}
 		}
 	}
@@ -59,32 +56,18 @@
 	function showErrorInputsEmail(inputs_email) {
 		for(var i = 0; i < inputs_email.length; i++) {
 			if(!isEmail(inputs_email[i].value.trim())) {
-				showError(inputs_email[i],"This value should be an email");
+				showError(inputs_email[i],"Debe ser un correo válido.");
 			}
 		}
 	}
 
 	function showErrorInputsSame(inputs_same_pass) {
-
-		//for(var i = 0; i < inputs_same_pass.length; i++) {
-		if (inputs_same_pass[0] != inputs_same_pass[1]) {
-			showError(inputs_same_pass[1],"This value should be the same");
-		}
-		//}
-	}
-
-
-
-/*
-
-	function showErrorInputsColor(inputs_color) {
-		for(var i = 0; i < inputs_color.length; i++) {
-			if(!isColor(inputs_color[i].value.trim())) {
-				showError(inputs_color[i],"This value should be a color (A-z0-9\\-)");
-			}
+		if(inputs_same_pass.length == 2) {
+  		if (inputs_same_pass[0] != inputs_same_pass[1]) {
+  			showError(inputs_same_pass[1],"Las contraseñas no coinciden.");
+  		}
 		}
 	}
-	*/
 
 	function isFormLoginValid() {
 		var inputs_phone = $('form[data-validate-login]').find('input[type=tel]');
@@ -305,7 +288,7 @@
 	function showErrorInputsCode(inputs_code) {
 		for(var i = 0; i < inputs_code.length; i++) {
 			if(!isCode(inputs_code[i].value.trim())) {
-				showError(inputs_code[i],"This value should be a code");
+				showError(inputs_code[i],"Debe contener letras, dígitos y guiones.");
 			} 
 		}
 	}
@@ -314,7 +297,7 @@
 	function showErrorInputsName(inputs_name) {
 		for(var i = 0; i < inputs_name.length; i++) {
 			if(!isName(inputs_name[i].value.trim())) {
-				showError(inputs_name[i], "This value should be a name");
+				showError(inputs_name[i], "Debe contener letras y espacios.");
 			} 
 		}
 	}
@@ -322,7 +305,7 @@
 	function showErrorInputsLastName(inputs_lastname) {
 		for(var i = 0; i < inputs_lastname.length; i++) {
 			if(!isLastName(inputs_lastname[i].value.trim())) {
-				showError(inputs_lastname[i], "This value should be a last name");
+				showError(inputs_lastname[i], "Debe contener letras y espacios.");
 			} 
 		}
 	}
@@ -332,7 +315,7 @@
 	function showErrorInputsFileImage(inputs_file_image) {
 		for(var i = 0; i < inputs_file_image.length; i++) {
 			if(!isFileAllowed(inputs_file_image[i],IMAGE)) {
-				showError(inputs_file_image[i], "This file should be a image");
+				showError(inputs_file_image[i], "El archivo debe ser una imagen.");
 			} else {
 				showImage(inputs_file_image[i]);
 			}
@@ -342,7 +325,7 @@
 	function showErrorInputsFileThumbnail(inputs_file_thumbnail) {
 		for(var i = 0; i < inputs_file_thumbnail.length; i++) {
 			if(!isFileAllowed(inputs_file_thumbnail[i],IMAGE)) {
-				showError(inputs_file_thumbnail[i], "This file should be a image");
+				showError(inputs_file_thumbnail[i], "El archivo debe ser una imagen.");
 			} else {
 				showImage(inputs_file_thumbnail[i]);
 			}
@@ -352,7 +335,7 @@
 	function showErrorInputsColor(inputs_color) {
 		for(var i = 0; i < inputs_color.length; i++) {
 			if(!isColor(inputs_color[i].value.trim())) {
-				showError(inputs_color[i],"This value should be a color (A-z0-9\\-)");
+				showError(inputs_color[i],"Debe contener letras, dígitos y guiones.");
 			}
 		}
 	}
@@ -363,7 +346,7 @@
 	function showErrorInputsRequired(inputs_required) {
 		for(var i = 0; i < inputs_required.length; i++) {
 			if(inputs_required[i].value.trim() == "") {
-				showError(inputs_required[i],"This value is required");
+				showError(inputs_required[i],"Este campo no debe quedar vacío.");
 			}
 		}
 	}
@@ -372,7 +355,7 @@
 	function showErrorTextareasRequired(textareas_required) {
 		for(var i = 0; i < textareas_required.length; i++) {
 			if(textareas_required[i].value.trim() == "") {
-				showError(textareas_required[i],"This value is required");
+				showError(textareas_required[i],"Este campo no debe quedar vacío.");
 			} 
 		}
 	}
@@ -381,7 +364,7 @@
 		for(var i = 0; i < selects_required.length; i++) {
 			
 			if(selects_required[i].value== "") {
-				showError(selects_required[i],"This value is required");
+				showError(selects_required[i],"Debe seleccionar una opción.");
 			}
 		}
 	}
@@ -394,13 +377,13 @@
 			}
 		}
 		if(!some_is_checked && inputs_checkbox.length > 0)
-			showError(inputs_checkbox[0].parentNode.parentNode,"You should select some options");
+			showError(inputs_checkbox[0].parentNode.parentNode,"Debe seleccionar una opción.");
 	}
 
 	function showErrorInputsDateTime(inputs_datetime) {
 		for(var i = 0; i < inputs_datetime.length; i++) {
 			if(!isDateTime(inputs_datetime[i].value.trim())) {
-				showError(inputs_datetime[i].parentNode,"This value should be a date");
+				showError(inputs_datetime[i].parentNode,"Este campo no debe quedar vacío.");
 			}
 		}
 	}
@@ -613,6 +596,6 @@
                 }
             }
         });
-  })
+  });
 
 //});

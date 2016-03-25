@@ -113,15 +113,12 @@ input[type=file] {
 
 .error-message {
     position: relative;
-    background-color: #f00;
+    background: #FED2D3;
     padding: 6px 12px;
-    color: white;
+    color: #f00;
     font-weight: bold;
     margin-left: 16px;
     margin-top: 6px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     clear: both;
 
     transition: all 3s ease-in;
@@ -141,22 +138,19 @@ input[type=file] {
     height: .6em;
     -webkit-transition: background .2s ease;
     transition: background .2s ease;
-    background-color: #f00;
+    background: #FED2D3;
     background-image: none;
     top: -4px;
 }
 
 .succes-message {
     position: relative;
-    background-color: #31B404;
+    background: #D4FECC;
     padding: 6px 12px;
-    color: white;
+    color: #31B404;
     font-weight: bold;
     margin-left: 16px;
     margin-top: 6px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
     clear: both;
 
     transition: all 3s ease-in;
@@ -176,7 +170,7 @@ input[type=file] {
     height: .6em;
     -webkit-transition: background .2s ease;
     transition: background .2s ease;
-    background-color: #31B404;;
+    background: #D4FECC;
     background-image: none;
     top: -4px;
 }
