@@ -7,83 +7,86 @@
                 <h1>Usuario</h1>
               </header>
               <div class="panel-body">
-                <form id="" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                <form method="post" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
                   <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <div class="profile_img">
                       <div id="crop-avatar">
                         <div>
-                          <img id="image-file" src="../img/200x200.png" alt="category" class="img-thumbnail">
+                          <img id="thumbnail-file" src="../img/200x200.png" alt="thumbnail" data-thumbnail>
                         </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="control-label col-md-4 col-sm-4 col-xs-12" for="image">Image
-                      </label>
-                      <div class="col-md-7 col-sm-7 col-xs-12">
-                        <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
-                      </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <label class="btn btn-red btn-lg btn-block btn-upload" for="image"><i class="fa fa-cloud-upload"></i> Subir</label>
+                      <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png" data-thumbnail/>
                     </div>
                   </div>
 
                   <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
-                    
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="nombre">Nombre <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <input type="text" id="nombre" name="nombre" class="form-control col-md-7 col-xs-12" data-required data-name value="{{nombre}}" />
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="apellidos">Apellidos <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <input type="text" id="apellidos" name="apellidos" class="form-control col-md-7 col-xs-12" data-required data-lastname value="{{apellido}}"/>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="correo">Correo <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <input type="text" id="correo" name="correo" class="form-control col-md-7 col-xs-12" data-required data-email value="{{correo}}"/>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-12 col-xs-12" for="genero">Género <span class="required">*</span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div class="radio">
-                            <label>
-                              <input type="radio" class="checkbox" checked value="femenino" id="femenino" name="genero" checked>Femenino
-                            </label>
-                          </div>
-                          <div class="radio">
-                            <label>
-                              <input type="radio" class="checkbox" value="masculino" id="masculino" name="genero">Masculino
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="birthday">Fecha de nacimiento <span class="required">*</span>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="nombre">Nombre <span class="required">*</span>
                       </label>
                       <div class="col-md-6 col-sm-12 col-xs-12">
-                        <div class='input-group date' id='datetimepickerdate_start'>
-                          <input type="text"  id="fecha_nacimiento" name="fecha_nacimiento" class="form-control col-md-7 col-xs-12" data-required data-datetime value={{fecha_nacimiento}}/>
-                          <span class="input-group-addon">
-                            <span class="fa fa-calendar">
-                            </span>
-                          </span>
+                        <input type="text" id="nombre" name="nombre" class="form-control col-md-7 col-xs-12" data-required data-name value="{{nombre}}" />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="apellidos">Apellidos <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="apellidos" name="apellidos" class="form-control col-md-7 col-xs-12" data-required data-lastname value="{{apellido}}"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="contrasena">Contraseña <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="password" id="contrasena" name="contrasena" class="form-control col-md-7 col-xs-12" data-required data-password data-samepassword  value="{{contrasena}}"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="repetir_contrasena">Repetir contraseña <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="password" id="repetir_contrasena" name="repetir_contrasena" class="form-control col-md-7 col-xs-12" data-required data-password data-samepassword  value="{{repetir_contrasena}}"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="correo">Correo <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="correo" name="correo" class="form-control col-md-7 col-xs-12" data-required data-email value="{{correo}}"/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="genero">Género <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" class="checkbox" value="femenino" id="genero" name="genero" checked>Femenino
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" class="checkbox" value="masculino" id="genero" name="genero">Masculino
+                          </label>
                         </div>
                       </div>
                     </div>
                     <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="fecha_nacimiento">Fecha de nacimiento <span class="required">*</span>
+                      </label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input class="form-control" type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="dd/mm/aaaa" data-required value={{fecha_nacimiento}}/>
+                      </div>
+                    </div>
+                    <div class="form-group">
                         <div class="col-md-6 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-green">Submit</button>
-                          <button type="submit" class="btn btn-red">Cancel</button>
+                          <button type="submit" class="btn btn-show"><i class="fa fa-check"></i> Guardar</button>
+                          <button type="button" class="btn btn-red"><i class="fa fa-ban"></i> Cancel</button>
                         </div>
                     </div>
-                    
                   </div>
                 </form>
               </div>
@@ -91,5 +94,4 @@
           </div>
         </div>
       </div>
-      <!--<div class="container-fluid" ></div>-->
     </div>

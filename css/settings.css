@@ -249,7 +249,7 @@ ul li button {
 */
 
 .skin-orange .left-side {
-    background: #FF4242;
+    background: #000;
 }
 
 .skin-orange .sidebar {
@@ -416,6 +416,15 @@ fieldset[disabled] .btn-skyblue.active {
 
 #crop-avatar div {
     text-align: center;
+}
+
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+    border-top: 1px solid #eee;
 }
 
 /**_____________________________________________________/
