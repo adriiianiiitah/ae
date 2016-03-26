@@ -414,7 +414,7 @@
   }
 
   function isCode(code) {
-    var expreg = /^([A-Za-z0-9\-]{10,})+$/;
+    var expreg = /^([A-Za-z0-9\-]{5,})+$/;
   
     if(expreg.test(code)) {
       return true;
