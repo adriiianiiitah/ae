@@ -29,6 +29,10 @@
         require_once('controllers/OfertasCtrl.php');
         $controller = new OfertasCtrl();
       break;
+      case 'descuentos':
+        require_once('controllers/DescuentosCtrl.php');
+        $controller = new DescuentosCtrl();
+      break;
       
       default:
         $this->showErrorPage();

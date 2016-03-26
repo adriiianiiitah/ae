@@ -1,0 +1,88 @@
+    <div id="page-discounts" class="right-side">
+      <div class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h1>Descuentos</h1>
+                <div class="pull-right">
+                  <ul class="files">
+                    <li><button class="btn btn-red" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
+                    <li><button class="btn btn-red" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
+                    <li><button class="btn btn-red" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
+                    <li><button class="btn btn-red" title="Print"><i class="fa fa-print"></i></button></li>
+                  </ul>
+                </div>
+              </header>
+              <div class="panel-body">
+                <table class="table table-bordered table-hover table-condensed">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Código</th>
+                      <th>Producto</th>
+                      <th>Descuento (%)</th>
+                      <th>Precio</th>
+                      <th>Cantidad de artículos</th>
+                      <th>Desde</th>
+                      <th>Hasta</th>
+                      <th class=" no-link last"><span class="nobr">Acción</span></th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>Código</th>
+                      <th>Producto</th>
+                      <th>Descuento (%)</th>
+                      <th>Precio</th>
+                      <th>Cantidad de artículos</th>
+                      <th>Desde</th>
+                      <th>Hasta</th>
+                      <th class=" no-link last"><span class="nobr">Acción</span></th>
+                    </tr>
+                  </tfoot>
+                  <!--table.tbody-->
+                  <tbody>
+                    <!--row-->
+                    <tr>
+                      <td>{{id}}</td>
+                      <td>{{codigo}}</td>
+                      <td>{{producto}}</td>
+                      <td>{{descuento}}</td>
+                      <td>{{precio}}</td>
+                      <td>{{cantidad}}</td>
+                      <td>{{desde}}</td>
+                      <td>{{hasta}}</td>
+                      <td>
+                        <a href="index.php?ctrl=descuentos&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
+                        <a href="index.php?ctrl=descuentos&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-delete" id="{{id}}" data-toggle="modal" data-target="#delete-item"><i class="fa fa-trash-o"></i></a>
+                      </td>
+                    </tr>
+                    <!--.row-->
+                  </tbody>
+                  <!--.table.tbody-->
+                </table>
+              </div>
+              <div class="panel-body">
+                <div class="pagination pull-right">
+                  <ul>
+                    <li><a href="#"><<</a></li>
+                    <li><a href="#"><</a></li>
+                    <li class="active">
+                      <a href="#">1</a>
+                    </li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">></a></li>
+                    <li><a href="#">>></a></li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>

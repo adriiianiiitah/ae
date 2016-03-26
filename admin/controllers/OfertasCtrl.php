@@ -50,7 +50,7 @@
 
     public function showOfertas() {
       //$Ofertas = $this->model->getAll();
-      $view = $this->getView("Ofertas", 'list', $this->modal);
+      $view = $this->getView("ofertas", 'list', $this->modal);
       $area = $this->getRow($view);
       $table = "";
 
