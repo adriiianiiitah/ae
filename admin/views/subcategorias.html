@@ -4,13 +4,13 @@
             <div class="col-xs-12">
               <section class="panel">
                 <header class="panel-heading">
-                  <h3>Subcategorias</h3>
+                  <h1>Subcategorias</h1>
                   <div class="pull-right">
                     <ul class="files">
-                      <li><button class="btn btn-dark" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
-                      <li><button class="btn btn-dark" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
-                      <li><button class="btn btn-dark" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
-                      <li><button class="btn btn-dark" title="Print"><i class="fa fa-print"></i></button></li>
+                      <li><button class="btn btn-red" title="CVS"><i class="fa fa-file-text-o"></i></button></li>
+                      <li><button class="btn btn-red" title="Excel"><i class="fa fa-file-excel-o" ></i></button></li>
+                      <li><button class="btn btn-red" title="PDF"><i class="fa fa-file-pdf-o"></i></button></li>
+                      <li><button class="btn btn-red" title="Print"><i class="fa fa-print"></i></button></li>
                     </ul>
                   </div>
                 </header>
@@ -20,8 +20,8 @@
                       <tr>
                         <th>#</th>
                         <th>Código </th>
-                        <th>Subcategoria </th>
-                        <th>Categoria </th>
+                        <th>Subcategoría </th>
+                        <th>Categoría </th>
                         <th>Descripción </th>
                         <th class=" no-link last"><span class="nobr">Acción</span></th>
                       </tr>
@@ -30,8 +30,8 @@
                       <tr>
                         <th>#</th>
                         <th>Código </th>
-                        <th>Subcategoria </th>
-                        <th>Categoria </th>
+                        <th>Subcategoría </th>
+                        <th>Categoría </th>
                         <th>Descripción </th>
                         <th class=" no-link last"><span class="nobr">Acción</span></th>
                       </tr>
@@ -46,9 +46,9 @@
                         <td>{{categoria}}</td>
                         <td>{{descripcion}}</td>
                         <td>
-                          <a href="{{subcategoria-view}}"><i class="fa fa-eye"></i></a>
-                          <a href="{{subcategoria-edit}}.php"><i class="fa fa-pencil"></i></a>
-                          <a href="#"><i class="fa fa-trash-o"></i></a>
+                          <a href="{{subcategoria-view}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
+                          <a href="{{subcategoria-edit}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>
+                          <a href="#" class="btn btn-delete" id="{{id}}" data-toggle="modal" data-target="#delete-item"><i class="fa fa-trash-o"></i></a>
                         </td>
                       </tr>
                       <!--.row-->

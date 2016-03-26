@@ -1,16 +1,13 @@
-    <?php 
-      require_once('views/navigation.html');
-    ?>
     <div id="page-users" class="right-side">
       <div class="content">
         <div class="row">
           <div class="col-xs-12">
             <section class="panel">
               <header class="panel-heading">
-                <h3>Subcategoria</h3>
+                <h1>Subcategoria</h1>
               </header>
               <div class="panel-body">
-                <form id="" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                <form  method="post" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
                   <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <div class="profile_img">
                       <div id="crop-avatar">
@@ -18,6 +15,10 @@
                           <img id="image-file" src="../img/200x200.png" alt="subcategoria" class="img-thumbnail">
                         </div>
                       </div>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <label class="btn btn-red btn-lg btn-block btn-upload" for="image"><i class="fa fa-cloud-upload"></i> Subir</label>
+                      <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
                     </div>
                   </div>
 
@@ -30,31 +31,26 @@
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="categoria">Categoria <span class="required">*</span>
-                      </label>
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="categoria">Categoría <span class="required">*</span></label>
                       <div class="col-md-6 col-sm-12 col-xs-12">
-                        <input type="text" id="categoria" name="categoria" class="form-control col-md-7 col-xs-12" data-required data-name value="{{categoria}}"/>
+                        <select id="categoria" name="categoria" class="form-control col-md-7 col-xs-12" multiple data-required >
+                          <option value="">Seleccione</option>
+                          <option value="dama">Dama</option>
+                          <option value="caballero">Caballero</option>
+                          <option value="infantil">Infantil</option>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="descripcion">Description <span class="required">*</span>
-                      </label>
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="descripcion">Description</label>
                       <div class="col-md-6 col-sm-12 col-xs-12">
-                        <textarea id="descripcion" name="descripcion" class="form-control col-md-7 col-sm-12 col-xs-12" class="form-control" rows="3" data-required data-description>{{descripcion}}</textarea>
+                        <textarea id="descripcion" name="descripcion" class="form-control col-md-7 col-sm-12 col-xs-12" class="form-control" rows="3" data-description>{{descripcion}}</textarea>
                       </div>
                     </div>
                     <div class="form-group">
-                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="image">Image
-                      </label>
-                      <div class="col-md-6 col-sm-12 col-xs-12">
-                        <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
-                      </div>
-                    </div>
-                    <div class="ln_solid"></div>
-                    <div class="form-group">
-                      <div class="col-md-6 col-sm-12 col-xs-12 col-md-offset-3">
-                        <button type="submit" class="btn btn-green">Submit</button>
-                        <button type="button" class="btn btn-red">Cancel</button>
+                      <div class="col-md-6 col-xs-12 col-md-offset-3">
+                        <button type="submit" class="btn btn-show"><i class="fa fa-check"></i> Guardar</button>
+                        <button type="button" class="btn btn-red"><i class="fa fa-ban"></i> Cancel</button>
                       </div>
                     </div>
                   </div>
@@ -66,8 +62,3 @@
       </div>
       <!--<div class="container-fluid" ></div>-->
     </div>
-    <?php 
-      require_once('views/footer.html');
-    ?>
-</body>
-</html>
