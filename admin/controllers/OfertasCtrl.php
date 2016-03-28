@@ -60,7 +60,7 @@
         'cantidad'      =>'3',
         'producto'      =>'6549885',
         'precio'        =>'123.50',
-        'de'            =>'10/02/2015',
+        'desde'         =>'10/02/2015',
         'hasta'         =>'10/03/2015'
       ];
 
@@ -72,7 +72,7 @@
           '{{cantidad}}'=>$oferta['cantidad'],
           '{{producto}}'=>$oferta['producto'],
           '{{precio}}'=>$oferta['precio'],
-          '{{de}}'=>$oferta['de'],
+          '{{desde}}'=>$oferta['desde'],
           '{{hasta}}'=>$oferta['hasta'],
           '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
           '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
@@ -93,7 +93,7 @@
         'cantidad'      =>'3',
         'producto'      =>'6549885',
         'precio'        =>'123.50',
-        'de'            =>'10/02/2015',
+        'desde'         =>'10/02/2015',
         'hasta'         =>'10/03/2015'
       ];
       $table = "";
@@ -108,7 +108,7 @@
           '{{cantidad}}'=>$oferta['cantidad'],
           '{{producto}}'=>$oferta['producto'],
           '{{precio}}'=>$oferta['precio'],
-          '{{de}}'=>$oferta['de'],
+          '{{desde}}'=>$oferta['desde'],
           '{{hasta}}'=>$oferta['hasta'],
           '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
           '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
@@ -132,7 +132,7 @@
         'cantidad'      =>'3',
         'producto'      =>'6549885',
         'precio'        =>'123.50',
-        'de'            =>'10/02/2015',
+        'desde'         =>'10/02/2015',
         'hasta'         =>'10/03/2015'
       ];
       $table = "";
@@ -144,7 +144,7 @@
           '{{cantidad}}'=>$oferta['cantidad'],
           '{{producto}}'=>$oferta['producto'],
           '{{precio}}'=>$oferta['precio'],
-          '{{de}}'=>$oferta['de'],
+          '{{desde}}'=>$oferta['desde'],
           '{{hasta}}'=>$oferta['hasta'],
           '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
           '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],

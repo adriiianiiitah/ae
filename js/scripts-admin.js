@@ -1,9 +1,9 @@
 $(function() {
   $( "#fecha" ).datepicker();
 
-  //$( "#fecha_nacimiento" ).datepicker();
+  $( "#fecha_nacimiento" ).datepicker();
 
-  //$( "#datepicker" ).datepicker();
+  $( "#desde" ).datepicker();
 
-  //$( "#datepicker" ).datepicker();
+  $( "#hasta" ).datepicker();
 });
