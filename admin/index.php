@@ -37,6 +37,10 @@
         require_once('controllers/DescuentosCtrl.php');
         $controller = new DescuentosCtrl();
       break;
+      case 'colores':
+        require_once('controllers/ColoresCtrl.php');
+        $controller = new ColoresCtrl();
+      break;
       
       default:
         $this->showErrorPage();

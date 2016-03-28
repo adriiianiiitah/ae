@@ -7,9 +7,6 @@ $(function() {
     dateFormat: "dd-mm-yy"
   });
 
-  //$( "#desde" ).datepicker();
-
-  //$( "#hasta" ).datepicker();
 
   $( "#desde" ).datepicker({
       defaultDate: "+1w",
