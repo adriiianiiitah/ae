@@ -1,5 +1,9 @@
+$(function() {
+  $( "#fecha" ).datepicker();
 
-(function() {
-	
-})
+  //$( "#fecha_nacimiento" ).datepicker();
 
+  //$( "#datepicker" ).datepicker();
+
+  //$( "#datepicker" ).datepicker();
+});

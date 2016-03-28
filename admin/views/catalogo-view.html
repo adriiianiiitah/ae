@@ -1,18 +1,18 @@
-    <div id="page-special-prices" class="right-side">
+
+    <div id="page-users" class="right-side">
       <div class="content">
         <div class="row">
           <div class="col-xs-12">
             <section class="panel">
               <header class="panel-heading">
-                <h1>Special Price</h1>
+                <h1>Catalogo</h1>
               </header>
               <div class="panel-body">
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <div class="profile_img">
                       <div id="crop-avatar">
-                        <!-- Current avatar -->
                         <div>
-                          <img src="../img/200x200.png" alt="Avatar" class="img-thumbnail">
+                          <img src="../img/200x200.png" alt="catalogo" class="img-thumbnail">
                         </div>
                       </div>
                     </div>
@@ -30,51 +30,31 @@
                           <td>{{codigo}}</td>
                         </tr>
                         <tr>
-                          <th scope="row">Producto :</th>
-                          <td>{{producto}}</td>
+                          <th scope="row">Nombre :</th>
+                          <td>{{nombre}}</td>
                         </tr>
                         <tr>
-                          <th scope="row">Descuento (%) :</th>
-                          <td>{{descuento}}</td>
+                          <th scope="row">Fecha :</th>
+                          <td>{{fecha}}</td>
                         </tr>
                         <tr>
-                          <th scope="row">Precio :</th>
-                          <td>{{precio}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Cantidad :</th>
-                          <td>{{cantidad}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Desde :</th>
-                          <td>{{desde}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Hasta :</th>
-                          <td>{{hasta}}</td>
+                          <th scope="row">Categoría :</th>
+                          <td>{{categoria}}</td>
                         </tr>
                         <tr>
                           <th scope="row">Acción </th>
                           <td class=" last">
-                            <a href="index.php?ctrl=descuentos&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i> Ver </a>
-                            <a href="index.php?ctrl=descuentos&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i> Editar </a>
+                            <a href="{{catalogo-view}}" class="btn btn-show"><i class="fa fa-eye"></i> Ver </a>
+                            <a href="{{catalogo-edit}}" class="btn btn-edit"><i class="fa fa-pencil"></i> Editar </a>
                             <a href="#" id="{{id}}" data-toggle="modal" data-target="#delete-item" class="btn btn-delete"> <i class="fa fa-eraser"></i> Eliminar </a>
                           </td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
-
                 </div>
               </div>
             </section>
           </div>
         </div>
       </div>
-      <!--<div class="container-fluid" ></div>-->
-    </div>
-    <?php 
-      require_once('views/footer.html');
-    ?>
-</body>
-</html>

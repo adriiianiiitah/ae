@@ -21,6 +21,10 @@
         require_once('controllers/ProductosCtrl.php');
         $controller = new ProductosCtrl();
       break;
+      case 'catalogos':
+        require_once('controllers/CatalogosCtrl.php');
+        $controller = new CatalogosCtrl();
+      break;
 	    case 'usuarios':
         require_once('controllers/UsuariosCtrl.php');
         $controller = new UsuariosCtrl();
