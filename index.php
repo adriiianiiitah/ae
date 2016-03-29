@@ -25,6 +25,10 @@
         require_once('controllers/ShoppingCartCtrl.php');
         $controller = new ShoppingCartCtrl();
       break;
+      case 'privacidad':
+        require_once('controllers/PrivacidadCtrl.php');
+        $controller = new PrivacidadCtrl();
+      break;
       
         default:
         http_response_code(404);

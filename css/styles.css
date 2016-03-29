@@ -547,6 +547,20 @@ section {
 
 
 
+#terminos {
+
+}
+
+#terminos p {
+  padding: 10px 20px;
+  text-align: justify;
+}
+
+#terminos h3 {
+  font-weight: bolder;
+}
+
+
 
 
 
