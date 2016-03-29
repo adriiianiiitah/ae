@@ -48,14 +48,6 @@
           $this->showUsuarios();
         }
     }
-/*
-    public function getRow($view) {
-      $start = strrpos($view,'<!--row-->');
-      $end = strrpos($view,'<!--.row-->') +11;
-      $row = substr($view,$start,$end-$start);
-      return $row;
-    }
-*/
 
     public function showUsuarios() {
       //$usuarios = $this->model->getAll();
@@ -64,6 +56,7 @@
       $table = "";
 
       //foreach ($usuarios as $usuario) {
+      for($i=0; $i<20; $i++) {
         $usuario = [
           'id'=>'1',
           'nombre'=>'Ana',
@@ -89,6 +82,7 @@
         );
         $row = strtr($row,$diccionary);
         $table .= $row;
+      }
       //}success 
 
       $view = str_replace($area, $table, $view);
