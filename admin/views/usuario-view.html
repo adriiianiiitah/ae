@@ -8,61 +8,150 @@
               </header>
               <div class="panel-body">
                 <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
-                    <div class="profile_img">
-                      <div id="crop-avatar">
-                        <div>
-                          <img src="../img/200x200.png" alt="usuario" class="img-thumbnail">
-                        </div>
+                  <div class="form-group profile_img">
+                    <div id="crop-avatar">
+                      <div>
+                        <img src="../img/200x200.png" alt="usuario" class="img-thumbnail">
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
-                    <table class="table table-hover">
-                      <tbody>
-                        <tr>
-                          <th scope="row">ID :</th>
-                          <td>{{id}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Nombre :</th>
-                          <td>{{nombre}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Apellido :</th>
-                          <td>{{apellido}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Correo :</th>
-                          <td>{{correo}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Teléfono :</th>
-                          <td>{{telefono}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Género :</th>
-                          <td>{{genero}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Fecha nacimiento :</th>
-                          <td>{{fecha_nacimiento}}</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">Acción </th>
-                          <td class=" last">
-                            <a href="index.php?ctrl=usuarios&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i> Ver </a>
-                            <a href="index.php?ctrl=usuarios&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i> Editar </a>
-                            <a href="#" id="{{id}}" data-toggle="modal" data-target="#delete-item" class="btn btn-delete"> <i class="fa fa-eraser"></i> Eliminar </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
+                  <table class="table table-hover">
+                    <tbody>
+                      <tr>
+                        <th scope="row">ID :</th>
+                        <td>{{id}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Nombre :</th>
+                        <td>{{nombre}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Apellido :</th>
+                        <td>{{apellido}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Correo :</th>
+                        <td>{{correo}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Teléfono :</th>
+                        <td>{{telefono}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Género :</th>
+                        <td>{{genero}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Rol :</th>
+                        <td>{{rol}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Fecha nacimiento :</th>
+                        <td>{{fecha_nacimiento}}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Acción </th>
+                        <td class=" last">
+                          <a href="index.php?ctrl=usuarios&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i> Ver </a>
+                          <a href="index.php?ctrl=usuarios&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i> Editar </a>
+                          <a href="#" id="{{id}}" data-toggle="modal" data-target="#delete-item" class="btn btn-delete"> <i class="fa fa-eraser"></i> Eliminar </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3 class="text-red">Domicilios</h3>
+              </header>
+                <div class="panel-body">
+                  <div class="col-sm-6 col-md-4">
+                    <div class="domicilio">
+                      <p class="text-red"><i class="fa fa-star"></i> PRINCIPAL</p>
+                      <p>{{calle}} {{exterior}} {{interior}},</p>
+                      <p><strong>Col. </strong>{{colonia}},</p>
+                      <p><strong>C.P. </strong>{{codigo_postal}},</p>
+                      <p>{{municipio}} {{estado}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="domicilio">
+                      <p class="text-red"><i class="fa fa-star"></i> OFICINA</p>
+                      <p>{{calle}} {{exterior}} {{interior}},</p>
+                      <p><strong>Col. </strong>{{colonia}},</p>
+                      <p><strong>C.P. </strong>{{codigo_postal}},</p>
+                      <p>{{municipio}} {{estado}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="domicilio">
+                      <p class="text-red"><i class="fa fa-star"></i> CASA</p>
+                      <p>{{calle}} {{exterior}} {{interior}},</p>
+                      <p><strong>Col. </strong>{{colonia}},</p>
+                      <p><strong>C.P. </strong>{{codigo_postal}},</p>
+                      <p>{{municipio}} {{estado}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="domicilio">
+                      <p class="text-red"><i class="fa fa-star"></i> GGGG</p>
+                      <p>{{calle}} {{exterior}} {{interior}},</p>
+                      <p><strong>Col. </strong>{{colonia}},</p>
+                      <p><strong>C.P. </strong>{{codigo_postal}},</p>
+                      <p>{{municipio}} {{estado}}</p>
+                    </div>
+                  </div>
+                </div>
             </section>
           </div>
         </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="panel-heading">
+                <h3 class="text-red">Teléfonos</h3>
+              </header>
+                <div class="panel-body">
+                  <div class="col-sm-6 col-md-4">
+                    <div class="telefono">
+                      <p class="text-red"><i class="fa fa-star"></i> CELULAR</p>
+                      <p>({{lada}}) {{telefono}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="telefono">
+                      <p class="text-red"><i class="fa fa-star"></i> CASA</p>
+                      <p>({{lada}}) {{telefono}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="telefono">
+                      <p class="text-red"><i class="fa fa-star"></i> OFICINA</p>
+                      <p>({{lada}}) {{telefono}}</p>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-md-4">
+                    <div class="telefono">
+                      <p class="text-red"><i class="fa fa-star"></i> TRABAJO</p>
+                      <p>({{lada}}) {{telefono}}</p>
+                    </div>
+                  </div>
+                </div>
+            </section>
+          </div>
+        </div>
+
+
       </div>
+    </div>
 

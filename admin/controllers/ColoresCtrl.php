@@ -126,8 +126,7 @@
           '{{color-view}}'=>"index.php?ctrl=colores&action=view&id=".$color['id'],
           '{{color-edit}}'=>"index.php?ctrl=colores&action=edit&id=".$color['id'],
         );
-        $this->showForm($id,'color-edit',$this->modal,$diccionary);//
-        //$this->showFormEdit($id,$color);
+        $this->showForm($id,'color-edit',$this->modal,$diccionary);
       } else {
         $codigo = $_POST['codigo'];
         $nombre = $_POST['nombre'];

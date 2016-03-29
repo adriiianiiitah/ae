@@ -69,6 +69,7 @@
           'nombre'=>'Ana',
           'apellido'=>'Díaz',
           'correo'=>'ana@mail.com',
+          'rol'=>'usuario',
           'telefono'=>'361511145',
           'genero'=>'Femenino',
           'fecha_nacimiento'=>'15/04/2000'
@@ -79,6 +80,7 @@
           '{{nombre}}'=>$usuario['nombre'],
           '{{apellido}}'=>$usuario['apellido'],
           '{{correo}}'=>$usuario['correo'],
+          '{{rol}}'=>$usuario['rol'],
           '{{telefono}}'=>$usuario['telefono'],
           '{{genero}}'=>$usuario['genero'],
           '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
@@ -100,6 +102,7 @@
         'nombre'=>'Ana',
         'apellido'=>'Díaz',
         'correo'=>'ana@mail.com',
+        'rol'=>'usuario',
         'telefono'=>'361511145',
         'genero'=>'Femenino',
         'fecha_nacimiento'=>'15/04/2000'
@@ -115,6 +118,7 @@
           '{{nombre}}'=>$usuario['nombre'],
           '{{apellido}}'=>$usuario['apellido'],
           '{{correo}}'=>$usuario['correo'],
+          '{{rol}}'=>$usuario['rol'],
           '{{telefono}}'=>$usuario['telefono'],
           '{{genero}}'=>$usuario['genero'],
           '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
@@ -139,13 +143,26 @@
         'nombre'=>'Ana',
         'apellido'=>'Díaz',
         'correo'=>'ana@mail.com',
+        'rol'=>'usuario',
         'telefono'=>'361511145',
         'genero'=>'Femenino',
         'fecha_nacimiento'=>'15/04/2000'
       ];
 
       if(empty($_POST)) {
-        $this->showFormEdit($id,$usuario);
+        $diccionary = array(
+          '{{id}}'=>$usuario['id'],
+          '{{nombre}}'=>$usuario['nombre'],
+          '{{apellido}}'=>$usuario['apellido'],
+          '{{correo}}'=>$usuario['correo'],
+          '{{rol}}'=>$usuario['rol'],
+          '{{telefono}}'=>$usuario['telefono'],
+          '{{genero}}'=>$usuario['genero'],
+          '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
+          '{{usuario-view}}'=>"index.php?ctrl=usuarios&action=view&id=1".$usuario['id'],
+          '{{usuario-edit}}'=>"index.php?ctrl=usuarios&action=edit&id=1".$usuario['id'],
+        );
+        $this->showForm($id,'usuario-edit',$this->modal,$diccionary);
       } else {
         $code = $_POST['code'];
         $name = $_POST['name'];
@@ -158,34 +175,6 @@
 
         $this->showUsuario($id);
       }
-    }
-
-    public function showFormEdit($id,$usuario) {
-
-      //if($this->isInt($id) && $this->isResponse($category)) {
-        $view = $this->getView("usuario-edit", 'edit', $this->modal);
-        $table = "";
-
-        $content = $view;
-        $diccionary = array(
-          '{{id}}'=>$usuario['id'],
-          '{{nombre}}'=>$usuario['nombre'],
-          '{{apellido}}'=>$usuario['apellido'],
-          '{{correo}}'=>$usuario['correo'],
-          '{{telefono}}'=>$usuario['telefono'],
-          '{{genero}}'=>$usuario['genero'],
-          '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
-          '{{usuario-view}}'=>"index.php?ctrl=usuarios&action=view&id=1".$usuario['id'],
-          '{{usuario-edit}}'=>"index.php?ctrl=usuarios&action=edit&id=1".$usuario['id'],
-        );
-        $content = strtr($view,$diccionary);
-        $view = str_replace($view, $table, $content);
-
-        echo $view;
-      //} else {
-        //$this->showErrorPage();
-        
-      //}
     }
   }
 ?>

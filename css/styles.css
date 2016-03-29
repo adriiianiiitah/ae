@@ -388,9 +388,11 @@ section {
   padding: 30px 0;
 }
 #shopping-cart .header-table{
-  padding: 15px 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #f0eff1;
-  margin: 20px 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 #shopping-cart h4{
   font-weight: bold;

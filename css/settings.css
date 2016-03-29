@@ -180,77 +180,6 @@ img {
 ul li button {
     margin: 4px;
 }
-/*
-.error-message {
-    position: relative;
-    background-color: #FA5858;
-    padding: 6px 12px;
-    color: white;
-    font-weight: bold;
-    margin-left: 16px;
-    margin-top: 6px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-        clear: both;
-
-    transition: all 3s ease-in;
-    -o-transition: all 3s ease-in;
-    -moz-transition: all 3s ease-in;
-    -webkit-transition: all 3s ease-in;
-}
-
-.error-message:before {
-    position: absolute;
-    content: '';
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    z-index: 2;
-    width: .6em;
-    height: .6em;
-    -webkit-transition: background .2s ease;
-    transition: background .2s ease;
-    background-color: #FA5858;
-    background-image: none;
-    top: -4px;
-}
-
-.succes-message {
-    position: relative;
-    background-color: #31B404;
-    padding: 6px 12px;
-    color: white;
-    font-weight: bold;
-    margin-left: 16px;
-    margin-top: 6px;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    clear: both;
-
-    transition: all 3s ease-in;
-    -o-transition: all 3s ease-in;
-    -moz-transition: all 3s ease-in;
-    -webkit-transition: all 3s ease-in;
-}
-
-.succes-message:before {
-    position: absolute;
-    content: '';
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    z-index: 2;
-    width: .6em;
-    height: .6em;
-    -webkit-transition: background .2s ease;
-    transition: background .2s ease;
-    background-color: #31B404;;
-    background-image: none;
-    top: -4px;
-}
-*/
 
 .skin-orange .left-side {
     background: #000;
@@ -293,55 +222,6 @@ ul li button {
 .right-side .panel .panel-heading .files li{
     display: inline;
 }
-
-
-
-.btn-skyblue { 
-  color: #FFFFFF; 
-  background-color: #11C1F3; 
-  border-color: #11C1F3; 
-} 
- 
-.btn-skyblue:hover, 
-.btn-skyblue:focus, 
-.btn-skyblue:active, 
-.btn-skyblue.active, 
-.open .dropdown-toggle.btn-skyblue { 
-  color: #11C1F3; 
-  background-color: #FFFFFF; 
-  border-color: #11C1F3; 
-} 
- 
-.btn-skyblue:active, 
-.btn-skyblue.active, 
-.open .dropdown-toggle.btn-skyblue { 
-  background-image: none; 
-} 
- 
-.btn-skyblue.disabled, 
-.btn-skyblue[disabled], 
-fieldset[disabled] .btn-skyblue, 
-.btn-skyblue.disabled:hover, 
-.btn-skyblue[disabled]:hover, 
-fieldset[disabled] .btn-skyblue:hover, 
-.btn-skyblue.disabled:focus, 
-.btn-skyblue[disabled]:focus, 
-fieldset[disabled] .btn-skyblue:focus, 
-.btn-skyblue.disabled:active, 
-.btn-skyblue[disabled]:active, 
-fieldset[disabled] .btn-skyblue:active, 
-.btn-skyblue.disabled.active, 
-.btn-skyblue[disabled].active, 
-fieldset[disabled] .btn-skyblue.active { 
-  background-color: #11C1F3; 
-  border-color: #11C1F3; 
-} 
- 
-.btn-skyblue .badge { 
-  color: #11C1F3; 
-  background-color: #FFFFFF; 
-}
-
 
 .skin-orange .sidebar > .sidebar-menu > li > a .fa {
     margin-right: 20px;
@@ -395,12 +275,16 @@ fieldset[disabled] .btn-skyblue.active {
     color: #65CBCB;
 }
 
+.text-red {
+  color: #FF6C60;
+}
+
 #page-index {
 
 }
 
 .panel-heading {
-    /*border-bottom: 1px solid #ddd;*/
+
 }
 
 #menu_show {
@@ -429,6 +313,19 @@ fieldset[disabled] .btn-skyblue.active {
 .table>thead>tr>td, 
 .table>thead>tr>th {
     border-top: 1px solid #eee;
+}
+
+.domicilio,
+.telefono {
+    margin-bottom: 10px;
+    padding: 10%;
+    border: 1px solid #eee;
+    text-align: justify;
+}
+
+.domicilio p,
+.telefono p {
+    margin: 0;
 }
 
 /**_____________________________________________________/
