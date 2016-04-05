@@ -76,7 +76,7 @@
       echo $navigation.$view.$footer;
     }
 
-    public function getView($view, $type ='', $modal ='') {
+    public function getView($view, $type ='', $modal ='', $modals) {
       switch ($type) {
         case 'view':
         case 'list':
@@ -89,9 +89,13 @@
           break;
         default:
           $navigation = file_get_contents("views/navigation.html");
+          $modals_ = '';
+          foreach ($modals as $modal) {
+            $modals_ .= file_get_contents("../views/".$modal.".html");
+          }
           $view =  file_get_contents("views/".$view.".html");
           $footer = file_get_contents("views/footer.html");
-          return $navigation.$view.$footer;
+          return $navigation.$modals_.$view.$footer;
           break;
       }
     }
@@ -132,8 +136,8 @@
       return $row;
     }
 
-    public function showForm($id,$view,$modal,$diccionary) {
-          $view = $this->getView($view, 'edit', $modal);
+    public function showForm($id,$view,$modal,$diccionary,$modals) {
+          $view = $this->getView($view, 'edit', $modal, $modals);
           $table = "";
           $content = $view;
           $content = strtr($view,$diccionary);

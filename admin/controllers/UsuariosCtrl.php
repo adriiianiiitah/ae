@@ -6,6 +6,7 @@
     public $table_name;
     public $url;
     public $modal;
+    public $modals;
 
     public function __construct() {
       parent::__construct();
@@ -14,6 +15,10 @@
       $this->table_name = 'usuarios';
       $this->url = 'images/usuarios';
       $this->modal = 'modal-delete-usuario';
+      $this->modals = [
+        'modal_address',
+        'modal_phone'
+      ];
     }
 
     public function execute() {
@@ -156,7 +161,7 @@
           '{{usuario-view}}'=>"index.php?ctrl=usuarios&action=view&id=1".$usuario['id'],
           '{{usuario-edit}}'=>"index.php?ctrl=usuarios&action=edit&id=1".$usuario['id'],
         );
-        $this->showForm($id,'usuario-edit',$this->modal,$diccionary);
+        $this->showForm($id,'usuario-edit',$this->modal,$diccionary,$this->modals);
       } else {
         $code = $_POST['code'];
         $name = $_POST['name'];
