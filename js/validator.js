@@ -69,20 +69,18 @@
     }
   }
 
-  function isFormLoginValid() {
-    var inputs_phone = $('form[data-validate-login]').find('input[type=tel]');
-    var inputs_date = $('form[data-validate-login]').find('input[type=date]');
-    var inputs_email = $('form[data-validate-login]').find('input[type=email]');
-    var inputs_password = $('form[data-validate-login]').find('input[type=password]');
-
-    var inputs_text = $('form[data-validate-login]').find('input[type=text]');
-    var inputs_number = $('form[data-validate-login]').find('input[type=number]');
-    var inputs_file = $('form[data-validate-login]').find('input[type=file]');
-    var textareas = $('form[data-validate-login]').find('textarea');
-    var selects = $('form[data-validate-login]').find('select');
-
-    var inputs_datetime = $('form[data-validate-login]').find('input[data-datetime]');
-    var inputs_checkbox = $('form[data-validate-login]').find('input[data-checked]');
+  function isFormPhoneValid() {
+    var inputs_phone          = $('form[data-validate-phone]').find('input[type=tel]');
+    var inputs_date           = $('form[data-validate-phone]').find('input[type=date]');
+    var inputs_email          = $('form[data-validate-phone]').find('input[type=email]');
+    var inputs_password       = $('form[data-validate-phone]').find('input[type=password]');
+    var inputs_text           = $('form[data-validate-phone]').find('input[type=text]');
+    var inputs_number         = $('form[data-validate-phone]').find('input[type=number]');
+    var inputs_file           = $('form[data-validate-phone]').find('input[type=file]');
+    var textareas             = $('form[data-validate-phone]').find('textarea');
+    var selects               = $('form[data-validate-phone]').find('select');
+    var inputs_datetime       = $('form[data-validate-phone]').find('input[data-datetime]');
+    var inputs_checkbox       = $('form[data-validate-phone]').find('input[data-checked]');
 
     showOkInputs(inputs_email);
     showOkInputs(inputs_password);
@@ -92,31 +90,65 @@
     showOkInputs(inputs_file);
     showOkInputs(inputs_date);
     showOkTextareas(textareas);
-
     showOkInputs(selects);
-
     showOkInputsDateTime(inputs_datetime);
-
     showOkInputsCheckbox(inputs_checkbox);
-    //var inputs_file_image = $('form[data-validate]').find('input[data-image]');
+
+    return $('form[data-validate-phone]').find('div.error-message').length == 0;
+  }
+
+  function isFormAddressValid() {
+    var inputs_phone          = $('form[data-validate-address]').find('input[type=tel]');
+    var inputs_date           = $('form[data-validate-address]').find('input[type=date]');
+    var inputs_email          = $('form[data-validate-address]').find('input[type=email]');
+    var inputs_password       = $('form[data-validate-address]').find('input[type=password]');
+    var inputs_text           = $('form[data-validate-address]').find('input[type=text]');
+    var inputs_number         = $('form[data-validate-address]').find('input[type=number]');
+    var inputs_file           = $('form[data-validate-address]').find('input[type=file]');
+    var textareas             = $('form[data-validate-address]').find('textarea');
+    var selects               = $('form[data-validate-address]').find('select');
+    var inputs_datetime       = $('form[data-validate-address]').find('input[data-datetime]');
+    var inputs_checkbox       = $('form[data-validate-address]').find('input[data-checked]');
+
+    showOkInputs(inputs_email);
+    showOkInputs(inputs_password);
+    showOkInputs(inputs_phone);
+    showOkInputs(inputs_text);
+    showOkInputs(inputs_number);
+    showOkInputs(inputs_file);
+    showOkInputs(inputs_date);
+    showOkTextareas(textareas);
+    showOkInputs(selects);
+    showOkInputsDateTime(inputs_datetime);
+    showOkInputsCheckbox(inputs_checkbox);
+
+    return $('form[data-validate-address]').find('div.error-message').length == 0;
+  }
+
+  function isFormLoginValid() {
+    var inputs_email          = $('form[data-validate-login]').find('input[type=email]');
+    var inputs_password       = $('form[data-validate-login]').find('input[type=password]');
+    var inputs_text           = $('form[data-validate-login]').find('input[type=text]');
+
+    showOkInputs(inputs_email);
+    showOkInputs(inputs_password);
+    showOkInputs(inputs_text);
 
     return $('form[data-validate-login]').find('div.error-message').length == 0;
   }
 
   function isFormValid() {
-    var inputs_phone = $('form[data-validate]').find('input[type=tel]');
-    var inputs_date = $('form[data-validate]').find('input[type=date]');
-    var inputs_email = $('form[data-validate]').find('input[type=email]');
-    var inputs_password = $('form[data-validate]').find('input[type=password]');
-
-    var inputs_text = $('form[data-validate]').find('input[type=text]');
-    var inputs_number = $('form[data-validate]').find('input[type=number]');
-    var inputs_file = $('form[data-validate]').find('input[type=file]');
-    var textareas = $('form[data-validate]').find('textarea');
-    var selects = $('form[data-validate]').find('select');
-
-    var inputs_datetime = $('form[data-validate]').find('input[data-datetime]');
-    var inputs_checkbox = $('form[data-validate]').find('input[data-checked]');
+    var inputs_phone          = $('form[data-validate]').find('input[type=tel]');
+    var inputs_date           = $('form[data-validate]').find('input[type=date]');
+    var inputs_email          = $('form[data-validate]').find('input[type=email]');
+    var inputs_password       = $('form[data-validate]').find('input[type=password]');
+    var inputs_text           = $('form[data-validate]').find('input[type=text]');
+    var inputs_number         = $('form[data-validate]').find('input[type=number]');
+    var inputs_file           = $('form[data-validate]').find('input[type=file]');
+    var textareas             = $('form[data-validate]').find('textarea');
+    var selects               = $('form[data-validate]').find('select');
+    var inputs_datetime       = $('form[data-validate]').find('input[data-datetime]');
+    var inputs_checkbox       = $('form[data-validate]').find('input[data-checked]');
 
     showOkInputs(inputs_email);
     showOkInputs(inputs_password);
@@ -126,45 +158,78 @@
     showOkInputs(inputs_file);
     showOkInputs(inputs_date);
     showOkTextareas(textareas);
-
     showOkInputs(selects);
-
     showOkInputsDateTime(inputs_datetime);
-
     showOkInputsCheckbox(inputs_checkbox);
-    //var inputs_file_image = $('form[data-validate]').find('input[data-image]');
 
     return $('form[data-validate]').find('div.error-message').length == 0;
   }
 
-  function validateLogin(e) {
+  function validatePhone() {
     cleanAll();
-    var inputs_password = $('form[data-validate-login]').find('input[data-password]');
-
-    var inputs_code = $('form[data-validate-login]').find('input[data-code]');
-    var inputs_name = $('form[data-validate-login]').find('input[data-name]');
-    var inputs_lastname = $('form[data-validate-login]').find('input[data-lastname]');
-    var inputs_description = $('form[data-validate-login]').find('input[data-description]');
-    var inputs_required = $('form[data-validate-login]').find('input[data-required]');
-    var inputs_color = $('form[data-validate-login]').find('input[data-color]');
-    var inputs_email = $('form[data-validate-login]').find('input[data-email]');
-    var inputs_checkbox = $('form[data-validate-login]').find('input[data-checked]');
-
-    var inputs_same_pass = $('form[data-validate-login]').find('input[data-samepassword]');
-
-
-
-    var inputs_file_image = $('form[data-validate-login]').find('input[data-image]');
-    var inputs_file_thumbnail = $('form[data-validate-login]').find('input[data-thumbnail]');
-    var inputs_datetime = $('form[data-validate-login]').find('input[data-datetime]');
-    var inputs_date = $('form[data-validate-login]').find('input[data-date]');
-
-    var textareas_required = $('form[data-validate-login]').find('textarea[data-required]');
-
-    var selects_required = $('form[data-validate-login]').find('select[data-required]');
+    var inputs_phone          = $('form[data-validate-phone]').find('input[data-phone]');
+    var inputs_integer        = $('form[data-validate-phone]').find('input[data-integer]');
+    var inputs_password       = $('form[data-validate-phone]').find('input[data-password]');
+    var inputs_code           = $('form[data-validate-phone]').find('input[data-code]');
+    var inputs_name           = $('form[data-validate-phone]').find('input[data-name]');
+    var inputs_lastname       = $('form[data-validate-phone]').find('input[data-lastname]');
+    var inputs_description    = $('form[data-validate-phone]').find('input[data-description]');
+    var inputs_required       = $('form[data-validate-phone]').find('input[data-required]');
+    var inputs_color          = $('form[data-validate-phone]').find('input[data-color]');
+    var inputs_email          = $('form[data-validate-phone]').find('input[data-email]');
+    var inputs_checkbox       = $('form[data-validate-phone]').find('input[data-checked]');
+    var inputs_same_pass      = $('form[data-validate-phone]').find('input[data-samepassword]');
+    var inputs_file_image     = $('form[data-validate-phone]').find('input[data-image]');
+    var inputs_file_thumbnail = $('form[data-validate-phone]').find('input[data-thumbnail]');
+    var inputs_datetime       = $('form[data-validate-phone]').find('input[data-datetime]');
+    var inputs_date           = $('form[data-validate-phone]').find('input[data-date]');
+    var textareas_required    = $('form[data-validate-phone]').find('textarea[data-required]');
+    var selects_required      = $('form[data-validate-phone]').find('select[data-required]');
 
     showErrorInputsPassword(inputs_password);
+    showErrorInputsEmail(inputs_email);
+    showErrorInputsCode(inputs_code);
+    showErrorInputsName(inputs_name);
+    showErrorInputsLastName(inputs_lastname);
+    showErrorInputsRequired(inputs_required);
+    showErrorInputsColor(inputs_color);
+    showErrorInputsPhone(inputs_phone);
+    showErrorInputsFileImage(inputs_file_image);
+    showErrorInputsFileThumbnail(inputs_file_thumbnail);
+    showErrorInputsDateTime(inputs_datetime);
+    showErrorTextareasRequired(textareas_required);
+    showErrorSelects(selects_required);
+    showErrorInputsCheckbox(inputs_checkbox);
+    showErrorInputsSame(inputs_same_pass);
+  
+    if(isFormPhoneValid()) {
+      return true;
+    }
 
+    return false;
+  }
+
+  function validateAddress() {
+    cleanAll();
+    var inputs_integer        = $('form[data-validate-address]').find('input[data-integer]');
+    var inputs_password       = $('form[data-validate-address]').find('input[data-password]');
+    var inputs_code           = $('form[data-validate-address]').find('input[data-code]');
+    var inputs_name           = $('form[data-validate-address]').find('input[data-name]');
+    var inputs_lastname       = $('form[data-validate-address]').find('input[data-lastname]');
+    var inputs_description    = $('form[data-validate-address]').find('input[data-description]');
+    var inputs_required       = $('form[data-validate-address]').find('input[data-required]');
+    var inputs_color          = $('form[data-validate-address]').find('input[data-color]');
+    var inputs_email          = $('form[data-validate-address]').find('input[data-email]');
+    var inputs_checkbox       = $('form[data-validate-address]').find('input[data-checked]');
+    var inputs_same_pass      = $('form[data-validate-address]').find('input[data-samepassword]');
+    var inputs_file_image     = $('form[data-validate-address]').find('input[data-image]');
+    var inputs_file_thumbnail = $('form[data-validate-address]').find('input[data-thumbnail]');
+    var inputs_datetime       = $('form[data-validate-address]').find('input[data-datetime]');
+    var inputs_date           = $('form[data-validate-address]').find('input[data-date]');
+    var textareas_required    = $('form[data-validate-address]').find('textarea[data-required]');
+    var selects_required      = $('form[data-validate-address]').find('select[data-required]');
+
+    showErrorInputsPassword(inputs_password);
     showErrorInputsEmail(inputs_email);
     showErrorInputsCode(inputs_code);
     showErrorInputsName(inputs_name);
@@ -173,16 +238,54 @@
     showErrorInputsColor(inputs_color);
     showErrorInputsFileImage(inputs_file_image);
     showErrorInputsFileThumbnail(inputs_file_thumbnail);
-
-
     showErrorInputsDateTime(inputs_datetime);
     showErrorTextareasRequired(textareas_required);
     showErrorSelects(selects_required);
     showErrorInputsCheckbox(inputs_checkbox);
+    showErrorInputsSame(inputs_same_pass);
+  
+    if(isFormAddressValid()) {
+      return true;
+    }
 
+    return false;
+  }
+
+
+  function validateLogin() {
+    cleanAll();
+    var inputs_password       = $('form[data-validate-login]').find('input[data-password]');
+    var inputs_code           = $('form[data-validate-login]').find('input[data-code]');
+    var inputs_name           = $('form[data-validate-login]').find('input[data-name]');
+    var inputs_lastname       = $('form[data-validate-login]').find('input[data-lastname]');
+    var inputs_description    = $('form[data-validate-login]').find('input[data-description]');
+    var inputs_required       = $('form[data-validate-login]').find('input[data-required]');
+    var inputs_color          = $('form[data-validate-login]').find('input[data-color]');
+    var inputs_email          = $('form[data-validate-login]').find('input[data-email]');
+    var inputs_checkbox       = $('form[data-validate-login]').find('input[data-checked]');
+    var inputs_same_pass      = $('form[data-validate-login]').find('input[data-samepassword]');
+    var inputs_file_image     = $('form[data-validate-login]').find('input[data-image]');
+    var inputs_file_thumbnail = $('form[data-validate-login]').find('input[data-thumbnail]');
+    var inputs_datetime       = $('form[data-validate-login]').find('input[data-datetime]');
+    var inputs_date           = $('form[data-validate-login]').find('input[data-date]');
+    var textareas_required    = $('form[data-validate-login]').find('textarea[data-required]');
+    var selects_required      = $('form[data-validate-login]').find('select[data-required]');
+
+    showErrorInputsPassword(inputs_password);
+    showErrorInputsEmail(inputs_email);
+    showErrorInputsCode(inputs_code);
+    showErrorInputsName(inputs_name);
+    showErrorInputsLastName(inputs_lastname);
+    showErrorInputsRequired(inputs_required);
+    showErrorInputsColor(inputs_color);
+    showErrorInputsFileImage(inputs_file_image);
+    showErrorInputsFileThumbnail(inputs_file_thumbnail);
+    showErrorInputsDateTime(inputs_datetime);
+    showErrorTextareasRequired(textareas_required);
+    showErrorSelects(selects_required);
+    showErrorInputsCheckbox(inputs_checkbox);
     showErrorInputsSame(inputs_same_pass);
 
-  
     if(isFormLoginValid()) {
       return true;
     }
@@ -192,33 +295,25 @@
 
   function validate(e) {
     cleanAll();
-    var inputs_integer = $('form[data-validate]').find('input[data-integer]');
-    var inputs_password = $('form[data-validate]').find('input[data-password]');
-
-    var inputs_code = $('form[data-validate]').find('input[data-code]');
-    var inputs_name = $('form[data-validate]').find('input[data-name]');
-    var inputs_lastname = $('form[data-validate]').find('input[data-lastname]');
-    var inputs_description = $('form[data-validate]').find('input[data-description]');
-    var inputs_required = $('form[data-validate]').find('input[data-required]');
-    var inputs_color = $('form[data-validate]').find('input[data-color]');
-    var inputs_email = $('form[data-validate]').find('input[data-email]');
-    var inputs_checkbox = $('form[data-validate]').find('input[data-checked]');
-
-    var inputs_same_pass = $('form[data-validate]').find('input[data-samepassword]');
-
-
-
-    var inputs_file_image = $('form[data-validate]').find('input[data-image]');
+    var inputs_integer        = $('form[data-validate]').find('input[data-integer]');
+    var inputs_password       = $('form[data-validate]').find('input[data-password]');
+    var inputs_code           = $('form[data-validate]').find('input[data-code]');
+    var inputs_name           = $('form[data-validate]').find('input[data-name]');
+    var inputs_lastname       = $('form[data-validate]').find('input[data-lastname]');
+    var inputs_description    = $('form[data-validate]').find('input[data-description]');
+    var inputs_required       = $('form[data-validate]').find('input[data-required]');
+    var inputs_color          = $('form[data-validate]').find('input[data-color]');
+    var inputs_email          = $('form[data-validate]').find('input[data-email]');
+    var inputs_checkbox       = $('form[data-validate]').find('input[data-checked]');
+    var inputs_same_pass      = $('form[data-validate]').find('input[data-samepassword]');
+    var inputs_file_image     = $('form[data-validate]').find('input[data-image]');
     var inputs_file_thumbnail = $('form[data-validate]').find('input[data-thumbnail]');
-    var inputs_datetime = $('form[data-validate]').find('input[data-datetime]');
-    var inputs_date = $('form[data-validate]').find('input[data-date]');
-
-    var textareas_required = $('form[data-validate]').find('textarea[data-required]');
-
-    var selects_required = $('form[data-validate]').find('select[data-required]');
+    var inputs_datetime       = $('form[data-validate]').find('input[data-datetime]');
+    var inputs_date           = $('form[data-validate]').find('input[data-date]');
+    var textareas_required    = $('form[data-validate]').find('textarea[data-required]');
+    var selects_required      = $('form[data-validate]').find('select[data-required]');
 
     showErrorInputsPassword(inputs_password);
-
     showErrorInputsEmail(inputs_email);
     showErrorInputsCode(inputs_code);
     showErrorInputsName(inputs_name);
@@ -227,15 +322,11 @@
     showErrorInputsColor(inputs_color);
     showErrorInputsFileImage(inputs_file_image);
     showErrorInputsFileThumbnail(inputs_file_thumbnail);
-
-
     showErrorInputsDateTime(inputs_datetime);
     showErrorTextareasRequired(textareas_required);
     showErrorSelects(selects_required);
     showErrorInputsCheckbox(inputs_checkbox);
-
     showErrorInputsSame(inputs_same_pass);
-
   
     if(isFormValid()) {
       return true;
@@ -336,6 +427,14 @@
     for(var i = 0; i < inputs_color.length; i++) {
       if(!isColor(inputs_color[i].value.trim())) {
         showError(inputs_color[i],"Debe contener letras, dígitos y guiones.");
+      }
+    }
+  }
+
+  function showErrorInputsPhone(inputs_phone) {
+    for(var i = 0; i < inputs_phone.length; i++) {
+      if(!isPhone(inputs_phone[i].value.trim())) {
+        showError(inputs_phone[i],"Debe contener sólo dígitos.");
       }
     }
   }
@@ -453,6 +552,16 @@
     }
   }
 
+  function isPhone(phone) {
+    var expreg = /^([0-9]{1,})+$/;
+  
+    if(expreg.test(phone)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 
   function isDateTime(datetime) {
     var expreg = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/](19|20)\d{2} (0?[1-9]|1[012]):([0-5][0-9]) (am|pm|AM||PM)+$/;
@@ -514,25 +623,31 @@
   function cleanAll() {
     $('form[data-validate]').find('div.error-message').remove();
     $('form[data-validate]').find('div.form-group.has-error').removeClass('has-error');
-
     $('form[data-validate]').find('div.has-error').removeClass('has-error');
-
-
     $('form[data-validate]').find('div.succes-message').remove();
     $('form[data-validate]').find('div.form-group.has-success').removeClass('has-success');
-
     $('form[data-validate]').find('div.has-success').removeClass('has-success');
 
     $('form[data-validate-login]').find('div.error-message').remove();
     $('form[data-validate-login]').find('div.form-group.has-error').removeClass('has-error');
-
     $('form[data-validate-login]').find('div.has-error').removeClass('has-error');
-
-
     $('form[data-validate-login]').find('div.succes-message').remove();
     $('form[data-validate-login]').find('div.form-group.has-success').removeClass('has-success');
-
     $('form[data-validate-login]').find('div.has-success').removeClass('has-success');
+
+    $('form[data-validate-address]').find('div.error-message').remove();
+    $('form[data-validate-address]').find('div.form-group.has-error').removeClass('has-error');
+    $('form[data-validate-address]').find('div.has-error').removeClass('has-error');
+    $('form[data-validate-address]').find('div.succes-message').remove();
+    $('form[data-validate-address]').find('div.form-group.has-success').removeClass('has-success');
+    $('form[data-validate-address]').find('div.has-success').removeClass('has-success');
+
+    $('form[data-validate-phone]').find('div.error-message').remove();
+    $('form[data-validate-phone]').find('div.form-group.has-error').removeClass('has-error');
+    $('form[data-validate-phone]').find('div.has-error').removeClass('has-error');
+    $('form[data-validate-phone]').find('div.succes-message').remove();
+    $('form[data-validate-phone]').find('div.form-group.has-success').removeClass('has-success');
+    $('form[data-validate-phone]').find('div.has-success').removeClass('has-success');
   }
 
   function showImage(input_file_image) {

@@ -51,6 +51,10 @@ table {
   text-align: center!important;
 }
 
+.text-red {
+  color: red;
+}
+
 .pull-rigth {
   float: right;
 }
@@ -67,6 +71,7 @@ table {
 .fa {
   color: #f00;
 }
+.fa.fa-shopping-bag,
 .fa.fa-cloud-upload,
 .fa.fa-plus,
 .fa.fa-paper-plane,

@@ -8,7 +8,7 @@
         <h4 class="modal-title">Agregar domicilio</h4>
       </div>
       <div class="modal-body">
-        <form role="form" method="post" onsubmit="return validate()" data-validate>
+        <form  method="post" onsubmit="return validateAddress()" data-validate-address>
           <div class="form-group">
             <label for="pais" class="control-label">País <span class="required">*</span></label>
             <div>
@@ -84,7 +84,6 @@
             <button class="btn btn-red btn-lg btn-block" type="submit"><i class="fa fa-paper-plane"></i> Guardar</button>
           </div>
 
-          
         </form>
       </div>
       <div class="modal-footer modal-footer-dark">
