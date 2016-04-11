@@ -7,18 +7,18 @@
                 <h1>Color</h1>
               </header>
               <div class="panel-body">
-                <form method="post" class="form-horizontal form-label-left" action="{{action}}" onsubmit="return validate()" enctype="multipart/form-data" data-validate>
+                <form method="post" class="form-horizontal form-label-left" action="" onsubmit="return validate()" enctype="multipart/form-data" data-validate>
                   <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <div class="profile_img">
                       <div id="crop-avatar">
                         <div>
-                          <img id="image-file" src="../img/200x200.png" alt="color" data-image>
+                          <img id="image-file" src="{{image}}" alt="color" data-image>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-6 col-md-offset-3">
                       <label class="btn btn-red btn-lg btn-block btn-upload" for="image"><i class="fa fa-cloud-upload"></i> Subir</label>
-                      <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png" data-required  data-image/>
+                      <input type="file" id="image" name="image" class="form-control col-md-7 col-sm-12 col-xs-12 btn" accept="image/jpg,image/png"  data-image/>
                     </div>
                   </div>
 

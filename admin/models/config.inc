@@ -1,6 +1,6 @@
 <?php
 	define('SERVER','localhost');
 	define('USER','root');
-	define('PASSWORD','');
-	define('DATABASE','vs');
+	define('PASSWORD','1234');
+	define('DATABASE','ae');
 ?>

@@ -1,49 +1,54 @@
 <?php
-	require_once('StandardMdl.php');
-	require_once('DataBase.php');
+  require_once('StandardMdl.php');
+  require_once('DataBase.php');
 
-	class ColoresMdl extends StandardMdl {
-		public $connection;
-		public $_query;
+  class ColoresMdl extends StandardMdl {
+    public $connection;
+    public $_query;
 
-		function __construct(){
-			//parent::__construct();
-			//$this->connection = DataBase::getInstance();
-		}
+    function __construct(){
+      parent::__construct();
+      $this->connection = DataBase::getInstance();
+      //$this->imagen = '';
+      //$this->codigo = '';
+      //$this->nombre = '';
+    }
+
+    function create($color) {
+      
+    }
+ 
+    function getAll() {
+      $_query = 'SELECT * FROM colores';
+      $colores = $this->connection->execute($_query)->getResult();
+      return $colores;
+    }
+
+    function getOne($id) {
+      $_query = 'SELECT * FROM colores 
+                WHERE id="'.$id.'"';
+
+      $color = $this->connection->execute($_query)->getFirst();
+      return $color;
+    }
 /*
-		function create() {
+    function delete($id) {
+    $_query = 'DELETE FROM colores 
+              WHERE id="'.$id.'"';
 
-		}
+    $color = $this->connection->execute($_query)->getResult();
+    return $color;
+    }*/
 
-		function getAll() {
-			$_query = 'SELECT * FROM categories';
-			$categories = $this->connection->execute($_query)->getResult();
-			return $categories;
-		}
 
-		function getOne($id) {
-			$_query = 'SELECT * FROM categories 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query)->getFirst();
-			return $category;
-		}
-
-		function delete($id) {
-			$_query = 'DELETE FROM categories 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query)->getResult();
-			return $category;
-		}
-
-		function update($id,$code,$name,$description,$image) {
-			$_query = 'UPDATE categories SET 
-								code = "'.$code.'",
-								name = "'.$name.'",
-								description = "'.$description.'",
-								image = "'.$image.'" 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query);
-			//return $category;
-		}*/
-	}
+    function update($color) {
+      $_query = 'UPDATE colores SET 
+                codigo = "'.$color['codigo'].'",
+                nombre = "'.$color['nombre'].'",
+                imagen = "'.$color['imagen'].'" 
+                WHERE id="'.$color['id'].'"';
+      $color = $this->connection->execute($_query);
+    //return $color;
+    }
+  }
 ?>

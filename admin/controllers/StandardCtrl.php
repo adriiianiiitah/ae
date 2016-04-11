@@ -1,15 +1,59 @@
 <?php
-  /**
-  * 
-  */
+  require_once('Constants.php');
+
   class StandardCtrl {
     
     function __construct() {
 
     }
 
+    function cleanString($string) {
+      if (!is_empty($string)) {
+        //Strip whitespace from either side of a string 
+        $value = trim($string);
+        //Remove HTML Tags
+        $value = filter_var($value, FILTER_SANITIZE_STRING);
+        //Scape quotes
+        $value = filter_var($value, FILTER_SANITIZE_MAGIC_QUOTES);
+      }
+      return $value;
+    }
+
     function isInt($value) {
-      return is_int((int)$value);
+      //return is_int((int)$value);
+      return preg_match(INT, $value);
+    }
+
+    function isPassword($value) {
+      return preg_match(PASS, $value);
+    }
+
+    function isEmail($value) {
+      return preg_match(EMAIL, $value);
+    }
+
+    function isCode($value) {
+      return preg_match(CODE, $value);
+    }
+
+    function isColor($value) {
+      return preg_match(COLOR, $value);
+    }
+
+    function isName($value) {
+      return preg_match(NAME, $value);
+    }
+
+    function isLastName($value) {
+      return preg_match(LAST_NAME, $value);
+    }
+
+    function isPhone($value) {
+      return preg_match(PHONE, $value);
+    }
+
+    function isDateTime($value) {
+      return preg_match(DATE_TIME, $value);
     }
 
     function isLogin(){
@@ -76,7 +120,7 @@
       echo $navigation.$view.$footer;
     }
 
-    public function getView($view, $type ='', $modal ='', $modals) {
+    public function getView($view, $type ='', $modal ='', $modals = []) {
       switch ($type) {
         case 'view':
         case 'list':
@@ -112,14 +156,14 @@
       return end($name);
     }
 
-    public function generateNameImage($id, $table_name, $extension, $url) {
-      return  $url.$table_name.$id.$extension;
+    public function generateNameImage($id, $single, $extension, $url) {
+      return  $url.$single.$id.'.'.$extension;
     }
 
-    public function uploadImage($id, $table_name, $image, $url) {
+    public function uploadImage($id, $single, $image, $url) {
       $original = $image['name'];
       $extension = $this->getFileExtension($original);
-      $name = $this->generateNameImage($id, $table_name, $extension, $url);
+      $name = $this->generateNameImage($id, $single, $extension, $url);
       $temporal = $image['tmp_name'];
       $final['original'] = $original;
       $final['name']= $name;
@@ -136,7 +180,7 @@
       return $row;
     }
 
-    public function showForm($id,$view,$modal,$diccionary,$modals) {
+    public function showForm($id,$view,$modal,$diccionary,$modals = []) {
           $view = $this->getView($view, 'edit', $modal, $modals);
           $table = "";
           $content = $view;

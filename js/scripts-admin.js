@@ -26,4 +26,8 @@ $(function() {
         $( "#desde" ).datepicker( "option", "maxDate", selectedDate );
       }
     });
+
+    $("#btn-delete-color").click(function() {
+      //console.log($(this));
+    });
 });
