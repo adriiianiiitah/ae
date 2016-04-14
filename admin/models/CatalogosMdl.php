@@ -31,8 +31,8 @@
     function delete($id) {
       $_query = 'DELETE FROM catalogos 
                  WHERE id="'.$id.'"';
-      $category = $this->connection->execute($_query)->getResult();
-      return $category;
+      $catalogo = $this->connection->execute($_query)->getResult();
+      return $catalogo;
     }
 
     function update($catalogo) {
@@ -43,8 +43,8 @@
                 imagen = "'.$catalogo['imagen'].'",
                 categoria = "'.$catalogo['categoria'].'" 
                 WHERE id="'.$catalogo['id'].'"';
-      $category = $this->connection->execute($_query);
-      //return $category;
+      $catalogo = $this->connection->execute($_query);
+      //return $catalogo;
     }
   }
 ?>
