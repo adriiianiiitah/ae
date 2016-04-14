@@ -87,14 +87,14 @@
           $view = $this->getView("color-view", 'view', $this->modal);
 
           $content = $view;
-          $diccionary = array(
+          $diccionary = [
             '{{id}}'=>$color['id'],
             '{{codigo}}'=>$color['codigo'],
             '{{nombre}}'=>$color['nombre'],
             '{{image}}'=>$color['imagen'],
             '{{color-view}}'=>"index.php?ctrl=colores&action=view&id=".$color['id'],
             '{{color-edit}}'=>"index.php?ctrl=colores&action=edit&id=".$color['id'],
-          );
+          ];
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
 
@@ -194,7 +194,8 @@
 
             if(empty($errors)){
               $this->model->update($color);
-              $this->showColor($id);
+              header ("Location: index.php?ctrl=colores&action=view&id=".$id);
+              //$this->showColor($id);
             } else {
               $this->editColor($id);
             }

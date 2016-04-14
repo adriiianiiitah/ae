@@ -1,10 +1,10 @@
 $(function() {
   $( "#fecha" ).datepicker({
-    dateFormat: "dd-mm-yy"
+    dateFormat: "yy-mm-dd"
   });
 
   $( "#fecha_nacimiento" ).datepicker({
-    dateFormat: "dd-mm-yy"
+    dateFormat: "yy-mm-dd"
   });
 
 
@@ -12,7 +12,7 @@ $(function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
-      dateFormat: "dd-mm-yy",
+      dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
         $( "#hasta" ).datepicker( "option", "minDate", selectedDate );
       }
@@ -21,7 +21,7 @@ $(function() {
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
-      dateFormat: "dd-mm-yy",
+      dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
         $( "#desde" ).datepicker( "option", "maxDate", selectedDate );
       }

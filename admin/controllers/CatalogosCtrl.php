@@ -5,14 +5,16 @@
     private $model;
     public $table;
     public $url;
+    public $single;
     public $modal;
 
     public function __construct() {
-      //parent::__construct();
+      parent::__construct();
       require_once('./models/CatalogosMdl.php');
       $this->model = new CatalogosMdl();
       $this->table_name = 'catalogos';
-      $this->url = 'images/catalogos';
+      $this->single = 'catalogo';
+      $this->url = 'images/catalogos/';
       $this->modal = 'modal-delete-catalogo';
     }
 
@@ -37,7 +39,9 @@
             else
               $this->showErrorPage();
             break;
-          
+          case 'create':
+            //$this->createCatalogo();
+          break;
           default:
             $this->showErrorPage();
             break;
@@ -49,20 +53,12 @@
     }
 
     public function showCatalogos() {
-      //$catalogos = $this->model->getAll();
+      $catalogos = $this->model->getAll();
       $view = $this->getView("catalogos", 'list', $this->modal);
       $area = $this->getRow($view);
       $table = "";
 
-      $catalogo = [
-        'id'            =>'1',
-        'codigo'        =>'123456',
-        'nombre'        =>'Invierno 2016',
-        'fecha'         =>'12/12/2016',
-        'categoria'     =>'Dama'
-      ];
-
-      //foreach ($catalogos as $catalogo) {
+      foreach ($catalogos as $catalogo) {
         $area = $row = $this->getRow($view);
         $diccionary = array(
           '{{id}}'=>$catalogo['id'],
@@ -70,46 +66,46 @@
           '{{nombre}}'=>$catalogo['nombre'],
           '{{fecha}}'=>$catalogo['fecha'],
           '{{categoria}}'=>$catalogo['categoria'],
+          '{{image}}'=>$catalogo['imagen'],
+          //'{{pdf}}'=>$catalogo['pdf'],
           '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
           '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
         );
         $row = strtr($row,$diccionary);
         $table .= $row;
-      //}
+      }
 
       $view = str_replace($area, $table, $view);
       echo $view;
     }
 
     public function showCatalogo($id) {
-      //$catalogo = $this->model->getOne($id);
-      $catalogo = [
-        'id'            =>'1',
-        'codigo'        =>'123456',
-        'nombre'        =>'Invierno 2016',
-        'fecha'         =>'12/12/2016',
-        'categoria'     =>'Dama'
-      ];
-      $table = "";
-
       if($this->isInt($id)) {
-        
-        $view = $this->getView("catalogo-view", 'view', $this->modal);
+        $catalogo = $this->model->getOne($id);
 
-        $content = $view;
-        $diccionary = array(
-          '{{id}}'=>$catalogo['id'],
-          '{{codigo}}'=>$catalogo['codigo'],
-          '{{nombre}}'=>$catalogo['nombre'],
-          '{{fecha}}'=>$catalogo['fecha'],
-          '{{categoria}}'=>$catalogo['categoria'],
-          '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
-          '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
-        );
-        $content = strtr($view,$diccionary);
-        $view = str_replace($view, $table, $content);
+        if ($catalogo) {
+          $table = "";
+          $view = $this->getView("catalogo-view", 'view', $this->modal);
 
-        echo $view;
+          $content = $view;
+          $diccionary = [
+            '{{id}}'=>$catalogo['id'],
+            '{{codigo}}'=>$catalogo['codigo'],
+            '{{nombre}}'=>$catalogo['nombre'],
+            '{{fecha}}'=>$catalogo['fecha'],
+            '{{categoria}}'=>$catalogo['categoria'],
+            '{{image}}'=>$catalogo['imagen'],
+            //'{{pdf}}'=>$catalogo['pdf'],
+            '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
+            '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
+          ];
+          $content = strtr($view,$diccionary);
+          $view = str_replace($view, $table, $content);
+
+          echo $view;
+        } else {
+          $this->showErrorPage();
+        }
       } else {
         $this->showErrorPage();
         
@@ -117,40 +113,74 @@
     }
 
     public function editCatalogo($id) {
-      //$catalogo = $this->model->getOne($id);
-      //$image = $catalogo['image'];
-      $catalogo = [
-        'id'            =>'1',
-        'codigo'        =>'123456',
-        'nombre'        =>'Invierno 2016',
-        'fecha'         =>'12/12/2016',
-        'categoria'     =>'Dama'
-      ];
-      $table = "";
+      if($this->isInt($id)) {
+        $catalogo = $this->model->getOne($id);
+        $imagen = $catalogo['imagen'];
 
-      if(empty($_POST)) {
-        $diccionary = array(
-          '{{id}}'=>$catalogo['id'],
-          '{{codigo}}'=>$catalogo['codigo'],
-          '{{nombre}}'=>$catalogo['nombre'],
-          '{{fecha}}'=>$catalogo['fecha'],
-          '{{categoria}}'=>$catalogo['categoria'],
-          '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
-          '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
-        );
-        $this->showForm($id,'catalogo-edit',$this->modal,$diccionary);//
-        //$this->showFormEdit($id,$catalogo);
-      } else {
-        $codigo = $_POST['codigo'];
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
+        if ($catalogo) { 
+          if(empty($_POST)) {
+            $table = "";
+            $diccionary = [
+              '{{id}}'=>$catalogo['id'],
+              '{{codigo}}'=>$catalogo['codigo'],
+              '{{nombre}}'=>$catalogo['nombre'],
+              '{{fecha}}'=>$catalogo['fecha'],
+              '{{categoria}}'=>$catalogo['categoria'],
+              '{{image}}'=>$catalogo['imagen'],
+              //'{{pdf}}'=>$catalogo['pdf'],
+              '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
+              '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
+            ];
+            $this->showForm($id,'catalogo-edit',$this->modal,$diccionary);//
+          } else {
+            $errors = [];
 
-        if($_FILES['image']['tmp_name'] != '')
-          $image = $this->uploadImage($id, $this->table_name, $_FILES['image'],$this->url);
+            $catalogo = [
+              'id' => $id
+            ];
 
-        //$this->model->update($id,$codigo,$nombre,$descripcion,$image);
+            if($this->isCode($_POST['codigo'])) {
+              $catalogo['codigo'] = $_POST['codigo'];
+            } else {
+              $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
 
-        $this->showCatalogo($id);
+            if($this->isAlphanumeric($_POST['nombre'])) {
+              $catalogo['nombre'] = $_POST['nombre'];
+            } else {
+              $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y espacios.';
+            }
+
+            if($this->isDate($_POST['fecha'])) {
+              $catalogo['fecha'] = $_POST['fecha'];
+            } else {
+              $errors['fecha'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+            }
+
+            if($this->isInt($_POST['categoria'])) {
+              $catalogo['categoria'] = $_POST['categoria'];
+            } else {
+              $errors['categoria'] = 'La categoría es incorrecta. El formato es dd/mm/aaaa.';
+            }
+
+            if($_FILES['image']['tmp_name'] != '') {
+              $catalogo['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            } else {
+              $catalogo['imagen'] = $imagen;
+            }
+
+            if(empty($errors)){ 
+              $this->model->update($catalogo);
+              header ("Location: index.php?ctrl=catalogos&action=view&id=".$id);
+              //$this->showCatalogo($id);
+            } else {
+              $this->editCatalogo($id);
+            }
+          }
+        }
+
+
+
       }
     }
   }

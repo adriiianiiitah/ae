@@ -1,49 +1,50 @@
 <?php
-	require_once('StandardMdl.php');
-	require_once('DataBase.php');
+  require_once('StandardMdl.php');
+  require_once('DataBase.php');
 
-	class CatalogosMdl extends StandardMdl {
-		public $connection;
-		public $_query;
+  class CatalogosMdl extends StandardMdl {
+    public $connection;
+    public $_query;
 
-		function __construct(){
-			//parent::__construct();
-			//$this->connection = DataBase::getInstance();
-		}
-/*
-		function create() {
+    function __construct(){
+      parent::__construct();
+      $this->connection = DataBase::getInstance();
+    }
 
-		}
+    function create() {
 
-		function getAll() {
-			$_query = 'SELECT * FROM categories';
-			$categories = $this->connection->execute($_query)->getResult();
-			return $categories;
-		}
+    }
 
-		function getOne($id) {
-			$_query = 'SELECT * FROM categories 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query)->getFirst();
-			return $category;
-		}
+    function getAll() {
+      $_query = 'SELECT * FROM catalogos';
+      $catalogos = $this->connection->execute($_query)->getResult();
+      return $catalogos;
+    }
 
-		function delete($id) {
-			$_query = 'DELETE FROM categories 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query)->getResult();
-			return $category;
-		}
+    function getOne($id) {
+      $_query = 'SELECT * FROM catalogos 
+                 WHERE id="'.$id.'"';
+      $catalogo = $this->connection->execute($_query)->getFirst();
+      return $catalogo;
+    }
 
-		function update($id,$code,$name,$description,$image) {
-			$_query = 'UPDATE categories SET 
-								code = "'.$code.'",
-								name = "'.$name.'",
-								description = "'.$description.'",
-								image = "'.$image.'" 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query);
-			//return $category;
-		}*/
-	}
+    function delete($id) {
+      $_query = 'DELETE FROM catalogos 
+                 WHERE id="'.$id.'"';
+      $category = $this->connection->execute($_query)->getResult();
+      return $category;
+    }
+
+    function update($catalogo) {
+      $_query = 'UPDATE catalogos SET 
+                codigo = "'.$catalogo['codigo'].'",
+                nombre = "'.$catalogo['nombre'].'",
+                fecha = "'.$catalogo['fecha'].'",
+                imagen = "'.$catalogo['imagen'].'",
+                categoria = "'.$catalogo['categoria'].'" 
+                WHERE id="'.$catalogo['id'].'"';
+      $category = $this->connection->execute($_query);
+      //return $category;
+    }
+  }
 ?>

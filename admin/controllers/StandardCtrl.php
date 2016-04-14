@@ -48,12 +48,24 @@
       return preg_match(LAST_NAME, $value);
     }
 
+    function isAlphanumeric($value) {
+      return preg_match(ALPHANUMERIC, $value);
+    }
+
+    function isDescription($value) {
+      return preg_match(DESCRIPTION, $value);
+    }
+
     function isPhone($value) {
       return preg_match(PHONE, $value);
     }
 
     function isDateTime($value) {
       return preg_match(DATE_TIME, $value);
+    }
+
+    function isDate($value) {
+      return preg_match(DATE, $value);
     }
 
     function isLogin(){
