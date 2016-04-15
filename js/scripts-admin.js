@@ -8,22 +8,22 @@ $(function() {
   });
 
 
-  $( "#desde" ).datepicker({
+  $( "#fecha_inicio" ).datepicker({
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
       dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
-        $( "#hasta" ).datepicker( "option", "minDate", selectedDate );
+        $( "#fecha_fin" ).datepicker( "option", "minDate", selectedDate );
       }
     });
-    $( "#hasta" ).datepicker({
+    $( "#fecha_fin" ).datepicker({
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
       dateFormat: "yy-mm-dd",
       onClose: function( selectedDate ) {
-        $( "#desde" ).datepicker( "option", "maxDate", selectedDate );
+        $( "#fecha_inicio" ).datepicker( "option", "maxDate", selectedDate );
       }
     });
 

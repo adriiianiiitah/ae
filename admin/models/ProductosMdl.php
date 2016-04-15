@@ -1,46 +1,69 @@
 <?php
-	require_once('StandardMdl.php');
-	require_once('DataBase.php');
-	class ProductosMdl extends StandardMdl {
-		public $connection;
-		function __construct(){
-			//parent::__construct();
-			//$this->connection = DataBase::getInstance();
-		}
+  require_once('StandardMdl.php');
+  require_once('DataBase.php');
 
-		function create() {
+  class ProductosMdl extends StandardMdl {
+    public $connection;
+    function __construct(){
+      parent::__construct();
+      $this->connection = DataBase::getInstance();
+    }
 
-		}
+    function create() {
 
-		function getAll() {
+    }
 
-		}
+    function getAll() {
+      $_query = 'SELECT * FROM productos';
+      $productos = $this->connection->execute($_query)->getResult();
+      return $productos;
+    }
 
-		function getOne($id) {
+    function getOne($id) {
+      $_query = 'SELECT * FROM productos 
+                 WHERE id="'.$id.'"';
+      $producto = $this->connection->execute($_query)->getFirst();
+      return $producto;
+    }
 
-		}
+    function delete($id) {
+      $_query = 'DELETE FROM productos 
+                 WHERE id="'.$id.'"';
+      $producto = $this->connection->execute($_query)->getResult();
+      return $producto;
+    }
 
-		function delete($id) {
-
-		}
-
-		function update($id) {
-
-		}
-		/*
-		function agregar($producto, $descripcion, $precio, $categoria, $marca, $imagen) {
-			$query = "INSERT INTO productos (producto,categoria,marca,descripcion,precio,imagen) VALUES('".$categoria."','".$producto."','".$marca."','".$descripcion."','".$precio."','".$imagen."')";
-			$resultado = $this->connection->ejecutar($query);
-		}
-		function listar() {
-			$consulta = 'SELECT * FROM productos';
-			$productos = $this->connection->ejecutar($consulta)->obtenerResultado();
-			return $productos;
-		}
-		function consutar($id) {
-			$consulta = 'SELECT * FROM productos WHERE codigo="'.$id.'"';
-			$productos = $this->connection->ejecutar($consulta)->obtenerResultado();
-			return $productos[0];
-		}*/
-	}
+    function update($id) {
+      $_query = 'UPDATE productos SET 
+                codigo = "'.$producto['codigo'].'",
+                modelo = "'.$producto['modelo'].'",
+                nombre = "'.$producto['nombre'].'",
+                categoria = "'.$producto['categoria'].'",
+                subcategoria = "'.$producto['subcategoria'].'",
+                descripcion = "'.$producto['descripcion'].'",
+                material = "'.$producto['material'].'",
+                marca = "'.$producto['marca'].'",
+                altura = "'.$producto['altura'].'",
+                precio = "'.$producto['precio'].'",
+                stock = "'.$producto['stock'].'",
+                imagen = "'.$producto['imagen'].'",
+                WHERE id="'.$producto['id'].'"';
+      $producto = $this->connection->execute($_query);
+    }
+    /*
+    function agregar($producto, $descripcion, $precio, $categoria, $marca, $imagen) {
+      $query = "INSERT INTO productos (producto,categoria,marca,descripcion,precio,imagen) VALUES('".$categoria."','".$producto."','".$marca."','".$descripcion."','".$precio."','".$imagen."')";
+      $resultado = $this->connection->ejecutar($query);
+    }
+    function listar() {
+      $consulta = 'SELECT * FROM productos';
+      $productos = $this->connection->ejecutar($consulta)->obtenerResultado();
+      return $productos;
+    }
+    function consutar($id) {
+      $consulta = 'SELECT * FROM productos WHERE codigo="'.$id.'"';
+      $productos = $this->connection->ejecutar($consulta)->obtenerResultado();
+      return $productos[0];
+    }*/
+  }
 ?>

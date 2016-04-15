@@ -24,6 +24,10 @@
       return preg_match(INT, $value);
     }
 
+    function isNumber($value) {
+      return preg_match(NUMBER, $value);
+    }
+
     function isPassword($value) {
       return preg_match(PASS, $value);
     }
