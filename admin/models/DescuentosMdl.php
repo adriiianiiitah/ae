@@ -12,17 +12,31 @@
     }
 
     function getAll() {
-      $_query = 'SELECT * FROM descuentos';
+      $_query = 'SELECT descuentos.id, descuentos.codigo, cantidad, productos.id AS producto_id, productos.nombre AS producto_nombre, descuento, fecha_inicio, fecha_fin, descuentos.precio, descuentos.imagen 
+                FROM descuentos
+                INNER JOIN productos
+                ON productos.id = producto';
       $descuentos = $this->connection->execute($_query)->getResult();
       return $descuentos;
     }
 
     function getOne($id) {
-      $_query = 'SELECT * FROM descuentos 
-                WHERE id="'.$id.'"';
+      $_query = 'SELECT descuentos.id, descuentos.codigo, cantidad, productos.id AS producto_id, productos.nombre AS producto_nombre, descuento, fecha_inicio, fecha_fin, descuentos.precio, descuentos.imagen 
+                FROM descuentos
+                INNER JOIN productos
+                ON productos.id = producto
+                WHERE descuentos.id="'.$id.'"';
       $descuento = $this->connection->execute($_query)->getFirst();
       return $descuento;
     }
+
+    function getAllProductos() {
+      $_query = 'SELECT id AS producto_id, nombre AS producto_nombre
+                FROM productos';
+      $productos = $this->connection->execute($_query)->getResult();
+      return $productos;
+    }
+
 
     function update($descuento) {
       $_query = 'UPDATE descuentos SET 

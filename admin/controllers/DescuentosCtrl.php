@@ -14,7 +14,7 @@
       $this->model = new DescuentosMdl();
       $this->table_name = 'descuentos';
       $this->single = 'descuento';
-      $this->url = 'images/descuentos';
+      $this->url = 'images/descuentos/';
       $this->modal = 'modal-delete-descuento';
     }
 
@@ -62,7 +62,8 @@
           '{{id}}'=>$descuento['id'],
           '{{codigo}}'=>$descuento['codigo'],
           '{{cantidad}}'=>$descuento['cantidad'],
-          '{{producto}}'=>$descuento['producto'],
+          '{{producto_id}}'=>$descuento['producto_id'],
+          '{{producto_nombre}}'=>$descuento['producto_nombre'],
           '{{descuento}}'=>$descuento['descuento'],
           '{{precio}}'=>$descuento['precio'],
           '{{fecha_inicio}}'=>$descuento['fecha_inicio'],
@@ -92,7 +93,8 @@
             '{{id}}'=>$descuento['id'],
             '{{codigo}}'=>$descuento['codigo'],
             '{{cantidad}}'=>$descuento['cantidad'],
-            '{{producto}}'=>$descuento['producto'],
+            '{{producto_id}}'=>$descuento['producto_id'],
+            '{{producto_nombre}}'=>$descuento['producto_nombre'],
             '{{descuento}}'=>$descuento['descuento'],
             '{{precio}}'=>$descuento['precio'],
             '{{fecha_inicio}}'=>$descuento['fecha_inicio'],
@@ -126,7 +128,8 @@
               '{{id}}'=>$descuento['id'],
               '{{codigo}}'=>$descuento['codigo'],
               '{{cantidad}}'=>$descuento['cantidad'],
-              '{{producto}}'=>$descuento['producto'],
+              '{{producto_id}}'=>$descuento['producto_id'],
+              '{{producto_nombre}}'=>$descuento['producto_nombre'],
               '{{descuento}}'=>$descuento['descuento'],
               '{{precio}}'=>$descuento['precio'],
               '{{fecha_inicio}}'=>$descuento['fecha_inicio'],
