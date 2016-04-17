@@ -37,12 +37,12 @@
   */
 
     function update($categoria) {
-      $_query = 'UPDATE categories SET 
+      $_query = 'UPDATE categorias SET 
                 codigo = "'.$categoria['codigo'].'",
                 nombre = "'.$categoria['nombre'].'",
                 descripcion = "'.$categoria['descripcion'].'",
                 imagen = "'.$categoria['imagen'].'" 
-                WHERE id="'.$id.'"';
+                WHERE id="'.$categoria['id'].'"';
       $categoria = $this->connection->execute($_query);
     }
   }

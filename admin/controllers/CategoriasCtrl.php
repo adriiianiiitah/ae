@@ -107,7 +107,7 @@
     public function editCategoria($id) {
       if($this->isInt($id)) {
         $categoria = $this->model->getOne($id);
-        $image = $categoria['image'];
+        $imagen = $categoria['imagen'];
 
         if ($categoria) {
           if(empty($_POST)) {
@@ -123,26 +123,43 @@
             ];
             $this->showForm($id,'categoria-edit',$this->modal,$diccionary);
           } else {
+            $errors = [];
+            $categoria = [
+              'id' => $id
+            ];
 
-          /*
-            $codigo = $_POST['codigo'];
-            $nombre = $_POST['nombre'];
-            $descripcion = $_POST['descripcion'];
+            if($this->isCode($_POST['codigo'])) {
+              $categoria['codigo'] = $_POST['codigo'];
+            } else {
+              $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
+            if($this->isAlphanumeric($_POST['nombre'])) {
+              $categoria['nombre'] = $_POST['nombre'];
+            } else {
+              $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
 
-            if($_FILES['image']['tmp_name'] != '')
-              $image = $this->uploadImage($id, $this->table_name, $_FILES['image'],$this->url);*/
+            if($this->isDescription($_POST['descripcion'])) {
+              $categoria['descripcion'] = $_POST['descripcion'];
+            } else {
+              $errors['descripcion'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
+            if($_FILES['image']['tmp_name'] != '') {
+              $categoria['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            } else {
+              $categoria['imagen'] = $imagen;
+            }
 
-            //$this->model->update($id,$codigo,$nombre,$descripcion,$image);
-
-            $this->showCategoria($id);
+            if(empty($errors)){
+              $this->model->update($categoria);
+              header ("Location: index.php?ctrl=categorias&action=view&id=".$id);
+            } else {
+              $this->editCategoria($id);
+            }
           }
         }
 
       }
-
-      
-
-      
     }
   }
 ?>
