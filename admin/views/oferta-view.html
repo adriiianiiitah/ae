@@ -11,7 +11,7 @@
                     <div class="profile_img">
                       <div id="crop-avatar">
                         <div>
-                          <img src="../img/200x200.png" alt="Avatar" class="img-thumbnail">
+                          <img src="{{image}}" alt="oferta" class="img-thumbnail">
                         </div>
                       </div>
                     </div>
@@ -21,7 +21,7 @@
                     <table class="table table-hover">
                       <tbody>
                         <tr>
-                          <th class="col-xs-5 col-sm-3 col-md-3 col-lg-2" scope="row">No.</th>
+                          <th class="col-xs-5 col-sm-3 col-md-3 col-lg-2" scope="row">ID :</th>
                           <td>{{id}}</td>
                         </tr>
                         <tr>
@@ -34,21 +34,19 @@
                         </tr>
                         <tr>
                           <th scope="row">Producto :</th>
-                          <td>{{producto}}</td>
+                          <td>{{producto_nombre}}</td>
                         </tr>
                         <tr>
                           <th scope="row">Precio :</th>
                           <td>{{precio}}</td>
                         </tr>
                         <tr>
-                          <th scope="row">De :</th>
-                          <td>{{de}}</td>
+                          <th scope="row">Desde :</th>
+                          <td>{{fecha_inicio}}</td>
                         </tr>
                         <tr>
                           <th scope="row">Hasta :</th>
-                          <td>
-                            {{hasta}}
-                          </td>
+                          <td>{{fecha_fin}}</td>
                         </tr>
                         <tr>
                           <th scope="row">Action </th>

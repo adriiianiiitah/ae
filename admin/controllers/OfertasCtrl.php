@@ -4,15 +4,17 @@
   class OfertasCtrl extends StandardCtrl {
     private $model;
     public $table;
+    public $single;
     public $url;
     public $modal;
 
     public function __construct() {
-      //parent::__construct();
+      parent::__construct();
       require_once('./models/OfertasMdl.php');
       $this->model = new OfertasMdl();
       $this->table_name = 'ofertas';
-      $this->url = 'images/ofertas';
+      $this->single = 'oferta';
+      $this->url = 'images/ofertas/';
       $this->modal = 'modal-delete-oferta';
     }
 
@@ -37,7 +39,9 @@
             else
               $this->showErrorPage();
             break;
-          
+          case 'create':
+              $this->createOferta();
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -49,124 +53,144 @@
     }
 
     public function showOfertas() {
-      //$Ofertas = $this->model->getAll();
+      $ofertas = $this->model->getAll();
       $view = $this->getView("ofertas", 'list', $this->modal);
       $area = $this->getRow($view);
       $table = "";
 
-      $oferta = [
-        'id'            =>'1',
-        'codigo'        =>'123456',
-        'cantidad'      =>'3',
-        'producto'      =>'6549885',
-        'precio'        =>'123.50',
-        'desde'         =>'10/02/2015',
-        'hasta'         =>'10/03/2015'
-      ];
-
-      //foreach ($Ofertas as $oferta) {
+      foreach ($ofertas as $oferta) {
         $area = $row = $this->getRow($view);
-        $diccionary = array(
+        $diccionary = [
           '{{id}}'=>$oferta['id'],
           '{{codigo}}'=>$oferta['codigo'],
           '{{cantidad}}'=>$oferta['cantidad'],
-          '{{producto}}'=>$oferta['producto'],
+          '{{producto_id}}'=>$oferta['producto_id'],
+          '{{producto_nombre}}'=>$oferta['producto_nombre'],
+          '{{fecha_inicio}}'=>$oferta['fecha_inicio'],
+          '{{fecha_fin}}'=>$oferta['fecha_fin'],
           '{{precio}}'=>$oferta['precio'],
-          '{{desde}}'=>$oferta['desde'],
-          '{{hasta}}'=>$oferta['hasta'],
+          '{{image}}'=>$oferta['imagen'],
           '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
           '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-        );
+        ];
         $row = strtr($row,$diccionary);
         $table .= $row;
-      //}
+      }
 
       $view = str_replace($area, $table, $view);
       echo $view;
     }
 
-    public function showoferta($id) {
-      //$oferta = $this->model->getOne($id);
-      $oferta = [
-        'id'            =>'1',
-        'codigo'        =>'123456',
-        'cantidad'      =>'3',
-        'producto'      =>'6549885',
-        'precio'        =>'123.50',
-        'desde'         =>'10/02/2015',
-        'hasta'         =>'10/03/2015'
-      ];
-      $table = "";
-
+    public function showOferta($id) {
       if($this->isInt($id)) {
-        $view = $this->getView("oferta-view", 'view', $this->modal);
+        $oferta = $this->model->getOne($id);
 
-        $content = $view;
-        $diccionary = array(
-          '{{id}}'=>$oferta['id'],
-          '{{codigo}}'=>$oferta['codigo'],
-          '{{cantidad}}'=>$oferta['cantidad'],
-          '{{producto}}'=>$oferta['producto'],
-          '{{precio}}'=>$oferta['precio'],
-          '{{desde}}'=>$oferta['desde'],
-          '{{hasta}}'=>$oferta['hasta'],
-          '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
-          '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-        );
-        $content = strtr($view,$diccionary);
-        $view = str_replace($view, $table, $content);
+        if($oferta) {
+          $table = "";
+          $view = $this->getView("oferta-view", 'view', $this->modal);
+          $content = $view;
 
-        echo $view;
+          $diccionary = [
+            '{{id}}'=>$oferta['id'],
+            '{{codigo}}'=>$oferta['codigo'],
+            '{{cantidad}}'=>$oferta['cantidad'],
+            '{{producto_id}}'=>$oferta['producto_id'],
+            '{{producto_nombre}}'=>$oferta['producto_nombre'],
+            '{{fecha_inicio}}'=>$oferta['fecha_inicio'],
+            '{{fecha_fin}}'=>$oferta['fecha_fin'],
+            '{{precio}}'=>$oferta['precio'],
+            '{{image}}'=>$oferta['imagen'],
+            '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
+            '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
+          ];
+
+          $content = strtr($view,$diccionary);
+          $view = str_replace($view, $table, $content);
+          echo $view;
+        } else {
+          $this->showErrorPage();
+        }
       } else {
         $this->showErrorPage();
         
       }
     }
 
-    public function editoferta($id) {
-      //$oferta = $this->model->getOne($id);
-      //$image = $oferta['image'];
-      $oferta = [
-        'id'            =>'1',
-        'codigo'        =>'123456',
-        'cantidad'      =>'3',
-        'producto'      =>'6549885',
-        'precio'        =>'123.50',
-        'desde'         =>'10/02/2015',
-        'hasta'         =>'10/03/2015'
-      ];
-      $table = "";
+    public function createOferta() {}
 
-      if(empty($_POST)) {
-        $diccionary = array(
-          '{{id}}'=>$oferta['id'],
-          '{{codigo}}'=>$oferta['codigo'],
-          '{{cantidad}}'=>$oferta['cantidad'],
-          '{{producto}}'=>$oferta['producto'],
-          '{{precio}}'=>$oferta['precio'],
-          '{{desde}}'=>$oferta['desde'],
-          '{{hasta}}'=>$oferta['hasta'],
-          '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
-          '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-        );
-        $this->showForm($id,'oferta-edit',$this->modal,$diccionary);//
-        //$this->showFormEdit($id,$oferta);
-      } else {
-        $codigo = $_POST['codigo'];
-        $cantidad = $_POST['cantidad'];
-        $producto = $_POST['producto'];
-        $precio = $_POST['precio'];
-        $de = $_POST['de'];
-        $hasta = $_POST['hasta'];
-        
-        $descripcion = $_POST['descripcion'];
+    public function editOferta($id) {
+      if($this->isInt($id)) {
+        $oferta = $this->model->getOne($id);
+        $imagen = $oferta['imagen'];
 
-        if($_FILES['image']['tmp_name'] != '')
-          $image = $this->uploadImage($id, $this->table_name, $_FILES['image'],$this->url);
+        if ($oferta) {
+          if(empty($_POST)) {
+            $table = "";
+            $diccionary = [
+              '{{id}}'=>$oferta['id'],
+              '{{codigo}}'=>$oferta['codigo'],
+              '{{cantidad}}'=>$oferta['cantidad'],
+              '{{producto_id}}'=>$oferta['producto_id'],
+              '{{producto_nombre}}'=>$oferta['producto_nombre'],
+              '{{fecha_inicio}}'=>$oferta['fecha_inicio'],
+              '{{fecha_fin}}'=>$oferta['fecha_fin'],
+              '{{precio}}'=>$oferta['precio'],
+              '{{image}}'=>$oferta['imagen'],
+              '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
+              '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
+            ];
+            $this->showForm($id,'oferta-edit',$this->modal,$diccionary);//
+          } else {
+            $errors = [];
+            $oferta = [
+              'id' => $id
+            ];
 
-        //$this->model->update($id,$codigo,$nombre,$descripcion,$image);
+            if($this->isCode($_POST['codigo'])) {
+              $oferta['codigo'] = $_POST['codigo'];
+            } else {
+              $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
+            if($this->isInt($_POST['cantidad'])) {
+              $oferta['cantidad'] = $_POST['cantidad'];
+            } else {
+              $errors['cantidad'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
+            if($this->isInt($_POST['producto'])) {
+              $oferta['producto'] = $_POST['producto'];
+            } else {
+              $errors['producto'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+            }
+            if($this->isDate($_POST['fecha_inicio'])) {
+              $oferta['fecha_inicio'] = $_POST['fecha_inicio'];
+            } else {
+              $errors['fecha_inicio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+            }
+            if($this->isDate($_POST['fecha_fin'])) {
+              $oferta['fecha_fin'] = $_POST['fecha_fin'];
+            } else {
+              $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+            }
+            if($this->isNumber($_POST['precio'])) {
+              $oferta['precio'] = $_POST['precio'];
+            } else {
+              $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+            }
+            if($_FILES['image']['tmp_name'] != '') {
+              $oferta['imagen']  = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            } else {
+              $oferta['imagen'] = $imagen;
+            }
 
-        $this->showoferta($id);
+            if(empty($errors)) {
+              $this->model->update($oferta);
+              header ("Location: index.php?ctrl=ofertas&action=view&id=".$id);
+            } else {
+              $this->editOferta($id);
+            }
+          }
+        }
+
       }
     }
   }
