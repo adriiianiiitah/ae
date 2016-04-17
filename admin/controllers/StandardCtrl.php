@@ -24,6 +24,17 @@
       return preg_match(INT, $value);
     }
 
+    function isArray($value) {
+      return is_array($value);
+    }
+
+    function isAssoc($array) {
+      foreach(array_keys($array) as $key) {
+        if(!is_int($key)) return true;
+      }
+      return false;
+    }
+
     function isNumber($value) {
       return preg_match(NUMBER, $value);
     }

@@ -1,49 +1,56 @@
 <?php
-	require_once('StandardMdl.php');
-	require_once('DataBase.php');
+  require_once('StandardMdl.php');
+  require_once('DataBase.php');
 
-	class CategoriasMdl extends StandardMdl {
-		public $connection;
-		public $_query;
+  class SubcategoriasMdl extends StandardMdl {
+    public $connection;
+    public $_query;
 
-		function __construct(){
-			//parent::__construct();
-			//$this->connection = DataBase::getInstance();
-		}
+    function __construct(){
+      parent::__construct();
+      $this->connection = DataBase::getInstance();
+    }
+
+    function create() {
+
+    }
+
+    function getAll() {
+      $_query = 'SELECT subcategorias.id, subcategorias.codigo, subcategorias.nombre, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, subcategorias.imagen, subcategorias.descripcion 
+                FROM subcategorias 
+                INNER JOIN categorias
+                ON categorias.id = categoria';
+      $subcategorias = $this->connection->execute($_query)->getResult();
+      return $subcategorias;
+    }
+
+    function getOne($id) {
+      $_query = 'SELECT subcategorias.id, subcategorias.codigo, subcategorias.nombre, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, subcategorias.imagen, subcategorias.descripcion 
+                FROM subcategorias 
+                INNER JOIN categorias
+                ON categorias.id = categoria 
+                WHERE subcategorias.id="'.$id.'"';
+      $subcategoria = $this->connection->execute($_query)->getFirst();
+      return $subcategoria;
+    }
 /*
-		function create() {
+    function delete($id) {
+      $_query = 'DELETE FROM categories 
+                 WHERE id="'.$id.'"';
+      $category = $this->connection->execute($_query)->getResult();
+      return $category;
+    }
+    */
 
-		}
-
-		function getAll() {
-			$_query = 'SELECT * FROM categories';
-			$categories = $this->connection->execute($_query)->getResult();
-			return $categories;
-		}
-
-		function getOne($id) {
-			$_query = 'SELECT * FROM categories 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query)->getFirst();
-			return $category;
-		}
-
-		function delete($id) {
-			$_query = 'DELETE FROM categories 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query)->getResult();
-			return $category;
-		}
-
-		function update($id,$code,$name,$description,$image) {
-			$_query = 'UPDATE categories SET 
-								code = "'.$code.'",
-								name = "'.$name.'",
-								description = "'.$description.'",
-								image = "'.$image.'" 
-					   		WHERE id="'.$id.'"';
-			$category = $this->connection->execute($_query);
-			//return $category;
-		}*/
-	}
+    function update($subcategoria) {
+      $_query = 'UPDATE subcategorias SET 
+                codigo = "'.$subcategoria['codigo'].'",
+                nombre = "'.$subcategoria['nombre'].'",
+                categoria = "'.$subcategoria['categoria'].'",
+                descripcion = "'.$subcategoria['descripcion'].'",
+                imagen = "'.$subcategoria['imagen'].'" 
+                WHERE id="'.$subcategoria['id'].'"';
+      $subcategoria = $this->connection->execute($_query);
+    }
+  }
 ?>

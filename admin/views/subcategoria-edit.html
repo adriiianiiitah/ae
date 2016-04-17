@@ -7,12 +7,12 @@
                 <h1>Subcategoria</h1>
               </header>
               <div class="panel-body">
-                <form  method="post" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                <form  method="post" class="form-horizontal form-label-left" action="" onsubmit="return validate()" enctype="multipart/form-data" data-validate>
                   <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <div class="profile_img">
                       <div id="crop-avatar">
                         <div>
-                          <img id="image-file" src="../img/200x200.png" alt="subcategoria" class="img-thumbnail">
+                          <img id="image-file" src="{{image}}" alt="subcategoria" data-image/>
                         </div>
                       </div>
                     </div>
@@ -24,6 +24,12 @@
 
                   <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
                     <div class="form-group">
+                      <label class="control-label col-md-3 col-sm-12 col-xs-12" for="codigo">Código <span class="required">*</span></label>
+                      <div class="col-md-6 col-sm-12 col-xs-12">
+                        <input type="text" id="codigo" name="codigo" class="form-control col-md-7 col-xs-12" data-required data-code value="{{codigo}}" />
+                      </div>
+                    </div>
+                    <div class="form-group">
                       <label class="control-label col-md-3 col-sm-12 col-xs-12" for="nombre">Nombre <span class="required">*</span>
                       </label>
                       <div class="col-md-6 col-sm-12 col-xs-12">
@@ -33,11 +39,11 @@
                     <div class="form-group">
                       <label class="control-label col-md-3 col-sm-12 col-xs-12" for="categoria">Categoría <span class="required">*</span></label>
                       <div class="col-md-6 col-sm-12 col-xs-12">
-                        <select id="categoria" name="categoria" class="form-control col-md-7 col-xs-12" multiple data-required >
+                        <select id="categoria" name="categoria" class="form-control col-md-7 col-xs-12" data-required >
                           <option value="">Seleccione</option>
-                          <option value="dama">Dama</option>
-                          <option value="caballero">Caballero</option>
-                          <option value="infantil">Infantil</option>
+                          <option value="1">Dama</option>
+                          <option value="2">Caballero</option>
+                          <option value="3">Infantil</option>
                         </select>
                       </div>
                     </div>
@@ -60,5 +66,4 @@
           </div>
         </div>
       </div>
-      <!--<div class="container-fluid" ></div>-->
     </div>

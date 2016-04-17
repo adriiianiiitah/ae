@@ -28,6 +28,7 @@ class DataBase {
     if($this->conection->connect_error) {
       die($this->conection->connect_error);
     }
+    $this->conection->set_charset("utf8");
   }
 
   public function lastInsertedId() {
