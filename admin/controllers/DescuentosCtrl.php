@@ -46,8 +46,25 @@
         } 
       }
       else {
-          $this->showDescuentos();
-        }
+        $this->showDescuentos();
+      }
+    }
+
+    public function getDictionary($descuento) {
+      return  array(
+        '{{id}}'              =>$descuento['id'],
+        '{{codigo}}'          =>$descuento['codigo'],
+        '{{cantidad}}'        =>$descuento['cantidad'],
+        //'{{producto_id}}'     =>$descuento['producto_id'],
+        '{{producto}}' =>$descuento['producto_nombre'],
+        '{{descuento}}'       =>$descuento['descuento'],
+        '{{precio}}'          =>$descuento['precio'],
+        '{{fecha_inicio}}'    =>$descuento['fecha_inicio'],
+        '{{fecha_fin}}'       =>$descuento['fecha_fin'],
+        '{{image}}'           =>$descuento['imagen'],
+        '{{descuento-view}}'  =>"index.php?ctrl=descuentos&action=view&id=".$descuento['id'],
+        '{{descuento-edit}}'  =>"index.php?ctrl=descuentos&action=edit&id=".$descuento['id'],
+      );
     }
 
     public function showDescuentos() {
@@ -58,20 +75,7 @@
 
       foreach ($descuentos as $descuento) {
         $area = $row = $this->getRow($view);
-        $diccionary = [
-          '{{id}}'=>$descuento['id'],
-          '{{codigo}}'=>$descuento['codigo'],
-          '{{cantidad}}'=>$descuento['cantidad'],
-          '{{producto_id}}'=>$descuento['producto_id'],
-          '{{producto_nombre}}'=>$descuento['producto_nombre'],
-          '{{descuento}}'=>$descuento['descuento'],
-          '{{precio}}'=>$descuento['precio'],
-          '{{fecha_inicio}}'=>$descuento['fecha_inicio'],
-          '{{fecha_fin}}'=>$descuento['fecha_fin'],
-          '{{image}}'=>$descuento['imagen'],
-          '{{descuento-view}}'=>"index.php?ctrl=descuentos&action=view&id=".$descuento['id'],
-          '{{descuento-edit}}'=>"index.php?ctrl=descuentos&action=edit&id=".$descuento['id'],
-        ];
+        $diccionary = $this->getDictionary($descuento);
         $row = strtr($row,$diccionary);
         $table .= $row;
       }
@@ -87,27 +91,12 @@
         if ($descuento) {
           $table = "";
           $view = $this->getView("descuento-view", 'view', $this->modal);
+
           $content = $view;
-
-          $diccionary = [
-            '{{id}}'=>$descuento['id'],
-            '{{codigo}}'=>$descuento['codigo'],
-            '{{cantidad}}'=>$descuento['cantidad'],
-            '{{producto_id}}'=>$descuento['producto_id'],
-            '{{producto_nombre}}'=>$descuento['producto_nombre'],
-            '{{descuento}}'=>$descuento['descuento'],
-            '{{precio}}'=>$descuento['precio'],
-            '{{fecha_inicio}}'=>$descuento['fecha_inicio'],
-            '{{fecha_fin}}'=>$descuento['fecha_fin'],
-            '{{image}}'=>$descuento['imagen'],
-            '{{descuento-view}}'=>"index.php?ctrl=descuentos&action=view&id=".$descuento['id'],
-            '{{descuento-edit}}'=>"index.php?ctrl=descuentos&action=edit&id=".$descuento['id'],
-          ];
-
+          $diccionary = $this->getDictionary($descuento);
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
           echo $view;
-
         } else {
           $this->showErrorPage();
         }
@@ -124,21 +113,13 @@
         if ($descuento) {
           if(empty($_POST)) {
             $table = "";
-            $diccionary = [
-              '{{id}}'=>$descuento['id'],
-              '{{codigo}}'=>$descuento['codigo'],
-              '{{cantidad}}'=>$descuento['cantidad'],
-              '{{producto_id}}'=>$descuento['producto_id'],
-              '{{producto_nombre}}'=>$descuento['producto_nombre'],
-              '{{descuento}}'=>$descuento['descuento'],
-              '{{precio}}'=>$descuento['precio'],
-              '{{fecha_inicio}}'=>$descuento['fecha_inicio'],
-              '{{fecha_fin}}'=>$descuento['fecha_fin'],
-              '{{image}}'=>$descuento['imagen'],
-              '{{descuento-view}}'=>"index.php?ctrl=descuentos&action=view&id=".$descuento['id'],
-              '{{descuento-edit}}'=>"index.php?ctrl=descuentos&action=edit&id=".$descuento['id'],
-            ];
-            $this->showForm($id,'descuento-edit',$this->modal,$diccionary);
+            $diccionary = $this->getDictionary($descuento);
+            $view = $this->getViewForm($id,'descuento-edit',$this->modal,$diccionary);
+
+            $productos = $this->model->getAllProductos();
+            $data = $this->getDataProductos($productos);
+            $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
+            echo $view;
           } else {
             $errors = [];
             $descuento = [
