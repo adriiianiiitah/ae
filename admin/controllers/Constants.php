@@ -22,6 +22,9 @@
   define('ROW_TAG_START',                '<!--row-->');
   define('ROW_TAG_END',                 '<!--.row-->');
 
+  define('PRODUCTO_TAG_START',                '<!--producto-->');
+  define('PRODUCTO_TAG_END',                 '<!--.producto-->');
+
   define('DOMICILIO_TAG_START',          '<!--domicilio-->');
   define('DOMICILIO_TAG_END',           '<!--.domicilio-->');
 

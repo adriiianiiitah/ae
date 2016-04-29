@@ -163,13 +163,13 @@
     }
 
     public function showData($view, $data,$start_tag = '', $end_tag = '') {
-      $area = $this->getRow($view,$start_tag,$end_tag);
+      $area = $row = $this->getRow($view,$start_tag,$end_tag);
       $table = "";
 
-      foreach ($data as $diccionary) {
-        $area = $row = $this->getRow($view,$start_tag,$end_tag);
-        $row = strtr($row,$diccionary);
-        $table .= $row;
+      foreach ($data as $diccionary) { 
+        //$area = $row = $this->getRow($view,$start_tag,$end_tag);
+        $line = strtr($row,$diccionary);
+        $table .= $line;
       }
       $view = str_replace($area, $table, $view);
       return $view;
@@ -211,6 +211,17 @@
         $dictionary = array(
           '{{rol_id}}'=>$rol['rol_id'],
           '{{rol_nombre}}'=>$rol['rol_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
+    public function getDataProductos($productos) {
+      foreach ($productos as $producto) {
+        $dictionary = array (
+          '{{producto_id}}'=>$producto['producto_id'],
+          '{{producto_nombre}}'=>$producto['producto_nombre']
         );
         $list[] = $dictionary;
       }
@@ -273,10 +284,10 @@
     public function getRow($view, $start_tag = '', $end_tag = '' ) {
       if($start_tag == '') {
         $start = strrpos($view,ROW_TAG_START);
-        $end = strrpos($view,ROW_TAG_END) +strlen(ROW_TAG_START);
+        $end = strrpos($view,ROW_TAG_END) +(strlen(ROW_TAG_START)+1);
       } else {
         $start = strrpos($view,$start_tag);
-        $end = strrpos($view,$end_tag) +strlen($start_tag);
+        $end = strrpos($view,$end_tag) +(strlen($start_tag)+1);
       }
       
       $row = substr($view,$start,$end-$start);

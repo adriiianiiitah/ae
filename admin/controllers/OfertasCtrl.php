@@ -118,6 +118,22 @@
 
     public function createOferta() {}
 
+    public function getDictionary($oferta) {
+      return $dictionary = array (
+        '{{id}}'              =>$oferta['id'],
+        '{{codigo}}'          =>$oferta['codigo'],
+        '{{cantidad}}'        =>$oferta['cantidad'],
+        //'{{producto_id}}'     =>$oferta['producto_id'],
+        //'{{producto_nombre}}' =>$oferta['producto_nombre'],
+        '{{fecha_inicio}}'    =>$oferta['fecha_inicio'],
+        '{{fecha_fin}}'       =>$oferta['fecha_fin'],
+        '{{precio}}'          =>$oferta['precio'],
+        '{{image}}'           =>$oferta['imagen'],
+        '{{oferta-view}}'     =>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
+        '{{oferta-edit}}'     =>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
+      );
+    }
+
     public function editOferta($id) {
       if($this->isInt($id)) {
         $oferta = $this->model->getOne($id);
@@ -126,21 +142,14 @@
         if ($oferta) {
           if(empty($_POST)) {
             $table = "";
-            $diccionary = [
-              '{{id}}'=>$oferta['id'],
-              '{{codigo}}'=>$oferta['codigo'],
-              '{{cantidad}}'=>$oferta['cantidad'],
-              '{{producto_id}}'=>$oferta['producto_id'],
-              '{{producto_nombre}}'=>$oferta['producto_nombre'],
-              '{{fecha_inicio}}'=>$oferta['fecha_inicio'],
-              '{{fecha_fin}}'=>$oferta['fecha_fin'],
-              '{{precio}}'=>$oferta['precio'],
-              '{{image}}'=>$oferta['imagen'],
-              '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
-              '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-            ];
-            $this->showForm($id,'oferta-edit',$this->modal,$diccionary);//
-          } else {
+            $diccionary = $this->getDictionary($oferta);
+            $view = $this->getViewForm($id,'oferta-edit',$this->modal,$diccionary);
+            $productos = $this->model->getAllProductos();
+
+            $data = $this->getDataProductos($productos);
+            $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
+            echo $view;
+          } else { 
             $errors = [];
             $oferta = [
               'id' => $id
