@@ -52,7 +52,7 @@ class DataBase {
   }
   
   public function execute($instruction) {
-
+    $this -> result = array();
     $this->_query = $this->conection ->query($instruction);
     if($this->_query){
       if(is_object($this->_query)) {

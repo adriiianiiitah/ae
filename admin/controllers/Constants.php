@@ -1,4 +1,10 @@
 <?php 
+  define('FEMENINO',                 'femenino');
+  define('MASCULINO',                'masculino');
+
+  define('CHECKED',                'checked');
+  define('NO_CHECKED',             '');
+
   define('PASS',     	 '/^(?=^.{4,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/');
   define('EMAIL',        '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/');
   define('CODE',         '/^([A-Za-z0-9\-]{5,10})+$/');
@@ -8,10 +14,20 @@
   define('ALPHANUMERIC',  '/^(([A-Za-záéíóúñ0-9 ]{1,}))+$/');
   define('COLOR',        '/^([A-Za-z0-9\-]{2,})+$/');
   define('PHONE',        '/^([0-9]{1,})+$/');
-  //define('DATE_TIME',    '/^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/](19|20)\d{2} (0?[1-9]|1[012]):([0-5][0-9]) (am|pm|AM||PM)+$/');
-  //define('DATE',       '/^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/](19|20)\d{2}+$/');
   define('DATE_TIME',    '/^(19|20)\d{2}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01]) (0?[1-9]|1[012]):([0-5][0-9]) (am|pm|AM||PM)+$/');
   define('DATE',    	 '/^(19|20)\d{2}[\-](0?[1-9]|1[012])[\-](0?[1-9]|[12][0-9]|3[01])+$/');
   define('INT',      	 '/^([0-9]{1,})+$/');
-  define('NUMBER',        '/^([0-9]{1,})\.([0-9]{1,})+$/');
+  define('NUMBER',        '/^([0-9]{1,})\.([0-9]{1,})+$/'); 
+
+  define('ROW_TAG_START',                '<!--row-->');
+  define('ROW_TAG_END',                 '<!--.row-->');
+
+  define('DOMICILIO_TAG_START',          '<!--domicilio-->');
+  define('DOMICILIO_TAG_END',           '<!--.domicilio-->');
+
+  define('TELEFONO_TAG_START',           '<!--telefono-->');
+  define('TELEFONO_TAG_END',            '<!--.telefono-->');
+
+  define('ROL_TAG_START',                '<!--rol-->');
+  define('ROL_TAG_END',                 '<!--.rol-->');
 ?>

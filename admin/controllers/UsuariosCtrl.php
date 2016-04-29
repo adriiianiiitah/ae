@@ -4,6 +4,7 @@
   class UsuariosCtrl extends StandardCtrl {
     private $model;
     public $table_name;
+    public $single;
     public $url;
     public $modal;
     public $modals;
@@ -13,6 +14,7 @@
       require_once('./models/UsuariosMdl.php');
       $this->model = new UsuariosMdl();
       $this->table_name = 'usuarios';
+      $this->single = 'usuario';
       $this->url = 'images/usuarios';
       $this->modal = 'modal-delete-usuario';
       $this->modals = [
@@ -31,21 +33,20 @@
             $this->showUsuarios();
             break;
           case 'view':
-            if(isset($_GET['id']) && !empty($_GET['id']) && is_int((int)$_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id']))
               $this->showUsuario($_GET['id']);
             else
               $this->showErrorPage();
             break;
           case 'edit':
-            if(isset($_GET['id']) && !empty($_GET['id']) && is_int((int)$_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id']))
               $this->editUsuario($_GET['id']);
             else
-             // $this->showErrorPage();
-               echo 's';
+              $this->showErrorPage();
             break;
           
           default:
-            $this->showUsuarios();
+            $this->showErrorPage();
             break;
         } 
       }
@@ -54,80 +55,68 @@
         }
     }
 
+    public function getDictionary($usuario) {
+      $usuario['femenino'] = (strcmp($usuario['genero'],FEMENINO) == 0) ? CHECKED: NO_CHECKED;
+      $usuario['masculino'] = (strcmp($usuario['genero'],MASCULINO) == 0) ? CHECKED: NO_CHECKED;
+      return $dictionary = array(
+        '{{id}}'              =>$usuario['id'],
+        '{{nombre}}'          =>$usuario['nombre'],
+        '{{apellidos}}'       =>$usuario['apellidos'],
+        '{{correo}}'          =>$usuario['correo'],
+        '{{rol}}'             =>$usuario['rol_nombre'],
+        '{{genero}}'          =>$usuario['genero'],
+        '{{contrasena}}'      =>$usuario['contrasena'],
+        '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
+        '{{image}}'           =>$usuario['imagen'],
+        '{{femenino}}'        =>$usuario['femenino'],
+        '{{masculino}}'       =>$usuario['masculino'],
+        '{{usuario-view}}'    =>"index.php?ctrl=usuarios&action=view&id=".$usuario['id'],
+        '{{usuario-edit}}'    =>"index.php?ctrl=usuarios&action=edit&id=".$usuario['id'],
+      );
+    }
+
     public function showUsuarios() {
-      //$usuarios = $this->model->getAll();
+      $usuarios = $this->model->getAll();
       $view = $this->getView("usuarios", 'list', $this->modal);
       $area = $this->getRow($view);
       $table = "";
 
-      //foreach ($usuarios as $usuario) {
-      for($i=0; $i<20; $i++) {
-        $usuario = [
-          'id'=>'1',
-          'nombre'=>'Ana',
-          'apellido'=>'Díaz',
-          'correo'=>'ana@mail.com',
-          'rol'=>'usuario',
-          'telefono'=>'361511145',
-          'genero'=>'Femenino',
-          'fecha_nacimiento'=>'15/04/2000'
-        ];
+      foreach ($usuarios as $usuario) {
         $area = $row = $this->getRow($view);
-        $diccionary = array(
-          '{{id}}'=>$usuario['id'],
-          '{{nombre}}'=>$usuario['nombre'],
-          '{{apellido}}'=>$usuario['apellido'],
-          '{{correo}}'=>$usuario['correo'],
-          '{{rol}}'=>$usuario['rol'],
-          '{{telefono}}'=>$usuario['telefono'],
-          '{{genero}}'=>$usuario['genero'],
-          '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
-          '{{usuario-view}}'=>"index.php?ctrl=usuarios&action=view&id=1".$usuario['id'],
-          '{{usuario-edit}}'=>"index.php?ctrl=usuarios&action=edit&id=1".$usuario['id'],
-        );
+        $diccionary = $this->getDictionary($usuario);
         $row = strtr($row,$diccionary);
         $table .= $row;
-      }
-      //}success 
+      } 
 
       $view = str_replace($area, $table, $view);
       echo $view;
     }
 
     public function showUsuario($id) {
-      //$usuario = $this->model->getOne($id);
-      $usuario = [
-        'id'=>'1',
-        'nombre'=>'Ana',
-        'apellido'=>'Díaz',
-        'correo'=>'ana@mail.com',
-        'rol'=>'usuario',
-        'telefono'=>'361511145',
-        'genero'=>'Femenino',
-        'fecha_nacimiento'=>'15/04/2000'
-      ];
 
       if($this->isInt($id)) {
-        
-        $view = $this->getView("usuario-view", 'view', $this->modal);
+        $usuario = $this->model->getOne($id);
 
-        $content = $view;
-        $diccionary = array(
-          '{{id}}'=>$usuario['id'],
-          '{{nombre}}'=>$usuario['nombre'],
-          '{{apellido}}'=>$usuario['apellido'],
-          '{{correo}}'=>$usuario['correo'],
-          '{{rol}}'=>$usuario['rol'],
-          '{{telefono}}'=>$usuario['telefono'],
-          '{{genero}}'=>$usuario['genero'],
-          '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
-          '{{usuario-view}}'=>"index.php?ctrl=usuarios&action=view&id=1".$usuario['id'],
-          '{{usuario-edit}}'=>"index.php?ctrl=usuarios&action=edit&id=1".$usuario['id'],
-        );
-        $content = strtr($view,$diccionary);
-        $view = str_replace($view, $table, $content);
+        if($usuario) {
+          $table = "";
+          $view = $this->getView("usuario-view", 'view', $this->modal);
 
-        echo $view;
+          $content = $view;
+          $diccionary = $this->getDictionary($usuario);
+          $content = strtr($view,$diccionary);
+          $view = str_replace($view, $table, $content);
+
+          $domicilios = $this->model->getDomicilios($id);
+          $telefonos = $this->model->getTelefonos($id);
+          $data = $this->getDataDomicilios($domicilios);
+          $view = $this->showData($view,$data,DOMICILIO_TAG_START,DOMICILIO_TAG_END);
+          $data = $this->getDataTelefonos($telefonos);
+          $view = $this->showData($view,$data,TELEFONO_TAG_START,TELEFONO_TAG_END);
+ 
+          echo $view;
+        } else {
+          $this->showErrorPage();
+        }
       } else {
         $this->showErrorPage();
         
@@ -135,44 +124,94 @@
     }
 
     public function editUsuario($id) {
-      //$category = $this->model->getOne($id);
-      //$image = $category['image'];
-      $usuario = [
-        'id'=>'1',
-        'nombre'=>'Ana',
-        'apellido'=>'Díaz',
-        'correo'=>'ana@mail.com',
-        'rol'=>'usuario',
-        'telefono'=>'361511145',
-        'genero'=>'Femenino',
-        'fecha_nacimiento'=>'15/04/2000'
-      ];
+      if($this->isInt($id)) {
+        $usuario = $this->model->getOne($id);
+        $imagen = $usuario['imagen'];
+        $contrasena = $usuario['contrasena'];
 
-      if(empty($_POST)) {
-        $diccionary = array(
-          '{{id}}'=>$usuario['id'],
-          '{{nombre}}'=>$usuario['nombre'],
-          '{{apellido}}'=>$usuario['apellido'],
-          '{{correo}}'=>$usuario['correo'],
-          '{{rol}}'=>$usuario['rol'],
-          '{{telefono}}'=>$usuario['telefono'],
-          '{{genero}}'=>$usuario['genero'],
-          '{{fecha_nacimiento}}'=>$usuario['fecha_nacimiento'],
-          '{{usuario-view}}'=>"index.php?ctrl=usuarios&action=view&id=1".$usuario['id'],
-          '{{usuario-edit}}'=>"index.php?ctrl=usuarios&action=edit&id=1".$usuario['id'],
-        );
-        $this->showForm($id,'usuario-edit',$this->modal,$diccionary,$this->modals);
-      } else {
-        $code = $_POST['code'];
-        $name = $_POST['name'];
-        $description = $_POST['description'];
+        if ($usuario) {
+          if(empty($_POST)) {
+            $table = "";
+            $diccionary = $this->getDictionary($usuario);
+            $view = $this->getViewForm($id,'usuario-edit',$this->modal,$diccionary,$this->modals);
+            $roles = $this->model->getAllRoles();
+            $data = $this->getDataRoles($roles);
+            $view = $this->showData($view,$data,ROL_TAG_START,ROL_TAG_END);
+            echo $view;
+          } else {
+            $errors = [];
+            $usuario = [
+              'id' => $id
+            ];
 
-        if($_FILES['image']['tmp_name'] != '')
-          $image = $this->uploadImage($id, $this->table_name, $_FILES['image'],$this->url);
+            if($this->isName($_POST['nombre'])) {
+              $usuario['nombre'] = $_POST['nombre'];
+            } else {
+              $errors['nombre'] = 'El nombre es incorrecto. Debe contener solo letras y espacios.';
+            }
 
-        $this->model->update($id,$code,$name,$description,$image);
+            if($this->isLastName($_POST['apellidos'])) {
+              $usuario['apellidos'] = $_POST['apellidos'];
+            } else {
+              $errors['apellidos'] = 'El apellido es incorrecto. Debe contener solo letras y espacios.';
+            }
 
-        $this->showUsuario($id);
+            if($this->isPassword($_POST['contrasena'])) {
+              $usuario['contrasena'] = $_POST['contrasena'];//$contrasena
+            } else {
+              $usuario['contrasena'] = '';
+              $errors['contrasena'] = 'La contraseña es incorrecta. Debe contener mayúsculas, minúsculas, dígitos y caracteres de puntuación.';
+            }
+
+            if($this->isPassword($_POST['repetir_contrasena'])) {
+              $usuario['repetir_contrasena'] = $_POST['repetir_contrasena'];
+              if ($this->equals($usuario['contrasena'],$usuario['repetir_contrasena'])) {
+                $usuario['contrasena'] = $this->cryptPassword($_POST['contrasena']);
+              } else {
+                $errors['contrasena'] = 'La contraseñas deben coincidir.';
+              }
+            } else {
+              $errors['contrasena'] = 'La contraseñas deben coincidir.';
+            }
+
+            if($this->isEmail($_POST['correo'])) {
+              $usuario['correo'] = $_POST['correo'];
+            } else {
+              $errors['correo'] = 'El correo es incorrecto. Debe formato es usuario@mail.com.';
+            }
+
+            if($this->isInt($_POST['rol'])) {
+              $usuario['rol'] = $_POST['rol'];
+            } else {
+              $errors['rol'] = 'El rol es incorrecto. Algo salió mal.';
+            }
+
+            if($this->isDate($_POST['fecha_nacimiento'])) {
+              $usuario['fecha_nacimiento'] = $_POST['fecha_nacimiento'];
+            } else {
+              $errors['fecha_nacimiento'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+            }
+
+            if($this->isGender($_POST['genero'])) {
+              $usuario['genero'] = $_POST['genero'];
+            } else {
+              $errors['genero'] = 'El género es incorrecto. Algo salió mal.';
+            }
+
+            if($_FILES['image']['tmp_name'] != '') {
+              $usuario['imagen']  = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            } else {
+              $usuario['imagen'] = $imagen;
+            }
+
+            if(empty($errors)) {
+              $this->model->update($usuario);
+              header ("Location: index.php?ctrl=usuarios&action=view&id=".$id);
+            } else {
+              $this->editUsuario($id);
+            }
+          }
+        }
       }
     }
   }

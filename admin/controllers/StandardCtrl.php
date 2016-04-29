@@ -83,6 +83,17 @@
       return preg_match(DATE, $value);
     }
 
+    function equals($value1, $value2) {
+      return $value1 == $value2;
+    }
+
+    function isGender($value) {
+      if($this->equals($value, FEMENINO) || $this->equals($value, MASCULINO)) {
+        return true;
+      }
+      return false;
+    }
+
     function isLogin(){
       if( isset($_SESSION['user']) )
         return true;
@@ -111,6 +122,10 @@
       session_unset();
       session_destroy();    
       setcookie(session_name(), '', time()-3600);
+    }
+
+    function cryptPassword($password) {
+      return sha1(md5($password));
     }
 
     function openSesion($user_id){
@@ -145,6 +160,61 @@
       $view =  file_get_contents("views/404.html");
       $footer = file_get_contents("views/footer.html");
       echo $navigation.$view.$footer;
+    }
+
+    public function showData($view, $data,$start_tag = '', $end_tag = '') {
+      $area = $this->getRow($view,$start_tag,$end_tag);
+      $table = "";
+
+      foreach ($data as $diccionary) {
+        $area = $row = $this->getRow($view,$start_tag,$end_tag);
+        $row = strtr($row,$diccionary);
+        $table .= $row;
+      }
+      $view = str_replace($area, $table, $view);
+      return $view;
+    }
+
+    public function getDataDomicilios($domicilios) {
+      foreach ($domicilios as $domicilio) {
+        $domicilio['primario'] = $domicilio['primario'] ? 'PRINCIPAL' : 'SECUNDARIO';
+        $dictionary = array(
+          '{{pais}}'=>$domicilio['pais_nombre'],
+          '{{estado}}'=>$domicilio['estado_nombre'],
+          '{{municipio}}'=>$domicilio['municipio_nombre'],
+          '{{colonia}}'=>$domicilio['colonia'],
+          '{{calle}}'=>$domicilio['calle'],
+          '{{exterior}}'=>$domicilio['exterior'],
+          '{{interior}}'=>$domicilio['interior'],
+          '{{codigo_postal}}'=>$domicilio['codigo_postal'],
+          '{{primario}}'=>$domicilio['primario']
+        );
+        $list[] = $dictionary;
+      }
+      return $list;
+    }
+
+    public function getDataTelefonos($telefonos) {
+      foreach ($telefonos as $telefono) {
+        $dictionary = array(
+          '{{lada}}'=>$telefono['lada'],
+          '{{telefono}}'=>$telefono['telefono'],
+          '{{tipo}}'=>strtoupper($telefono['tipo'])
+        );
+        $list[] = $dictionary;
+      }
+      return $list;
+    }
+
+    public function getDataRoles($roles) {
+      foreach ($roles as $rol) {
+        $dictionary = array(
+          '{{rol_id}}'=>$rol['rol_id'],
+          '{{rol_nombre}}'=>$rol['rol_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list;
     }
 
     public function getView($view, $type ='', $modal ='', $modals = []) {
@@ -200,22 +270,38 @@
       return $name;
     }
 
-    public function getRow($view) {
-      $start = strrpos($view,'<!--row-->');
-      $end = strrpos($view,'<!--.row-->') +11;
+    public function getRow($view, $start_tag = '', $end_tag = '' ) {
+      if($start_tag == '') {
+        $start = strrpos($view,ROW_TAG_START);
+        $end = strrpos($view,ROW_TAG_END) +strlen(ROW_TAG_START);
+      } else {
+        $start = strrpos($view,$start_tag);
+        $end = strrpos($view,$end_tag) +strlen($start_tag);
+      }
+      
       $row = substr($view,$start,$end-$start);
       return $row;
     }
 
     public function showForm($id,$view,$modal,$diccionary,$modals = []) {
-          $view = $this->getView($view, 'edit', $modal, $modals);
-          $table = "";
-          $content = $view;
-          $content = strtr($view,$diccionary);
-          $view = str_replace($view, $table, $content);
+      $view = $this->getView($view, 'edit', $modal, $modals);
+      $table = "";
+      $content = $view;
+      $content = strtr($view,$diccionary);
+      $view = str_replace($view, $table, $content);
 
-          echo $view;
-      }
+      echo $view;
+    }
+
+    public function getViewForm($id,$view,$modal,$diccionary,$modals = []) {
+      $view = $this->getView($view, 'edit', $modal, $modals);
+      $table = "";
+      $content = $view;
+      $content = strtr($view,$diccionary);
+      $view = str_replace($view, $table, $content);
+
+      return $view;
+    }
 
     function footer() {
       /*
