@@ -56,7 +56,7 @@
         '{{codigo}}'          =>$descuento['codigo'],
         '{{cantidad}}'        =>$descuento['cantidad'],
         //'{{producto_id}}'     =>$descuento['producto_id'],
-        '{{producto}}' =>$descuento['producto_nombre'],
+        '{{producto}}'        =>$descuento['producto_nombre'],
         '{{descuento}}'       =>$descuento['descuento'],
         '{{precio}}'          =>$descuento['precio'],
         '{{fecha_inicio}}'    =>$descuento['fecha_inicio'],

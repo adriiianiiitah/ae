@@ -48,8 +48,25 @@
         } 
       }
       else {
-          $this->showOfertas();
-        }
+        $this->showOfertas();
+      }
+    }
+
+    public function getDictionary($oferta) {
+      return $dictionary = array (
+        '{{id}}'              =>$oferta['id'],
+        '{{codigo}}'          =>$oferta['codigo'],
+        '{{cantidad}}'        =>$oferta['cantidad'],
+        //'{{producto_id}}'     =>$oferta['producto_id'],
+        //'{{producto_nombre}}' =>$oferta['producto_nombre'],
+        '{{producto}}'        =>$oferta['producto_nombre'],
+        '{{fecha_inicio}}'    =>$oferta['fecha_inicio'],
+        '{{fecha_fin}}'       =>$oferta['fecha_fin'],
+        '{{precio}}'          =>$oferta['precio'],
+        '{{image}}'           =>$oferta['imagen'],
+        '{{oferta-view}}'     =>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
+        '{{oferta-edit}}'     =>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
+      );
     }
 
     public function showOfertas() {
@@ -60,19 +77,7 @@
 
       foreach ($ofertas as $oferta) {
         $area = $row = $this->getRow($view);
-        $diccionary = [
-          '{{id}}'=>$oferta['id'],
-          '{{codigo}}'=>$oferta['codigo'],
-          '{{cantidad}}'=>$oferta['cantidad'],
-          '{{producto_id}}'=>$oferta['producto_id'],
-          '{{producto_nombre}}'=>$oferta['producto_nombre'],
-          '{{fecha_inicio}}'=>$oferta['fecha_inicio'],
-          '{{fecha_fin}}'=>$oferta['fecha_fin'],
-          '{{precio}}'=>$oferta['precio'],
-          '{{image}}'=>$oferta['imagen'],
-          '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
-          '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-        ];
+        $diccionary = $this->getDictionary($oferta);
         $row = strtr($row,$diccionary);
         $table .= $row;
       }
@@ -88,22 +93,9 @@
         if($oferta) {
           $table = "";
           $view = $this->getView("oferta-view", 'view', $this->modal);
+
           $content = $view;
-
-          $diccionary = [
-            '{{id}}'=>$oferta['id'],
-            '{{codigo}}'=>$oferta['codigo'],
-            '{{cantidad}}'=>$oferta['cantidad'],
-            '{{producto_id}}'=>$oferta['producto_id'],
-            '{{producto_nombre}}'=>$oferta['producto_nombre'],
-            '{{fecha_inicio}}'=>$oferta['fecha_inicio'],
-            '{{fecha_fin}}'=>$oferta['fecha_fin'],
-            '{{precio}}'=>$oferta['precio'],
-            '{{image}}'=>$oferta['imagen'],
-            '{{oferta-view}}'=>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
-            '{{oferta-edit}}'=>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-          ];
-
+          $diccionary = $this->getDictionary($oferta);
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
           echo $view;
@@ -118,22 +110,6 @@
 
     public function createOferta() {}
 
-    public function getDictionary($oferta) {
-      return $dictionary = array (
-        '{{id}}'              =>$oferta['id'],
-        '{{codigo}}'          =>$oferta['codigo'],
-        '{{cantidad}}'        =>$oferta['cantidad'],
-        //'{{producto_id}}'     =>$oferta['producto_id'],
-        //'{{producto_nombre}}' =>$oferta['producto_nombre'],
-        '{{fecha_inicio}}'    =>$oferta['fecha_inicio'],
-        '{{fecha_fin}}'       =>$oferta['fecha_fin'],
-        '{{precio}}'          =>$oferta['precio'],
-        '{{image}}'           =>$oferta['imagen'],
-        '{{oferta-view}}'     =>"index.php?ctrl=ofertas&action=view&id=".$oferta['id'],
-        '{{oferta-edit}}'     =>"index.php?ctrl=ofertas&action=edit&id=".$oferta['id'],
-      );
-    }
-
     public function editOferta($id) {
       if($this->isInt($id)) {
         $oferta = $this->model->getOne($id);
@@ -144,8 +120,8 @@
             $table = "";
             $diccionary = $this->getDictionary($oferta);
             $view = $this->getViewForm($id,'oferta-edit',$this->modal,$diccionary);
-            $productos = $this->model->getAllProductos();
 
+            $productos = $this->model->getAllProductos();
             $data = $this->getDataProductos($productos);
             $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
             echo $view;
