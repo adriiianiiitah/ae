@@ -3,7 +3,7 @@
 
   class CategoriasCtrl extends StandardCtrl {
     private $model;
-    public $table;
+    public $table_name;
     public $single;
     public $url;
     public $modal;
@@ -46,8 +46,20 @@
         } 
       }
       else {
-          $this->showCategorias();
-        }
+        $this->showCategorias();
+      }
+    }
+
+    public function getDictionary($categoria) {
+      return  array(
+        '{{id}}'              =>$categoria['id'],
+        '{{codigo}}'          =>$categoria['codigo'],
+        '{{nombre}}'          =>$categoria['nombre'],
+        '{{descripcion}}'     =>$categoria['descripcion'],
+        '{{image}}'           =>$categoria['imagen'],
+        '{{categoria-view}}'  =>"index.php?ctrl=categorias&action=view&id=".$categoria['id'],
+        '{{categoria-edit}}'  =>"index.php?ctrl=categorias&action=edit&id=".$categoria['id']
+      );
     }
 
     public function showCategorias() {
@@ -58,15 +70,7 @@
 
       foreach ($categorias as $categoria) {
         $area = $row = $this->getRow($view);
-        $diccionary = [
-          '{{id}}'=>$categoria['id'],
-          '{{codigo}}'=>$categoria['codigo'],
-          '{{nombre}}'=>$categoria['nombre'],
-          '{{descripcion}}'=>$categoria['descripcion'],
-          '{{image}}'=>$categoria['imagen'],
-          '{{categoria-view}}'=>"index.php?ctrl=categorias&action=view&id=".$categoria['id'],
-          '{{categoria-edit}}'=>"index.php?ctrl=categorias&action=edit&id=".$categoria['id'],
-        ];
+        $diccionary = $this->getDictionary($categoria);
         $row = strtr($row,$diccionary);
         $table .= $row;
       }
@@ -82,16 +86,9 @@
         if($categoria) {
           $table = "";
           $view = $this->getView("categoria-view", 'view', $this->modal);
+
           $content = $view;
-          $diccionary = [
-            '{{id}}'=>$categoria['id'],
-            '{{codigo}}'=>$categoria['codigo'],
-            '{{nombre}}'=>$categoria['nombre'],
-            '{{descripcion}}'=>$categoria['descripcion'],
-            '{{image}}'=>$categoria['imagen'],
-            '{{categoria-view}}'=>"index.php?ctrl=categorias&action=view&id=".$categoria['id'],
-            '{{categoria-edit}}'=>"index.php?ctrl=categorias&action=edit&id=".$categoria['id'],
-          ];
+          $diccionary = $this->getDictionary($categoria);
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
           echo $view;
@@ -112,16 +109,9 @@
         if ($categoria) {
           if(empty($_POST)) {
             $table = "";
-            $diccionary = [
-              '{{id}}'=>$categoria['id'],
-              '{{codigo}}'=>$categoria['codigo'],
-              '{{nombre}}'=>$categoria['nombre'],
-              '{{descripcion}}'=>$categoria['descripcion'],
-              '{{image}}'=>$categoria['imagen'],
-              '{{categoria-view}}'=>"index.php?ctrl=categorias&action=view&id=".$categoria['id'],
-              '{{categoria-edit}}'=>"index.php?ctrl=categorias&action=edit&id=".$categoria['id'],
-            ];
-            $this->showForm($id,'categoria-edit',$this->modal,$diccionary);
+            $diccionary = $this->getDictionary($categoria);
+            $view = $this->getViewForm($id,'categoria-edit',$this->modal,$diccionary);
+            echo $view;
           } else {
             $errors = [];
             $categoria = [
