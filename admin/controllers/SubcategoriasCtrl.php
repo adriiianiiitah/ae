@@ -49,6 +49,20 @@
       }
     }
 
+    public function getDictionary($subcategoria) {
+      return array (
+        '{{id}}'                =>$subcategoria['id'],
+        '{{codigo}}'            =>$subcategoria['codigo'],
+        '{{nombre}}'            =>$subcategoria['nombre'],
+        //'{{categoria_nombre}}'  =>$subcategoria['categoria_nombre'],
+        '{{categoria}}'         =>$subcategoria['categoria_nombre'],
+        '{{descripcion}}'       =>$subcategoria['descripcion'],
+        '{{image}}'             =>$subcategoria['imagen'],
+        '{{subcategoria-view}}' =>"index.php?ctrl=subcategorias&action=view&id=".$subcategoria['id'],
+        '{{subcategoria-edit}}' =>"index.php?ctrl=subcategorias&action=edit&id=".$subcategoria['id']
+      );
+    }
+
     public function showSubcategorias() {
       $subcategorias = $this->model->getAll();
       $view = $this->getView("subcategorias", 'list', $this->modal);
@@ -57,16 +71,7 @@
 
       foreach ($subcategorias as $subcategoria) {
         $area = $row = $this->getRow($view);
-        $diccionary = [
-          '{{id}}'=>$subcategoria['id'],
-          '{{codigo}}'=>$subcategoria['codigo'],
-          '{{nombre}}'=>$subcategoria['nombre'],
-          '{{categoria_nombre}}'=>$subcategoria['categoria_nombre'],
-          '{{descripcion}}'=>$subcategoria['descripcion'],
-          '{{image}}'=>$subcategoria['imagen'],
-          '{{subcategoria-view}}'=>"index.php?ctrl=subcategorias&action=view&id=".$subcategoria['id'],
-          '{{subcategoria-edit}}'=>"index.php?ctrl=subcategorias&action=edit&id=".$subcategoria['id'],
-        ];
+        $diccionary = $this->getDictionary($subcategoria);
         $row = strtr($row,$diccionary);
         $table .= $row;
       }
@@ -82,17 +87,9 @@
         if ($subcategoria) {
           $table = "";
           $view = $this->getView("subcategoria-view", 'view', $this->modal);
+
           $content = $view;
-          $diccionary = [
-            '{{id}}'=>$subcategoria['id'],
-            '{{codigo}}'=>$subcategoria['codigo'],
-            '{{nombre}}'=>$subcategoria['nombre'],
-            '{{categoria_nombre}}'=>$subcategoria['categoria_nombre'],
-            '{{descripcion}}'=>$subcategoria['descripcion'],
-            '{{image}}'=>$subcategoria['imagen'],
-            '{{subcategoria-view}}'=>"index.php?ctrl=subcategorias&action=view&id=".$subcategoria['id'],
-            '{{subcategoria-edit}}'=>"index.php?ctrl=subcategorias&action=edit&id=".$subcategoria['id'],
-          ];
+          $diccionary = $this->getDictionary($subcategoria);
 
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
@@ -102,7 +99,6 @@
         }
       } else {
         $this->showErrorPage();
-        
       }
     }
 
@@ -114,18 +110,13 @@
         if ($subcategoria) {
           if(empty($_POST)) {
             $table = "";
+            $diccionary = $this->getDictionary($subcategoria);
+            $view = $this->getViewForm($id,'subcategoria-edit',$this->modal,$diccionary);
 
-            $diccionary = [
-              '{{id}}'=>$subcategoria['id'],
-              '{{codigo}}'=>$subcategoria['codigo'],
-              '{{nombre}}'=>$subcategoria['nombre'],
-              '{{categoria_nombre}}'=>$subcategoria['categoria_nombre'],
-              '{{descripcion}}'=>$subcategoria['descripcion'],
-              '{{image}}'=>$subcategoria['imagen'],
-              '{{subcategoria-view}}'=>"index.php?ctrl=subcategorias&action=view&id=".$subcategoria['id'],
-              '{{subcategoria-edit}}'=>"index.php?ctrl=subcategorias&action=edit&id=".$subcategoria['id'],
-            ];
-            $this->showForm($id,'subcategoria-edit',$this->modal,$diccionary);
+            $categorias = $this->model->getAllCategorias();
+            $data = $this->getDataCategorias($categorias);
+            $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
+            echo $view;
           } else {
             $errors = [];
             $subcategoria = [

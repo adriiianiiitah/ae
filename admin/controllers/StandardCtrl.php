@@ -228,6 +228,17 @@
       return $list;
     }
 
+    public function getDataCategorias($categorias) {
+      foreach ($categorias as $categoria) {
+        $dictionary = array (
+          '{{categoria_id}}'=>$categoria['categoria_id'],
+          '{{categoria_nombre}}'=>$categoria['categoria_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list;
+    }
+
     public function getView($view, $type ='', $modal ='', $modals = []) {
       switch ($type) {
         case 'view':

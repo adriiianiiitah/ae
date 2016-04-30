@@ -23,5 +23,12 @@
       return $productos;
     }
 
+    function getAllCategorias() {
+      $_query = 'SELECT id AS categoria_id, nombre AS categoria_nombre 
+                FROM categorias';
+      $categorias = $this->connection->execute($_query)->getResult();
+      return $categorias;
+    }
+
   }
 ?>

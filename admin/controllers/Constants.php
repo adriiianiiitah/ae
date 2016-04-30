@@ -33,4 +33,7 @@
 
   define('ROL_TAG_START',                '<!--rol-->');
   define('ROL_TAG_END',                 '<!--.rol-->');
+
+  define('CATEGORIA_TAG_START',                '<!--categoria-->');
+  define('CATEGORIA_TAG_END',                 '<!--.categoria-->');
 ?>
