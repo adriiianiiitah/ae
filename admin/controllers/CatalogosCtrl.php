@@ -3,7 +3,7 @@
 
   class CatalogosCtrl extends StandardCtrl {
     private $model;
-    public $table;
+    public $table_name;
     public $url;
     public $single;
     public $modal;
@@ -48,8 +48,22 @@
         } 
       }
       else {
-          $this->showCatalogos();
-        }
+        $this->showCatalogos();
+      }
+    }
+
+    public function getDictionary($catalogo) {
+      return  array(
+        '{{id}}'              =>$catalogo['id'],
+        '{{codigo}}'          =>$catalogo['codigo'],
+        '{{nombre}}'          =>$catalogo['nombre'],
+        '{{fecha}}'           =>$catalogo['fecha'],
+        '{{categoria}}'       =>$catalogo['categoria_nombre'],
+        '{{image}}'           =>$catalogo['imagen'],
+        //'{{pdf}}'=>$catalogo['pdf'],
+        '{{catalogo-view}}'   =>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
+        '{{catalogo-edit}}'   =>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
+      );
     }
 
     public function showCatalogos() {
@@ -60,17 +74,7 @@
 
       foreach ($catalogos as $catalogo) {
         $area = $row = $this->getRow($view);
-        $diccionary = array(
-          '{{id}}'=>$catalogo['id'],
-          '{{codigo}}'=>$catalogo['codigo'],
-          '{{nombre}}'=>$catalogo['nombre'],
-          '{{fecha}}'=>$catalogo['fecha'],
-          '{{categoria}}'=>$catalogo['categoria'],
-          '{{image}}'=>$catalogo['imagen'],
-          //'{{pdf}}'=>$catalogo['pdf'],
-          '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
-          '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
-        );
+        $diccionary = $this->getDictionary($catalogo);
         $row = strtr($row,$diccionary);
         $table .= $row;
       }
@@ -88,17 +92,7 @@
           $view = $this->getView("catalogo-view", 'view', $this->modal);
 
           $content = $view;
-          $diccionary = [
-            '{{id}}'=>$catalogo['id'],
-            '{{codigo}}'=>$catalogo['codigo'],
-            '{{nombre}}'=>$catalogo['nombre'],
-            '{{fecha}}'=>$catalogo['fecha'],
-            '{{categoria}}'=>$catalogo['categoria'],
-            '{{image}}'=>$catalogo['imagen'],
-            //'{{pdf}}'=>$catalogo['pdf'],
-            '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
-            '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
-          ];
+          $diccionary = $this->getDictionary($catalogo);
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
 
@@ -108,7 +102,6 @@
         }
       } else {
         $this->showErrorPage();
-        
       }
     }
 
@@ -120,18 +113,13 @@
         if ($catalogo) { 
           if(empty($_POST)) {
             $table = "";
-            $diccionary = [
-              '{{id}}'=>$catalogo['id'],
-              '{{codigo}}'=>$catalogo['codigo'],
-              '{{nombre}}'=>$catalogo['nombre'],
-              '{{fecha}}'=>$catalogo['fecha'],
-              '{{categoria}}'=>$catalogo['categoria'],
-              '{{image}}'=>$catalogo['imagen'],
-              //'{{pdf}}'=>$catalogo['pdf'],
-              '{{catalogo-view}}'=>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
-              '{{catalogo-edit}}'=>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
-            ];
-            $this->showForm($id,'catalogo-edit',$this->modal,$diccionary);//
+            $diccionary = $this->getDictionary($catalogo);
+            $view = $this->getViewForm($id,'catalogo-edit',$this->modal,$diccionary);
+
+            $categorias = $this->model->getAllCategorias();
+            $data = $this->getDataCategorias($categorias);
+            $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
+            echo $view;
           } else {
             $errors = [];
 
@@ -172,15 +160,11 @@
             if(empty($errors)){ 
               $this->model->update($catalogo);
               header ("Location: index.php?ctrl=catalogos&action=view&id=".$id);
-              //$this->showCatalogo($id);
             } else {
               $this->editCatalogo($id);
             }
           }
         }
-
-
-
       }
     }
   }

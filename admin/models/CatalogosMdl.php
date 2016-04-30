@@ -16,14 +16,20 @@
     }
 
     function getAll() {
-      $_query = 'SELECT * FROM catalogos';
+      $_query = 'SELECT catalogos.id, catalogos.codigo, catalogos.nombre, fecha, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, pdf, catalogos.imagen 
+                FROM catalogos
+                INNER JOIN categorias
+                ON categorias.id = categoria';
       $catalogos = $this->connection->execute($_query)->getResult();
       return $catalogos;
     }
 
     function getOne($id) {
-      $_query = 'SELECT * FROM catalogos 
-                 WHERE id="'.$id.'"';
+      $_query = 'SELECT catalogos.id, catalogos.codigo, catalogos.nombre, fecha, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, pdf, catalogos.imagen 
+                FROM catalogos
+                INNER JOIN categorias
+                ON categorias.id = categoria 
+                WHERE catalogos.id="'.$id.'"';
       $catalogo = $this->connection->execute($_query)->getFirst();
       return $catalogo;
     }
