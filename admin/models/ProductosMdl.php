@@ -4,6 +4,8 @@
 
   class ProductosMdl extends StandardMdl {
     public $connection;
+    public $_query;
+
     function __construct(){
       parent::__construct();
       $this->connection = DataBase::getInstance();
@@ -14,16 +16,41 @@
     }
 
     function getAll() {
-      $_query = 'SELECT * FROM productos';
+      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen
+                FROM productos
+                INNER JOIN categorias
+                ON categorias.id = categoria
+                INNER JOIN subcategorias
+                ON subcategorias.id = subcategoria
+                INNER JOIN colores
+                ON colores.id = color';
       $productos = $this->connection->execute($_query)->getResult();
       return $productos;
     }
 
     function getOne($id) {
-      $_query = 'SELECT * FROM productos 
-                 WHERE id="'.$id.'"';
+      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen
+                FROM productos
+                INNER JOIN categorias
+                ON categorias.id = categoria
+                INNER JOIN subcategorias
+                ON subcategorias.id = subcategoria  
+                INNER JOIN colores
+                ON colores.id = color
+                WHERE productos.id="'.$id.'"';
       $producto = $this->connection->execute($_query)->getFirst();
       return $producto;
+    }
+
+    function getColoresById($id) {
+      
+    }
+
+    function getTallasById($id) {
+      $_query = 'SELECT talla, stock FROM productos_tallas  
+                 WHERE producto ="'.$id.'"';
+      $tallas = $this->connection->execute($_query)->getResult();
+      return $tallas;
     }
 
     function delete($id) {

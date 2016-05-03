@@ -1,4 +1,4 @@
-  $(function() {
+  $(function() {/*
     var is_open = true;
     $('#menu_toggle').click(function() {
       //$('.left-side.sidebar-offcanvas').hide();
@@ -11,7 +11,7 @@
         $('.right-side').css('margin-left','300px');
         is_open = true;
       }
-    });
+    });*/
   });
 
    IMAGE     = 1; 

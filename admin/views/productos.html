@@ -16,70 +16,66 @@
                   </div>
                 </header>
                 <div class="panel-body">
-                  <table id="bootstrap-table" class="table table-bordered table-hover table-condensed">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Código </th>
-                        <th>Modelo </th>
-                        <th>Nombre </th>
-                        <th>Categoria </th>
-                        <th>Subcategoria </th>
-                        <th>Color </th>
-                        <th>Material </th>
-                        <th>Marca </th>
-                        <th>Altura </th>
-                        <th>Talla </th>
-                        <th>Stock </th>
-                        <th>Price </th>
-                        <th class=" no-link last"><span class="nobr">Acción</span></th>
-                      </tr>
-                    </thead>
-                    <tfoot>
-                      <tr>
-                        <th>#</th>
-                        <th>Código </th>
-                        <th>Modelo </th>
-                        <th>Nombre </th>
-                        <th>Categoria </th>
-                        <th>Subcategoria </th>
-                        <th>Color </th>
-                        <th>Material </th>
-                        <th>Marca </th>
-                        <th>Altura </th>
-                        <th>Talla </th>
-                        <th>Stock </th>
-                        <th>Price </th>
-                        <th class=" no-link last"><span class="nobr">Acción</span></th>
-                      </tr>
-                    </tfoot>
-                    <!--table.tbody-->
-                    <tbody>
-                      <!--row-->
-                      <tr>
-                        <td>{{id}}</td>
-                        <td>{{codigo}}</td>
-                        <td>{{modelo}}</td>
-                        <td>{{nombre}}</td>
-                        <td>{{categoria}}</td>
-                        <td>{{subcategoria}}</td>
-                        <td>{{color}}</td>
-                        <td>{{material}}</td>
-                        <td>{{marca}}</td>
-                        <td>{{altura}}</td>
-                        <td>{{talla}}</td>
-                        <td>{{stock}}</td>
-                        <td>{{precio}}</td>
-                        <td>
-                          <a href="index.php?ctrl=productos&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
-                          <a href="index.php?ctrl=productos&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>
-                          <a href="#" class="btn btn-delete" id="{{id}}" data-toggle="modal" data-target="#delete-item"><i class="fa fa-trash-o"></i></a>
-                        </td>
-                      </tr>
-                      <!--.row-->
-                    </tbody>
-                    <!--.table.tbody-->
-                  </table>
+                  <div class="table-responsive">
+                    <table id="bootstrap-table" class="table table-bordered table-hover table-condensed">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Código</th>
+                          <th>Modelo</th>
+                          <th>Nombre</th>
+                          <th>Categoria</th>
+                          <th>Subcategoria</th>
+                          <th>Color </th>
+                          <th>Material</th>
+                          <th>Marca</th>
+                          <th>Altura</th>
+                          <th>Precio</th>
+                          <th class=" no-link last"><span class="nobr">Acción</span></th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th>#</th>
+                          <th>Código</th>
+                          <th>Modelo</th>
+                          <th>Nombre</th>
+                          <th>Categoria</th>
+                          <th>Subcategoria</th>
+                          <th>Color </th>
+                          <th>Material</th>
+                          <th>Marca</th>
+                          <th>Altura</th>
+                          <th>Precio</th>
+                          <th class=" no-link last"><span class="nobr">Acción</span></th>
+                        </tr>
+                      </tfoot>
+                      <!--table.tbody-->
+                      <tbody>
+                        <!--row-->
+                        <tr>
+                          <td>{{id}}</td>
+                          <td>{{codigo}}</td>
+                          <td>{{modelo}}</td>
+                          <td>{{nombre}}</td>
+                          <td>{{categoria}}</td>
+                          <td>{{subcategoria}}</td>
+                          <td><img src="{{color}}"/></td>
+                          <td>{{material}}</td>
+                          <td>{{marca}}</td>
+                          <td>{{altura}}</td>
+                          <td>{{precio}}</td>
+                          <td>
+                            <a href="{{producto-view}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
+                            <a href="{{producto-edit}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>
+                            <a href="#" class="btn btn-delete" id="{{id}}" data-toggle="modal" data-target="#delete-item"><i class="fa fa-trash-o"></i></a>
+                          </td>
+                        </tr>
+                        <!--.row-->
+                      </tbody>
+                      <!--.table.tbody-->
+                    </table>
+                  </div>
                 </div>
               </section>
             </div>

@@ -26,129 +26,86 @@
             $this->showProductos();
             break;
           case 'view':
-            if(isset($_GET['id']) && !empty($_GET['id']) && is_int((int)$_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id']))
               $this->showProducto($_GET['id']);
             else
               $this->showErrorPage();
             break;
           case 'edit':
-            if(isset($_GET['id']) && !empty($_GET['id']) && is_int((int)$_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id']))
               $this->editProducto($_GET['id']);
             else
-             // $this->showErrorPage();
-               echo 's';
+             $this->showErrorPage();
             break;
           
           default:
-            $this->showProductos();
+            $this->showErrorPage();
             break;
         } 
       }
       else {
-          $this->showProductos();
-        }
+        $this->showProductos();
+      }
+    }
+
+    public function getDictionary($producto) {
+      return  array(
+        '{{id}}'                  =>$producto['id'],
+        '{{codigo}}'              =>$producto['codigo'],
+        '{{modelo}}'              =>$producto['modelo'],
+        '{{nombre}}'              =>$producto['nombre'],
+        '{{categoria}}'           =>$producto['categoria_nombre'],
+        '{{subcategoria}}'        =>$producto['subcategoria_nombre'],
+        '{{descripcion}}'         =>$producto['descripcion'],
+        '{{color}}'               =>$producto['color_imagen'],
+        '{{material}}'            =>$producto['material'],
+        '{{marca}}'               =>$producto['marca'],
+        '{{altura}}'              =>$producto['altura'],
+        //'talla'               =>$producto['talla'],
+        '{{precio}}'              =>$producto['precio'],
+        //'{{stock}}'               =>$producto['stock'],
+        '{{image}}'           =>$producto['imagen'],
+        '{{producto-view}}'   =>"index.php?ctrl=productos&action=view&id=".$producto['id'],
+        '{{producto-edit}}'   =>"index.php?ctrl=productos&action=edit&id=".$producto['id'],
+      );
     }
 
     public function showProductos() {
-      //$productos = $this->model->getAll();
+      $productos = $this->model->getAll();
       $view = $this->getView("productos", 'list', $this->modal);
       $area = $this->getRow($view);
       $table = "";
 
-      //foreach ($productos as $producto) {
-        $producto = [
-          'id'=>'1',
-          'codigo'=>'123456',
-          'modelo'=>'MOD-1234',
-          'nombre'=>'Zapatilla Pump',
-          'categoria'=>'dama',
-          'subcategoria'=>'zapatilla',
-          'descripcion'=>'',
-          'color'=>'negro-multicolor',
-          'material'=>'piel',
-          'marca'=>'AE',
-          'altura'=>'10',
-          'talla'=>'25.0',
-          'precio'=>'$419.00',
-          'stock'=>'$419.00',
-        ];
+      foreach ($productos as $producto) {
         $area = $row = $this->getRow($view);
-        $diccionary = array(
-          '{{id}}'=>$producto['id'],
-          '{{codigo}}'=>$producto['codigo'],
-          '{{modelo}}'=>$producto['modelo'],
-          '{{nombre}}'=>$producto['nombre'],
-          '{{categoria}}'=>$producto['categoria'],
-          '{{subcategoria}}'=>$producto['subcategoria'],
-          '{{descripcion}}'=>$producto['descripcion'],
-          '{{color}}'=>$producto['color'],
-          '{{material}}'=>$producto['material'],
-          '{{marca}}'=>$producto['marca'],
-          '{{altura}}'=>$producto['altura'],
-          '{{talla}}'=>$producto['talla'],
-          '{{precio}}'=>$producto['precio'],
-          '{{stock}}'=>$producto['stock'],
-          '{{producto-view}}'=>"index.php?ctrl=productos&action=view&id=1".$producto['id'],
-          '{{producto-edit}}'=>"index.php?ctrl=productos&action=edit&id=1".$producto['id'],
-        );
+        $diccionary = $this->getDictionary($producto);
         $row = strtr($row,$diccionary);
         $table .= $row;
-      //} 
+      } 
 
       $view = str_replace($area, $table, $view);
       echo $view;
     }
 
     public function showProducto($id) {
-      //$producto = $this->model->getOne($id);
-      $producto = [
-          'id'=>'1',
-          'codigo'=>'123456',
-          'modelo'=>'MOD-1234',
-          'nombre'=>'Zapatilla Pump',
-          'categoria'=>'dama',
-          'subcategoria'=>'zapatilla',
-          'descripcion'=>'',
-          'color'=>'negro-multicolor',
-          'material'=>'piel',
-          'marca'=>'AE',
-          'altura'=>'10',
-          'talla'=>'25.0',
-          'precio'=>'$419.00',
-          'stock'=>'$419.00',
-        ];
-        $table = "";
-
       if($this->isInt($id)) {
-        
-        $view = $this->getView("producto-view", 'view', $this->modal);
+        $producto = $this->model->getOne($id);
 
-        $content = $view;
-        $diccionary = array(
-          '{{id}}'=>$producto['id'],
-          '{{codigo}}'=>$producto['codigo'],
-          '{{modelo}}'=>$producto['modelo'],
-          '{{nombre}}'=>$producto['nombre'],
-          '{{categoria}}'=>$producto['categoria'],
-          '{{subcategoria}}'=>$producto['subcategoria'],
-          '{{descripcion}}'=>$producto['descripcion'],
-          '{{color}}'=>$producto['color'],
-          '{{material}}'=>$producto['material'],
-          '{{marca}}'=>$producto['marca'],
-          '{{altura}}'=>$producto['altura'],
-          '{{talla}}'=>$producto['talla'],
-          '{{precio}}'=>$producto['precio'],
-          '{{stock}}'=>$producto['stock'],
-          '{{producto-view}}'=>"index.php?ctrl=productos&action=view&id=".$producto['id'],
-          '{{producto-edit}}'=>"index.php?ctrl=productos&action=edit&id=".$producto['id'],
-        );
-        $content = strtr($view,$diccionary);
-        $view = str_replace($view, $table, $content);
+        if ($producto) {
+          $table = "";
+          $view = $this->getView("producto-view", 'view', $this->modal);
 
-        echo $view;
+          $content = $view;
+          $diccionary = $this->getDictionary($producto);
+          $content = strtr($view,$diccionary);
+          $view = str_replace($view, $table, $content);
+
+          echo $view;
+        } else {
+          $this->showErrorPage();
+        }
       } else {
         $this->showErrorPage();
-        
       }
     }
 

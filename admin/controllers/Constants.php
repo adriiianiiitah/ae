@@ -19,20 +19,23 @@
   define('INT',      	 '/^([0-9]{1,})+$/');
   define('NUMBER',        '/^([0-9]{1,})\.([0-9]{1,})+$/'); 
 
-  define('ROW_TAG_START',                '<!--row-->');
+  define('ROW_TAG_START',               '<!--row-->');
   define('ROW_TAG_END',                 '<!--.row-->');
 
-  define('PRODUCTO_TAG_START',                '<!--producto-->');
-  define('PRODUCTO_TAG_END',                 '<!--.producto-->');
+  define('PRODUCTO_TAG_START',          '<!--producto-->');
+  define('PRODUCTO_TAG_END',            '<!--.producto-->');
 
-  define('DOMICILIO_TAG_START',          '<!--domicilio-->');
+  define('DOMICILIO_TAG_START',         '<!--domicilio-->');
   define('DOMICILIO_TAG_END',           '<!--.domicilio-->');
 
   define('TELEFONO_TAG_START',           '<!--telefono-->');
-  define('TELEFONO_TAG_END',            '<!--.telefono-->');
+  define('TELEFONO_TAG_END',             '<!--.telefono-->');
 
   define('ROL_TAG_START',                '<!--rol-->');
   define('ROL_TAG_END',                 '<!--.rol-->');
+
+  define('TALLA_TAG_START',                '<!--talla-->');
+  define('TALLA_TAG_END',                 '<!--.talla-->');
 
   define('CATEGORIA_TAG_START',                '<!--categoria-->');
   define('CATEGORIA_TAG_END',                 '<!--.categoria-->');

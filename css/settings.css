@@ -50,7 +50,6 @@ img {
 
 .checkbox, .radio {
   float: left;
-  margin-right: 20px;
 }
 
 .wrapper:before, .wrapper:after {
@@ -127,7 +126,7 @@ img {
 }
 
 .sidebar .sidebar-menu > li > a {
-    padding: 15px 25px;
+    padding: 15px;
     display: block;
 }
 
@@ -138,7 +137,7 @@ img {
 
 .left-side {
     position: absolute;
-    width: 300px;
+    width: 160px;
     top: 0;
     left: 0;
     min-height: 3961px;
@@ -146,13 +145,14 @@ img {
 
 .right-side {
     background-color: #f0f3f4;
-    margin-left: 300px;
+    margin-left: 140px;
     margin-top: 30px;
 }
 
 .content {
     padding: 20px 15px;
     background: #F2F2F2;
+    min-width: 300px;
 }
 
 .row {
@@ -165,7 +165,7 @@ img {
 }
 
 .navbar-right {
-    width: 220px;
+    width: 200px;
     float: right;
 }
 
@@ -224,7 +224,7 @@ ul li button {
 }
 
 .skin-orange .sidebar > .sidebar-menu > li > a .fa {
-    margin-right: 20px;
+    margin-right: 15px;
 }
 
 .skin-orange .user-settings > li > a {
@@ -318,7 +318,7 @@ ul li button {
 .domicilio,
 .telefono {
     margin-bottom: 10px;
-    padding: 10%;
+    padding: 15px;
     border: 1px solid #eee;
     text-align: justify;
 }
@@ -378,23 +378,28 @@ ul li button {
     }
 
     /* Small Devices, Tablets */
-    @media only screen and (max-width : 768px) {
-        .navbar-right {
-            position: relative;
-            width: 100%;
-            clear: both;
-            float: none;
-            margin: 0;
+    @media only screen and (max-width : 767px) {
+        .left-side {
+          width: 80px;
         }
 
         .navbar-right > li a {
             width: 100%;
         }
+
+        .right-side {
+          margin-left: 65px;
+        }
+
+        .sidebar .sidebar-menu > li > a {
+          padding: 15px 30px;
+          font-size: 20px;
+        }
     }
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (max-width : 480px) {
-
+      
     }
 
     /* Custom, iPhone Retina */ 
