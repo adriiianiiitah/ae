@@ -137,6 +137,19 @@
             $roles = $this->model->getAllRoles();
             $data = $this->getDataRoles($roles);
             $view = $this->showData($view,$data,ROL_TAG_START,ROL_TAG_END);
+
+            $paises = $this->model->getAllPaises();
+            $data = $this->getDataPaises($paises);
+            $view = $this->showData($view,$data,PAIS_TAG_START,PAIS_TAG_END);
+
+            $estados = $this->model->getAllEstados();
+            $data = $this->getDataEstados($estados);
+            $view = $this->showData($view,$data,ESTADO_TAG_START,ESTADO_TAG_END);
+
+            $municipios = $this->model->getAllMunicipios();
+            $data = $this->getDataMunicipios($municipios);
+            $view = $this->showData($view,$data,MUNICIPIO_TAG_START,MUNICIPIO_TAG_END);
+
             echo $view;
           } else {
             $errors = [];

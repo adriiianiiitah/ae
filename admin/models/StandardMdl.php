@@ -30,5 +30,26 @@
       return $categorias;
     }
 
+    function getAllPaises() {
+      $_query = 'SELECT id AS pais_id, nombre AS pais_nombre 
+                FROM paises';
+      $paises = $this->connection->execute($_query)->getResult();
+      return $paises;
+    }
+
+    function getAllEstados() {
+      $_query = 'SELECT id AS estado_id, nombre AS estado_nombre 
+                FROM estados';
+      $estados = $this->connection->execute($_query)->getResult();
+      return $estados;
+    }
+
+    function getAllMunicipios() {
+      $_query = 'SELECT id AS municipio_id, nombre AS municipio_nombre 
+                FROM municipios';
+      $municipios = $this->connection->execute($_query)->getResult();
+      return $municipios;
+    }
+
   }
 ?>

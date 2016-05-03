@@ -28,6 +28,17 @@
   define('DOMICILIO_TAG_START',         '<!--domicilio-->');
   define('DOMICILIO_TAG_END',           '<!--.domicilio-->');
 
+  define('PAIS_TAG_START',               '<!--pais-->');
+  define('PAIS_TAG_END',                 '<!--.pais-->');
+
+  define('ESTADO_TAG_START',              '<!--estado-->');
+  define('ESTADO_TAG_END',                '<!--.estado-->');
+
+  define('MUNICIPIO_TAG_START',           '<!--municipio-->');
+  define('MUNICIPIO_TAG_END',             '<!--.municipio-->');
+
+
+
   define('TELEFONO_TAG_START',           '<!--telefono-->');
   define('TELEFONO_TAG_END',             '<!--.telefono-->');
 

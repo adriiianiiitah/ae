@@ -12,7 +12,7 @@
     }
 
     function getAll() {
-      $_query = 'SELECT usuarios.id, usuarios.nombre, apellidos, correo, fecha_nacimiento, genero, imagen, roles.id AS rol_id, roles.nombre AS rol_nombre 
+      $_query = 'SELECT usuarios.id, usuarios.nombre, apellidos, correo, fecha_nacimiento, genero, contrasena, imagen, roles.id AS rol_id, roles.nombre AS rol_nombre 
                 FROM usuarios
                 INNER JOIN roles
                 ON roles.id = rol';

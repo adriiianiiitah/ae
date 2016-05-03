@@ -239,6 +239,39 @@
       return $list;
     }
 
+    public function getDataPaises($paises) {
+      foreach ($paises as $pais) {
+        $dictionary = array(
+          '{{pais_id}}'=>$pais['pais_id'],
+          '{{pais_nombre}}'=>$pais['pais_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
+    public function getDataEstados($estados) {
+      foreach ($estados as $estado) {
+        $dictionary = array(
+          '{{estado_id}}'=>$estado['estado_id'],
+          '{{estado_nombre}}'=>$estado['estado_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
+    public function getDataMunicipios($municipios) {
+      foreach ($municipios as $municipio) {
+        $dictionary = array(
+          '{{municipio_id}}'=>$municipio['municipio_id'],
+          '{{municipio_nombre}}'=>$municipio['municipio_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
     public function getView($view, $type ='', $modal ='', $modals = []) {
       switch ($type) {
         case 'view':
