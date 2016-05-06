@@ -15,16 +15,16 @@
                     </ul>
                   </div>
                 </header>
-                <div class="panel-body">
+                <div class="panel-body table-responsive">
                   <table id="bootstrap-table" class="table table-bordered table-hover table-condensed">
                     <thead>
                       <tr>
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Correo</th>
+                        <th class="hidden-xs hidden-sm">Correo</th>
                         <th>Rol</th>
-                        <th>Fecha nacimiento</th>
+                        <th class="hidden-xs hidden-sm hidden-md">Fecha nacimiento</th>
                         <th class=" no-link last"><span class="nobr">Acción</span></th>
                       </tr>
                     </thead>
@@ -33,9 +33,9 @@
                         <th>#</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
-                        <th>Correo</th>
+                        <th class="hidden-xs hidden-sm">Correo</th>
                         <th>Rol</th>
-                        <th>Fecha nacimiento</th>
+                        <th class="hidden-xs hidden-sm hidden-md">Fecha nacimiento</th>
                         <th class=" no-link last"><span class="nobr">Acción</span></th>
                       </tr>
                     </tfoot>
@@ -46,9 +46,9 @@
                         <td>{{id}}</td>
                         <td>{{nombre}}</td>
                         <td>{{apellidos}}</td>
-                        <td>{{correo}}</td>
+                        <td class="hidden-xs hidden-sm">{{correo}}</td>
                         <td>{{rol}}</td>
-                        <td>{{fecha_nacimiento}}</td>
+                        <td class="hidden-xs hidden-sm hidden-md">{{fecha_nacimiento}}</td>
                         <td>
                           <a href="index.php?ctrl=usuarios&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
                           <a href="index.php?ctrl=usuarios&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>

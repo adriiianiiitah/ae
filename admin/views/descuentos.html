@@ -15,7 +15,7 @@
                   </ul>
                 </div>
               </header>
-              <div class="panel-body">
+              <div class="panel-body table-responsive">
                 <table id="bootstrap-table" class="table table-bordered table-hover table-condensed">
                   <thead>
                     <tr>
@@ -23,10 +23,10 @@
                       <th>Código</th>
                       <th>Producto</th>
                       <th>Descuento (%)</th>
-                      <th>Precio</th>
-                      <th>Cantidad de artículos</th>
-                      <th>Desde</th>
-                      <th>Hasta</th>
+                      <th class="hidden-xs hidden-sm">Precio</th>
+                      <th>Cantidad</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Desde</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Hasta</th>
                       <th class=" no-link last"><span class="nobr">Acción</span></th>
                     </tr>
                   </thead>
@@ -36,10 +36,10 @@
                       <th>Código</th>
                       <th>Producto</th>
                       <th>Descuento (%)</th>
-                      <th>Precio</th>
-                      <th>Cantidad de artículos</th>
-                      <th>Desde</th>
-                      <th>Hasta</th>
+                      <th class="hidden-xs hidden-sm">Precio</th>
+                      <th>Cantidad</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Desde</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Hasta</th>
                       <th class=" no-link last"><span class="nobr">Acción</span></th>
                     </tr>
                   </tfoot>
@@ -51,10 +51,10 @@
                       <td>{{codigo}}</td>
                       <td>{{producto}}</td>
                       <td>{{descuento}}</td>
-                      <td>{{precio}}</td>
+                      <td class="hidden-xs hidden-sm">{{precio}}</td>
                       <td>{{cantidad}}</td>
-                      <td>{{fecha_inicio}}</td>
-                      <td>{{fecha_fin}}</td>
+                      <td class="hidden-xs hidden-sm hidden-md">{{fecha_inicio}}</td>
+                      <td class="hidden-xs hidden-sm hidden-md">{{fecha_fin}}</td>
                       <td>
                         <a href="index.php?ctrl=descuentos&action=view&id={{id}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
                         <a href="index.php?ctrl=descuentos&action=edit&id={{id}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>

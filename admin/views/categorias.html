@@ -16,23 +16,23 @@
                   </ul>
                 </div>
               </header>
-              <div class="panel-body">
+              <div class="panel-body table-responsive">
                 <table id="bootstrap-table" class="table table-bordered table-hover table-condensed">
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Código </th>
-                      <th>Nombre </th>
-                      <th>Descripcion </th>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Descripcion</th>
                       <th class="no-link last"><span class="nobr">Acción</span></th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                       <th>#</th>
-                      <th>Código </th>
-                      <th>Nombre </th>
-                      <th>Descripcion </th>
+                      <th>Código</th>
+                      <th>Nombre</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Descripcion</th>
                       <th class=" no-link last"><span class="nobr">Acción</span></th>
                     </tr>
                   </tfoot>
@@ -43,7 +43,7 @@
                       <td>{{id}}</td>
                       <td>{{codigo}}</td>
                       <td>{{nombre}}</td>
-                      <td>{{descripcion}}</td>
+                      <td class="hidden-xs hidden-sm hidden-md">{{descripcion}}</td>
                       <td>
                         <a href="{{categoria-view}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
                         <a href="{{categoria-edit}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>

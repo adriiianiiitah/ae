@@ -15,17 +15,17 @@
                   </ul>
                 </div>
               </header>
-              <div class="panel-body">
+              <div class="panel-body table-responsive">
                 <table id="bootstrap-table" class="table table-bordered table-hover table-condensed">
                   <thead>
                     <tr>
                       <th>#</th>
                       <th>Código</th>
                       <th>Producto</th>
-                      <th>Cantidad de artículos</th>
-                      <th>Precio</th>
-                      <th>Desde</th>
-                      <th>Hasta</th>
+                      <th>Cantidad</th>
+                      <th class="hidden-xs">Precio</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Desde</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Hasta</th>
                       <th class=" no-link last"><span class="nobr">Action</span></th>
                     </tr>
                   </thead>
@@ -34,10 +34,10 @@
                       <th>#</th>
                       <th>Código</th>
                       <th>Producto</th>
-                      <th>Cantidad de artículos</th>
-                      <th>Precio</th>
-                      <th>Desde</th>
-                      <th>Hasta</th>
+                      <th>Cantidad</th>
+                      <th class="hidden-xs">Precio</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Desde</th>
+                      <th class="hidden-xs hidden-sm hidden-md">Hasta</th>
                       <th class=" no-link last"><span class="nobr">Action</span></th>
                     </tr>
                   </tfoot>
@@ -48,9 +48,9 @@
                       <td>{{codigo}}</td>
                       <td>{{producto}}</td>
                       <td>{{cantidad}}</td>
-                      <td>{{precio}}</td>
-                      <td>{{fecha_inicio}}</td>
-                      <td>{{fecha_fin}}</td>
+                      <td class="hidden-xs">{{precio}}</td>
+                      <td class="hidden-xs hidden-sm hidden-md">{{fecha_inicio}}</td>
+                      <td class="hidden-xs hidden-sm hidden-md">{{fecha_fin}}</td>
                       <td>
                         <a href="{{oferta-view}}" class="btn btn-show"><i class="fa fa-eye"></i></a>
                         <a href="{{oferta-edit}}" class="btn btn-edit"><i class="fa fa-pencil"></i></a>
