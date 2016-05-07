@@ -239,6 +239,28 @@
       return $list;
     }
 
+    public function getDataSubcategorias($subcategorias) {
+      foreach ($subcategorias as $subcategoria) {
+        $dictionary = array (
+          '{{subcategoria_id}}'=>$subcategoria['subcategoria_id'],
+          '{{subcategoria_nombre}}'=>$subcategoria['subcategoria_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list;
+    }
+
+    public function getDataColores($colores) {
+      foreach ($colores as $color) {
+        $dictionary = array (
+          '{{color_id}}'=>$color['color_id'],
+          '{{color_nombre}}'=>$color['color_nombre']
+        );
+        $list[] = $dictionary;
+      }
+      return $list;
+    }
+
     public function getDataPaises($paises) {
       foreach ($paises as $pais) {
         $dictionary = array(
@@ -272,6 +294,18 @@
       return $list; 
     }
 
+    public function getDataTallas($tallas) {
+      $list = array();
+      foreach ($tallas as $talla) {
+        $dictionary = array(
+          '{{talla}}'=>$talla['talla'],
+          '{{stock}}'=>$talla['stock']
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
     public function getView($view, $type ='', $modal ='', $modals = []) {
       switch ($type) {
         case 'view':
@@ -294,6 +328,11 @@
           return $navigation.$modals_.$view.$footer;
           break;
       }
+    }
+
+    public function print_exit($variable) {
+      var_dump($variable); 
+      exit();
     }
 
     public function moveImage($temp, $name) {

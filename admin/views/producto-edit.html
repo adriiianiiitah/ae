@@ -7,13 +7,13 @@
                 <h1>Producto</h1>
               </header>
               <div class="panel-body">
-                <form method="post" class="form-horizontal form-label-left" onsubmit="return validate()" data-validate>
+                <form method="post" class="form-horizontal form-label-left" onsubmit="return validate()" enctype="multipart/form-data"  data-validate>
                   <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
 
                     <div class="profile_img">
                       <div id="crop-avatar">
                         <div>
-                          <img id="image-file" src="../img/200x200.png" alt="producto" data-image>
+                          <img id="image-file" src="{{image}}" alt="producto" data-image>
                         </div>
                       </div>
                     </div>
@@ -23,7 +23,27 @@
                         <input type="file" id="image" name="image" class="form-control col-md-7 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
                       </div>
                     </div>
+                    <div class="form-group">
+                      <label class="control-label col-xs-6 hidden-xs" for="tallas">Tallas <span class="required">*</span></label>
+                      <label class="control-label col-xs-6 hidden-xs" for="tallas">Strock <span class="required">*</span></label>
+                      <!--talla-->
+                      <div class="col-xs-12">
+                        <div class="form-group">
+                          <div class="checkbox col-md-3 col-sm-6 col-xs-12">
+                            <label>
+                              <input type="checkbox" name="tallas">{{talla}}
+                            </label>
+                          </div>
 
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="number" id="stock" name="stock" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer value="{{stock}}"/>
+                          </div>
+                        </div>
+                      </div>
+                      <!--.talla-->
+                    </div>
+                  </div>
+                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
                     <div class="form-group">
                       <label class="control-label col-md-3 col-sm-12 col-xs-12" for="codigo">Código <span class="required">*</span>
                       </label>
@@ -38,28 +58,6 @@
                         <input type="text" id="modelo" name="modelo" class="form-control col-md-7 col-xs-12" data-required data-code value="{{modelo}}"/>
                       </div>
                     </div>
-
-                    <div class="form-group">
-                      <label class="control-label col-xs-6 hidden-xs" for="tallas">Tallas <span class="required">*</span></label>
-                      <label class="control-label col-xs-6 hidden-xs" for="tallas">Strock <span class="required">*</span></label>
-                      
-                      <div class="col-xs-12">
-                        <div class="form-group">
-                          <div class="checkbox col-md-3 col-sm-6 col-xs-12">
-                            <label>
-                              <input type="checkbox" name="tallas" data-checked>{{talla}}
-                            </label>
-                          </div>
-
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" id="stock" name="stock" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer value="{{stock}}"/>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
                     <div class="form-group">
                       <label class="control-label col-md-3 col-sm-12 col-xs-12" for="nombre">Nombre <span class="required">*</span></label>
                       <div class="col-md-6 col-sm-12 col-xs-12">
@@ -71,9 +69,9 @@
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <select id="categoria" name="categoria" class="form-control col-md-7 col-xs-12" data-required>
                           <option value="">Seleccione</option>
-                          <option value="dama">Dama</option>
-                          <option value="caballero">Caballero</option>
-                          <option value="infantil">Infantil</option>
+                          <!--categoria-->
+                          <option value="{{categoria_id}}">{{categoria_nombre}}</option>
+                          <!--.categoria-->
                         </select>
                       </div>
                     </div>
@@ -82,9 +80,9 @@
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <select id="subcategoria" name="subcategoria" class="form-control col-md-7 col-xs-12" data-required>
                           <option value="">Seleccione</option>
-                          <option value="zapatilla">Zapatilla</option>
-                          <option value="bota">Bota</option>
-                          <option value="deportivo">Deportivo</option>
+                          <!--subcategoria-->
+                          <option value="{{subcategoria_id}}">{{subcategoria_nombre}}</option>
+                          <!--.subcategoria-->
                         </select>
                       </div>
                     </div>
@@ -122,9 +120,9 @@
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <select id="color" name="color" class="form-control col-md-7 col-xs-12" data-required>
                           <option value="">Seleccione</option>
-                          <option value="dama">Negro</option>
-                          <option value="caballero">Negro-plata</option>
-                          <option value="infantil">Rojo</option>
+                          <!--color-->
+                          <option value="{{color_id}}">{{color_nombre}}</option>
+                          <!--.color-->
                         </select>
                       </div>
                     </div>

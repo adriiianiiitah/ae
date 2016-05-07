@@ -8,7 +8,7 @@
   define('PASS',     	 '/^(?=^.{4,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/');
   define('EMAIL',        '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/');
   define('CODE',         '/^([A-Za-z0-9\-]{5,10})+$/');
-  define('NAME',         '/^(([A-Za-záéíóúñ]{2,})|([A-Za-záéíóúñ]{2,}[\s][A-Za-záéíóúñ]{2,}))+$/');
+  define('NAME',         '/^(([A-Za-záéíóúñ]{2,})|([A-Za-záéíóúñ]{2,}[\s][A-Za-záéíóúñ\s]{2,}))+$/');
   define('LAST_NAME',    '/^(([A-Za-záéíóúñ]{2,})|([A-Za-záéíóúñ]{2,}[\s][A-Za-záéíóúñ]{2,}))+$/'); 
   define('DESCRIPTION',  '/^(([A-Za-záéíóúñ0-9\-\/\.\, ]{1,}))+$/');
   define('ALPHANUMERIC',  '/^(([A-Za-záéíóúñ0-9 ]{1,}))+$/');
@@ -37,17 +37,21 @@
   define('MUNICIPIO_TAG_START',           '<!--municipio-->');
   define('MUNICIPIO_TAG_END',             '<!--.municipio-->');
 
+  define('TELEFONO_TAG_START',            '<!--telefono-->');
+  define('TELEFONO_TAG_END',              '<!--.telefono-->');
 
+  define('ROL_TAG_START',                 '<!--rol-->');
+  define('ROL_TAG_END',                   '<!--.rol-->');
 
-  define('TELEFONO_TAG_START',           '<!--telefono-->');
-  define('TELEFONO_TAG_END',             '<!--.telefono-->');
-
-  define('ROL_TAG_START',                '<!--rol-->');
-  define('ROL_TAG_END',                 '<!--.rol-->');
-
-  define('TALLA_TAG_START',                '<!--talla-->');
+  define('TALLA_TAG_START',               '<!--talla-->');
   define('TALLA_TAG_END',                 '<!--.talla-->');
 
-  define('CATEGORIA_TAG_START',                '<!--categoria-->');
-  define('CATEGORIA_TAG_END',                 '<!--.categoria-->');
+  define('CATEGORIA_TAG_START',           '<!--categoria-->');
+  define('CATEGORIA_TAG_END',             '<!--.categoria-->');
+
+  define('SUBCATEGORIA_TAG_START',         '<!--subcategoria-->');
+  define('SUBCATEGORIA_TAG_END',           '<!--.subcategoria-->');
+
+  define('COLOR_TAG_START',               '<!--color-->');
+  define('COLOR_TAG_END',                 '<!--.color-->');
 ?>

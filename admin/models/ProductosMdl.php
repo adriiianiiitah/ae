@@ -43,12 +43,15 @@
     }
 
     function getColoresById($id) {
-      
+    
     }
 
     function getTallasById($id) {
-      $_query = 'SELECT talla, stock FROM productos_tallas  
-                 WHERE producto ="'.$id.'"';
+      $_query = 'SELECT tallas.talla, stock 
+                 FROM tallas 
+                 INNER JOIN productos_tallas
+                 ON tallas.id = productos_tallas.talla 
+                 WHERE producto="'.$id.'"';
       $tallas = $this->connection->execute($_query)->getResult();
       return $tallas;
     }
@@ -60,7 +63,7 @@
       return $producto;
     }
 
-    function update($id) {
+    function update($producto) {
       $_query = 'UPDATE productos SET 
                 codigo = "'.$producto['codigo'].'",
                 modelo = "'.$producto['modelo'].'",
@@ -72,8 +75,8 @@
                 marca = "'.$producto['marca'].'",
                 altura = "'.$producto['altura'].'",
                 precio = "'.$producto['precio'].'",
-                stock = "'.$producto['stock'].'",
-                imagen = "'.$producto['imagen'].'",
+                color = "'.$producto['color'].'",
+                imagen = "'.$producto['imagen'].'"
                 WHERE id="'.$producto['id'].'"';
       $producto = $this->connection->execute($_query);
     }

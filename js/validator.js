@@ -1,17 +1,5 @@
-  $(function() {/*
-    var is_open = true;
-    $('#menu_toggle').click(function() {
-      //$('.left-side.sidebar-offcanvas').hide();
-      if(is_open) {
-        $('.left-side.sidebar-offcanvas').css({'width':'100px'});
-        $('.right-side').css('margin-left','100px');
-        is_open = false;
-      } else {
-        $('.left-side.sidebar-offcanvas').css({'width':'300px'});
-        $('.right-side').css('margin-left','300px');
-        is_open = true;
-      }
-    });*/
+  $(function() {
+    
   });
 
    IMAGE     = 1; 
@@ -523,7 +511,7 @@
   }
 
   function isName(name) {
-    var expreg = /^(([A-Za-záéíóúñ]{2,})|([A-Za-záéíóúñ]{2,}[\s][A-Za-záéíóúñ]{2,}))+$/;
+    var expreg = /^(([A-Za-záéíóúñ]{2,})|([A-Za-záéíóúñ]{2,}[\s][A-Za-záéíóúñ\s]{2,}))+$/;
   
     if(expreg.test(name)) {
       return true;
