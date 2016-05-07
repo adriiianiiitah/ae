@@ -62,7 +62,8 @@
 <p>El administrador podrá cancelar pedidos o confirmarlos.</p>
 <p>Al realizarse una venta, se deberán pedir al cliente los datos de envío, se enviará por correo la confirmación del servicio. El pago se realizará en línea con alguna forma de pago como Conekta, Open Pay o Pago Facil. Una vez realizado el pago se enviará por correo la factura y se descontará de inventarios, es importante decir que no se podrá realizar una venta si no se encuentra el producto en stock.</p>
 
-<h3>Link</h3>
+<h3>Links</h3>
 
-<a href="http://aeshoes.webcindario.com/"><p>aeshoes.webcindario.com</p></a>
-<a href="http://aeshoes.webcindario.com/admin"><p>aeshoes.webcindario.com/admin</p></a>
+<p>Link de la página: <a href="http://aeshoes.webcindario.com/">aeshoes.webcindario.com</a></p>
+<p>Panel Administrativo: <a href="http://aeshoes.webcindario.com/admin">aeshoes.webcindario.com/admin</a></p>
+
