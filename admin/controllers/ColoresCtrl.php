@@ -3,7 +3,7 @@
 
   class ColoresCtrl extends StandardCtrl {
     private $model;
-    public $table;
+    public $table_name;
     public $single;
     public $url;
     public $modal;
@@ -48,8 +48,19 @@
         } 
       }
       else {
-          $this->showColores();
-        }
+        $this->showColores();
+      }
+    }
+
+    public function getDictionary($color) {
+      return array(
+        '{{id}}'          =>$color['id'],
+        '{{codigo}}'      =>$color['codigo'],
+        '{{nombre}}'      =>$color['nombre'],
+        '{{image}}'       =>$color['imagen'],
+        '{{color-view}}'  =>"index.php?ctrl=colores&action=view&id=".$color['id'],
+        '{{color-edit}}'  =>"index.php?ctrl=colores&action=edit&id=".$color['id'],
+      );
     }
 
     public function showColores() {
@@ -60,14 +71,8 @@
 
       foreach ($colors as $color) {
         $area = $row = $this->getRow($view);
-        $diccionary = array(
-          '{{id}}'=>$color['id'],
-          '{{codigo}}'=>$color['codigo'],
-          '{{nombre}}'=>$color['nombre'],
-          '{{image}}'=>$color['imagen'],
-          '{{color-view}}'=>"index.php?ctrl=colores&action=view&id=".$color['id'],
-          '{{color-edit}}'=>"index.php?ctrl=colores&action=edit&id=".$color['id'],
-        );
+        $diccionary = $this->getDictionary($color);
+        
         $row = strtr($row,$diccionary);
         $table .= $row;
       }
@@ -77,24 +82,15 @@
     }
 
     public function showColor($id) {
-
       if($this->isInt($id)) {
         $color = $this->model->getOne($id);
 
         if($color) {
           $table = "";
-        
           $view = $this->getView("color-view", 'view', $this->modal);
 
           $content = $view;
-          $diccionary = [
-            '{{id}}'=>$color['id'],
-            '{{codigo}}'=>$color['codigo'],
-            '{{nombre}}'=>$color['nombre'],
-            '{{image}}'=>$color['imagen'],
-            '{{color-view}}'=>"index.php?ctrl=colores&action=view&id=".$color['id'],
-            '{{color-edit}}'=>"index.php?ctrl=colores&action=edit&id=".$color['id'],
-          ];
+          $diccionary = $this->getDictionary($color);
           $content = strtr($view,$diccionary);
           $view = str_replace($view, $table, $content);
 
@@ -108,7 +104,6 @@
     }
 
     public function createColor() {
-
       $color = [
         'id'            =>'',
         'codigo'        =>'',
@@ -118,31 +113,41 @@
       $table = "";
 
       if(empty($_POST)) {
-        $diccionary = array(
-          '{{id}}'=>$color['id'],
-          '{{codigo}}'=>$color['codigo'],
-          '{{nombre}}'=>$color['nombre'],
-          '{{color-view}}'=>"index.php?ctrl=colores&action=view&id=".$color['id'],
-          '{{color-edit}}'=>"index.php?ctrl=colores&action=edit&id=".$color['id'],
-        );
-        $this->showForm($id,'color-edit',$this->modal,$diccionary);
+        $diccionary = $this->getDictionary($color);
+        $view = $this->getViewForm($id,'color-edit',$this->modal,$diccionary);
+
+        echo $view;
       } else {
+        $errors = [];
+        $color = [
+          'id' => $id
+        ];
+        if($this->isCode($_POST['codigo'])) {
+          $color['codigo'] = $_POST['codigo'];
+        } else {
+          $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isColor($_POST['nombre'])) {
+          $color['nombre'] = $_POST['nombre'];
+        } else {
+          $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
 
         if($_FILES['image']['tmp_name'] != '') {
-          $image = $this->uploadImage($id, $this->table_name, $_FILES['image'],$this->url);
+          $color['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+        } else {
+          $color['imagen'] = $imagen;
         }
 
-        if($_POST['nombre'] && $_POST['codigo']) {
-          
+        if(empty($errors)) {
+          $this->model->update($color);
+          header ("Location: index.php?ctrl=colores&action=view&id=".$id);
+        } else {
+          $this->editColor($id);
         }
-          
-          $id = 2;
-          $color = [
-            'id'            =>'',
-            'codigo'        =>$_POST['codigo'],
-            'nombre'        =>$_POST['nombre'],
-            'imagen'        =>$this->uploadImage($id, $this->table_name, $_FILES['image'],$this->url)
-          ];
+
+ 
           $id = $this->model->create($color);
 
         //$this->model->update($color);
@@ -159,16 +164,10 @@
         if($color) {
           if(empty($_POST)) {
             $table = "";
+            $diccionary = $this->getDictionary($color);
+            $view = $this->getViewForm($id,'color-edit',$this->modal,$diccionary);
 
-            $diccionary = [
-              '{{id}}'=>$color['id'],
-              '{{codigo}}'=>$color['codigo'],
-              '{{nombre}}'=>$color['nombre'],
-              '{{image}}'=>$color['imagen'],
-              '{{color-view}}'=>"index.php?ctrl=colores&action=view&id=".$color['id'],
-              '{{color-edit}}'=>"index.php?ctrl=colores&action=edit&id=".$color['id'],
-            ];
-            $this->showForm($id,'color-edit',$this->modal,$diccionary);
+            echo $view;
           } else {
             $errors = [];
             $color = [
@@ -195,17 +194,13 @@
             if(empty($errors)){
               $this->model->update($color);
               header ("Location: index.php?ctrl=colores&action=view&id=".$id);
-              //$this->showColor($id);
             } else {
               $this->editColor($id);
             }
           }
         }
-
-
-
       }
-       
     }
+    
   }
 ?>
