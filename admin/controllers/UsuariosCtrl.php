@@ -15,7 +15,7 @@
       $this->model = new UsuariosMdl();
       $this->table_name = 'usuarios';
       $this->single = 'usuario';
-      $this->url = 'images/usuarios';
+      $this->url = 'images/usuarios/';
       $this->modal = 'modal-delete-usuario';
       $this->modals = [
         'modal_address',

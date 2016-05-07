@@ -7,6 +7,7 @@
     public $single;
     public $url;
     public $modal;
+    public $image;
 
     public function __construct() {
       parent::__construct();
@@ -15,6 +16,7 @@
       $this->table_name = 'colores';
       $this->single = 'color';
       $this->url = 'images/colores/';
+      $this->image = 'images/colores/color.png';
       $this->modal = 'modal-delete-color';
     }
 
@@ -108,20 +110,19 @@
         'id'            =>'',
         'codigo'        =>'',
         'nombre'        =>'',
-        'imagen'        =>''
+        'imagen'        =>$this->image
       ];
-      $table = "";
+      $id ='';
 
       if(empty($_POST)) {
+        $table = "";
         $diccionary = $this->getDictionary($color);
         $view = $this->getViewForm($id,'color-edit',$this->modal,$diccionary);
 
         echo $view;
       } else {
         $errors = [];
-        $color = [
-          'id' => $id
-        ];
+
         if($this->isCode($_POST['codigo'])) {
           $color['codigo'] = $_POST['codigo'];
         } else {
@@ -133,26 +134,18 @@
         } else {
           $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y guiones.';
         }
-
-        if($_FILES['image']['tmp_name'] != '') {
-          $color['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
-        } else {
-          $color['imagen'] = $imagen;
-        }
-
+        
         if(empty($errors)) {
-          $this->model->update($color);
+          $id = $this->model->insert($color);
+          if($_FILES['image']['tmp_name'] != '') {
+            $color['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            $this->model->updateImage($id, $color['imagen']);
+          }
+          
           header ("Location: index.php?ctrl=colores&action=view&id=".$id);
         } else {
-          $this->editColor($id);
+          $this->createColor($id);
         }
-
- 
-          $id = $this->model->create($color);
-
-        //$this->model->update($color);
-
-        $this->showColor(1);
       }
     }
 

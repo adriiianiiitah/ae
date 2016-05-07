@@ -12,7 +12,8 @@
       require_once('./models/ProductosMdl.php');
       $this->model = new ProductosMdl();
       $this->table_name = 'productos';
-      $this->url = 'images/productos';
+      $this->single = 'producto';
+      $this->url = 'images/productos/';
       $this->modal = 'modal-delete-producto';
     }
 

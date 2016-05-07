@@ -9,9 +9,6 @@
     function __construct(){
       parent::__construct();
       $this->connection = DataBase::getInstance();
-      //$this->imagen = '';
-      //$this->codigo = '';
-      //$this->nombre = '';
     }
 
     function create($color) {
@@ -40,6 +37,16 @@
     return $color;
     }*/
 
+    function insert($color) {
+      $_query = 'INSERT INTO colores (codigo,nombre,imagen) 
+                 VALUES (
+                   "'.$color['codigo'].'",
+                   "'.$color['nombre'].'",
+                   "'.$color['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
 
     function update($color) {
       $_query = 'UPDATE colores SET 
@@ -48,7 +55,13 @@
                 imagen = "'.$color['imagen'].'" 
                 WHERE id="'.$color['id'].'"';
       $color = $this->connection->execute($_query);
-    //return $color;
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE colores SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
+      $color = $this->connection->execute($_query);
     }
   }
 ?>

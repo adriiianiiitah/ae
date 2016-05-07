@@ -1,4 +1,6 @@
 <?php 
+  define('IMAGE',                 'images/default.png');
+
   define('FEMENINO',                 'femenino');
   define('MASCULINO',                'masculino');
 
