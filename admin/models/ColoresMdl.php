@@ -10,10 +10,6 @@
       parent::__construct();
       $this->connection = DataBase::getInstance();
     }
-
-    function create($color) {
-      
-    }
  
     function getAll() {
       $_query = 'SELECT * FROM colores';

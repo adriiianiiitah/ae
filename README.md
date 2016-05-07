@@ -1,23 +1,36 @@
-PROYECTO  DE  PROGRAMACIÒN  WEB
-Adriana Guadalupe Montes Díaz
+<h1>PROYECTO  DE  PROGRAMACIÒN  WEB</h1>
+<h2>Adriana Guadalupe Montes Díaz</h2>
 
-Mi proyecto es una tienda en línea para una empresa de venta de calzado, que además de servir como apoyo por su catálogo de productos, catálogos digitales, también permitirá realizar pedidos, consultar estados de entregas, consultar existencias, promociones. 
-Categorias
-Dama
-Infantil
-Caballero
-Subcategorias
-Zapatilla
-Bota
-Sandalia
-Flat
-Deportivo
-Pantufla
-Cabe destacar que no todas las subcategorías entran en todas las categorías. 
+<p>Mi proyecto es una tienda en línea para una empresa de venta de calzado, que además de servir como apoyo por su catálogo de productos, catálogos digitales, también permitirá realizar pedidos, consultar estados de entregas, consultar existencias, promociones.</p>
 
-INICIO
-Deberá haber una página de inicio con menú, slider para las promociones, enlaces a las categorías por medio de cards, galeria de marcas, footer con enlaces a las subcategorias, términos y condiciones, y alguna forma de logueo. Los iconos de redes sociales deberán estar fijos al extremo izquierdo en medio de la página.
-CATALOGOS
+<h3>Categorias</h3>
+<ul>
+  <li>Dama</li>
+  <li>Infantil</li>
+  <li>Caballero</li>
+</ul>
+
+<h3>Subcategorias</h3>
+<ol>
+  <li>Zapatilla</li>
+  <li>Bota</li>
+  <li>Sandalia</li>
+  <li>Flat</li>
+  <li>Deportivo</li>
+  <li>Pantufla</li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
+
+<p>Cabe destacar que no todas las subcategorías entran en todas las categorías.</p> 
+
+<h3>INICIO</h3>
+
+<p>Deberá haber una página de inicio con menú, slider para las promociones, enlaces a las categorías por medio de cards, galeria de marcas, footer con enlaces a las subcategorias, términos y condiciones, y alguna forma de logueo. Los iconos de redes sociales deberán estar fijos al extremo izquierdo en medio de la página.</p>
+
+<h3>CATALOGOS</h3>
+
 En esta sección, solo deberá haber enlaces por medio de cards a los diferentes catalogos, que está por definirse si se mostrarán en un modal o una página aparte.
 CATEGORÍA
 En la sección de cualquier categoría de las ya mencionadas, deberá haber filtros por subcategoría, color, talla,  precio y otros que se puedan ir agregando. Los productos irán en cards, con nombre, precio y modelo. Al dar clic en algún card se abrirá una pestaña donde aparecerá el producto en grande con toda su información, y al fondo prodrá ir un slider con los productos más vendidos. Además deberá tener un botón de agregar al carrito, y algún modo de seleccionar cantidad, por modelo, color, talla.
