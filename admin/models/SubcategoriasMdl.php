@@ -11,10 +11,6 @@
       $this->connection = DataBase::getInstance();
     }
 
-    function create() {
-
-    }
-
     function getAll() {
       $_query = 'SELECT subcategorias.id, subcategorias.codigo, subcategorias.nombre, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, subcategorias.imagen, subcategorias.descripcion 
                 FROM subcategorias 
@@ -41,6 +37,18 @@
       return $category;
     }
     */
+    function insert($subcategoria) {
+      $_query = 'INSERT INTO subcategorias (codigo,nombre,categoria,descripcion,imagen) 
+                 VALUES (
+                   "'.$subcategoria['codigo'].'",
+                   "'.$subcategoria['nombre'].'",
+                   "'.$subcategoria['categoria'].'",
+                   "'.$subcategoria['descripcion'].'",
+                   "'.$subcategoria['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
 
     function update($subcategoria) {
       $_query = 'UPDATE subcategorias SET 
@@ -50,6 +58,13 @@
                 descripcion = "'.$subcategoria['descripcion'].'",
                 imagen = "'.$subcategoria['imagen'].'" 
                 WHERE id="'.$subcategoria['id'].'"';
+      $subcategoria = $this->connection->execute($_query);
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE subcategorias SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
       $subcategoria = $this->connection->execute($_query);
     }
   }

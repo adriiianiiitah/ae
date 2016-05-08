@@ -7,6 +7,7 @@
     public $single;
     public $url;
     public $modal;
+    public $image;
 
     public function __construct() {
       parent::__construct();
@@ -15,6 +16,7 @@
       $this->table_name = 'subcategorias';
       $this->single = 'subcategoria';
       $this->url = 'images/subcategorias/';
+      $this->image = 'images/subcategorias/subcategoria.png';
       $this->modal = 'modal-delete-subcategoria';
     }
 
@@ -39,13 +41,15 @@
             else
               $this->showErrorPage();
             break;
-          
+          case 'create':
+              $this->createSubcategoria();
+            break;
           default:
             $this->showErrorPage();
             break;
         } 
       } else {
-          $this->showSubcategorias();
+        $this->showSubcategorias();
       }
     }
 
@@ -99,6 +103,66 @@
         }
       } else {
         $this->showErrorPage();
+      }
+    }
+
+    public function createSubcategoria() {
+      $subcategoria = [
+        'id'            =>'',
+        'codigo'        =>'',
+        'nombre'        =>'',
+        'categoria_nombre'        =>'',
+        'descripcion'        =>'',
+        'imagen'        =>$this->image
+      ];
+      $id ='';
+
+      if(empty($_POST)) {
+        $table = "";
+        $diccionary = $this->getDictionary($subcategoria);
+        $view = $this->getViewForm($id,'subcategoria-edit',$this->modal,$diccionary);
+
+        $categorias = $this->model->getAllCategorias();
+        $data = $this->getDataCategorias($categorias);
+        $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
+        echo $view;
+      } else {
+        $errors = [];
+        
+        if($this->isCode($_POST['codigo'])) {
+          $subcategoria['codigo'] = $_POST['codigo'];
+        } else {
+          $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+        if($this->isAlphanumeric($_POST['nombre'])) {
+          $subcategoria['nombre'] = $_POST['nombre'];
+        } else {
+          $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isInt($_POST['categoria'])) {
+          $subcategoria['categoria'] = $_POST['categoria'];
+        } else {
+          $errors['categoria'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isDescription($_POST['descripcion'])) {
+          $subcategoria['descripcion'] = $_POST['descripcion'];
+        } else {
+          $errors['descripcion'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if(empty($errors)){
+          $id = $this->model->insert($subcategoria);
+          if($_FILES['image']['tmp_name'] != '') {
+            $subcategoria['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            $this->model->updateImage($id, $subcategoria['imagen']);
+          }
+
+          header ("Location: index.php?ctrl=subcategorias&action=view&id=".$id);
+        } else {
+          $this->createSubcategoria($id);
+        }
       }
     }
 
