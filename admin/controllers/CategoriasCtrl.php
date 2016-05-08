@@ -7,6 +7,7 @@
     public $single;
     public $url;
     public $modal;
+    public $image;
 
     public function __construct() {
       parent::__construct();
@@ -15,6 +16,7 @@
       $this->table_name = 'categorias';
       $this->single = 'categoria';
       $this->url = 'images/categorias/';
+      $this->image = 'images/categorias/categoria.png';
       $this->modal = 'modal-delete-categoria';
     }
 
@@ -39,7 +41,9 @@
             else
               $this->showErrorPage();
             break;
-          
+          case 'create':
+              $this->createCategoria();
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -98,6 +102,54 @@
       } else {
         $this->showErrorPage();
         
+      }
+    }
+
+    public function createCategoria() {
+      $categoria = [
+        'id'            =>'',
+        'codigo'        =>'',
+        'nombre'        =>'',
+        'descripcion'   =>'',
+        'imagen'        =>$this->image
+      ];
+      $id ='';
+
+      if(empty($_POST)) {
+        $table = "";
+        $diccionary = $this->getDictionary($categoria);
+        $view = $this->getViewForm($id,'categoria-edit',$this->modal,$diccionary);
+        echo $view;
+      } else {
+        $errors = [];
+
+        if($this->isCode($_POST['codigo'])) {
+          $categoria['codigo'] = $_POST['codigo'];
+        } else {
+          $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+        if($this->isAlphanumeric($_POST['nombre'])) {
+          $categoria['nombre'] = $_POST['nombre'];
+        } else {
+          $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isDescription($_POST['descripcion'])) {
+          $categoria['descripcion'] = $_POST['descripcion'];
+        } else {
+          $errors['descripcion'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if(empty($errors)){
+          $id = $this->model->insert($categoria);
+          if($_FILES['image']['tmp_name'] != '') {
+            $categoria['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            $this->model->updateImage($id, $categoria['imagen']);
+          }
+          header ("Location: index.php?ctrl=categorias&action=view&id=".$id);
+        } else {
+          $this->createCategoria();
+        }
       }
     }
 

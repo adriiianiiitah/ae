@@ -10,11 +10,7 @@
       parent::__construct();
       $this->connection = DataBase::getInstance();
     }
-/*
-    function create() {
 
-    }
-*/
     function getAll() {
       $_query = 'SELECT * FROM categorias';
       $categorias = $this->connection->execute($_query)->getResult();
@@ -35,6 +31,17 @@
       return $category;
     }
   */
+    function insert($categoria) {
+      $_query = 'INSERT INTO categorias (codigo,nombre,descripcion,imagen) 
+                 VALUES (
+                   "'.$categoria['codigo'].'",
+                   "'.$categoria['nombre'].'",
+                   "'.$categoria['descripcion'].'",
+                   "'.$categoria['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
 
     function update($categoria) {
       $_query = 'UPDATE categorias SET 
@@ -43,6 +50,13 @@
                 descripcion = "'.$categoria['descripcion'].'",
                 imagen = "'.$categoria['imagen'].'" 
                 WHERE id="'.$categoria['id'].'"';
+      $categoria = $this->connection->execute($_query);
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE categorias SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
       $categoria = $this->connection->execute($_query);
     }
   }
