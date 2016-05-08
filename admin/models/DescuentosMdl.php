@@ -30,13 +30,6 @@
       return $descuento;
     }
 
-    function getAllProductos() {
-      $_query = 'SELECT id AS producto_id, nombre AS producto_nombre
-                FROM productos';
-      $productos = $this->connection->execute($_query)->getResult();
-      return $productos;
-    }
-
     function update($descuento) {
       $_query = 'UPDATE descuentos SET 
                 codigo = "'.$descuento['codigo'].'",

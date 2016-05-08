@@ -3,10 +3,11 @@
 
   class OfertasCtrl extends StandardCtrl {
     private $model;
-    public $table;
+    public $table_name;
     public $single;
     public $url;
     public $modal;
+    public $image;
 
     public function __construct() {
       parent::__construct();
@@ -15,6 +16,7 @@
       $this->table_name = 'ofertas';
       $this->single = 'oferta';
       $this->url = 'images/ofertas/';
+      $this->image = 'images/ofertas/oferta.png';
       $this->modal = 'modal-delete-oferta';
     }
 
@@ -53,7 +55,7 @@
     }
 
     public function getDictionary($oferta) {
-      return $dictionary = array (
+      return array (
         '{{id}}'              =>$oferta['id'],
         '{{codigo}}'          =>$oferta['codigo'],
         '{{cantidad}}'        =>$oferta['cantidad'],
@@ -104,11 +106,78 @@
         }
       } else {
         $this->showErrorPage();
-        
       }
     }
 
-    public function createOferta() {}
+    public function createOferta() {
+      $oferta = [
+        'id'              =>'',
+        'codigo'          =>'',
+        'cantidad'        =>'',
+        'producto_nombre' =>'',
+        'precio'          =>'',
+        'fecha_inicio'    =>'',
+        'fecha_fin'       =>'',
+        'imagen'          =>$this->image
+      ];
+      $id ='';
+
+      if(empty($_POST)) {
+        $table = "";
+        $diccionary = $this->getDictionary($oferta);
+        $view = $this->getViewForm($id,'oferta-edit',$this->modal,$diccionary);
+
+        $productos = $this->model->getAllProductos();
+        $data = $this->getDataProductos($productos);
+        $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
+
+        echo $view;
+      } else { 
+        $errors = [];
+
+        if($this->isCode($_POST['codigo'])) {
+          $oferta['codigo'] = $_POST['codigo'];
+        } else {
+          $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+        if($this->isInt($_POST['cantidad'])) {
+          $oferta['cantidad'] = $_POST['cantidad'];
+        } else {
+          $errors['cantidad'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+        if($this->isInt($_POST['producto'])) {
+          $oferta['producto'] = $_POST['producto'];
+        } else {
+          $errors['producto'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+        if($this->isDate($_POST['fecha_inicio'])) {
+          $oferta['fecha_inicio'] = $_POST['fecha_inicio'];
+        } else {
+          $errors['fecha_inicio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+        }
+        if($this->isDate($_POST['fecha_fin'])) {
+          $oferta['fecha_fin'] = $_POST['fecha_fin'];
+        } else {
+          $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+        }
+        if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
+          $oferta['precio'] = $_POST['precio'];
+        } else {
+          $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+        }
+
+        if(empty($errors)) {
+          $id = $this->model->insert($oferta);
+          if($_FILES['image']['tmp_name'] != '') {
+            $oferta['imagen']  = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            $this->model->updateImage($id, $oferta['imagen']);
+          }
+          header ("Location: index.php?ctrl=ofertas&action=view&id=".$id);
+        } else {
+          $this->editOferta($id);
+        }
+      }
+    }
 
     public function editOferta($id) {
       if($this->isInt($id)) {
@@ -156,7 +225,7 @@
             } else {
               $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
             }
-            if($this->isNumber($_POST['precio'])) {
+            if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
               $oferta['precio'] = $_POST['precio'];
             } else {
               $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';

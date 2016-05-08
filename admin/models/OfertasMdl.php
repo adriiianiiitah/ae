@@ -30,11 +30,19 @@
       return $oferta;
     }
 
-    function getAllProductos() {
-      $_query = 'SELECT id AS producto_id, nombre AS producto_nombre
-                FROM productos';
-      $productos = $this->connection->execute($_query)->getResult();
-      return $productos;
+    function insert($oferta) {
+      $_query = 'INSERT INTO ofertas (codigo,cantidad,producto,fecha_inicio,fecha_fin,precio,imagen) 
+                 VALUES (
+                   "'.$oferta['codigo'].'",
+                   "'.$oferta['cantidad'].'",
+                   "'.$oferta['producto'].'",
+                   "'.$oferta['fecha_inicio'].'",
+                   "'.$oferta['fecha_fin'].'",
+                   "'.$oferta['precio'].'",
+                   "'.$oferta['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
     }
 
     function update($oferta) {
@@ -49,6 +57,13 @@
                 WHERE id="'.$oferta['id'].'"';
       $oferta = $this->connection->execute($_query);
     //return $oferta;
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE ofertas SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
+      $oferta = $this->connection->execute($_query);
     }
 
 
