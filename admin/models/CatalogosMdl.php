@@ -11,10 +11,6 @@
       $this->connection = DataBase::getInstance();
     }
 
-    function create() {
-
-    }
-
     function getAll() {
       $_query = 'SELECT catalogos.id, catalogos.codigo, catalogos.nombre, fecha, categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, pdf, catalogos.imagen 
                 FROM catalogos
@@ -41,6 +37,19 @@
       return $catalogo;
     }
 
+    function insert($catalogo) {
+      $_query = 'INSERT INTO catalogos (codigo,nombre,fecha,categoria,imagen) 
+                 VALUES (
+                   "'.$catalogo['codigo'].'",
+                   "'.$catalogo['nombre'].'",
+                   "'.$catalogo['fecha'].'",
+                   "'.$catalogo['categoria'].'",
+                   "'.$catalogo['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
+
     function update($catalogo) {
       $_query = 'UPDATE catalogos SET 
                 codigo = "'.$catalogo['codigo'].'",
@@ -51,6 +60,13 @@
                 WHERE id="'.$catalogo['id'].'"';
       $catalogo = $this->connection->execute($_query);
       //return $catalogo;
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE catalogos SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
+      $catalogo = $this->connection->execute($_query);
     }
   }
 ?>

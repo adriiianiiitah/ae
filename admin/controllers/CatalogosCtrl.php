@@ -7,6 +7,7 @@
     public $url;
     public $single;
     public $modal;
+    public $image;
 
     public function __construct() {
       parent::__construct();
@@ -15,6 +16,7 @@
       $this->table_name = 'catalogos';
       $this->single = 'catalogo';
       $this->url = 'images/catalogos/';
+      $this->image = 'images/catalogos/catalogo.png';
       $this->modal = 'modal-delete-catalogo';
     }
 
@@ -40,7 +42,7 @@
               $this->showErrorPage();
             break;
           case 'create':
-            //$this->createCatalogo();
+            $this->createCatalogo();
           break;
           default:
             $this->showErrorPage();
@@ -102,6 +104,68 @@
         }
       } else {
         $this->showErrorPage();
+      }
+    }
+
+    public function createCatalogo() {
+      $catalogo = [
+        'id'                =>'',
+        'codigo'            =>'',
+        'nombre'            =>'',
+        'fecha'             =>'',
+        'categoria_nombre'  =>'',
+        'pdf'               =>'',
+        'imagen'            =>$this->image
+      ];
+      $id ='';
+
+      if(empty($_POST)) {
+        $table = "";
+        $diccionary = $this->getDictionary($catalogo);
+        $view = $this->getViewForm($id,'catalogo-edit',$this->modal,$diccionary);
+
+        $categorias = $this->model->getAllCategorias();
+        $data = $this->getDataCategorias($categorias);
+        $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
+        echo $view;
+      } else {
+        $errors = [];
+
+        if($this->isCode($_POST['codigo'])) {
+          $catalogo['codigo'] = $_POST['codigo'];
+        } else {
+          $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isAlphanumeric($_POST['nombre'])) {
+          $catalogo['nombre'] = $_POST['nombre'];
+        } else {
+          $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y espacios.';
+        }
+
+        if($this->isDate($_POST['fecha'])) {
+          $catalogo['fecha'] = $_POST['fecha'];
+        } else {
+          $errors['fecha'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+        }
+
+        if($this->isInt($_POST['categoria'])) {
+          $catalogo['categoria'] = $_POST['categoria'];
+        } else {
+          $errors['categoria'] = 'La categoría es incorrecta. El formato es dd/mm/aaaa.';
+        }
+
+        if(empty($errors)){
+          $id = $this->model->insert($catalogo);
+          if($_FILES['image']['tmp_name'] != '') {
+            $catalogo['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            $this->model->updateImage($id, $catalogo['imagen']);
+          }
+
+          header ("Location: index.php?ctrl=catalogos&action=view&id=".$id);
+        } else {
+          $this->createCatalogo($id);
+        }
       }
     }
 
