@@ -4,8 +4,10 @@
   class ProductosCtrl extends StandardCtrl {
     private $model;
     public $table_name;
+    public $single;
     public $url;
     public $modal;
+    public $image;
 
     public function __construct() {
       parent::__construct();
@@ -14,6 +16,7 @@
       $this->table_name = 'productos';
       $this->single = 'producto';
       $this->url = 'images/productos/';
+      $this->image = 'images/productos/producto.png';
       $this->modal = 'modal-delete-producto';
     }
 
@@ -38,7 +41,9 @@
             else
              $this->showErrorPage();
             break;
-          
+          case 'create':
+              $this->createProducto();
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -111,6 +116,132 @@
         }
       } else {
         $this->showErrorPage();
+      }
+    }
+
+    public function createProducto() {
+      $producto = [
+        'id'                  =>'',
+        'codigo'              =>'',
+        'modelo'              =>'',
+        'nombre'              =>'',
+        'categoria_nombre'    =>'',
+        'subcategoria_nombre' =>'',
+        'descripcion'         =>'',
+        'color_imagen'        =>'',
+        'material'            =>'',
+        'marca'               =>'',
+        'altura'              =>'',
+        'precio'              =>'',
+        'imagen'              =>$this->image
+      ];
+      $id ='';
+
+      if(empty($_POST)) {
+        $table = "";
+        $diccionary = $this->getDictionary($producto);
+        $view = $this->getViewForm($id,'producto-edit',$this->modal,$diccionary);
+
+        $tallas = $this->model->getTallasById($id);
+        $data = $this->getDataTallas($tallas);
+        $view = $this->showData($view,$data,TALLA_TAG_START,TALLA_TAG_END);
+
+        $categorias = $this->model->getAllCategorias();
+        $data = $this->getDataCategorias($categorias);
+        $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
+
+        $subcategorias = $this->model->getAllSubcategorias();
+        $data = $this->getDataSubcategorias($subcategorias);
+        $view = $this->showData($view,$data,SUBCATEGORIA_TAG_START,SUBCATEGORIA_TAG_END);
+
+        $colores = $this->model->getAllColores();
+        $data = $this->getDataColores($colores);
+        $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
+
+        echo $view;
+      } else {
+        $errors = [];
+
+        if($this->isCode($_POST['codigo'])) {
+          $producto['codigo'] = $_POST['codigo'];
+        } else {
+          $errors['codigo'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isCode($_POST['modelo'])) {
+          $producto['modelo'] = $_POST['modelo'];
+        } else {
+          $errors['modelo'] = 'El modelo es incorrecto. Debe contener letras, dígitos y guiones.';
+        }
+
+        if($this->isAlphanumeric($_POST['nombre'])) {
+          $producto['nombre'] = $_POST['nombre'];
+        } else {
+          $errors['nombre'] = 'El nombre es incorrecto. Debe contener letras, dígitos y espacios.';
+        }
+
+        if($this->isInt($_POST['categoria'])) {
+          $producto['categoria'] = $_POST['categoria'];
+        } else {
+          $errors['categoria'] = 'La categoría es incorrecta.';
+        }
+
+        if($this->isInt($_POST['subcategoria'])) {
+          $producto['subcategoria'] = $_POST['subcategoria'];
+        } else {
+          $errors['subcategoria'] = 'La subcategoria es incorrecta.';
+        }
+
+        if($this->isDescription($_POST['descripcion'])) {
+          $producto['descripcion'] = $_POST['descripcion'];
+        } else {
+          $producto['descripcion'] = '';
+        }
+
+        if($this->isAlphanumeric($_POST['material'])) {
+          $producto['material'] = $_POST['material'];
+        } else {
+          $producto['material'] = '';
+        }
+
+        if($this->isAlphanumeric($_POST['marca'])) {
+          $producto['marca'] = $_POST['marca'];
+        } else {
+          $errors['marca'] = 'La marca es incorrecta.';
+        }
+
+        if($this->isNumber($_POST['altura']) || $this->isInt($_POST['altura'])) {
+          $producto['altura'] = $_POST['altura'];
+        } else {
+          $producto['altura'] = '';
+        }
+
+        if($this->isInt($_POST['color'])) {
+          $producto['color'] = $_POST['color'];
+        } else {
+          $errors['color'] = 'La color es incorrecta.';
+        }
+
+        if($this->isNumber($_POST['precio']) || $this->isInt($_POST['altura'])) {
+          $producto['precio'] = $_POST['precio'];
+        } else {
+          $errors['precio'] = 'El precio es incorrecto.';
+        }
+
+        if(empty($errors)) {
+          $id = $this->model->insert($producto);
+          if($_FILES['image']['tmp_name'] != '') {
+            $producto['imagen']  = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
+            $this->model->updateImage($id, $producto['imagen']);
+          }
+
+          header ("Location: index.php?ctrl=productos&action=view&id=".$id);
+        } else {
+          $this->editProducto($id);
+          $this->print_exit($errors);
+        }
+    //$talla          = $_POST['talla'];
+    //$stock          = $_POST['stock'];
       }
     }
 

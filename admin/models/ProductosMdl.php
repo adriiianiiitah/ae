@@ -11,10 +11,6 @@
       $this->connection = DataBase::getInstance();
     }
 
-    function create() {
-
-    }
-
     function getAll() {
       $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen
                 FROM productos
@@ -63,6 +59,26 @@
       return $producto;
     }
 
+    function insert($producto) {
+      $_query = 'INSERT INTO productos (codigo,modelo,nombre,categoria,subcategoria,descripcion,material,marca,altura,precio,color,imagen) 
+                 VALUES (
+                   "'.$producto['codigo'].'",
+                   "'.$producto['modelo'].'",
+                   "'.$producto['nombre'].'",
+                   "'.$producto['categoria'].'",
+                   "'.$producto['subcategoria'].'",
+                   "'.$producto['descripcion'].'",
+                   "'.$producto['material'].'",
+                   "'.$producto['marca'].'",
+                   "'.$producto['altura'].'",
+                   "'.$producto['precio'].'",
+                   "'.$producto['color'].'",
+                   "'.$producto['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
+
     function update($producto) {
       $_query = 'UPDATE productos SET 
                 codigo = "'.$producto['codigo'].'",
@@ -80,20 +96,12 @@
                 WHERE id="'.$producto['id'].'"';
       $producto = $this->connection->execute($_query);
     }
-    /*
-    function agregar($producto, $descripcion, $precio, $categoria, $marca, $imagen) {
-      $query = "INSERT INTO productos (producto,categoria,marca,descripcion,precio,imagen) VALUES('".$categoria."','".$producto."','".$marca."','".$descripcion."','".$precio."','".$imagen."')";
-      $resultado = $this->connection->ejecutar($query);
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE productos SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
+      $producto = $this->connection->execute($_query);
     }
-    function listar() {
-      $consulta = 'SELECT * FROM productos';
-      $productos = $this->connection->ejecutar($consulta)->obtenerResultado();
-      return $productos;
-    }
-    function consutar($id) {
-      $consulta = 'SELECT * FROM productos WHERE codigo="'.$id.'"';
-      $productos = $this->connection->ejecutar($consulta)->obtenerResultado();
-      return $productos[0];
-    }*/
   }
 ?>
