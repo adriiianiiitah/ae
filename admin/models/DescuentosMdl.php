@@ -37,7 +37,6 @@
       return $productos;
     }
 
-
     function update($descuento) {
       $_query = 'UPDATE descuentos SET 
                 codigo = "'.$descuento['codigo'].'",
@@ -51,6 +50,29 @@
                 WHERE id="'.$descuento['id'].'"';
       $descuento = $this->connection->execute($_query);
     //return $descuento;
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE descuentos SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
+      $color = $this->connection->execute($_query);
+    }
+
+    function insert($descuento) {
+      $_query = 'INSERT INTO descuentos (codigo,cantidad,producto,descuento,fecha_inicio,fecha_fin,precio,imagen) 
+                 VALUES (
+                   "'.$descuento['codigo'].'",
+                   "'.$descuento['cantidad'].'",
+                   "'.$descuento['producto'].'",
+                   "'.$descuento['descuento'].'",
+                   "'.$descuento['fecha_inicio'].'",
+                   "'.$descuento['fecha_fin'].'",
+                   "'.$descuento['precio'].'",
+                   "'.$descuento['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
     }
   }
 ?>
