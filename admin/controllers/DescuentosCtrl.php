@@ -248,7 +248,7 @@
               $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
             }
 
-            if($this->isNumber($_POST['precio'])) {
+            if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
               $descuento['precio'] = $_POST['precio'];
             } else {
               $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';

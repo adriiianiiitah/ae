@@ -222,7 +222,7 @@
           $errors['color'] = 'La color es incorrecta.';
         }
 
-        if($this->isNumber($_POST['precio']) || $this->isInt($_POST['altura'])) {
+        if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
           $producto['precio'] = $_POST['precio'];
         } else {
           $errors['precio'] = 'El precio es incorrecto.';
@@ -328,7 +328,7 @@
               $errors['marca'] = 'La marca es incorrecta.';
             }
 
-            if($this->isNumber($_POST['altura'])) {
+            if($this->isNumber($_POST['altura']) || $this->isInt($_POST['altura'])) {
               $producto['altura'] = $_POST['altura'];
             } else {
               $producto['altura'] = '';
@@ -340,7 +340,7 @@
               $errors['color'] = 'El color es incorrecto.';
             }
 
-            if($this->isNumber($_POST['precio'])) {
+            if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
               $producto['precio'] = $_POST['precio'];
             } else {
               $errors['precio'] = 'El precio es incorrecto.';
