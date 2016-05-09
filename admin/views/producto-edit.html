@@ -23,25 +23,6 @@
                         <input type="file" id="image" name="image" class="form-control col-md-7 col-xs-12 btn" accept="image/jpg,image/png" data-image/>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label class="control-label col-xs-6 hidden-xs" for="tallas">Tallas <span class="required">*</span></label>
-                      <label class="control-label col-xs-6 hidden-xs" for="tallas">Strock <span class="required">*</span></label>
-                      <!--talla-->
-                      <div class="col-xs-12">
-                        <div class="form-group">
-                          <div class="checkbox col-md-3 col-sm-6 col-xs-12">
-                            <label>
-                              <input type="checkbox" name="tallas">{{talla}}
-                            </label>
-                          </div>
-
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" id="stock" name="stock" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer value="{{stock}}"/>
-                          </div>
-                        </div>
-                      </div>
-                      <!--.talla-->
-                    </div>
                   </div>
                   <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12"> 
                     <div class="form-group">
@@ -144,6 +125,36 @@
                 </form>
               </div>
             </section>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <section class="panel">
+                <header class="panel-heading">
+                  <h3 class="text-red">Tallas</h3>
+                </header>
+                <div class="panel-body">
+                  <div class="form-group">
+                    <label class="control-label col-xs-6 hidden-xs" for="tallas">Tallas <span class="required">*</span></label>
+                    <label class="control-label col-xs-6 hidden-xs" for="tallas">Strock <span class="required">*</span></label>
+                    <!--talla-->
+                    <div class="col-xs-12">
+                      <div class="form-group">
+                        <div class="checkbox col-md-3 col-sm-6 col-xs-12">
+                          <label>
+                            <input type="checkbox" name="tallas">{{talla}}
+                          </label>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="number" id="stock" name="stock" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer value="{{stock}}"/>
+                        </div>
+                      </div>
+                    </div>
+                    <!--.talla-->
+                  </div>
+                </div>
+              </section>
+            </div>
           </div>
         </div>
       </div>
