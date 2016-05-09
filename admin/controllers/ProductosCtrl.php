@@ -337,7 +337,7 @@
             if($this->isInt($_POST['color'])) {
               $producto['color'] = $_POST['color'];
             } else {
-              $errors['color'] = 'La color es incorrecta.';
+              $errors['color'] = 'El color es incorrecto.';
             }
 
             if($this->isNumber($_POST['precio'])) {
