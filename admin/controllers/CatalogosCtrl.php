@@ -108,7 +108,7 @@
     }
 
     public function createCatalogo() {
-      $catalogo = [
+      $catalogo = array(
         'id'                =>'',
         'codigo'            =>'',
         'nombre'            =>'',
@@ -116,7 +116,7 @@
         'categoria_nombre'  =>'',
         'pdf'               =>'',
         'imagen'            =>$this->image
-      ];
+      );
       $id ='';
 
       if(empty($_POST)) {

@@ -106,12 +106,12 @@
     }
 
     public function createColor() {
-      $color = [
+      $color = array(
         'id'            =>'',
         'codigo'        =>'',
         'nombre'        =>'',
         'imagen'        =>$this->image
-      ];
+      );
       $id ='';
 
       if(empty($_POST)) {
@@ -121,7 +121,7 @@
 
         echo $view;
       } else {
-        $errors = [];
+        $errors = array();
 
         if($this->isCode($_POST['codigo'])) {
           $color['codigo'] = $_POST['codigo'];
@@ -162,10 +162,10 @@
 
             echo $view;
           } else {
-            $errors = [];
-            $color = [
+            $errors = array();
+            $color = array(
               'id' => $id
-            ];
+            );
             if($this->isCode($_POST['codigo'])) {
               $color['codigo'] = $_POST['codigo'];
             } else {

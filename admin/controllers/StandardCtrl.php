@@ -306,7 +306,7 @@
       return $list; 
     }
 
-    public function getView($view, $type ='', $modal ='', $modals = []) {
+    public function getView($view, $type ='', $modal ='', $modals = array()) {
       switch ($type) {
         case 'view':
         case 'list':
@@ -377,7 +377,7 @@
       return $row;
     }
 
-    public function showForm($id,$view,$modal,$diccionary,$modals = []) {
+    public function showForm($id,$view,$modal,$diccionary,$modals = array()) {
       $view = $this->getView($view, 'edit', $modal, $modals);
       $table = "";
       $content = $view;
@@ -387,7 +387,7 @@
       echo $view;
     }
 
-    public function getViewForm($id,$view,$modal,$diccionary,$modals = []) {
+    public function getViewForm($id,$view,$modal,$diccionary,$modals = array()) {
       $view = $this->getView($view, 'edit', $modal, $modals);
       $table = "";
       $content = $view;
