@@ -110,7 +110,7 @@
     }
 
     public function createDescuento() {
-      $descuento = [
+      $descuento = array(
         'id'              =>'',
         'codigo'          =>'',
         'cantidad'        =>'',
@@ -120,7 +120,7 @@
         'fecha_inicio'    =>'',
         'fecha_fin'       =>'',
         'imagen'           =>$this->image
-      ];
+      );
       $id ='';
 
       if(empty($_POST)) {
@@ -134,7 +134,7 @@
         
         echo $view;
       } else {
-        $errors = [];
+        $errors = array();
 
         if($this->isCode($_POST['codigo'])) {
           $descuento['codigo'] = $_POST['codigo'];
@@ -207,10 +207,10 @@
             $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
             echo $view;
           } else {
-            $errors = [];
-            $descuento = [
+            $errors = array();
+            $descuento = array(
               'id' => $id
-            ];
+            );
 
             if($this->isCode($_POST['codigo'])) {
               $descuento['codigo'] = $_POST['codigo'];
