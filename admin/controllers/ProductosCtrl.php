@@ -120,7 +120,7 @@
     }
 
     public function createProducto() {
-      $producto = [
+      $producto = array(
         'id'                  =>'',
         'codigo'              =>'',
         'modelo'              =>'',
@@ -134,7 +134,7 @@
         'altura'              =>'',
         'precio'              =>'',
         'imagen'              =>$this->image
-      ];
+      );
       $id ='';
 
       if(empty($_POST)) {
@@ -160,7 +160,7 @@
 
         echo $view;
       } else {
-        $errors = [];
+        $errors = array();
 
         if($this->isCode($_POST['codigo'])) {
           $producto['codigo'] = $_POST['codigo'];
@@ -275,10 +275,10 @@
 
             echo $view;
           } else {
-            $errors = [];
-            $producto = [
+            $errors = array();
+            $producto = array(
               'id' => $id
-            ];
+            );
 
             if($this->isCode($_POST['codigo'])) {
               $producto['codigo'] = $_POST['codigo'];

@@ -107,14 +107,14 @@
     }
 
     public function createSubcategoria() {
-      $subcategoria = [
+      $subcategoria = array (
         'id'            =>'',
         'codigo'        =>'',
         'nombre'        =>'',
         'categoria_nombre'        =>'',
         'descripcion'        =>'',
         'imagen'        =>$this->image
-      ];
+      );
       $id ='';
 
       if(empty($_POST)) {
@@ -127,7 +127,7 @@
         $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
         echo $view;
       } else {
-        $errors = [];
+        $errors = array();
         
         if($this->isCode($_POST['codigo'])) {
           $subcategoria['codigo'] = $_POST['codigo'];
@@ -182,10 +182,10 @@
             $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
             echo $view;
           } else {
-            $errors = [];
-            $subcategoria = [
+            $errors = array();
+            $subcategoria = array(
               'id' => $id
-            ];
+            );
             
             if($this->isCode($_POST['codigo'])) {
               $subcategoria['codigo'] = $_POST['codigo'];

@@ -17,10 +17,10 @@
       $this->single = 'usuario';
       $this->url = 'images/usuarios/';
       $this->modal = 'modal-delete-usuario';
-      $this->modals = [
+      $this->modals = array(
         'modal_address',
         'modal_phone'
-      ];
+      );
     }
 
     public function execute() {
@@ -152,10 +152,10 @@
 
             echo $view;
           } else {
-            $errors = [];
-            $usuario = [
+            $errors = array();
+            $usuario = array(
               'id' => $id
-            ];
+            );
 
             if($this->isName($_POST['nombre'])) {
               $usuario['nombre'] = $_POST['nombre'];

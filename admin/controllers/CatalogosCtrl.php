@@ -129,7 +129,7 @@
         $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
         echo $view;
       } else {
-        $errors = [];
+        $errors = array();
 
         if($this->isCode($_POST['codigo'])) {
           $catalogo['codigo'] = $_POST['codigo'];
@@ -185,11 +185,11 @@
             $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
             echo $view;
           } else {
-            $errors = [];
+            $errors = array();
 
-            $catalogo = [
+            $catalogo = array(
               'id' => $id
-            ];
+            );
 
             if($this->isCode($_POST['codigo'])) {
               $catalogo['codigo'] = $_POST['codigo'];

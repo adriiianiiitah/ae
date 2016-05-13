@@ -106,13 +106,13 @@
     }
 
     public function createCategoria() {
-      $categoria = [
+      $categoria = array(
         'id'            =>'',
         'codigo'        =>'',
         'nombre'        =>'',
         'descripcion'   =>'',
         'imagen'        =>$this->image
-      ];
+      );
       $id ='';
 
       if(empty($_POST)) {
@@ -121,7 +121,7 @@
         $view = $this->getViewForm($id,'categoria-edit',$this->modal,$diccionary);
         echo $view;
       } else {
-        $errors = [];
+        $errors = array();
 
         if($this->isCode($_POST['codigo'])) {
           $categoria['codigo'] = $_POST['codigo'];
@@ -165,10 +165,10 @@
             $view = $this->getViewForm($id,'categoria-edit',$this->modal,$diccionary);
             echo $view;
           } else {
-            $errors = [];
-            $categoria = [
+            $errors = array();
+            $categoria = array(
               'id' => $id
-            ];
+            );
 
             if($this->isCode($_POST['codigo'])) {
               $categoria['codigo'] = $_POST['codigo'];
