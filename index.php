@@ -13,6 +13,14 @@
         require_once('controllers/ProductosCtrl.php');
         $controller = new ProductosCtrl();
       break;
+      case 'descuentos':
+        require_once('controllers/DescuentosCtrl.php');
+        $controller = new DescuentosCtrl();
+      break;
+      case 'ofertas':
+        require_once('controllers/OfertasCtrl.php');
+        $controller = new OfertasCtrl();
+      break;
       case 'contacto':
         require_once('controllers/ContactoCtrl.php');
         $controller = new ContactoCtrl();

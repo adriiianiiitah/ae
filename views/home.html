@@ -1,8 +1,19 @@
     <section id="slider">
       <div id="owl-demo" class="owl-carousel">
-        <div class="item"><a href="#"><img src="admin/images/slider/slider01.jpg"></a></div>
-        <div class="item"><a href="#"><img src="admin/images/slider/slider01.jpg"></a></div>
-        <div class="item"><a href="#"><img src="admin/images/slider/slider01.jpg"></a></div>
+        <!--oferta-->
+        <div class="item">
+          <a href="{{oferta_url}}">
+            <img src="{{oferta_imagen}}"/>
+          </a>
+        </div>
+        <!--.oferta-->
+        <!--descuento-->
+        <div class="item">
+          <a href="{{descuento_url}}">
+            <img src="{{descuento_imagen}}"/>
+          </a>
+        </div>
+        <!--.descuento-->
       </div>
     </section>
 
@@ -19,13 +30,15 @@
         <div id="dama" class="tab-pane fade in active">
           <div class="container-fluid">
             <div class="row content">
+
+              <!--catalogo-dama-->
               <div class="catalogo">
                 <figure class="col-xs-12 col-sm-4 col-md-3">
-                  <img src="admin/images/catalogos/catalogo_1.jpg" alt="Catalogo 1"/>
+                  <img src="{{image}}" alt="{{catalogo}}"/>
                   <div class="overlay">
                     <ul>
                       <li>
-                        <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+                        <a class="btn btn-lg btn-red" href="{{pdf}}" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
                       </li>
                       <li>
                         <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
@@ -34,67 +47,84 @@
                   </div>
                 </figure>
               </div>
-              <div class="catalogo">
-                <figure class="col-xs-12 col-sm-4 col-md-3">
-                  <img src="admin/images/catalogos/catalogo_2.jpg" alt="Catalogo 2"/>
-                  <div class="overlay">
-                    <ul>
-                      <li>
-                        <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
-                      </li>
-                      <li>
-                        <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
-                      </li>
-                    </ul>
-                  </div>
-                </figure>
-              </div>
-              <div class="catalogo">
-                <figure class="col-xs-12 col-sm-4 col-md-3">
-                  <img src="admin/images/catalogos/catalogo_3.jpg" alt="Catalogo 3"/>
-                  <div class="overlay">
-                    <ul>
-                      <li>
-                        <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
-                      </li>
-                      <li>
-                        <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
-                      </li>
-                    </ul>
-                  </div>
-                </figure>
-              </div>
-              <div class="catalogo">
-                <figure class="col-xs-12 col-sm-4 col-md-3">
-                  <img src="admin/images/catalogos/catalogo_4.jpg" alt="Catalogo 4"/>
-                  <div class="overlay">
-                    <ul>
-                      <li>
-                        <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
-                      </li>
-                      <li>
-                        <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
-                      </li>
-                    </ul>
-                  </div>
-                </figure>
-              </div>
+              <!--.catalogo-dama-->
+
             </div>
           </div>
         </div>
         <div id="caballero" class="tab-pane fade">
           <div class="container-fluid">
-            <h3>0 resultados</h3>
+            <div class="row content">
+              
+              <!--catalogo-caballero-->
+              <div class="catalogo">
+                <figure class="col-xs-12 col-sm-4 col-md-3">
+                  <img src="{{image}}" alt="{{catalogo}}"/>
+                  <div class="overlay">
+                    <ul>
+                      <li>
+                        <a class="btn btn-lg btn-red" href="{{pdf}}" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+                      </li>
+                      <li>
+                        <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
+                      </li>
+                    </ul>
+                  </div>
+                </figure>
+              </div>
+              <!--.catalogo-caballero-->
+
+            </div>
           </div>
         </div>
         <div id="infantil" class="tab-pane fade">
           <div class="container-fluid">
-            <h3>0 resultados</h3>
+            <div class="row content">
+              
+              <!--catalogo-infantil-->
+              <div class="catalogo">
+                <figure class="col-xs-12 col-sm-4 col-md-3">
+                  <img src="{{image}}" alt="{{catalogo}}"/>
+                  <div class="overlay">
+                    <ul>
+                      <li>
+                        <a class="btn btn-lg btn-red" href="{{pdf}}" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+                      </li>
+                      <li>
+                        <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
+                      </li>
+                    </ul>
+                  </div>
+                </figure>
+              </div>
+              <!--.catalogo-infantil-->
+
+            </div>
           </div>
         </div>
-        <div id="espedial" class="tab-pane fade">
+        <div id="especial" class="tab-pane fade">
           <div class="container-fluid">
-            <h3>0 resultados</h3>
+            <div class="row content">
+              
+              <!--catalogo-especial-->
+              <div class="catalogo">
+                <figure class="col-xs-12 col-sm-4 col-md-3">
+                  <img src="{{image}}" alt="{{catalogo}}"/>
+                  <div class="overlay">
+                    <ul>
+                      <li>
+                        <a class="btn btn-lg btn-red" href="{{pdf}}" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+                      </li>
+                      <li>
+                        <button type="button" class="btn btn-lg btn-red"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></button>
+                      </li>
+                    </ul>
+                  </div>
+                </figure>
+              </div>
+              <!--.catalogo-especial-->
+
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 <?php 
   define('IMAGE',                 'images/default.png');
+  define('IMAGE_URL',                 'admin');
+  define('PDF_URL',                 'admin/pdf');
 
   define('FEMENINO',                 'femenino');
   define('MASCULINO',                'masculino');
@@ -56,4 +58,29 @@
 
   define('COLOR_TAG_START',               '<!--color-->');
   define('COLOR_TAG_END',                 '<!--.color-->');
+
+
+
+  define('DESCUENTO_TAG_START',               '<!--descuento-->');
+  define('DESCUENTO_TAG_END',                 '<!--.descuento-->');
+
+  define('OFERTA_TAG_START',               '<!--oferta-->');
+  define('OFERTA_TAG_END',                 '<!--.oferta-->');
+
+  define('CATALOGO_TAG_START',               '<!--catalogo-->');
+  define('CATALOGO_TAG_END',                 '<!--.catalogo-->');
+
+
+  define('CATALOGO_DAMA_TAG_START',               '<!--catalogo-dama-->');
+  define('CATALOGO_DAMA_TAG_END',                 '<!--.catalogo-dama-->');
+
+  define('CATALOGO_CABALLERO_TAG_START',               '<!--catalogo-caballero-->');
+  define('CATALOGO_CABALLERO_TAG_END',                 '<!--.catalogo-caballero-->');
+
+  define('CATALOGO_INFANTIL_TAG_START',               '<!--catalogo-infantil-->');
+  define('CATALOGO_INFANTIL_TAG_END',                 '<!--.catalogo-infantil-->');
+
+  define('CATALOGO_ESPECIAL_TAG_START',               '<!--catalogo-especial-->');
+  define('CATALOGO_ESPECIAL_TAG_END',                 '<!--.catalogo-especial-->');
+
 ?>

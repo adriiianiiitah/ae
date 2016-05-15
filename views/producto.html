@@ -2,7 +2,7 @@
   <section id="producto" class="row">
     <div class="col-xs-12 col-sm-5">
       <figure class="color-selected">
-        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+        <img src="{{image}}" alt="{{nombre}}"/>
       </figure>
       <h3 class="text-red">Colores</h3>
       <ul class="colors">
@@ -30,13 +30,13 @@
       </ul>
     </div>
     <div class="col-xs-12 col-sm-7">
-      <h3>Zapatilla Mary Jane</h3>
-      <p class="code"><strong>Cod:</strong> 123456789 <span><strong>Mod:</strong> 1234</span></p>
-      <p class="description"><strong>Descripcion:</strong> Zapatilla con plataforma, aplicacion de pedrería tacón delgado y ajuste de pulcera con hebilla al frente.</p>
-      <p><strong>Color:</strong> Negro</p>
-      <p><strong>Material:</strong> Piel</p>
-      <p><strong>Altura:</strong> 11cm</p>
-      <p><strong>Marca:</strong> Nike</p>
+      <h3>{{nombre}}</h3>
+      <p class="code"><strong>Cod:</strong> {{codigo}} <span><strong>Mod:</strong> {{modelo}}</span></p>
+      <p class="description"><strong>Descripcion:</strong> {{descripcion}}</p>
+      <p><strong>Color:</strong> XXX</p>
+      <p><strong>Material:</strong> {{material}}</p>
+      <p><strong>Altura:</strong> {{altura}}cm</p>
+      <p><strong>Marca:</strong> {{marca}}</p>
       <nav class="filters">
         <p><strong>Talla:</strong> </p>
         <ul class="sizes">
@@ -58,7 +58,7 @@
           <li><a href="#">28.5</a></li>
         </ul>
       </nav>
-      <p class="price pull-right">$419.00</p>
+      <p class="price pull-right">${{precio}}</p>
       <button href="#" class="btn btn-red btn-lg btn-block"><i class="fa fa-check"></i> Comprar</button>
     </div>
   </section>
