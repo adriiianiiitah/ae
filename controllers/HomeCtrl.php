@@ -2,7 +2,7 @@
   require_once('StandardCtrl.php');
 
   class HomeCtrl extends StandardCtrl {
-    private $model;
+    public $model;
 
     public function __construct() {
       parent::__construct();
@@ -32,6 +32,10 @@
 
     public function showHome() {
       $view = $this->getView("home");
+
+      $view = $this->showDataMenu($view);
+
+      
 
       $descuentos = $this->model->getAllDescuentos();
       $data = $this->getDataDescuentos($descuentos);

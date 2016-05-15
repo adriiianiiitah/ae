@@ -2,10 +2,12 @@
   require_once('StandardCtrl.php');
 
   class PrivacidadCtrl extends StandardCtrl {
-    private $model;
+    public $model;
 
     public function __construct() {
       parent::__construct();
+      require_once('./models/HomeMdl.php');
+      $this->model = new HomeMdl();
     }
 
     public function execute() {
@@ -24,37 +26,31 @@
             $this->showCambios();
             break;
           default:
-            http_response_code(404);
+            $this->showErrorPage();
             break;
         } 
       }
       else {
-          $this->showAviso();
-        }
+        $this->showAviso();
+      }
     }
 
     public function showAviso() {
-      $header = file_get_contents("views/header.html");
-      $menu =  file_get_contents("views/menu.html");
-      $view =  file_get_contents("views/aviso.html");
-      $footer = file_get_contents("views/footer.html");
-      echo $header.$menu.$view.$footer;
+      $view = $this->getView("aviso");
+      $view = $this->showDataMenu($view);
+      $this->showView($view);
     }
 
     public function showTerminos() {
-      $header = file_get_contents("views/header.html");
-      $menu =  file_get_contents("views/menu.html");
-      $view =  file_get_contents("views/terminos.html");
-      $footer = file_get_contents("views/footer.html");
-      echo $header.$menu.$view.$footer;
+      $view = $this->getView("terminos");
+      $view = $this->showDataMenu($view);
+      $this->showView($view);
     }
 
     public function showCambios() {
-      $header = file_get_contents("views/header.html");
-      $menu =  file_get_contents("views/menu.html");
-      $view =  file_get_contents("views/cambios.html");
-      $footer = file_get_contents("views/footer.html");
-      echo $header.$menu.$view.$footer;
+      $view = $this->getView("cambios");
+      $view = $this->showDataMenu($view);
+      $this->showView($view);
     }
 
   }

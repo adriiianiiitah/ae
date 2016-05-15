@@ -56,6 +56,16 @@
   define('SUBCATEGORIA_TAG_START',         '<!--subcategoria-->');
   define('SUBCATEGORIA_TAG_END',           '<!--.subcategoria-->');
 
+
+  define('SUBCATEGORIA_DAMA_TAG_START',         '<!--subcategoria-dama-->');
+  define('SUBCATEGORIA_DAMA_TAG_END',           '<!--.subcategoria-dama-->');
+
+  define('SUBCATEGORIA_CABALLERO_TAG_START',         '<!--subcategoria-caballero-->');
+  define('SUBCATEGORIA_CABALLERO_TAG_END',           '<!--.subcategoria-caballero-->');
+
+  define('SUBCATEGORIA_INFANTIL_TAG_START',         '<!--subcategoria-infantil-->');
+  define('SUBCATEGORIA_INFANTIL_TAG_END',           '<!--.subcategoria-infantil-->');
+
   define('COLOR_TAG_START',               '<!--color-->');
   define('COLOR_TAG_END',                 '<!--.color-->');
 

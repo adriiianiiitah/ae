@@ -72,6 +72,22 @@
       return $view;
     }
 
+    public function showDataMenu($view) {
+      $subcategorias = $this->model->getAllSubcategoriasByCathegory('Dama');
+      $data = $this->getDataSubcategorias($subcategorias);
+      $view = $this->showData($view,$data,SUBCATEGORIA_DAMA_TAG_START,SUBCATEGORIA_DAMA_TAG_END);
+
+      $subcategorias = $this->model->getAllSubcategoriasByCathegory('Caballero');
+      $data = $this->getDataSubcategorias($subcategorias);
+      $view = $this->showData($view,$data,SUBCATEGORIA_CABALLERO_TAG_START,SUBCATEGORIA_CABALLERO_TAG_END);
+
+      $subcategorias = $this->model->getAllSubcategoriasByCathegory('Infantil');
+      $data = $this->getDataSubcategorias($subcategorias);
+      $view = $this->showData($view,$data,SUBCATEGORIA_INFANTIL_TAG_START,SUBCATEGORIA_INFANTIL_TAG_END);
+
+      return $view;
+    }
+
     public function getUrl($url,$image) {
       return $url.'/'.$image;
     }
@@ -113,6 +129,18 @@
       return $list; 
     }
 
+    public function getDataSubcategorias($subcategorias) {
+      $list = [];
+      foreach ($subcategorias as $subcategoria) {
+        $dictionary = array(
+          '{{subcategoria}}'=>ucwords(strtolower($subcategoria['nombre'])),
+          '{{subcategoria_url}}'=>'index.php?ctrl=productos&action=list&category='.strtolower($subcategoria['nombre'])
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
     public function getDataCatalogos($catalogos) {
       $list = [];
       foreach ($catalogos as $catalogo) {
@@ -134,6 +162,12 @@
     }
 
     public function getView($type) {
+      $header = file_get_contents("views/header.html");
+      $menu =  file_get_contents("views/menu.html");
+      $view =  file_get_contents("views/".$type.".html");
+      $footer = file_get_contents("views/footer.html");
+      return $header.$menu.$view.$footer;
+      /*
       switch ($type) {
         case 'home':
           $header = file_get_contents("views/header.html");
@@ -142,6 +176,12 @@
           $footer = file_get_contents("views/footer.html");
           return $header.$menu.$view.$footer;
           break;
+        case 'contacto':
+          $header = file_get_contents("views/header.html");
+          $menu =  file_get_contents("views/menu.html");
+          $view =  file_get_contents("views/contacto.html");
+          $footer = file_get_contents("views/footer.html");
+          return $header.$menu.$view.$footer;
         case 'descuento':
           $header = file_get_contents("views/header.html");
           $menu =  file_get_contents("views/menu.html");
@@ -164,7 +204,7 @@
           return $header.$menu.$view.$footer;
         default:
           break;
-      }
+      }*/
     }
 
     public function showErrorPage() {
