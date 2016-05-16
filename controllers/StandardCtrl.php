@@ -46,6 +46,10 @@
       return preg_match(INT, $value);
     }
 
+    function isAlphanumeric($value) {
+      return preg_match(ALPHANUMERIC, $value);
+    }
+
     public function getRow($view, $start_tag = '', $end_tag = '' ) {
       if($start_tag == '') {
         $start = strrpos($view,ROW_TAG_START);
@@ -134,7 +138,7 @@
       foreach ($subcategorias as $subcategoria) {
         $dictionary = array(
           '{{subcategoria}}'=>ucwords(strtolower($subcategoria['nombre'])),
-          '{{subcategoria_url}}'=>'index.php?ctrl=productos&action=list&category='.strtolower($subcategoria['nombre'])
+          '{{subcategoria_url}}'=>'index.php?ctrl=productos&action=list&categoria='.strtolower($subcategoria['categoria_nombre']).'&subcategoria='.strtolower($subcategoria['nombre'])
         );
         $list[] = $dictionary;
       }
@@ -156,6 +160,44 @@
       }
       return $list; 
     }
+
+    public function getDataColores($colores) {
+      $list = [];
+      foreach ($colores as $color) {
+        $dictionary = array(
+          '{{color_nombre}}'=>ucwords(str_replace('-',' ',$color['color_nombre'])),
+          '{{color_imagen}}'=>$this->getUrl(IMAGE_URL,$color['color_imagen'])
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
+    public function getDataProductos($productos) {
+      $list = [];
+      foreach ($productos as $producto) {
+        $dictionary = array(
+          '{{id}}'                  =>$producto['id'],
+          '{{codigo}}'              =>$producto['codigo'],
+          '{{modelo}}'              =>$producto['modelo'],
+          '{{nombre}}'              =>$producto['nombre'],
+          '{{categoria}}'           =>$producto['categoria_nombre'],
+          '{{subcategoria}}'        =>$producto['subcategoria_nombre'],
+          '{{descripcion}}'         =>$producto['descripcion'],
+          '{{color}}'               =>$producto['color_imagen'],
+          '{{material}}'            =>$producto['material'],
+          '{{marca}}'               =>$producto['marca'],
+          '{{altura}}'              =>$producto['altura'],
+          '{{precio}}'              =>$producto['precio'],
+          '{{image}}'               =>$this->getUrl(IMAGE_URL,$producto['imagen']),
+          '{{url_producto}}'        =>'index.php?ctrl=productos&action=show&id='.$producto['id'],
+          '{{url_shopping_cart}}'   =>'index.php?ctrl=shopping-cart&action=list'
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
 
     public function showView($view) {
       echo $view;

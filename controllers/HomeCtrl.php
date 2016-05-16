@@ -32,9 +32,7 @@
 
     public function showHome() {
       $view = $this->getView("home");
-
       $view = $this->showDataMenu($view);
-
       
 
       $descuentos = $this->model->getAllDescuentos();

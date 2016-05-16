@@ -5,12 +5,9 @@
       <ul>
         <li>
           <ul>
-            <li><a href="#">Zapatilla</a></li>
-            <li><a href="#">Bota</a></li>
-            <li><a href="#">Sandalia</a></li>
-            <li><a href="#">Flat</a></li>
-            <li><a href="#">Deportivo</a></li>
-            <li><a href="#">Pantunfla</a></li>
+            <!--subcategoria-->
+            <li><a href="{{subcategoria_url}}">{{subcategoria}}</a></li>
+            <!--.subcategoria--> 
           </ul>
         </li>
       </ul>
@@ -23,47 +20,14 @@
       </ul>
     </nav>
     <button class="btn btn-red btn-lg btn-block">Eliminar filtros</button>
-    <h3>Tallas</h3>
-    <nav class="filters">
-      <ul>
-        <li>
-          <ul class="sizes">
-            <li><a href="#">21</a></li>
-            <li><a href="#">21.5</a></li>
-            <li><a href="#">22</a></li>
-            <li><a href="#">22.5</a></li>
-            <li><a href="#">23</a></li>
-            <li><a href="#">23.5</a></li>
-            <li><a href="#">24</a></li>
-            <li><a href="#">24.5</a></li>
-            <li><a href="#">25</a></li>
-            <li><a href="#">25.5</a></li>
-            <li><a href="#">26</a></li>
-            <li><a href="#">26.5</a></li>
-            <li><a href="#">27</a></li>
-            <li><a href="#">27.5</a></li>
-            <li><a href="#">28</a></li>
-            <li><a href="#">28.5</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
     <h3>Colores</h3>
     <nav class="filters">
       <ul>
         <li>
           <ul class="colors">
-            <li><a href="#"><img src="admin/images/colores/yellow.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/red.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/green.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/sky-blue.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/black.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/white.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/pink.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/purple.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/cyan.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/orange.png"/></a></li>
-            <li><a href="#"><img src="admin/images/colores/fucsia.png"/></a></li>
+            <!--color-->
+            <li><a href="#"><img src="{{color_imagen}}" data-toggle="tooltip" title="{{color_nombre}}"/></a></li>
+            <!--.color-->
           </ul>
         </li>
       </ul>
@@ -97,95 +61,27 @@
       </div>
     </section>
 
-
+    <!--producto-->
     <article class="item">
-      <figure class="col-sm-4 col-md-3">
-        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+      <figure class="col-sm-4 col-md-3 col-lg-2">
+        <img src="{{image}}" alt="{{nombre}}"/>
         <figcaption>
-          <h4 class="name">Zapatilla Mary Jane</h4>
-          <p class="price">$49.50</p>
+          <h4 class="name">{{nombre}}</h4>
+          <p class="price">${{precio}}</p>
         </figcaption>
         <div class="overlay">
           <ul>
             <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=productos&action=show&id=1" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
+              <a class="btn btn-lg btn-red" href="{{url_producto}}" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
             </li>
             <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+              <a class="btn btn-lg btn-red" href="{{url_shopping_cart}}" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
             </li>
           </ul>
         </div>
       </figure>
     </article>
-
-    <article class="item">
-      <figure class="col-sm-4 col-md-3">
-        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-        <figcaption>
-          <h4 class="name">Zapatilla Mary Jane</h4>
-          <p class="price">$49.50</p>
-        </figcaption>
-        <div class="overlay">
-          <ul>
-            <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=productos&action=show&id=1" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
-            </li>
-            <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-            </li>
-          </ul>
-        </div>
-      </figure>
-    </article>
-
-    <article class="item">
-      <figure class="col-sm-4 col-md-3">
-        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-        <figcaption>
-          <h4 class="name">Zapatilla Mary Jane</h4>
-          <p class="price">$49.50</p>
-        </figcaption>
-        <div class="overlay">
-          <ul>
-            <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=productos&action=show&id=1" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
-            </li>
-            <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-            </li>
-          </ul>
-        </div>
-      </figure>
-    </article>
-
-    <article class="item">
-      <figure class="col-sm-4 col-md-3">
-        <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-        <figcaption>
-          <h4 class="name">Zapatilla Mary Jane</h4>
-          <p class="price">$49.50</p>
-        </figcaption>
-        <div class="overlay" style="display:none">
-          <ul>
-            <li>
-              <a class="btn btn-lg btn-red" href="admin/catalogos/Sandalias.pdf" target="_blank"><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span></a>
-            </li>
-            <li>
-              <a class="btn btn-lg btn-red" href="index.php?ctrl=shopping-cart&action=list" target="_blank"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-            </li>
-          </ul>
-        </div>
-      </figure>
-    </article>
-
-
-
-
-
-
-
-    
-
+    <!--.producto-->
     
   </section>
 </div>

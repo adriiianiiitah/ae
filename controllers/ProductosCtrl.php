@@ -2,14 +2,14 @@
   require_once('StandardCtrl.php');
 
   class ProductosCtrl extends StandardCtrl {
-    private $model;
-    public $url;
+    public $model;
+    //public $url;
 
     public function __construct() {
       parent::__construct();
       require_once('./models/ProductosMdl.php');
       $this->model = new ProductosMdl();
-      $this->url = 'admin/images/productos/';
+      //$this->url = 'admin/images/productos/';
     }
 
     public function execute() {
@@ -82,13 +82,25 @@
     }
 
     public function showProductos() {
-      
+      $view = $this->getView("productos");
+      $view = $this->showDataMenu($view);
 
-      $header = file_get_contents("views/header.html");
-      $menu =  file_get_contents("views/menu.html");
-      $view =  file_get_contents("views/productos.html");
-      $footer = file_get_contents("views/footer.html"); 
-      echo $header.$menu.$view.$footer;
+      if(isset($_GET['categoria']) && !empty($_GET['categoria']) && $this->isAlphanumeric($_GET['categoria'])) {
+        $subcategorias = $this->model->getAllSubcategoriasByCathegory($_GET['categoria']);
+        $data = $this->getDataSubcategorias($subcategorias);
+        $view = $this->showData($view,$data,SUBCATEGORIA_TAG_START,SUBCATEGORIA_TAG_END);
+
+        $colores = $this->model->getAllColoresByCathegory($_GET['categoria']);
+        $data = $this->getDataColores($colores);
+        $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
+
+        $productos = $this->model->getAll();
+        $data = $this->getDataProductos($productos);
+        $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
+
+      }
+
+      $this->showView($view);
     }
 
     
