@@ -84,7 +84,54 @@
     public function showProductos() {
       $view = $this->getView("productos");
       $view = $this->showDataMenu($view);
+      $filtros = array();
 
+      if(isset($_GET['categoria']) && !empty($_GET['categoria']) && $this->isAlphanumeric($_GET['categoria'])) {
+        $filtros['categoria'] = $_GET['categoria'];
+
+        $subcategorias = $this->model->getAllSubcategoriasByCathegory($_GET['categoria']);
+        $data = $this->getDataSubcategorias($subcategorias);
+        $view = $this->showData($view,$data,SUBCATEGORIA_TAG_START,SUBCATEGORIA_TAG_END);
+
+        $colores = $this->model->getAllColoresByCathegory($_GET['categoria']);
+        $data = $this->getDataColores($colores);
+        $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
+      } else {
+        $subcategorias = $this->model->getAllSubcategoriasByCathegory();
+        $data = $this->getDataSubcategorias($subcategorias);
+        $view = $this->showData($view,$data,SUBCATEGORIA_TAG_START,SUBCATEGORIA_TAG_END);
+
+        $colores = $this->model->getAllColoresByCathegory();
+        $data = $this->getDataColores($colores);
+        $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
+      }
+
+      if(isset($_GET['subcategoria']) && !empty($_GET['subcategoria']) && $this->isAlphanumeric($_GET['subcategoria'])) {
+        $filtros['subcategoria'] = $_GET['subcategoria'];
+      }
+
+      if(isset($_GET['color']) && !empty($_GET['color']) && $this->isColor($_GET['color'])) {
+        $filtros['color'] = $_GET['color'];
+      }
+
+      if(isset($_GET['precio_min']) && !empty($_GET['precio_min']) && $this->isInt($_GET['precio_min'])) {
+        $filtros['precio_min'] = $_GET['precio_min'];
+      }
+
+      if(isset($_GET['precio_max']) && !empty($_GET['precio_max']) && $this->isInt($_GET['precio_max'])) {
+        $filtros['precio_max'] = $_GET['precio_max'];
+      }
+
+      $data = $this->getDataFiltters($filtros);
+      $view = $this->showData($view,$data,FILTRO_TAG_START,FILTRO_TAG_END);
+
+      $productos = $this->model->getAllProductosByFiltters($filtros);
+      $data = $this->getDataProductos($productos);
+      $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
+
+
+
+/*
       if(isset($_GET['categoria']) && !empty($_GET['categoria']) && $this->isAlphanumeric($_GET['categoria'])) {
         $subcategorias = $this->model->getAllSubcategoriasByCathegory($_GET['categoria']);
         $data = $this->getDataSubcategorias($subcategorias);
@@ -99,6 +146,13 @@
         $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
 
       }
+      */
+
+
+      
+
+
+
 
       $this->showView($view);
     }

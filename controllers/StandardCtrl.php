@@ -42,12 +42,15 @@
     }
 
     function isInt($value) {
-      //return is_int((int)$value);
       return preg_match(INT, $value);
     }
 
     function isAlphanumeric($value) {
       return preg_match(ALPHANUMERIC, $value);
+    }
+
+    function isColor($value) {
+      return preg_match(COLOR, $value);
     }
 
     public function getRow($view, $start_tag = '', $end_tag = '' ) {
@@ -161,15 +164,65 @@
       return $list; 
     }
 
+    public function getAbsoluteUrl($param,$new_value) {
+      $host= $_SERVER["HTTP_HOST"];
+      $url= $_SERVER["REQUEST_URI"];
+      $full_url = 'http://'.$host.$url;
+
+      $start = strpos($full_url,$param);
+      if($start) {
+        $end = strrpos($full_url,'&',$start);
+        if ($end > $start) {
+          $old_value = substr($full_url,$start,$end-$start);
+          if($new_value != '') {
+            $new_value = $param.$new_value;
+          }
+          
+          $full_url = str_replace($old_value, $new_value, $full_url);
+
+          return $full_url;
+        }
+      }
+      if($new_value != '') {
+        return $full_url.$param.$new_value;
+      }
+      return $full_url;
+    }
+
     public function getDataColores($colores) {
       $list = [];
       foreach ($colores as $color) {
         $dictionary = array(
           '{{color_nombre}}'=>ucwords(str_replace('-',' ',$color['color_nombre'])),
-          '{{color_imagen}}'=>$this->getUrl(IMAGE_URL,$color['color_imagen'])
+          '{{color_imagen}}'=>$this->getUrl(IMAGE_URL,$color['color_imagen']),
+          '{{color_url}}'=>$this->getAbsoluteUrl('&color=',$color['color_nombre'])
         );
         $list[] = $dictionary;
       }
+      return $list; 
+    }
+
+    public function getDataFiltters($filtters) {
+      $list = [];
+
+      foreach ($filtters as $key => $value) {
+        $dictionary = array(
+          '{{filtro}}'=>ucwords($key),
+          '{{valor}}'=>$value,
+          '{{filtro_url}}'=>$this->getAbsoluteUrl('&'.$key.'=','')
+        );
+        /*
+        $dictionary = array(
+          '{{filtro}}'=>ucwords($key),
+          '{{valor}}'=>$value,
+          '{{filtro_url}}'=>$this->getAbsoluteUrl('&'.$key.'=',$value)
+        );
+        */
+
+        $list[] = $dictionary;
+      }
+      //echo '<pre>';
+      //var_dump($list);exit();
       return $list; 
     }
 

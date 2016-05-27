@@ -93,4 +93,7 @@
   define('CATALOGO_ESPECIAL_TAG_START',               '<!--catalogo-especial-->');
   define('CATALOGO_ESPECIAL_TAG_END',                 '<!--.catalogo-especial-->');
 
+  define('FILTRO_TAG_START',               '<!--filtro-->');
+  define('FILTRO_TAG_END',                 '<!--.filtro-->');
+
 ?>

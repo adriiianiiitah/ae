@@ -38,6 +38,45 @@
       return $producto;
     }
 
+    function getAllProductosByFiltters($filtters) {
+      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen, colores.nombre AS color_nombre 
+                FROM productos
+                INNER JOIN categorias
+                ON categorias.id = categoria
+                INNER JOIN subcategorias
+                ON subcategorias.id = subcategoria
+                INNER JOIN colores
+                ON colores.id = color 
+                WHERE productos.id <> \'-1\' ';
+
+      if(isset($filtters['categoria'])) {
+        $_query .= ' AND categorias.nombre = "'.$filtters['categoria'].'"';
+      }
+
+      if(isset($filtters['subcategoria'])) {
+        $_query .= ' AND subcategorias.nombre = "'.$filtters['subcategoria'].'"';
+      }
+
+      if(isset($filtters['color'])) {
+        $_query .= ' AND colores.nombre = "'.$filtters['color'].'"';
+      }
+
+      if(isset($filtters['precio_min'])) {
+        $_query .= ' AND precio >= "'.$filtters['precio_min'].'"';
+      }
+
+      if(isset($filtters['precio_max'])) {
+        $_query .= ' AND precio <= "'.$filtters['precio_max'].'"';
+      }
+
+      $_query .= ' ORDER BY precio DESC';
+
+     
+
+      $productos = $this->connection->execute($_query)->getResult();
+      return $productos;
+    }
+
     function getColoresById($id) {
     
     }
