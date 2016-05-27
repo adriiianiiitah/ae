@@ -168,21 +168,28 @@
       $host= $_SERVER["HTTP_HOST"];
       $url= $_SERVER["REQUEST_URI"];
       $full_url = 'http://'.$host.$url;
-
+    
       $start = strpos($full_url,$param);
       if($start) {
-        $end = strrpos($full_url,'&',$start);
-        if ($end > $start) {
+        $end = strrpos($full_url,'&',$start+1);
+        if ($end) {
           $old_value = substr($full_url,$start,$end-$start);
           if($new_value != '') {
             $new_value = $param.$new_value;
           }
           
           $full_url = str_replace($old_value, $new_value, $full_url);
-
+          return $full_url;
+        } else {
+          $old_value = substr($full_url,$start);
+          if($new_value != '') {
+            $new_value = $param.$new_value;
+          }
+          
+          $full_url = str_replace($old_value, $new_value, $full_url);
           return $full_url;
         }
-      }
+      } 
       if($new_value != '') {
         return $full_url.$param.$new_value;
       }
