@@ -25,7 +25,8 @@
     }
 
     function getOne($id) {
-      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen
+      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, 
+                productos.imagen, colores.imagen AS color_imagen, colores.nombre AS color_nombre
                 FROM productos
                 INNER JOIN categorias
                 ON categorias.id = categoria
@@ -39,7 +40,8 @@
     }
 
     function getAllProductosByFiltters($filtters) {
-      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen, colores.nombre AS color_nombre 
+      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, 
+                productos.imagen, colores.imagen AS color_imagen, colores.nombre AS color_nombre 
                 FROM productos
                 INNER JOIN categorias
                 ON categorias.id = categoria
@@ -77,16 +79,22 @@
       return $productos;
     }
 
-    function getColoresById($id) {
-    
+    function getColoresByCodigo($id, $codigo) {
+      $_query = 'SELECT productos.id AS producto_id, colores.id AS color_id, colores.nombre AS color_nombre, colores.imagen AS color_imagen
+                 FROM productos 
+                 INNER JOIN colores
+                 ON colores.id = color 
+                 WHERE productos.id <> "'.$id.'" AND productos.codigo = "'.$codigo.'"';
+      $colores = $this->connection->execute($_query)->getResult();
+      return $colores;
     }
 
     function getTallasById($id) {
-      $_query = 'SELECT tallas.talla, stock 
+      $_query = 'SELECT productos_tallas.talla AS talla_id, tallas.talla AS talla, stock 
                  FROM tallas 
                  INNER JOIN productos_tallas
                  ON tallas.id = productos_tallas.talla 
-                 WHERE producto="'.$id.'"';
+                 WHERE producto="'.$id.'" AND stock > 0';
       $tallas = $this->connection->execute($_query)->getResult();
       return $tallas;
     }

@@ -503,7 +503,7 @@ section {
 
 #producto .colors li {
   list-style-type: none;
-  width: 33%;
+
   float: left;
 }
 
@@ -512,10 +512,19 @@ section {
   height: auto;
 }
 
+#producto ul.colors li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0;
+  border: 1px solid #aaa;
+  margin: 5px;
+}
+
 #producto nav.filters ul li {
   list-style-type: none;
 }
 
+#producto nav.filters ul li label,
 #producto nav.filters ul li a {
   background: #fff;
   text-decoration: none;
@@ -529,6 +538,10 @@ section {
   font-size: 10px;
   font-weight: bold;
   float: left;
+}
+
+#producto nav.filters ul li input {
+  display: none;
 }
 
 #producto h3 {

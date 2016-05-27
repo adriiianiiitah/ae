@@ -99,6 +99,10 @@
       return $url.'/'.$image;
     }
 
+    public function getUrlProducto($id) {
+      return 'index.php?ctrl=productos&action=show&id='.$id;
+    }
+
     public function getDataDescuentos($descuentos) {
       $list = [];
       foreach ($descuentos as $descuento) {
@@ -164,6 +168,19 @@
       return $list; 
     }
 
+    public function getDataTallasByProducto($tallas) {
+      $list = [];
+      foreach ($tallas as $talla) {
+        $dictionary = array(
+          '{{id}}'              =>$talla['talla_id'],
+          '{{talla}}'           =>$talla['talla'],
+          '{{stock}}'           =>$talla['stock'],
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
     public function getAbsoluteUrl($param,$new_value) {
       $host= $_SERVER["HTTP_HOST"];
       $url= $_SERVER["REQUEST_URI"];
@@ -196,13 +213,31 @@
       return $full_url;
     }
 
+    public function getColorNombre($color) {
+      return ucwords(str_replace('-',' ',$color));
+    }
+
     public function getDataColores($colores) {
       $list = [];
       foreach ($colores as $color) {
         $dictionary = array(
-          '{{color_nombre}}'=>ucwords(str_replace('-',' ',$color['color_nombre'])),
+          '{{color_nombre}}'=>$this->getColorNombre($color['color_nombre']),
           '{{color_imagen}}'=>$this->getUrl(IMAGE_URL,$color['color_imagen']),
           '{{color_url}}'=>$this->getAbsoluteUrl('&color=',$color['color_nombre'])
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
+    public function getDataColoresByProducto($colores) {
+      $list = [];
+      foreach ($colores as $color) {
+        $dictionary = array(
+          '{{producto_id}}'=>$color['producto_id'],
+          '{{color_nombre}}'=>$this->getColorNombre($color['color_nombre']),
+          '{{color_imagen}}'=>$this->getUrl(IMAGE_URL,$color['color_imagen']),
+          '{{color_url}}'=>$this->getUrlProducto($color['producto_id'])
         );
         $list[] = $dictionary;
       }

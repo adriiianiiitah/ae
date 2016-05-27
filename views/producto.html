@@ -1,61 +1,46 @@
 <div class="container">
   <section id="producto" class="row">
     <div class="col-xs-12 col-sm-5">
-      <figure class="color-selected">
+      <figure class="color-selected"> 
         <img src="{{image}}" alt="{{nombre}}"/>
       </figure>
       <h3 class="text-red">Colores</h3>
       <ul class="colors">
+        <!--color-->
         <li>
-          <a href="#">
+          <a href="{{color_url}}">
             <figure class="color">
-              <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
+              <img src="{{color_imagen}}" alt="{{color_nombre}}" data-toggle="tooltip" title="{{color_nombre}}"/>
             </figure>
           </a>
         </li>
-        <li>
-          <a href="#">
-            <figure class="color">
-              <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-            </figure>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <figure class="color">
-              <img src="admin/images/dama/zapatillas/d766ab38778043d50626aba76f46d78d.jpg" alt="article 1"/>
-            </figure>
-          </a>
-        </li>
+        <!--.color-->
       </ul>
     </div>
     <div class="col-xs-12 col-sm-7">
       <h3>{{nombre}}</h3>
       <p class="code"><strong>Cod:</strong> {{codigo}} <span><strong>Mod:</strong> {{modelo}}</span></p>
       <p class="description"><strong>Descripcion:</strong> {{descripcion}}</p>
-      <p><strong>Color:</strong> XXX</p>
+      <p><strong>Color:</strong> {{color}}</p>
       <p><strong>Material:</strong> {{material}}</p>
       <p><strong>Altura:</strong> {{altura}}cm</p>
       <p><strong>Marca:</strong> {{marca}}</p>
+
+
+      
+
       <nav class="filters">
-        <p><strong>Talla:</strong> </p>
+        <p><strong>Tallas:</strong> </p>
         <ul class="sizes">
-          <li><a href="#">21</a></li>
-          <li><a href="#">21.5</a></li>
-          <li><a href="#">22</a></li>
-          <li><a href="#">22.5</a></li>
-          <li><a href="#">23</a></li>
-          <li><a href="#">23.5</a></li>
-          <li><a href="#">24</a></li>
-          <li><a href="#">24.5</a></li>
-          <li><a href="#">25</a></li>
-          <li><a href="#">25.5</a></li>
-          <li><a href="#">26</a></li>
-          <li><a href="#">26.5</a></li>
-          <li><a href="#">27</a></li>
-          <li><a href="#">27.5</a></li>
-          <li><a href="#">28</a></li>
-          <li><a href="#">28.5</a></li>
+          <!--talla-->
+          <li>
+            <div class="checkbox" for="{{talla_id}}">
+              <label>
+                {{talla}}
+                <input id="{{talla_id}}" type="radio" value="{{talla_id}}">
+              </label>
+            </div>
+          <!--.talla-->
         </ul>
       </nav>
       <p class="price pull-right">${{precio}}</p>

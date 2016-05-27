@@ -3,13 +3,13 @@
 
   class ProductosCtrl extends StandardCtrl {
     public $model;
-    //public $url;
+    public $url;
 
     public function __construct() {
       parent::__construct();
       require_once('./models/ProductosMdl.php');
       $this->model = new ProductosMdl();
-      //$this->url = 'admin/images/productos/';
+      $this->url = 'admin';
     }
 
     public function execute() {
@@ -47,7 +47,8 @@
         '{{categoria}}'           =>$producto['categoria_nombre'],
         '{{subcategoria}}'        =>$producto['subcategoria_nombre'],
         '{{descripcion}}'         =>$producto['descripcion'],
-        '{{color}}'               =>$producto['color_imagen'],
+        '{{color}}'               =>$this->getColorNombre($producto['color_nombre']),
+        //'{{color}}'               =>$producto['color_imagen'],
         '{{material}}'            =>$producto['material'],
         '{{marca}}'               =>$producto['marca'],
         '{{altura}}'              =>$producto['altura'],
@@ -70,8 +71,18 @@
 
           $content = $view;
           $diccionary = $this->getDictionary($producto);
-          //$content = strtr($view,$diccionary);
-          //$view = str_replace($view, $table, $content);
+          $content = strtr($view,$diccionary);
+          $view = str_replace($view, $table, $content);
+
+          $colores = $this->model->getColoresByCodigo($id,$producto['codigo']);
+          $data = $this->getDataColoresByProducto($colores);
+          $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
+
+          $tallas = $this->model->getTallasById($id);
+          $data = $this->getDataTallasByProducto($tallas);
+          $view = $this->showData($view,$data,TALLA_TAG_START,TALLA_TAG_END);
+
+
           $this->showView($view);
         } else {
           $this->showErrorPage();
@@ -129,35 +140,7 @@
       $data = $this->getDataProductos($productos);
       $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
 
-
-
-/*
-      if(isset($_GET['categoria']) && !empty($_GET['categoria']) && $this->isAlphanumeric($_GET['categoria'])) {
-        $subcategorias = $this->model->getAllSubcategoriasByCathegory($_GET['categoria']);
-        $data = $this->getDataSubcategorias($subcategorias);
-        $view = $this->showData($view,$data,SUBCATEGORIA_TAG_START,SUBCATEGORIA_TAG_END);
-
-        $colores = $this->model->getAllColoresByCathegory($_GET['categoria']);
-        $data = $this->getDataColores($colores);
-        $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
-
-        $productos = $this->model->getAll();
-        $data = $this->getDataProductos($productos);
-        $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
-
-      }
-      */
-
-
-      
-
-
-
-
       $this->showView($view);
     }
-
-    
-
   }
 ?>
