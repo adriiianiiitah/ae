@@ -59,7 +59,8 @@
         '{{id}}'              =>$descuento['id'],
         '{{codigo}}'          =>$descuento['codigo'],
         '{{cantidad}}'        =>$descuento['cantidad'],
-        //'{{producto_id}}'     =>$descuento['producto_id'],
+        '{{producto_id}}'     =>$descuento['producto_id'],
+        '{{producto_nombre}}' =>$descuento['producto_nombre'],
         '{{producto}}'        =>$descuento['producto_nombre'],
         '{{descuento}}'       =>$descuento['descuento'],
         '{{precio}}'          =>$descuento['precio'],
@@ -114,7 +115,8 @@
         'id'              =>'',
         'codigo'          =>'',
         'cantidad'        =>'',
-        'producto_nombre' =>'',
+        'producto_id'     =>'{{producto_id}}',
+        'producto_nombre' =>'{{producto_nombre}}',
         'descuento'       =>'',
         'precio'          =>'',
         'fecha_inicio'    =>'',
@@ -202,9 +204,6 @@
             $diccionary = $this->getDictionary($descuento);
             $view = $this->getViewForm($id,'descuento-edit',$this->modal,$diccionary);
 
-            $productos = $this->model->getAllProductos();
-            $data = $this->getDataProductos($productos);
-            $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
             echo $view;
           } else {
             $errors = array();

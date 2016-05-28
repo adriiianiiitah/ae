@@ -1,13 +1,19 @@
 <?php
-  require_once('StandardCtrl.php');
+  require_once('admin/controllers/StandardCtrl.php');
 
   class UsuarioCtrl extends StandardCtrl {
     private $model;
+    public $table_name;
+    public $single;
+    public $url;
 
     public function __construct() {
       parent::__construct();
-      //require_once('./models/HomeMdl.php');
-      //$this->model = new HomeMdl();
+      require_once('admin/models/UsuariosMdl.php');
+      $this->model = new UsuariosMdl();
+      $this->table_name = 'usuarios';
+      $this->single = 'usuario';
+      $this->url = 'images/usuarios/';
     }
 
     public function execute() {

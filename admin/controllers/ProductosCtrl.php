@@ -44,6 +44,10 @@
           case 'create':
               $this->createProducto();
             break;
+          case 'productos':
+            $productos = $this->model->getAllProductos();
+            $data = $this->loadDataProductos($productos);
+            break;
           default:
             $this->showErrorPage();
             break;

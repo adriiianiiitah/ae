@@ -228,6 +228,14 @@
       return $list;
     }
 
+    public function loadDataProductos($productos) {
+      $list = '';
+      foreach ($productos as $producto) {
+        $list .= '<option value="'.$producto['producto_id'].'">'.$producto['producto_nombre'].'</option>';
+      }
+      echo $list;
+    }
+
     public function getDataCategorias($categorias) {
       foreach ($categorias as $categoria) {
         $dictionary = array (

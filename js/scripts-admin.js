@@ -30,4 +30,12 @@ $(function() {
     $("#btn-delete-color").click(function() {
       //console.log($(this));
     });
+
+    /*  AJAX  */
+
+
+    $('#producto').one('click', function() {
+      $(this).load("index.php?ctrl=productos&action=productos");
+    });
+
 });
