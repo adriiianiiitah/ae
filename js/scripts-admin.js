@@ -34,29 +34,30 @@ $(function() {
     /*  AJAX  */
 
 
-    $('#producto').one('click', function() {
+    $('#producto').one('focusin', function() {
+      $(this).html('');
       $(this).load("index.php?ctrl=productos&action=productos");
     });
 
-    $('#categoria').one('click', function() {
+    $('#categoria').one('focusin', function() {
+      $(this).html('');
       $(this).load("index.php?ctrl=categorias&action=categorias");
+    });
+
+    $('#categoria').change( function() {
       var id = $(this).val();
       $('#subcategoria').load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
     });
 
 
-    $('#subcategoria').click(function() {
+    $('#subcategoria').one('focusin', function() {
       var id = $('#categoria').val();
+      $(this).html('');
       $(this).load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
     });
 
-
-    /*
-
-    $('#sucategoria').one('click', function() {
-      $(this).load("index.php?ctrl=categorias&action=categorias");
+    $('#color').one('focusin', function() {
+      $(this).html('');
+      $(this).load("index.php?ctrl=colores&action=colores");
     });
-*/
-
-
 });

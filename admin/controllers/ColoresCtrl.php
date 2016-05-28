@@ -36,7 +36,7 @@
               $this->showErrorPage();
             break;
           case 'edit':
-            if(isset($_GET['id']) && !empty($_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id'])) 
               $this->editColor($_GET['id']);
             else
               $this->showErrorPage();
@@ -47,6 +47,7 @@
           case 'colores':
               $colores = $this->model->getAllColores();
               $data = $this->loadDataColores($colores);
+              break;
           default:
             $this->showErrorPage();
             break;
