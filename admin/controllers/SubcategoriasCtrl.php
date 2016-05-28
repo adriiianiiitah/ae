@@ -58,7 +58,8 @@
         '{{id}}'                =>$subcategoria['id'],
         '{{codigo}}'            =>$subcategoria['codigo'],
         '{{nombre}}'            =>$subcategoria['nombre'],
-        //'{{categoria_nombre}}'  =>$subcategoria['categoria_nombre'],
+        '{{categoria_id}}'      =>$subcategoria['categoria_id'],
+        '{{categoria_nombre}}'  =>$subcategoria['categoria_nombre'],
         '{{categoria}}'         =>$subcategoria['categoria_nombre'],
         '{{descripcion}}'       =>$subcategoria['descripcion'],
         '{{image}}'             =>$subcategoria['imagen'],
@@ -108,12 +109,13 @@
 
     public function createSubcategoria() {
       $subcategoria = array (
-        'id'            =>'',
-        'codigo'        =>'',
-        'nombre'        =>'',
-        'categoria_nombre'        =>'',
-        'descripcion'        =>'',
-        'imagen'        =>$this->image
+        'id'                =>'',
+        'codigo'            =>'',
+        'nombre'            =>'',
+        'categoria_id'      =>'{{categoria_id}}',
+        'categoria_nombre'  =>'{{categoria_nombre}}',
+        'descripcion'       =>'',
+        'imagen'            =>$this->image
       );
       $id ='';
 
@@ -177,9 +179,6 @@
             $diccionary = $this->getDictionary($subcategoria);
             $view = $this->getViewForm($id,'subcategoria-edit',$this->modal,$diccionary);
 
-            $categorias = $this->model->getAllCategorias();
-            $data = $this->getDataCategorias($categorias);
-            $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
             echo $view;
           } else {
             $errors = array();

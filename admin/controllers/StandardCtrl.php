@@ -236,6 +236,14 @@
       echo $list;
     }
 
+    public function loadDataCategorias($categorias) {
+      $list = '';
+      foreach ($categorias as $categoria) {
+        $list .= '<option value="'.$categoria['categoria_id'].'">'.$categoria['categoria_nombre'].'</option>';
+      }
+      echo $list;
+    }
+
     public function getDataCategorias($categorias) {
       foreach ($categorias as $categoria) {
         $dictionary = array (

@@ -60,6 +60,8 @@
         '{{codigo}}'          =>$catalogo['codigo'],
         '{{nombre}}'          =>$catalogo['nombre'],
         '{{fecha}}'           =>$catalogo['fecha'],
+        '{{categoria_id}}'    =>$catalogo['categoria_id'],
+        '{{categoria_nombre}}'=>$catalogo['categoria_nombre'],
         '{{categoria}}'       =>$catalogo['categoria_nombre'],
         '{{image}}'           =>$catalogo['imagen'],
         //'{{pdf}}'=>$catalogo['pdf'],
@@ -113,7 +115,8 @@
         'codigo'            =>'',
         'nombre'            =>'',
         'fecha'             =>'',
-        'categoria_nombre'  =>'',
+        'categoria_id'      =>'{{categoria_id}}',
+        'categoria_nombre'  =>'{{categoria_nombre}}',
         'pdf'               =>'',
         'imagen'            =>$this->image
       );
@@ -180,9 +183,6 @@
             $diccionary = $this->getDictionary($catalogo);
             $view = $this->getViewForm($id,'catalogo-edit',$this->modal,$diccionary);
 
-            $categorias = $this->model->getAllCategorias();
-            $data = $this->getDataCategorias($categorias);
-            $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
             echo $view;
           } else {
             $errors = array();

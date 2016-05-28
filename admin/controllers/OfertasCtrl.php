@@ -191,9 +191,6 @@
             $diccionary = $this->getDictionary($oferta);
             $view = $this->getViewForm($id,'oferta-edit',$this->modal,$diccionary);
 
-            //$productos = $this->model->getAllProductos();
-            //$data = $this->getDataProductos($productos);
-            //$view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
             echo $view;
           } else { 
             $errors = array();

@@ -44,6 +44,10 @@
           case 'create':
               $this->createCategoria();
             break;
+          case 'categorias':
+            $categorias = $this->model->getAllCategorias();
+            $data = $this->loadDataCategorias($categorias);
+            break;
           default:
             $this->showErrorPage();
             break;

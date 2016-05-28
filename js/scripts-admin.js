@@ -38,4 +38,9 @@ $(function() {
       $(this).load("index.php?ctrl=productos&action=productos");
     });
 
+    $('#categoria').one('click', function() {
+      $(this).load("index.php?ctrl=categorias&action=categorias");
+    });
+
+
 });
