@@ -46,6 +46,7 @@ $(function() {
 
     $('#categoria').change( function() {
       var id = $(this).val();
+      $('#subcategoria').html('');
       $('#subcategoria').load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
     });
 

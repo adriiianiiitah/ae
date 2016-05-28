@@ -233,6 +233,7 @@
       foreach ($productos as $producto) {
         $list .= '<option value="'.$producto['producto_id'].'">'.$producto['producto_nombre'].'</option>';
       }
+      if($list === '')$list = '<option value=""></option>';
       echo $list;
     }
 
@@ -241,6 +242,7 @@
       foreach ($categorias as $categoria) {
         $list .= '<option value="'.$categoria['categoria_id'].'">'.$categoria['categoria_nombre'].'</option>';
       }
+      if($list === '')$list = '<option value=""></option>';
       echo $list;
     }
 
@@ -249,6 +251,7 @@
       foreach ($colores as $color) {
         $list .= '<option value="'.$color['color_id'].'">'.$color['color_nombre'].'</option>';
       }
+      if($list === '')$list = '<option value=""></option>';
       echo $list;
     }
 
@@ -257,6 +260,7 @@
       foreach ($subcategorias as $subcategoria) {
         $list .= '<option value="'.$subcategoria['subcategoria_id'].'">'.$subcategoria['subcategoria_nombre'].'</option>';
       }
+      if($list === '')$list = '<option value=""></option>';
       echo $list;
     }
 
