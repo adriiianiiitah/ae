@@ -59,8 +59,8 @@
         '{{id}}'              =>$oferta['id'],
         '{{codigo}}'          =>$oferta['codigo'],
         '{{cantidad}}'        =>$oferta['cantidad'],
-        //'{{producto_id}}'     =>$oferta['producto_id'],
-        //'{{producto_nombre}}' =>$oferta['producto_nombre'],
+        '{{producto_id}}'     =>$oferta['producto_id'],
+        '{{producto_nombre}}' =>$oferta['producto_nombre'],
         '{{producto}}'        =>$oferta['producto_nombre'],
         '{{fecha_inicio}}'    =>$oferta['fecha_inicio'],
         '{{fecha_fin}}'       =>$oferta['fecha_fin'],
@@ -114,7 +114,8 @@
         'id'              =>'',
         'codigo'          =>'',
         'cantidad'        =>'',
-        'producto_nombre' =>'',
+        'producto_id'     =>'{{producto_id}}',
+        'producto_nombre' =>'{{producto_nombre}}',
         'precio'          =>'',
         'fecha_inicio'    =>'',
         'fecha_fin'       =>'',
@@ -190,9 +191,9 @@
             $diccionary = $this->getDictionary($oferta);
             $view = $this->getViewForm($id,'oferta-edit',$this->modal,$diccionary);
 
-            $productos = $this->model->getAllProductos();
-            $data = $this->getDataProductos($productos);
-            $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
+            //$productos = $this->model->getAllProductos();
+            //$data = $this->getDataProductos($productos);
+            //$view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
             echo $view;
           } else { 
             $errors = array();
