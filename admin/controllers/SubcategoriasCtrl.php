@@ -44,6 +44,10 @@
           case 'create':
               $this->createSubcategoria();
             break;
+          case 'subcategorias':
+            $subcategorias = $this->model->getAllSubcategoriasByCategoria($_GET['categoria_id']);
+            $data = $this->loadDataSubcategorias($subcategorias);
+          break;
           default:
             $this->showErrorPage();
             break;

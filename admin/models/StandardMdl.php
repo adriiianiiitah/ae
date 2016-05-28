@@ -37,6 +37,14 @@
       return $subcategorias;
     }
 
+    function getAllSubcategoriasByCategoria($id) {
+      $_query = 'SELECT id AS subcategoria_id, nombre AS subcategoria_nombre 
+                FROM subcategorias
+                WHERE categoria = '.$id;
+      $subcategorias = $this->connection->execute($_query)->getResult();
+      return $subcategorias;
+    }
+
     function getAllColores() {
       $_query = 'SELECT id AS color_id, nombre AS color_nombre 
                 FROM colores';

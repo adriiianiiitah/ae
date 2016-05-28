@@ -244,6 +244,22 @@
       echo $list;
     }
 
+    public function loadDataColores($colores) {
+      $list = '';
+      foreach ($colores as $color) {
+        $list .= '<option value="'.$color['color_id'].'">'.$color['color_nombre'].'</option>';
+      }
+      echo $list;
+    }
+
+    public function loadDataSubcategorias($subcategorias) {
+      $list = '';
+      foreach ($subcategorias as $subcategoria) {
+        $list .= '<option value="'.$subcategoria['subcategoria_id'].'">'.$subcategoria['subcategoria_nombre'].'</option>';
+      }
+      echo $list;
+    }
+
     public function getDataCategorias($categorias) {
       foreach ($categorias as $categoria) {
         $dictionary = array (

@@ -64,9 +64,15 @@
         '{{codigo}}'              =>$producto['codigo'],
         '{{modelo}}'              =>$producto['modelo'],
         '{{nombre}}'              =>$producto['nombre'],
+        '{{categoria_id}}'        =>$producto['categoria_id'],
+        '{{categoria_nombre}}'    =>$producto['categoria_nombre'],
         '{{categoria}}'           =>$producto['categoria_nombre'],
+        '{{subcategoria_id}}'     =>$producto['subcategoria_id'],
+        '{{subcategoria_nombre}}' =>$producto['subcategoria_nombre'],
         '{{subcategoria}}'        =>$producto['subcategoria_nombre'],
         '{{descripcion}}'         =>$producto['descripcion'],
+        '{{color_id}}'            =>$producto['color_id'],
+        '{{color_nombre}}'        =>$producto['color_nombre'],
         '{{color}}'               =>$producto['color_imagen'],
         '{{material}}'            =>$producto['material'],
         '{{marca}}'               =>$producto['marca'],
@@ -129,9 +135,13 @@
         'codigo'              =>'',
         'modelo'              =>'',
         'nombre'              =>'',
-        'categoria_nombre'    =>'',
-        'subcategoria_nombre' =>'',
+        'categoria_id'        =>'{{categoria_id}}',
+        'categoria_nombre'    =>'{{categoria_nombre}}',
+        'subcategoria_id'     =>'{{subcategoria_id}}',
+        'subcategoria_nombre' =>'{{subcategoria_nombre}}',
         'descripcion'         =>'',
+        'color_id'            =>'{{color_id}}',
+        'color_nombre'        =>'{{color_nombre}}',
         'color_imagen'        =>'',
         'material'            =>'',
         'marca'               =>'',
@@ -264,6 +274,7 @@
             $data = $this->getDataTallas($tallas);
             $view = $this->showData($view,$data,TALLA_TAG_START,TALLA_TAG_END);
 
+/*
             $categorias = $this->model->getAllCategorias();
             $data = $this->getDataCategorias($categorias);
             $view = $this->showData($view,$data,CATEGORIA_TAG_START,CATEGORIA_TAG_END);
@@ -275,7 +286,7 @@
             $colores = $this->model->getAllColores();
             $data = $this->getDataColores($colores);
             $view = $this->showData($view,$data,COLOR_TAG_START,COLOR_TAG_END);
-
+*/
 
             echo $view;
           } else {

@@ -40,7 +40,23 @@ $(function() {
 
     $('#categoria').one('click', function() {
       $(this).load("index.php?ctrl=categorias&action=categorias");
+      var id = $(this).val();
+      $('#subcategoria').load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
     });
+
+
+    $('#subcategoria').click(function() {
+      var id = $('#categoria').val();
+      $(this).load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
+    });
+
+
+    /*
+
+    $('#sucategoria').one('click', function() {
+      $(this).load("index.php?ctrl=categorias&action=categorias");
+    });
+*/
 
 
 });

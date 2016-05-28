@@ -12,7 +12,11 @@
     }
 
     function getAll() {
-      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen
+      $_query = 'SELECT productos.id, productos.codigo, productos.nombre, productos.descripcion, productos.imagen,
+                categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, 
+                subcategorias.id AS subcategoria_id, subcategorias.nombre AS subcategoria_nombre, 
+                colores.nombre AS color_nombre, colores.imagen AS color_imagen,
+                modelo, material, marca, altura, precio, colores.id AS color_id 
                 FROM productos
                 INNER JOIN categorias
                 ON categorias.id = categoria
@@ -25,7 +29,11 @@
     }
 
     function getOne($id) {
-      $_query = 'SELECT productos.id, productos.codigo, modelo, productos.nombre, categorias.nombre AS categoria_nombre, subcategorias.nombre AS subcategoria_nombre, productos.descripcion, material, marca, altura, precio, productos.imagen, colores.imagen AS color_imagen
+      $_query = 'SELECT productos.id, productos.codigo, productos.nombre, productos.descripcion, productos.imagen,
+                categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, 
+                subcategorias.id AS subcategoria_id, subcategorias.nombre AS subcategoria_nombre, 
+                colores.nombre AS color_nombre, colores.imagen AS color_imagen,
+                modelo, material, marca, altura, precio, colores.id AS color_id 
                 FROM productos
                 INNER JOIN categorias
                 ON categorias.id = categoria

@@ -44,6 +44,9 @@
           case 'create':
               $this->createColor();
             break;
+          case 'colores':
+              $colores = $this->model->getAllColores();
+              $data = $this->loadDataColores($colores);
           default:
             $this->showErrorPage();
             break;
