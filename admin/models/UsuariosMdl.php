@@ -57,19 +57,23 @@
       $usuario = $this->connection->execute($_query)->getResult();
       return $usuario;
     }
-
-function update($color) {
-      $_query = 'UPDATE colores SET 
-                codigo = "'.$color['codigo'].'",
-                nombre = "'.$color['nombre'].'",
-                imagen = "'.$color['imagen'].'" 
-                WHERE id="'.$color['id'].'"';
-      $color = $this->connection->execute($_query);
-    //return $color;
+*/
+    function insert($usuario) {
+      $_query = 'INSERT INTO usuarios (nombre, apellidos, correo, contrasena, fecha_nacimiento, genero, rol, imagen) 
+                 VALUES (
+                   "'.$usuario['nombre'].'",
+                   "'.$usuario['apellidos'].'",
+                   "'.$usuario['correo'].'",
+                   "'.$usuario['contrasena'].'",
+                   "'.$usuario['fecha_nacimiento'].'",
+                   "'.$usuario['genero'].'",
+                   "'.$usuario['rol'].'",
+                   "'.$usuario['imagen'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
     }
 
-
-*/
     function update($usuario) {
       $_query = 'UPDATE usuarios SET 
                 nombre = "'.$usuario['nombre'].'",
@@ -81,6 +85,13 @@ function update($color) {
                 rol = "'.$usuario['rol'].'",
                 imagen = "'.$usuario['imagen'].'" 
                 WHERE id="'.$usuario['id'].'"';
+      $usuario = $this->connection->execute($_query);
+    }
+
+    function updateImage($id, $image) {
+      $_query = 'UPDATE usuarios SET 
+                imagen = "'.$image.'" 
+                WHERE id="'.$id.'"';
       $usuario = $this->connection->execute($_query);
     }
   }

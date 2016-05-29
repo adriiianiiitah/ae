@@ -61,4 +61,9 @@ $(function() {
       $(this).html('');
       $(this).load("index.php?ctrl=colores&action=colores");
     });
+
+    $('#rol').one('focusin', function() {
+      $(this).html('');
+      $(this).load("index.php?ctrl=usuarios&action=roles");
+    });
 });

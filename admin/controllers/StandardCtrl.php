@@ -167,7 +167,7 @@
       $table = "";
 
       foreach ($data as $diccionary) { 
-        //$area = $row = $this->getRow($view,$start_tag,$end_tag);
+        $area = $row = $this->getRow($view,$start_tag,$end_tag);
         $line = strtr($row,$diccionary);
         $table .= $line;
       }
@@ -176,6 +176,7 @@
     }
 
     public function getDataDomicilios($domicilios) {
+      $list = array();
       foreach ($domicilios as $domicilio) {
         $domicilio['primario'] = $domicilio['primario'] ? 'PRINCIPAL' : 'SECUNDARIO';
         $dictionary = array(
@@ -195,6 +196,7 @@
     }
 
     public function getDataTelefonos($telefonos) {
+      $list = array();
       foreach ($telefonos as $telefono) {
         $dictionary = array(
           '{{lada}}'=>$telefono['lada'],
@@ -207,6 +209,7 @@
     }
 
     public function getDataRoles($roles) {
+      $list = array();
       foreach ($roles as $rol) {
         $dictionary = array(
           '{{rol_id}}'=>$rol['rol_id'],
@@ -218,6 +221,7 @@
     }
 
     public function getDataProductos($productos) {
+      $list = array();
       foreach ($productos as $producto) {
         $dictionary = array (
           '{{producto_id}}'=>$producto['producto_id'],
@@ -259,6 +263,15 @@
       $list = '';
       foreach ($subcategorias as $subcategoria) {
         $list .= '<option value="'.$subcategoria['subcategoria_id'].'">'.$subcategoria['subcategoria_nombre'].'</option>';
+      }
+      if($list === '')$list = '<option value=""></option>';
+      echo $list;
+    }
+
+    public function loadDataRoles($roles) {
+      $list = '';
+      foreach ($roles as $rol) {
+        $list .= '<option value="'.$rol['rol_id'].'">'.$rol['rol_nombre'].'</option>';
       }
       if($list === '')$list = '<option value=""></option>';
       echo $list;

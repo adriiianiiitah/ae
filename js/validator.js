@@ -34,7 +34,7 @@
 
   function showErrorInputsPassword(inputs_password) {
     for(var i = 0; i < inputs_password.length; i++) {
-      if(!isPassword(inputs_password[i].value.trim())) {
+      if(!isPassword(inputs_password[i].value.trim()) && inputs_password[i].value.trim()!='') {
         showError(inputs_password[i],"La contraseña debe contener mayúsculas, minúsculas, dígitos y caracteres de puntuación.");
       }
     }
