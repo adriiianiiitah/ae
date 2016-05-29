@@ -277,6 +277,26 @@
       echo $list;
     }
 
+
+
+
+
+
+
+    public function loadDataMunicipios($municipios) {
+      $list = '';
+      foreach ($municipios as $municipio) {
+        $list .= '<option value="'.$municipio['municipio_id'].'">'.$municipio['municipio_nombre'].'</option>';
+      }
+      if($list === '')$list = '<option value=""></option>';
+      echo $list;
+    }
+
+
+
+
+
+
     public function getDataCategorias($categorias) {
       foreach ($categorias as $categoria) {
         $dictionary = array (

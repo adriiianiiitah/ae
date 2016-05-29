@@ -7,7 +7,7 @@
                 <h1>Usuario</h1>
               </header>
               <div class="panel-body">
-                <form method="post" class="form-horizontal form-label-left" onsubmit="return validate()" enctype="multipart/form-data" data-validate>
+                <form method="post" name="user-form" class="form-horizontal form-label-left" onsubmit="return validate()" enctype="multipart/form-data" data-validate>
                   <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
                     <div class="profile_img">
                       <div id="crop-avatar">
@@ -118,7 +118,7 @@
                   <div class="col-sm-6 col-md-4">
                     <div class="domicilio">
                       <div class="pull-right">
-                        <button class="btn btn-delete" id="{{id}}" type="button"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-delete" id="{{id}}" type="button"><i class="fa fa-trash-o"></i></button>
                       </div>
                       <p class="text-red"><i class="fa fa-star"></i>{{primario}}
                       </p>

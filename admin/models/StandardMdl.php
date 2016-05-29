@@ -73,6 +73,14 @@
       return $municipios;
     }
 
+    function getAllMunicipiosByEstado($id) {
+      $_query = 'SELECT id AS municipio_id, nombre AS municipio_nombre 
+                FROM municipios 
+                WHERE estado = '.$id;
+      $municipios = $this->connection->execute($_query)->getResult();
+      return $municipios;
+    }
+
     function getAllTallasByCategoria($id) {
       $_query = 'SELECT tallas.id AS talla_id, tallas.talla AS talla, stock 
                  FROM tallas 

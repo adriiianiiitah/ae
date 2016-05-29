@@ -28,8 +28,9 @@ $(function() {
     });
 
     $("#btn-delete-color").click(function() {
-      //console.log($(this));
+      
     });
+
 
     /*  AJAX  */
 
@@ -71,6 +72,10 @@ $(function() {
     $('#estado').change( function() {
       var id = $(this).val();
       $('#municipio').html('');
-      $('#municipio').load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
+      $('#municipio').load("index.php?ctrl=usuarios&action=municipios&estado_id="+id);
     });
+
+
+
+    //btn-delete
 });

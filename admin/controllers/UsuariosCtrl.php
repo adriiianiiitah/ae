@@ -53,6 +53,19 @@
               $roles = $this->model->getAllRoles();
               $data = $this->loadDataRoles($roles);
               break;
+          case 'municipios':
+              $municipios = $this->model->getAllMunicipiosByEstado($_GET['estado_id']);
+              $data = $this->loadDataMunicipios($municipios);
+              break;
+          case 'new-address':
+              if(isset($_GET['user_id']) && !empty($_GET['user_id'])) {
+                $this->saveDomicilio($_GET['user_id']);
+                //echo "<pre> ".$_GET['user_id'];
+              //var_dump($_POST);
+              //exit();
+              }
+              
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -89,6 +102,20 @@
         '{{masculino}}'           =>$usuario['masculino'],
         '{{usuario-view}}'        =>"index.php?ctrl=usuarios&action=view&id=".$usuario['id'],
         '{{usuario-edit}}'        =>"index.php?ctrl=usuarios&action=edit&id=".$usuario['id'],
+      );
+    }
+
+    public function getDictionaryDomicilio($domicilio) {
+      return array(
+        '{{pais}}'          => $domicilio['pais'],
+        '{{estado}}'        => $domicilio['estado'],
+        '{{municipio}}'     => $domicilio['municipio'],
+        '{{colonia}}'       => $domicilio['colonia'],
+        '{{calle}}'         => $domicilio['calle'],
+        '{{exterior}}'      => $domicilio['exterior'],
+        '{{interior}}'      => $domicilio['interior'],
+        '{{codigo_postal}}' => $domicilio['codigo_postal'],
+        '{{principal}}'     => $domicilio['principal']
       );
     }
 
@@ -182,7 +209,7 @@
         $data = $this->getDataEstados($estados);
         $view = $this->showData($view,$data,ESTADO_TAG_START,ESTADO_TAG_END);
 
-        $municipios = $this->model->getAllMunicipios();
+        $municipios = $this->model->getAllMunicipiosByEstado('1');
         $data = $this->getDataMunicipios($municipios);
         $view = $this->showData($view,$data,MUNICIPIO_TAG_START,MUNICIPIO_TAG_END);
 
@@ -376,6 +403,103 @@
         }
       }
     }
+
+    public function saveDomicilio($usuario_id) {
+      $domicilio = array(
+        'pais'              =>'',
+        'estado'            =>'',
+        'municipio'         =>'',
+        'colonia'           =>'',
+        'calle'             =>'',
+        'exterior'          =>'',
+        'interior'          =>'',
+        'codigo_postal'     =>'',
+        'principal'         =>'',
+
+      );
+
+      if (!empty($_POST)) {
+        $errors = array();
+
+        if($this->isInt($usuario_id)) {
+          $domicilio['usuario'] = $usuario_id;
+        } else {
+          $errors['usuario'] = 'El usuario_id es incorrecto.';
+        }
+
+        if($this->isInt($_POST['pais'])) {
+          $domicilio['pais'] = $_POST['pais'];
+        } else {
+          $errors['pais'] = 'El país es incorrecto.';
+        }
+
+        if($this->isInt($_POST['estado'])) {
+          $domicilio['estado'] = $_POST['estado'];
+        } else {
+          $errors['estado'] = 'El estado es incorrecto.';
+        }
+
+        if($this->isInt($_POST['municipio'])) {
+          $domicilio['municipio'] = $_POST['municipio'];
+        } else {
+          $errors['municipio'] = 'El municipio es incorrecto.';
+        }
+
+        if($this->isAlphanumeric($_POST['colonia'])) {
+          $domicilio['colonia'] = $_POST['colonia'];
+        } else {
+          $errors['colonia'] = 'La colonia es incorrecta.';
+        }
+
+        if($this->isAlphanumeric($_POST['calle'])) {
+          $domicilio['calle'] = $_POST['calle'];
+        } else {
+          $errors['calle'] = 'La calle es incorrecta.';
+        }
+
+        if($this->isAlphanumeric($_POST['exterior'])) {
+          $domicilio['exterior'] = $_POST['exterior'];
+        } else {
+          $errors['exterior'] = 'El número exterior es incorrecto.';
+        }
+
+        if($this->isAlphanumeric($_POST['interior'])) {
+          $domicilio['interior'] = $_POST['interior'];
+        } else {
+          $errors['interior'] = 'El número interior es incorrecto.';
+        }
+
+        if($this->isAlphanumeric($_POST['codigo_postal'])) {
+          $domicilio['codigo_postal'] = $_POST['codigo_postal'];
+        } else {
+          $errors['codigo_postal'] = 'El código postal es incorrecto.';
+        }
+
+        if($this->isInt($_POST['principal'])) {
+          $domicilio['primario'] = $_POST['principal'];
+        } else {
+          $errors['principal'] = 'El principal es incorrecto.';
+        }
+
+
+        if(empty($errors)){
+          $this->model->insertDomicilio($domicilio);
+          header ("Location: index.php?ctrl=usuarios&action=view&id=".$usuario_id);
+        } else {
+          echo "<pre>";
+          var_dump($errors);
+          exit();
+          //header ("Location: index.php?ctrl=usuarios&action=edit&id=".$usuario_id);
+        }
+
+
+      }
+    }
+
+    public function deleteDomicilio() {
+      
+    }
+
 
 
   }

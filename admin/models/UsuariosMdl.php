@@ -74,6 +74,24 @@
       return $this->connection->returnId();
     }
 
+    function insertDomicilio($domicilio) {
+      $_query = 'INSERT INTO domicilios (usuario, pais, estado, municipio, colonia, calle, exterior, interior, codigo_postal, primario) 
+                 VALUES (
+                   "'.$domicilio['usuario'].'",
+                   "'.$domicilio['pais'].'",
+                   "'.$domicilio['estado'].'",
+                   "'.$domicilio['municipio'].'",
+                   "'.$domicilio['colonia'].'",
+                   "'.$domicilio['calle'].'",
+                   "'.$domicilio['exterior'].'",
+                   "'.$domicilio['interior'].'",
+                   "'.$domicilio['codigo_postal'].'",
+                   "'.$domicilio['primario'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
+
     function update($usuario) {
       $_query = 'UPDATE usuarios SET 
                 nombre = "'.$usuario['nombre'].'",
