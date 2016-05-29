@@ -57,14 +57,15 @@
               $municipios = $this->model->getAllMunicipiosByEstado($_GET['estado_id']);
               $data = $this->loadDataMunicipios($municipios);
               break;
-          case 'new-address':
+          case 'new-domicilio':
               if(isset($_GET['user_id']) && !empty($_GET['user_id'])) {
                 $this->saveDomicilio($_GET['user_id']);
-                //echo "<pre> ".$_GET['user_id'];
-              //var_dump($_POST);
-              //exit();
               }
-              
+            break;
+          case 'new-telefono':
+              if(isset($_GET['user_id']) && !empty($_GET['user_id'])) {
+                $this->saveTelefono($_GET['user_id']);
+              }
             break;
           default:
             $this->showErrorPage();
@@ -102,20 +103,6 @@
         '{{masculino}}'           =>$usuario['masculino'],
         '{{usuario-view}}'        =>"index.php?ctrl=usuarios&action=view&id=".$usuario['id'],
         '{{usuario-edit}}'        =>"index.php?ctrl=usuarios&action=edit&id=".$usuario['id'],
-      );
-    }
-
-    public function getDictionaryDomicilio($domicilio) {
-      return array(
-        '{{pais}}'          => $domicilio['pais'],
-        '{{estado}}'        => $domicilio['estado'],
-        '{{municipio}}'     => $domicilio['municipio'],
-        '{{colonia}}'       => $domicilio['colonia'],
-        '{{calle}}'         => $domicilio['calle'],
-        '{{exterior}}'      => $domicilio['exterior'],
-        '{{interior}}'      => $domicilio['interior'],
-        '{{codigo_postal}}' => $domicilio['codigo_postal'],
-        '{{principal}}'     => $domicilio['principal']
       );
     }
 
@@ -491,8 +478,45 @@
           exit();
           //header ("Location: index.php?ctrl=usuarios&action=edit&id=".$usuario_id);
         }
+      }
+    }
 
+    public function saveTelefono($usuario_id) {
+      $telefono = array(
+        'lada'         =>'',
+        'telefono'     =>''
+      );
 
+      if (!empty($_POST)) {
+        $errors = array();
+
+        if($this->isInt($usuario_id)) {
+          $telefono['usuario'] = $usuario_id;
+        } else {
+          $errors['usuario'] = 'El usuario_id es incorrecto.';
+        }
+
+        if($this->isPhone($_POST['lada'])) {
+          $telefono['lada'] = $_POST['lada'];
+        } else {
+          $errors['lada'] = 'La lada es incorrecta.';
+        }
+
+        if($this->isPhone($_POST['telefono'])) {
+          $telefono['telefono'] = $_POST['telefono'];
+        } else {
+          $errors['telefono'] = 'El telefono es incorrecto.';
+        }
+
+        if(empty($errors)){
+          $this->model->insertTelefono($telefono);
+          header ("Location: index.php?ctrl=usuarios&action=view&id=".$usuario_id);
+        } else {
+          echo "<pre>";
+          var_dump($errors);
+          exit();
+          //header ("Location: index.php?ctrl=usuarios&action=edit&id=".$usuario_id);
+        }
       }
     }
 

@@ -92,6 +92,17 @@
       return $this->connection->returnId();
     }
 
+    function insertTelefono($telefono) {
+      $_query = 'INSERT INTO telefonos (usuario, lada, telefono) 
+                 VALUES (
+                   "'.$telefono['usuario'].'",
+                   "'.$telefono['lada'].'",
+                   "'.$telefono['telefono'].'"
+                   )';
+      $this->connection->execute($_query);
+      return $this->connection->returnId();
+    }
+
     function update($usuario) {
       $_query = 'UPDATE usuarios SET 
                 nombre = "'.$usuario['nombre'].'",

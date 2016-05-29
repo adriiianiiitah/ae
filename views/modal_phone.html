@@ -8,7 +8,7 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <form method="post" onsubmit="return validatePhone()" data-validate-phone>
+        <form method="post" onsubmit="return validatePhone()" action="index.php?ctrl=usuarios&action=new-telefono&user_id={{id}}" data-validate-phone>
           <div class="row form-group">
             <div class="col-sm-3">
               <label for="lada" class="control-label">Lada </label>

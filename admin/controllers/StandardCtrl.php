@@ -277,12 +277,6 @@
       echo $list;
     }
 
-
-
-
-
-
-
     public function loadDataMunicipios($municipios) {
       $list = '';
       foreach ($municipios as $municipio) {
@@ -291,11 +285,6 @@
       if($list === '')$list = '<option value=""></option>';
       echo $list;
     }
-
-
-
-
-
 
     public function getDataCategorias($categorias) {
       foreach ($categorias as $categoria) {
