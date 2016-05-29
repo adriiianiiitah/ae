@@ -444,19 +444,19 @@
           $errors['calle'] = 'La calle es incorrecta.';
         }
 
-        if($this->isAlphanumeric($_POST['exterior'])) {
+        if($this->isAlphanumeric($_POST['exterior']) || empty($_POST['exterior'])) {
           $domicilio['exterior'] = $_POST['exterior'];
         } else {
           $errors['exterior'] = 'El número exterior es incorrecto.';
         }
 
-        if($this->isAlphanumeric($_POST['interior'])) {
+        if($this->isAlphanumeric($_POST['interior']) || empty($_POST['interior'])) {
           $domicilio['interior'] = $_POST['interior'];
         } else {
           $errors['interior'] = 'El número interior es incorrecto.';
         }
 
-        if($this->isAlphanumeric($_POST['codigo_postal'])) {
+        if($this->isAlphanumeric($_POST['codigo_postal']) || empty($_POST['codigo_postal'])) {
           $domicilio['codigo_postal'] = $_POST['codigo_postal'];
         } else {
           $errors['codigo_postal'] = 'El código postal es incorrecto.';

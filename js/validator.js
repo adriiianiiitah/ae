@@ -579,7 +579,7 @@
     if(file !="") {
       allowed = false;
       switch(type) {
-        case IMAGE: extensions = new Array(".gif",".jpg",".png",".jpe"); break;
+        case IMAGE: extensions = new Array(".gif",".jpg",".png",".jpe",".jpeg"); break;
         case SWF: extensions = new Array(".swf"); break;
         case FILE: extensions = new Array(".exe",".sit",".zip",".tar",".swf",".mov",".hqx",".ra",".wmf",".mp3",".qt",".med",".et"); break;
         case VIDEO: extensions = new Array(".mov",".ra",".wmf",".mp3",".qt",".med",".et",".wav"); break;
