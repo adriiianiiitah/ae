@@ -73,5 +73,15 @@
       return $municipios;
     }
 
+    function getAllTallasByCategoria($id) {
+      $_query = 'SELECT tallas.id AS talla_id, tallas.talla AS talla, stock 
+                 FROM tallas 
+                 INNER JOIN categorias_tallas
+                 ON tallas.id = categorias_tallas.talla 
+                 WHERE categoria="'.$id.'"';
+      $tallas = $this->connection->execute($_query)->getResult();
+      return $tallas;
+    }
+
   }
 ?>

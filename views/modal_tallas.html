@@ -1,0 +1,44 @@
+<div id="edit-tallas" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header modal-header-dark">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Tallas</h4>
+      </div>
+      <div class="modal-body">
+        <section>
+          <header>
+            <h3 class="text-red">Tallas</h3>
+          </header>
+          <div class="panel-body">
+            <div class="form-group">
+              <label class="control-label col-xs-6 hidden-xs" for="tallas">Tallas <span class="required">*</span></label>
+              <label class="control-label col-xs-6 hidden-xs" for="tallas">Strock <span class="required">*</span></label>
+              <!--talla-->
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <div class="checkbox col-md-6 col-sm-6 col-xs-12">
+                    <label>
+                      <input type="checkbox" name="tallas" checked>{{talla}}
+                    </label>
+                  </div>
+
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <input type="number" id="stock" name="stock" min="0" step="1" class="form-control col-md-7 col-xs-12" data-required data-integer value="{{stock}}"/>
+                  </div>
+                </div>
+              </div>
+              <!--.talla-->
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer modal-footer-dark">
+        <button type="button" class="btn btn-show" data-dismiss="modal"><i class="fa fa-check"></i> Guardar</button>
+        <button type="button" class="btn btn-red" data-dismiss="modal"><i class="fa fa-ban"></i> Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -51,7 +51,7 @@
     }
 
     function getTallasById($id) {
-      $_query = 'SELECT tallas.talla, stock 
+      $_query = 'SELECT tallas.id AS talla_id, tallas.talla, stock 
                  FROM tallas 
                  INNER JOIN productos_tallas
                  ON tallas.id = productos_tallas.talla 

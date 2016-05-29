@@ -334,6 +334,7 @@
       $list = array();
       foreach ($tallas as $talla) {
         $dictionary = array(
+          '{{talla_id}}'=>$talla['talla_id'],
           '{{talla}}'=>$talla['talla'],
           '{{stock}}'=>$talla['stock']
         );

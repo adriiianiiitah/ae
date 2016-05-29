@@ -7,6 +7,7 @@
     public $single;
     public $url;
     public $modal;
+    public $modals;
     public $image;
 
     public function __construct() {
@@ -18,6 +19,9 @@
       $this->url = 'images/productos/';
       $this->image = 'images/productos/producto.png';
       $this->modal = 'modal-delete-producto';
+      $this->modals = array(
+        'modal_tallas'
+      );
     }
 
     public function execute() {
@@ -154,11 +158,13 @@
       if(empty($_POST)) {
         $table = "";
         $diccionary = $this->getDictionary($producto);
-        $view = $this->getViewForm($id,'producto-edit',$this->modal,$diccionary);
+        $view = $this->getViewForm($id,'producto-edit',$this->modal,$diccionary,$this->modals);
 
-        $tallas = $this->model->getTallasById($id);
+        /*
+        $tallas = $this->model->getAllTallasByCategoria('1');
         $data = $this->getDataTallas($tallas);
         $view = $this->showData($view,$data,TALLA_TAG_START,TALLA_TAG_END);
+        */
 
         $categorias = $this->model->getAllCategorias();
         $data = $this->getDataCategorias($categorias);
@@ -254,8 +260,6 @@
           $this->editProducto($id);
           $this->print_exit($errors);
         }
-    //$talla          = $_POST['talla'];
-    //$stock          = $_POST['stock'];
       }
     }
 
@@ -268,7 +272,7 @@
           if(empty($_POST)) {
             $table = "";
             $diccionary = $this->getDictionary($producto);
-            $view = $this->getViewForm($id,'producto-edit',$this->modal,$diccionary);
+            $view = $this->getViewForm($id,'producto-edit',$this->modal,$diccionary,$this->modals);
 
             $tallas = $this->model->getTallasById($id);
             $data = $this->getDataTallas($tallas);
