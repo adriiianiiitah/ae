@@ -175,7 +175,7 @@
       if(empty($_POST)) {
         $table = "";
         $diccionary = $this->getDictionary($usuario);
-        $view = $this->getViewForm($id,'usuario-edit',$this->modal,$diccionary,$this->modals);
+        $view = $this->getViewForm($id,'usuario-create',$this->modal,$diccionary,$this->modals);
 
 
         //$roles = $this->model->getAllRoles();
