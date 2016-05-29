@@ -389,7 +389,13 @@
       if(file_exists($name)) {
         unlink($name);
       }
-      move_uploaded_file($temp, $name);
+      if(move_uploaded_file($temp, $name)) {
+        ;
+      } else {
+        echo 'NO SE PUDO';
+        exit();
+      }
+      
     }
 
     public function getFileExtension($file) {

@@ -66,4 +66,11 @@ $(function() {
       $(this).html('');
       $(this).load("index.php?ctrl=usuarios&action=roles");
     });
+
+
+    $('#estado').change( function() {
+      var id = $(this).val();
+      $('#municipio').html('');
+      $('#municipio').load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
+    });
 });

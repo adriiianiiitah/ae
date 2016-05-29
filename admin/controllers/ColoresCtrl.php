@@ -183,6 +183,7 @@
             }
 
             if($_FILES['image']['tmp_name'] != '') {
+              
               $color['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
             } else {
               $color['imagen'] = $imagen;

@@ -104,7 +104,7 @@
     }
 
     public function getDataDescuentos($descuentos) {
-      $list = [];
+      $list = array();
       foreach ($descuentos as $descuento) {
         $dictionary = array(
           '{{descuento_imagen}}'=>$this->getUrl(IMAGE_URL,$descuento['imagen']),
@@ -116,7 +116,7 @@
     }
 
     public function getDataOfertas($ofertas) {
-      $list = [];
+      $list = array();
       foreach ($ofertas as $oferta) {
         $dictionary = array(
           '{{oferta_imagen}}'=>$this->getUrl(IMAGE_URL,$oferta['imagen']),
@@ -128,7 +128,7 @@
     }
 
     public function getDataCategorias($categorias) {
-      $list = [];
+      $list = array();
       foreach ($categorias as $categoria) {
         $active = $categoria['id'] == 1 ? 'active': '';
         $dictionary = array(
@@ -141,7 +141,7 @@
     }
 
     public function getDataSubcategorias($subcategorias) {
-      $list = [];
+      $list = array();
       foreach ($subcategorias as $subcategoria) {
         $dictionary = array(
           '{{subcategoria}}'=>ucwords(strtolower($subcategoria['nombre'])),
@@ -153,7 +153,7 @@
     }
 
     public function getDataCatalogos($catalogos) {
-      $list = [];
+      $list = array();
       foreach ($catalogos as $catalogo) {
         $dictionary = array(
           '{{id}}'              =>$catalogo['id'],
@@ -169,7 +169,7 @@
     }
 
     public function getDataTallasByProducto($tallas) {
-      $list = [];
+      $list = array();
       foreach ($tallas as $talla) {
         $dictionary = array(
           '{{id}}'              =>$talla['talla_id'],
@@ -218,7 +218,7 @@
     }
 
     public function getDataColores($colores) {
-      $list = [];
+      $list = array();
       foreach ($colores as $color) {
         $dictionary = array(
           '{{color_nombre}}'=>$this->getColorNombre($color['color_nombre']),
@@ -231,7 +231,7 @@
     }
 
     public function getDataColoresByProducto($colores) {
-      $list = [];
+      $list = array();
       foreach ($colores as $color) {
         $dictionary = array(
           '{{producto_id}}'=>$color['producto_id'],
@@ -245,7 +245,7 @@
     }
 
     public function getDataFiltters($filtters) {
-      $list = [];
+      $list = array();
 
       foreach ($filtters as $key => $value) {
         $dictionary = array(
@@ -269,7 +269,7 @@
     }
 
     public function getDataProductos($productos) {
-      $list = [];
+      $list = array();
       foreach ($productos as $producto) {
         $dictionary = array(
           '{{id}}'                  =>$producto['id'],
