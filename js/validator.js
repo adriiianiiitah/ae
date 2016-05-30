@@ -663,7 +663,7 @@
           }
           var img = input_file_image.files[0];
           if(img) {
-            reader.readAsDataURL(input_file_image.files[0]); 
+            reader.readAsDataURL(img); 
           }
     } else {
       $('#image-file').attr('src', IMAGE_EMPTY);
@@ -677,8 +677,10 @@
           reader.onload = function (e) {
               $('#thumbnail-file').attr('src', e.target.result);
           }
-
-          reader.readAsDataURL(inputs_file_thumbnail.files[0]); 
+          var img = inputs_file_thumbnail.files[0];
+          if(img) {
+            reader.readAsDataURL(img);
+          }
     } else {
       $('#thumbnail-file').attr('src', IMAGE_EMPTY);
     }
