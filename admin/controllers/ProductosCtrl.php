@@ -48,6 +48,10 @@
           case 'create':
               $this->createProducto();
             break;
+          case 'delete':
+              if(isset($_POST['producto_id']) && !empty($_POST['producto_id'])) {
+                $this->deleteProducto($_POST['producto_id']);
+              }
           case 'productos':
             $productos = $this->model->getAllProductos();
             $data = $this->loadDataProductos($productos);
@@ -379,6 +383,13 @@
           }
         }
       }
+    }
+
+    public function deleteProducto($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=productos");
     }
   }
 ?>

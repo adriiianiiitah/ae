@@ -64,7 +64,6 @@
       $_query = 'DELETE FROM productos 
                  WHERE id="'.$id.'"';
       $producto = $this->connection->execute($_query)->getResult();
-      return $producto;
     }
 
     function insert($producto) {
