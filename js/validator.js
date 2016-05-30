@@ -1,7 +1,7 @@
   $(function() {
     
   });
-
+    PDF = 999;
    IMAGE     = 1; 
    SWF     = 2; 
    FILE     = 3; 
@@ -408,7 +408,7 @@
   function showErrorInputsFilePDF(inputs_file_pdf) {
     for(var i = 0; i < inputs_file_pdf.length; i++) {
       if(!isFileAllowed(inputs_file_pdf[i],PDF)) {
-        showError(inputs_file_pdf[i], "El archivo debe ser una PDF.");
+        showError(inputs_file_pdf[i], "El archivo debe ser un PDF.");
       }
       else {
         console.log(inputs_file_pdf[i]);
@@ -661,8 +661,10 @@
           reader.onload = function (e) {
               $('#image-file').attr('src', e.target.result);
           }
-
-          reader.readAsDataURL(input_file_image.files[0]); 
+          var img = input_file_image.files[0];
+          if(img) {
+            reader.readAsDataURL(input_file_image.files[0]); 
+          }
     } else {
       $('#image-file').attr('src', IMAGE_EMPTY);
     }

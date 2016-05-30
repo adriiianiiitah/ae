@@ -62,6 +62,7 @@
     }
 
     public function getDictionary($catalogo) {
+      if(!isset($catalogo['pdf_required']))$catalogo['pdf_required'] = '';
       return  array(
         '{{id}}'              =>$catalogo['id'],
         '{{codigo}}'          =>$catalogo['codigo'],
@@ -72,6 +73,7 @@
         '{{categoria}}'       =>$catalogo['categoria_nombre'],
         '{{image}}'           =>$catalogo['imagen'],
         '{{pdf}}'             =>$catalogo['pdf'],
+        '{{pdf_required}}'    =>$catalogo['pdf_required'],
         '{{catalogo-view}}'   =>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
         '{{catalogo-edit}}'   =>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
       );
@@ -125,6 +127,7 @@
         'categoria_id'      =>'{{categoria_id}}',
         'categoria_nombre'  =>'{{categoria_nombre}}',
         'pdf'               =>'',
+        'pdf_required'      =>'data-required',
         'imagen'            =>$this->image
       );
       $id ='';
@@ -170,6 +173,11 @@
           if($_FILES['image']['tmp_name'] != '') {
             $catalogo['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
             $this->model->updateImage($id, $catalogo['imagen']);
+          }
+
+          if($_FILES['pdf']['tmp_name'] != '') {
+            $catalogo['pdf'] = $this->uploadFile($id, $this->single, $_FILES['pdf'],$this->url_pdf);
+            $this->model->updateFile($id, $catalogo['pdf']);
           }
 
           header ("Location: index.php?ctrl=catalogos&action=view&id=".$id);

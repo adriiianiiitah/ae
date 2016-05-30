@@ -69,5 +69,12 @@
                 WHERE id="'.$id.'"';
       $catalogo = $this->connection->execute($_query);
     }
+
+    function updateFile($id, $pdf) {
+      $_query = 'UPDATE catalogos SET 
+                pdf = "'.$pdf.'" 
+                WHERE id="'.$id.'"';
+      $catalogo = $this->connection->execute($_query);
+    }
   }
 ?>
