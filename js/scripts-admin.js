@@ -32,8 +32,30 @@ $(function() {
     });
 
 
-    /*  AJAX  */
 
+
+
+
+
+    $(".btn-delete-domicilio").click(function() {
+      var id = $(this).data('deleteDomicilio');
+
+      $.post('index.php?ctrl=usuarios&action=delete-domicilio', { domicilio_id: id } ).done(function() {
+        //$(this).remove();
+      });
+    });
+
+
+    $(".btn-delete-telefono").click(function() {
+      var id = $(this).data('deleteTelefono');
+      
+      $.post('index.php?ctrl=usuarios&action=delete-telefono', { telefono_id: id } ).done(function() {
+        //$(this).remove();
+      });
+    });
+
+
+    /*  AJAX  */
 
     $('#producto').one('focusin', function() {
       $(this).html('');
@@ -50,7 +72,6 @@ $(function() {
       $('#subcategoria').html('');
       $('#subcategoria').load("index.php?ctrl=subcategorias&action=subcategorias&categoria_id="+id);
     });
-
 
     $('#subcategoria').one('focusin', function() {
       var id = $('#categoria').val();

@@ -67,9 +67,19 @@
                 $this->saveDomicilio($_GET['user_id']);
               }
             break;
+          case 'delete-domicilio':
+              if(isset($_POST['domicilio_id']) && !empty($_POST['domicilio_id'])) {
+                $this->deleteDomicilio($_POST['domicilio_id']);
+              }
+            break;
           case 'new-telefono':
               if(isset($_GET['user_id']) && !empty($_GET['user_id'])) {
                 $this->saveTelefono($_GET['user_id']);
+              }
+            break;
+          case 'delete-telefono':
+              if(isset($_POST['telefono_id']) && !empty($_POST['telefono_id'])) {
+                $this->deleteTelefono($_POST['telefono_id']);
               }
             break;
           default:
@@ -524,8 +534,16 @@
       }
     }
 
-    public function deleteDomicilio() {
-      
+    public function deleteDomicilio($id) {
+      if($this->isInt($id)) {
+        $this->model->deleteDomicilio($id);
+      }
+    }
+
+    public function deleteTelefono($id) {
+      if($this->isInt($id)) {
+        $this->model->deleteTelefono($id);
+      }
     }
 
 

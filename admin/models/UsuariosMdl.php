@@ -28,7 +28,7 @@
     }
 
     function getDomicilios($id) {
-      $_query = 'SELECT paises.nombre AS pais_nombre, estados.nombre AS estado_nombre, municipios.nombre AS municipio_nombre, colonia, calle, exterior, interior, codigo_postal, primario 
+      $_query = 'SELECT domicilios.id AS domicilio_id, paises.nombre AS pais_nombre, estados.nombre AS estado_nombre, municipios.nombre AS municipio_nombre, colonia, calle, exterior, interior, codigo_postal, primario 
                 FROM domicilios
                 INNER JOIN paises 
                 ON paises.id = pais 
@@ -52,6 +52,18 @@
       $_query = 'DELETE FROM usuarios 
                  WHERE id="'.$id.'"';
       $usuario = $this->connection->execute($_query)->getResult();
+    }
+
+    function deleteDomicilio($id) {
+      $_query = 'DELETE FROM domicilios 
+                 WHERE id="'.$id.'"';
+      $domicilio = $this->connection->execute($_query)->getResult();
+    }
+
+    function deleteTelefono($id) {
+      $_query = 'DELETE FROM telefonos 
+                 WHERE id="'.$id.'"';
+      $telefono = $this->connection->execute($_query)->getResult();
     }
 
     function insert($usuario) {

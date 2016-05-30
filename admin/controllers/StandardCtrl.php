@@ -180,6 +180,7 @@
       foreach ($domicilios as $domicilio) {
         $domicilio['primario'] = $domicilio['primario'] ? 'PRINCIPAL' : 'SECUNDARIO';
         $dictionary = array(
+          '{{domicilio_id}}'=>$domicilio['domicilio_id'],
           '{{pais}}'=>$domicilio['pais_nombre'],
           '{{estado}}'=>$domicilio['estado_nombre'],
           '{{municipio}}'=>$domicilio['municipio_nombre'],

@@ -118,7 +118,7 @@
                   <div class="col-sm-6 col-md-4">
                     <div class="domicilio">
                       <div class="pull-right">
-                        <button type="button" class="btn btn-delete" id="{{id}}" type="button"><i class="fa fa-trash-o"></i></button>
+                        <button type="button" class="btn btn-delete btn-delete-domicilio" data-delete-domicilio="{{domicilio_id}}"><i class="fa fa-trash-o"></i></button>
                       </div>
                       <p class="text-red"><i class="fa fa-star"></i>{{primario}}
                       </p>
@@ -148,7 +148,7 @@
                 <div class="col-sm-6 col-md-4">
                   <div class="telefono">
                     <div class="pull-right">
-                      <button class="btn btn-delete" id="{{id}}" type="button"><i class="fa fa-trash-o"></i></button>
+                      <button type="button" class="btn btn-delete btn-delete-telefono" data-delete-telefono="{{id}}"><i class="fa fa-trash-o"></i></button>
                     </div>
                     <p class="text-red"><i class="fa fa-star"></i>{{tipo}}</p>
                     <p>({{lada}}) {{telefono}}</p>
