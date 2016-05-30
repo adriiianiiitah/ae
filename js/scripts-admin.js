@@ -29,7 +29,6 @@ $(function() {
 
     $(".btn-delete-item").click(function() {
       $('#item_id').val($(this).data('deleteItem'));
-      //console.log($(this).data('deleteItem')); 
     });
 
 

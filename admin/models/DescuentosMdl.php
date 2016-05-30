@@ -67,5 +67,11 @@
       $this->connection->execute($_query);
       return $this->connection->returnId();
     }
+
+    function delete($id) {
+      $_query = 'DELETE FROM descuentos
+                WHERE id ="'.$id.'"';
+      $descuento = $this->connection->execute($_query)->getResult();
+    }
   }
 ?>

@@ -44,6 +44,10 @@
           case 'create':
             $this->createDescuento();
             break;
+          case 'delete':
+            if(isset($_POST['color_id']) && !empty($_POST['color_id']))
+              $this->deleteDescuento($_POST['color_id']);
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -268,9 +272,65 @@
           }
         }
 
-
-        
       }
+    }
+
+    public function deleteDescuento($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=descuentos");
     }
   }
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
