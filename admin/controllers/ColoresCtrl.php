@@ -148,7 +148,7 @@
           
           header ("Location: index.php?ctrl=colores&action=view&id=".$id);
         } else {
-          $this->createColor($id);
+          $this->showErrorPage();
         }
       }
     }
@@ -193,7 +193,7 @@
               $this->model->update($color);
               header ("Location: index.php?ctrl=colores&action=view&id=".$id);
             } else {
-              $this->editColor($id);
+              $this->showErrorPage();
             }
           }
         }

@@ -167,7 +167,7 @@
 
           header ("Location: index.php?ctrl=subcategorias&action=view&id=".$id);
         } else {
-          $this->createSubcategoria($id);
+          $this->showErrorPage();
         }
       }
     }
@@ -223,7 +223,7 @@
               $this->model->update($subcategoria);
               header ("Location: index.php?ctrl=subcategorias&action=view&id=".$id);
             } else {
-              $this->editSubcategoria($id);
+              $this->showErrorPage();
             }
           }
         }

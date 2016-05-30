@@ -267,9 +267,7 @@
           
           header ("Location: index.php?ctrl=usuarios&action=view&id=".$id);
         } else {
-          //$this->createUsuario();
-          var_dump($errors);
-          exit();
+          $this->showErrorPage();
         }
       }
     }
@@ -384,7 +382,7 @@
               $this->model->update($usuario);
               header ("Location: index.php?ctrl=usuarios&action=view&id=".$id);
             } else {
-              $this->editUsuario($id);
+              $this->showErrorPage();
             }
           }
         }
@@ -473,10 +471,7 @@
           $this->model->insertDomicilio($domicilio);
           header ("Location: index.php?ctrl=usuarios&action=view&id=".$usuario_id);
         } else {
-          echo "<pre>";
-          var_dump($errors);
-          exit();
-          //header ("Location: index.php?ctrl=usuarios&action=edit&id=".$usuario_id);
+          $this->showErrorPage();
         }
       }
     }
@@ -512,10 +507,7 @@
           $this->model->insertTelefono($telefono);
           header ("Location: index.php?ctrl=usuarios&action=view&id=".$usuario_id);
         } else {
-          echo "<pre>";
-          var_dump($errors);
-          exit();
-          //header ("Location: index.php?ctrl=usuarios&action=edit&id=".$usuario_id);
+          $this->showErrorPage();
         }
       }
     }

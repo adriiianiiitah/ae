@@ -175,7 +175,7 @@
           }
           header ("Location: index.php?ctrl=ofertas&action=view&id=".$id);
         } else {
-          $this->editOferta($id);
+          $this->showErrorPage();
         }
       }
     }
@@ -238,7 +238,7 @@
               $this->model->update($oferta);
               header ("Location: index.php?ctrl=ofertas&action=view&id=".$id);
             } else {
-              $this->editOferta($id);
+              $this->showErrorPage();
             }
           }
         }

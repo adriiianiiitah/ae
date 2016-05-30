@@ -152,7 +152,7 @@
           }
           header ("Location: index.php?ctrl=categorias&action=view&id=".$id);
         } else {
-          $this->createCategoria();
+          $this->showErrorPage();
         }
       }
     }
@@ -200,7 +200,7 @@
               $this->model->update($categoria);
               header ("Location: index.php?ctrl=categorias&action=view&id=".$id);
             } else {
-              $this->editCategoria($id);
+              $this->showErrorPage();
             }
           }
         }

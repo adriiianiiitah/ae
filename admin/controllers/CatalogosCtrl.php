@@ -167,7 +167,7 @@
 
           header ("Location: index.php?ctrl=catalogos&action=view&id=".$id);
         } else {
-          $this->createCatalogo($id);
+          $this->showErrorPage();
         }
       }
     }
@@ -225,7 +225,7 @@
               $this->model->update($catalogo);
               header ("Location: index.php?ctrl=catalogos&action=view&id=".$id);
             } else {
-              $this->editCatalogo($id);
+              $this->showErrorPage();
             }
           }
         }

@@ -188,7 +188,7 @@
           }
           header ("Location: index.php?ctrl=descuentos&action=view&id=".$id);
         } else {
-          $this->createDescuento($id);
+          $this->showErrorPage();
         }
       }
     }
@@ -263,7 +263,7 @@
               $this->model->update($descuento);
               header ("Location: index.php?ctrl=descuentos&action=view&id=".$id);
             } else {
-              $this->editDescuento($id);
+              $this->showErrorPage();
             }
           }
         }

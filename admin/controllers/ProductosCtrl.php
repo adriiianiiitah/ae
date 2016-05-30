@@ -257,8 +257,7 @@
 
           header ("Location: index.php?ctrl=productos&action=view&id=".$id);
         } else {
-          $this->editProducto($id);
-          $this->print_exit($errors);
+          $this->showErrorPage();
         }
       }
     }
@@ -375,11 +374,8 @@
               $this->model->update($producto);
               header ("Location: index.php?ctrl=productos&action=view&id=".$id);
             } else {
-              $this->editProducto($id);
-              $this->print_exit($errors);
+              $this->showErrorPage();
             }
-        //$talla          = $_POST['talla'];
-        //$stock          = $_POST['stock'];
           }
         }
       }
