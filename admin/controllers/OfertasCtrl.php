@@ -48,6 +48,7 @@
               if(isset($_POST['oferta_id']) && !empty($_POST['oferta_id'])) {
                 $this->deleteOferta($_POST['oferta_id']);
               }
+            break;
           default:
             $this->showErrorPage();
             break;

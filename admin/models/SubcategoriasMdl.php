@@ -29,14 +29,13 @@
       $subcategoria = $this->connection->execute($_query)->getFirst();
       return $subcategoria;
     }
-/*
+
     function delete($id) {
-      $_query = 'DELETE FROM categories 
-                 WHERE id="'.$id.'"';
-      $category = $this->connection->execute($_query)->getResult();
-      return $category;
+      $_query = 'DELETE FROM subcategorias 
+                 WHERE id ="'.$id.'"';
+      $subcategoria = $this->connection->execute($_query)->getResult();
     }
-    */
+    
     function insert($subcategoria) {
       $_query = 'INSERT INTO subcategorias (codigo,nombre,categoria,descripcion,imagen) 
                  VALUES (

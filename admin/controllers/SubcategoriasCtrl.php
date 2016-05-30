@@ -44,6 +44,11 @@
           case 'create':
               $this->createSubcategoria();
             break;
+          case 'delete':
+            if(isset($_POST['subcategoria_id']) && !empty($_POST['subcategoria_id'])) {
+              $this->deleteSubcategoria($_POST['subcategoria_id']);
+            }
+            break;
           case 'subcategorias':
             $subcategorias = $this->model->getAllSubcategoriasByCategoria($_GET['categoria_id']);
             $data = $this->loadDataSubcategorias($subcategorias);
@@ -228,6 +233,13 @@
           }
         }
       }
+    }
+
+    public function deleteSubcategoria($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=subcategorias");
     }
   }
 ?>
