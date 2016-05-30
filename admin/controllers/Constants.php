@@ -1,7 +1,7 @@
 <?php 
   define('IMAGE',                 'images/default.png');
   define('IMAGE_URL',                 'admin');
-  define('PDF_URL',                 'admin/pdf');
+  define('PDF_URL',                 'admin/');
 
   define('FEMENINO',                 'femenino');
   define('MASCULINO',                'masculino');

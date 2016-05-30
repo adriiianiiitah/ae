@@ -8,6 +8,7 @@
     public $single;
     public $modal;
     public $image;
+    public $url_pdf;
 
     public function __construct() {
       parent::__construct();
@@ -18,6 +19,7 @@
       $this->url = 'images/catalogos/';
       $this->image = 'images/catalogos/catalogo.png';
       $this->modal = 'modal-delete-catalogo';
+      $this->url_pdf = 'pdf/';
     }
 
     public function execute() {
@@ -69,7 +71,7 @@
         '{{categoria_nombre}}'=>$catalogo['categoria_nombre'],
         '{{categoria}}'       =>$catalogo['categoria_nombre'],
         '{{image}}'           =>$catalogo['imagen'],
-        //'{{pdf}}'=>$catalogo['pdf'],
+        '{{pdf}}'             =>$catalogo['pdf'],
         '{{catalogo-view}}'   =>"index.php?ctrl=catalogos&action=view&id=".$catalogo['id'],
         '{{catalogo-edit}}'   =>"index.php?ctrl=catalogos&action=edit&id=".$catalogo['id'],
       );
@@ -181,6 +183,7 @@
       if($this->isInt($id)) {
         $catalogo = $this->model->getOne($id);
         $imagen = $catalogo['imagen'];
+        $pdf = $catalogo['imagen'];
 
         if ($catalogo) { 
           if(empty($_POST)) {
@@ -224,6 +227,12 @@
               $catalogo['imagen'] = $this->uploadImage($id, $this->single, $_FILES['image'],$this->url);
             } else {
               $catalogo['imagen'] = $imagen;
+            }
+
+            if($_FILES['pdf']['tmp_name'] != '') {
+              $catalogo['pdf'] = $this->uploadFile($id, $this->single, $_FILES['pdf'],$this->url_pdf);
+            } else {
+              $catalogo['pdf'] = $pdf;
             }
 
             if(empty($errors)){ 

@@ -37,13 +37,14 @@
     }
 
     function insert($catalogo) {
-      $_query = 'INSERT INTO catalogos (codigo,nombre,fecha,categoria,imagen) 
+      $_query = 'INSERT INTO catalogos (codigo,nombre,fecha,categoria,imagen,pdf) 
                  VALUES (
                    "'.$catalogo['codigo'].'",
                    "'.$catalogo['nombre'].'",
                    "'.$catalogo['fecha'].'",
                    "'.$catalogo['categoria'].'",
-                   "'.$catalogo['imagen'].'"
+                   "'.$catalogo['imagen'].'",
+                   "'.$catalogo['pdf'].'"
                    )';
       $this->connection->execute($_query);
       return $this->connection->returnId();
@@ -55,7 +56,8 @@
                 nombre = "'.$catalogo['nombre'].'",
                 fecha = "'.$catalogo['fecha'].'",
                 imagen = "'.$catalogo['imagen'].'",
-                categoria = "'.$catalogo['categoria'].'" 
+                categoria = "'.$catalogo['categoria'].'",
+                pdf ="'.$catalogo['pdf'].'"
                 WHERE id="'.$catalogo['id'].'"';
       $catalogo = $this->connection->execute($_query);
       //return $catalogo;

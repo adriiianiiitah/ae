@@ -8,7 +8,7 @@
    VIDEO     = 4; 
    HTML       = 5; 
    OFICCE_FILE   = 5; 
-   IMAGE_EMPTY   = "../img/categories/category.png";
+   IMAGE_EMPTY   = "../img/200x200.png";
 
 
 
@@ -301,6 +301,8 @@
     var textareas_required    = $('form[data-validate]').find('textarea[data-required]');
     var selects_required      = $('form[data-validate]').find('select[data-required]');
 
+    var inputs_file_pdf       = $('form[data-validate]').find('input[data-pdf]');
+
     showErrorInputsPassword(inputs_password);
     showErrorInputsEmail(inputs_email);
     showErrorInputsCode(inputs_code);
@@ -315,6 +317,8 @@
     showErrorSelects(selects_required);
     showErrorInputsCheckbox(inputs_checkbox);
     showErrorInputsSame(inputs_same_pass);
+
+    showErrorInputsFilePDF(inputs_file_pdf);
   
     if(isFormValid()) {
       return true;
@@ -397,6 +401,17 @@
         showError(inputs_file_image[i], "El archivo debe ser una imagen.");
       } else {
         showImage(inputs_file_image[i]);
+      }
+    }
+  }
+
+  function showErrorInputsFilePDF(inputs_file_pdf) {
+    for(var i = 0; i < inputs_file_pdf.length; i++) {
+      if(!isFileAllowed(inputs_file_pdf[i],PDF)) {
+        showError(inputs_file_pdf[i], "El archivo debe ser una PDF.");
+      }
+      else {
+        console.log(inputs_file_pdf[i]);
       }
     }
   }
@@ -585,6 +600,7 @@
         case VIDEO: extensions = new Array(".mov",".ra",".wmf",".mp3",".qt",".med",".et",".wav"); break;
         case HTML: extensions = new Array(".html",".htm",".shtml"); break;
         case OFICCE_FILE: extensions = new Array(".doc",".xls",".ppt");  break;
+        case PDF: extensions = new Array(".pdf");  break;
       }
 
       if(!file) {return;}

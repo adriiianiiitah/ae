@@ -392,7 +392,7 @@
     }
 
     public function print_exit($variable) {
-      var_dump($variable); 
+      var_dump($variable);
       exit();
     }
 
@@ -406,7 +406,18 @@
         echo 'NO SE PUDO';
         exit();
       }
-      
+    }
+
+    public function moveFile($temp, $name) {
+      if(file_exists($name)) {
+        unlink($name);
+      }
+      if(move_uploaded_file($temp, $name)) {
+        ;
+      } else {
+        echo 'NO SE PUDO MOVER EL PDF';
+        exit();
+      }
     }
 
     public function getFileExtension($file) {
@@ -416,6 +427,10 @@
 
     public function generateNameImage($id, $single, $extension, $url) {
       return  $url.$single.$id.'.'.$extension;
+    }
+
+    public function generateNameFile($id, $single, $extension, $url) {
+      return $url.$single.$id.'.'.$extension;
     }
 
     public function uploadImage($id, $single, $image, $url) {
@@ -428,6 +443,19 @@
       $final['id'] = $id;  
       
       $this->moveImage($temporal, $name);
+      return $name;
+    }
+
+    public function uploadFile($id, $single, $file, $url) {
+      $original = $file['name'];
+      $extension = $this->getFileExtension($original);
+      $name = $this->generateNameFile($id, $single, $extension, $url);
+      $temporal = $file['tmp_name'];
+      $final['original'] = $original;
+      $final['name']= $name;
+      $final['id'] = $id;  
+      
+      $this->moveFile($temporal, $name);
       return $name;
     }
 
