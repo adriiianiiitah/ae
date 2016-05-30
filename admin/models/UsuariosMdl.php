@@ -8,9 +8,6 @@
       parent::__construct();
     }
 
-    function create() {
-    }
-
     function getAll() {
       $_query = 'SELECT usuarios.id, usuarios.nombre, apellidos, correo, fecha_nacimiento, genero, contrasena, imagen, roles.id AS rol_id, roles.nombre AS rol_nombre 
                 FROM usuarios
@@ -50,14 +47,13 @@
       $telefonos = $this->connection->execute($_query)->getResult();
       return $telefonos;
     }
-/*
+
     function delete($id) {
       $_query = 'DELETE FROM usuarios 
                  WHERE id="'.$id.'"';
       $usuario = $this->connection->execute($_query)->getResult();
-      return $usuario;
     }
-*/
+
     function insert($usuario) {
       $_query = 'INSERT INTO usuarios (nombre, apellidos, correo, contrasena, fecha_nacimiento, genero, rol, imagen) 
                  VALUES (

@@ -49,6 +49,11 @@
           case 'create':
               $this->createUsuario();
             break;
+          case 'delete':
+              if(isset($_POST['usuario_id']) && !empty($_POST['usuario_id'])) {
+                $this->deleteUsuario($_POST['usuario_id']);
+              }
+            break;
           case 'roles':
               $roles = $this->model->getAllRoles();
               $data = $this->loadDataRoles($roles);
@@ -389,6 +394,13 @@
       }
     }
 
+    public function deleteUsuario($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=usuarios");
+    }
+
     public function saveDomicilio($usuario_id) {
       $domicilio = array(
         'pais'              =>'',
@@ -520,20 +532,4 @@
 
   }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
