@@ -200,6 +200,7 @@
       $list = array();
       foreach ($telefonos as $telefono) {
         $dictionary = array(
+          '{{telefono_id}}'=>$telefono['telefono_id'],
           '{{lada}}'=>$telefono['lada'],
           '{{telefono}}'=>$telefono['telefono'],
           '{{tipo}}'=>strtoupper($telefono['tipo'])

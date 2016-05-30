@@ -42,7 +42,7 @@
     }
 
     function getTelefonos($id) {
-      $_query = 'SELECT * FROM telefonos 
+      $_query = 'SELECT id AS telefono_id, usuario, lada, telefono, tipo FROM telefonos 
                 WHERE usuario="'.$id.'"';
       $telefonos = $this->connection->execute($_query)->getResult();
       return $telefonos;

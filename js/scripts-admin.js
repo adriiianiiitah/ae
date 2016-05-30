@@ -40,18 +40,16 @@ $(function() {
     $(".btn-delete-domicilio").click(function() {
       var id = $(this).data('deleteDomicilio');
 
-      $.post('index.php?ctrl=usuarios&action=delete-domicilio', { domicilio_id: id } ).done(function() {
-        //$(this).remove();
-      });
-    });
+      $.post('index.php?ctrl=usuarios&action=delete-domicilio', { domicilio_id: id });
+      $(this).parent().parent().parent().remove();
+    })
 
 
     $(".btn-delete-telefono").click(function() {
       var id = $(this).data('deleteTelefono');
       
-      $.post('index.php?ctrl=usuarios&action=delete-telefono', { telefono_id: id } ).done(function() {
-        //$(this).remove();
-      });
+      $.post('index.php?ctrl=usuarios&action=delete-telefono', { telefono_id: id });
+      $(this).parent().parent().parent().remove();
     });
 
 
