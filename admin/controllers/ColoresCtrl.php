@@ -200,8 +200,12 @@
               $this->showErrorPage();
             }
           }
+        } else {
+          $this->showErrorPage();
         }
-      }
+      } else {
+          $this->showErrorPage();
+        }
     }
 
     public function deleteColor($id) {

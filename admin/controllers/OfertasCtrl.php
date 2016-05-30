@@ -246,9 +246,12 @@
               $this->showErrorPage();
             }
           }
+        } else {
+          $this->showErrorPage();
         }
-
-      }
+      } else {
+          $this->showErrorPage();
+        }
     }
 
     public function deleteOferta($id) {

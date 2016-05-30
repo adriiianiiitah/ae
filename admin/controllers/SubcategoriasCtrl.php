@@ -231,8 +231,12 @@
               $this->showErrorPage();
             }
           }
+        } else {
+          $this->showErrorPage();
         }
-      }
+      } else {
+          $this->showErrorPage();
+        }
     }
 
     public function deleteSubcategoria($id) {

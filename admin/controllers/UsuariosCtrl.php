@@ -35,14 +35,16 @@
             $this->showUsuarios();
             break;
           case 'view':
-            if(isset($_GET['id']) && !empty($_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id'])) {
               $this->showUsuario($_GET['id']);
+            }
             else
               $this->showErrorPage();
             break;
           case 'edit':
-            if(isset($_GET['id']) && !empty($_GET['id']))
+            if(isset($_GET['id']) && !empty($_GET['id'])) {
               $this->editUsuario($_GET['id']);
+            }
             else
               $this->showErrorPage();
             break;
@@ -400,8 +402,12 @@
               $this->showErrorPage();
             }
           }
+        } else {
+          $this->showErrorPage();
         }
-      }
+      } else {
+          $this->showErrorPage();
+        }
     }
 
     public function deleteUsuario($id) {

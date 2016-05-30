@@ -208,9 +208,12 @@
               $this->showErrorPage();
             }
           }
+        } else {
+          $this->showErrorPage();
         }
-
-      }
+      } else {
+          $this->showErrorPage();
+        }
     }
 
     public function deleteCategoria($id) {
