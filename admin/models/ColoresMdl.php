@@ -24,14 +24,13 @@
       $color = $this->connection->execute($_query)->getFirst();
       return $color;
     }
-/*
+
     function delete($id) {
     $_query = 'DELETE FROM colores 
               WHERE id="'.$id.'"';
 
     $color = $this->connection->execute($_query)->getResult();
-    return $color;
-    }*/
+    }
 
     function insert($color) {
       $_query = 'INSERT INTO colores (codigo,nombre,imagen) 

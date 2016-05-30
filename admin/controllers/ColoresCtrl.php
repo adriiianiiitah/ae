@@ -44,6 +44,10 @@
           case 'create':
               $this->createColor();
             break;
+          case 'delete':
+              if(isset($_POST['color_id']) && !empty($_POST['color_id']))
+                $this->deleteColor($_POST['color_id']);
+            break;
           case 'colores':
               $colores = $this->model->getAllColores();
               $data = $this->loadDataColores($colores);
@@ -198,6 +202,13 @@
           }
         }
       }
+    }
+
+    public function deleteColor($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=colores");
     }
     
   }
