@@ -44,6 +44,11 @@
           case 'create':
               $this->createCategoria();
             break;
+          case 'delete':
+              if(isset($_POST['categoria_id']) && !empty($_POST['categoria_id'])) {
+                $this->deleteCategoria($_POST['categoria_id']);
+              }
+              break;
           case 'categorias':
             $categorias = $this->model->getAllCategorias();
             $data = $this->loadDataCategorias($categorias);
@@ -206,6 +211,13 @@
         }
 
       }
+    }
+
+    public function deleteCategoria($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=categorias");
     }
   }
 ?>

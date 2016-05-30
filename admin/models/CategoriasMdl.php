@@ -23,14 +23,13 @@
       $categoria = $this->connection->execute($_query)->getFirst();
       return $categoria;
     }
-/*
+
     function delete($id) {
-      $_query = 'DELETE FROM categories 
+      $_query = 'DELETE FROM categorias 
                  WHERE id="'.$id.'"';
-      $category = $this->connection->execute($_query)->getResult();
-      return $category;
+      $categoria = $this->connection->execute($_query)->getResult();
     }
-  */
+  
     function insert($categoria) {
       $_query = 'INSERT INTO categorias (codigo,nombre,descripcion,imagen) 
                  VALUES (
