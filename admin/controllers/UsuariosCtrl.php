@@ -343,7 +343,7 @@
               $errors['apellidos'] = 'El apellido es incorrecto. Debe contener solo letras y espacios.';
             }
 
-            if(!($usuario['contrasena'] == '') && !($usuario['repetir_contrasena']=='')) {
+            if(!($_POST['contrasena'] == '') && !($_POST['repetir_contrasena']=='')) {
               if($this->isPassword($_POST['contrasena'])) {
                 $usuario['contrasena'] = $_POST['contrasena'];
               } else {

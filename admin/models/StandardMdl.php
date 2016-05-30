@@ -91,5 +91,17 @@
       return $tallas;
     }
 
+    function getFirstUsuarioByCredenciales($correo, $contrasena) {
+      $_query = 'SELECT usuarios.id, usuarios.nombre, apellidos, correo, fecha_nacimiento, genero, contrasena, imagen, roles.id AS rol_id, roles.nombre AS rol_nombre 
+                FROM usuarios 
+                INNER JOIN roles
+                ON roles.id = rol 
+                WHERE correo = "'.$correo.'"
+                AND contrasena = "'.$contrasena.'"
+                LIMIT 1';
+      $usuario = $this->connection->execute($_query)->getFirst();
+      return $usuario;
+    }
+
   }
 ?>

@@ -95,7 +95,7 @@
     }
 
     function isLogin(){
-      if( isset($_SESSION['user']) )
+      if( isset($_SESSION['usuario']) )
         return true;
       return false;
     }
@@ -389,6 +389,14 @@
           return $navigation.$modals_.$view.$footer;
           break;
       }
+    }
+
+    public function getViewLogin() {
+      $header =  file_get_contents("views/header.html");
+      $view =  file_get_contents("views/login.html");
+      $footer = file_get_contents("views/footer.html");
+
+      return $header.$view.$footer;
     }
 
     public function print_exit($variable) {
