@@ -169,19 +169,19 @@
         if($this->isDate($_POST['fecha_inicio'])) {
           $descuento['fecha_inicio'] = $_POST['fecha_inicio'];
         } else {
-          $errors['fecha_inicio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+          $errors['fecha_inicio'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
         }
 
         if($this->isDate($_POST['fecha_fin'])) {
           $descuento['fecha_fin'] = $_POST['fecha_fin'];
         } else {
-          $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+          $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
         }
 
         if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio']) || empty($_POST['precio'])) {
           $descuento['precio'] = $_POST['precio'];
         } else {
-          $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+          $errors['precio'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
         }
 
         if(empty($errors)) {
@@ -242,19 +242,19 @@
             if($this->isDate($_POST['fecha_inicio'])) {
               $descuento['fecha_inicio'] = $_POST['fecha_inicio'];
             } else {
-              $errors['fecha_inicio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['fecha_inicio'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
             }
 
             if($this->isDate($_POST['fecha_fin'])) {
               $descuento['fecha_fin'] = $_POST['fecha_fin'];
             } else {
-              $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
             }
 
             if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio']) || empty($_POST['precio'])) {
               $descuento['precio'] = $_POST['precio'];
             } else {
-              $errors['precio'] = 'El precio es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['precio'] = 'El precio es incorrecta. El formato es aaaa/mm/dd.';
             }
 
             if($_FILES['image']['tmp_name'] != '') {

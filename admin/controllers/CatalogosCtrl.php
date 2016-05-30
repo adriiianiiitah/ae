@@ -154,13 +154,13 @@
         if($this->isDate($_POST['fecha'])) {
           $catalogo['fecha'] = $_POST['fecha'];
         } else {
-          $errors['fecha'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+          $errors['fecha'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
         }
 
         if($this->isInt($_POST['categoria'])) {
           $catalogo['categoria'] = $_POST['categoria'];
         } else {
-          $errors['categoria'] = 'La categoría es incorrecta. El formato es dd/mm/aaaa.';
+          $errors['categoria'] = 'La categoría es incorrecta. El formato es aaaa/mm/dd.';
         }
 
         if(empty($errors)){
@@ -211,13 +211,13 @@
             if($this->isDate($_POST['fecha'])) {
               $catalogo['fecha'] = $_POST['fecha'];
             } else {
-              $errors['fecha'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['fecha'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
             }
 
             if($this->isInt($_POST['categoria'])) {
               $catalogo['categoria'] = $_POST['categoria'];
             } else {
-              $errors['categoria'] = 'La categoría es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['categoria'] = 'La categoría es incorrecta. El formato es aaaa/mm/dd.';
             }
 
             if($_FILES['image']['tmp_name'] != '') {

@@ -378,7 +378,7 @@
             if($this->isDate($_POST['fecha_nacimiento'])) {
               $usuario['fecha_nacimiento'] = $_POST['fecha_nacimiento'];
             } else {
-              $errors['fecha_nacimiento'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['fecha_nacimiento'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
             }
 
             if($this->isGender($_POST['genero'])) {
