@@ -44,6 +44,10 @@
           case 'create':
               $this->createOferta();
             break;
+          case 'delete':
+              if(isset($_POST['oferta_id']) && !empty($_POST['oferta_id'])) {
+                $this->deleteOferta($_POST['oferta_id']);
+              }
           default:
             $this->showErrorPage();
             break;
@@ -244,6 +248,13 @@
         }
 
       }
+    }
+
+    public function deleteOferta($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=ofertas");
     }
   }
 ?>

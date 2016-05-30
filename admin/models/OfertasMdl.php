@@ -66,7 +66,11 @@
       $oferta = $this->connection->execute($_query);
     }
 
-
+    function delete($id) {
+      $_query = 'DELETE FROM ofertas 
+                WHERE id="'.$id.'"';
+      $oferta = $this->connection->execute($_query)->getResult();
+    }
 
 
   }

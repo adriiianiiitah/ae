@@ -45,8 +45,8 @@
             $this->createDescuento();
             break;
           case 'delete':
-            if(isset($_POST['color_id']) && !empty($_POST['color_id']))
-              $this->deleteDescuento($_POST['color_id']);
+            if(isset($_POST['descuento_id']) && !empty($_POST['descuento_id']))
+              $this->deleteDescuento($_POST['descuento_id']);
             break;
           default:
             $this->showErrorPage();
@@ -283,54 +283,3 @@
     }
   }
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
