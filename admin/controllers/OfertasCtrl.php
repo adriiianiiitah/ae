@@ -164,7 +164,7 @@
         if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
           $oferta['precio'] = $_POST['precio'];
         } else {
-          $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+          $errors['precio'] = 'La fecha es incorrecta. El formato es aaaa/mm/dd.';
         }
 
         if(empty($errors)) {

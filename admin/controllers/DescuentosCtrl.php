@@ -174,7 +174,7 @@
           $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
         }
 
-        if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio']) ) {
+        if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio']) || empty($_POST['precio'])) {
           $descuento['precio'] = $_POST['precio'];
         } else {
           $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
@@ -247,10 +247,10 @@
               $errors['fecha_fin'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
             }
 
-            if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio'])) {
+            if($this->isNumber($_POST['precio']) || $this->isInt($_POST['precio']) || empty($_POST['precio'])) {
               $descuento['precio'] = $_POST['precio'];
             } else {
-              $errors['precio'] = 'La fecha es incorrecta. El formato es dd/mm/aaaa.';
+              $errors['precio'] = 'El precio es incorrecta. El formato es dd/mm/aaaa.';
             }
 
             if($_FILES['image']['tmp_name'] != '') {

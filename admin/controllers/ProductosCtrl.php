@@ -218,7 +218,7 @@
           $producto['descripcion'] = '';
         }
 
-        if($this->isAlphanumeric($_POST['material'])) {
+        if($this->isAlphanumeric($_POST['material']) || empty($_POST['material'])) {
           $producto['material'] = $_POST['material'];
         } else {
           $producto['material'] = '';
@@ -230,7 +230,7 @@
           $errors['marca'] = 'La marca es incorrecta.';
         }
 
-        if($this->isNumber($_POST['altura']) || $this->isInt($_POST['altura'])) {
+        if($this->isNumber($_POST['altura']) || $this->isInt($_POST['altura']) || empty($_POST['altura'])) {
           $producto['altura'] = $_POST['altura'];
         } else {
           $producto['altura'] = '';
@@ -334,7 +334,7 @@
               $producto['descripcion'] = '';
             }
 
-            if($this->isAlphanumeric($_POST['material'])) {
+            if($this->isAlphanumeric($_POST['material']) || empty($_POST['material'])) {
               $producto['material'] = $_POST['material'];
             } else {
               $producto['material'] = '';
@@ -346,7 +346,7 @@
               $errors['marca'] = 'La marca es incorrecta.';
             }
 
-            if($this->isNumber($_POST['altura']) || $this->isInt($_POST['altura'])) {
+            if($this->isNumber($_POST['altura']) || $this->isInt($_POST['altura']) || empty($_POST['altura']) ) {
               $producto['altura'] = $_POST['altura'];
             } else {
               $producto['altura'] = '';

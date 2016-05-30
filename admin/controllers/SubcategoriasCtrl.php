@@ -152,7 +152,7 @@
           $errors['categoria'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
         }
 
-        if($this->isDescription($_POST['descripcion'])) {
+        if($this->isDescription($_POST['descripcion']) || empty($_POST['descripcion'])) {
           $subcategoria['descripcion'] = $_POST['descripcion'];
         } else {
           $errors['descripcion'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
@@ -207,7 +207,7 @@
               $errors['categoria'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
             }
 
-            if($this->isDescription($_POST['descripcion'])) {
+            if($this->isDescription($_POST['descripcion']) || empty($_POST['descripcion'])) {
               $subcategoria['descripcion'] = $_POST['descripcion'];
             } else {
               $errors['descripcion'] = 'El código es incorrecto. Debe contener letras, dígitos y guiones.';
