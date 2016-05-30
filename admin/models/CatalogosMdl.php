@@ -34,7 +34,6 @@
       $_query = 'DELETE FROM catalogos 
                  WHERE id="'.$id.'"';
       $catalogo = $this->connection->execute($_query)->getResult();
-      return $catalogo;
     }
 
     function insert($catalogo) {

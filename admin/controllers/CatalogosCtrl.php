@@ -44,6 +44,11 @@
           case 'create':
             $this->createCatalogo();
           break;
+          case 'delete':
+            if(isset($_POST['catalogo_id']) && !empty($_POST['catalogo_id'])) {
+              $this->deleteCatalogo($_POST['catalogo_id']);
+            }
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -230,6 +235,13 @@
           }
         }
       }
+    }
+
+    public function deleteCatalogo($id) {
+      if($this->isInt($id)) {
+        $this->model->delete($id);
+      }
+      header ("Location: index.php?ctrl=catalogos");
     }
   }
 ?>
