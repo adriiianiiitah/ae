@@ -214,9 +214,25 @@
       $list = array();
       foreach ($tallas as $talla) {
         $dictionary = array(
-          '{{id}}'              =>$talla['talla_id'],
+          '{{talla_id}}'        =>$talla['talla_id'],
           '{{talla}}'           =>$talla['talla'],
           '{{stock}}'           =>$talla['stock'],
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
+
+    public function getDataCarrito() {
+      $list = array();
+      for($i = 0; $i < count($_SESSION['productos']); $i++) { 
+        $dictionary = array(
+          '{{id}}'              =>$_SESSION['productos'][$i]['id'],
+          '{{nombre}}'          =>$_SESSION['productos'][$i]['nombre'],
+          '{{cantidad}}'        =>'1',
+          '{{precio}}'          =>$_SESSION['productos'][$i]['precio'],
+          '{{subtotal}}'        =>$_SESSION['productos'][$i]['precio'],
+          '{{image}}'           =>$this->getUrl(IMAGE_URL,$_SESSION['productos'][$i]['imagen'])
         );
         $list[] = $dictionary;
       }

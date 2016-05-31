@@ -19,7 +19,9 @@
           case 'list':
             $this->showShoppingCar();
             break;
-          
+          case 'agregar-carrito':
+            $this->agregarProducto();
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -32,7 +34,31 @@
 
     public function showShoppingCar() {
       $view = $this->getView("shoppingcart");
+      $data = $this->getDataCarrito();
+      $view = $this->showData($view,$data,PRODUCTO_TAG_START,PRODUCTO_TAG_END);
       echo $view;
+    }
+
+    public function agregarProducto() {
+      if(isset($_POST['producto_id']) && !empty($_POST['producto_id']) && isset($_POST['talla_id']) && !empty($_POST['talla_id'])) {
+        if($this->isInt($_POST['producto_id']) && $this->isInt($_POST['talla_id'])) {
+          $producto_talla = $this->model->getProductoTalla($_POST['producto_id'],$_POST['talla_id']);
+          if($producto_talla) {
+            $producto = $this->model->getProductoById($_POST['producto_id']);
+            array_push($_SESSION['productos'],$producto);
+            $talla = $this->model->getTallaById($_POST['talla_id']);
+            array_push($_SESSION['tallas'],$talla);
+            array_push($_SESSION['producto_talla'],$producto_talla);
+
+            header ("Location: index.php?ctrl=shopping-cart&action=list");
+          }
+        } else {
+          header ("Location: index.php?ctrl=shopping-cart&action=list");
+          //$this->showErrorPage();
+        }
+        header ("Location: index.php?ctrl=shopping-cart&action=list");
+        //$this->showErrorPage();
+      }
     }
 
   }

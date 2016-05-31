@@ -41,6 +41,42 @@
       return $colores;
     }
 
+    function getProductoTalla($producto_id,$talla_id) {
+      $_query = 'SELECT id FROM productos_tallas
+                WHERE producto = "'.$producto_id.'"
+                AND talla = "'.$talla_id.'" 
+                LIMIT 1';
+      $producto_talla = $this->connection->execute($_query)->getFirst();
+      return $producto_talla;
+    }
+
+
+    function getProductoById($id) {
+      $_query = 'SELECT productos.id, productos.codigo, productos.nombre, productos.descripcion, productos.imagen,
+                categorias.id AS categoria_id, categorias.nombre AS categoria_nombre, 
+                subcategorias.id AS subcategoria_id, subcategorias.nombre AS subcategoria_nombre, 
+                colores.nombre AS color_nombre, colores.imagen AS color_imagen,
+                modelo, material, marca, altura, precio, colores.id AS color_id 
+                FROM productos
+                INNER JOIN categorias
+                ON categorias.id = categoria
+                INNER JOIN subcategorias
+                ON subcategorias.id = subcategoria  
+                INNER JOIN colores
+                ON colores.id = color
+                WHERE productos.id="'.$id.'"';
+      $producto = $this->connection->execute($_query)->getFirst();
+      return $producto;
+    }
+
+    function getTallaById($id) {
+      $_query = 'SELECT id AS talla_id, talla  
+                 FROM tallas 
+                 WHERE id="'.$id.'"';
+      $talla = $this->connection->execute($_query)->getFirst();
+      return $talla;
+    }
+
     
   }
 ?>

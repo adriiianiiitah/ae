@@ -1,5 +1,8 @@
 <?php 
   session_start();
+  //$_SESSION['productos'] = array();
+  //$_SESSION['tallas'] = array();
+  //$_SESSION['producto_talla'] = array();
   if(isset($_GET) && !empty($_GET['ctrl'])) {
     $controller = $_GET['ctrl'];
 

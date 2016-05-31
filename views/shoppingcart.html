@@ -20,70 +20,35 @@
           </div>   
         </div>
 
-
+        <!--producto-->
         <div class="row">
           <div class="col-sm-3">
+          <input type="hidden" name="producto_id" value="{{id}}"/>
           <article>
             <figure>
               <figcaption>
-                <h4 class="name">Sandalia</h4>
+                <h4 class="name">{{nombre}}</h4>
               </figcaption>
-              <img src="admin/images/dama/zapatillas/bb2b44fbca032d670d9aac27164142b0_1.jpg" alt="article 1"/>
+              <img src="{{image}}" alt="{{nombre}}"/>
             </figure>
           </article>
           
           </div>
           <div class="col-sm-2">
-            <span class="price">2553</span>
-            <input type="number" class="form-control"min="0" step="1"/>
+            <span class="price">Piezas</span>
+            <input type="number" class="form-control" min="0" step="1" value="{{cantidad}}" />
           </div>
           <div class="col-sm-2">
-            <span>$14.50</span>
+            <span>{{precio}}</span>
           </div>
           <div class="col-sm-3">
-            <span>123456789</span>
+            <span>{{subtotal}}</span>
           </div>   
           <div class="col-sm-2">
             <button class="btn btn-red"><i class="fa fa-trash"></i></button>
           </div>   
         </div>
-
-
-
-        <div class="row header-table"></div>
-        <div class="row">
-          <div class="col-sm-3">
-          <article>
-            <figure>
-              <figcaption>
-                <h4 class="name">Sandalia</h4>
-              </figcaption>
-              <img src="admin/images/dama/zapatillas/bb2b44fbca032d670d9aac27164142b0_1.jpg" alt="article 1"/>
-            </figure>
-          </article>
-          
-          </div>
-          <div class="col-sm-2">
-            <span class="price">2553</span>
-            <input type="number" class="form-control"min="0" step="1"/>
-          </div>
-          <div class="col-sm-2">
-            <span>$14.50</span>
-          </div>
-          <div class="col-sm-3">
-            <span>123456789</span>
-          </div>   
-          <div class="col-sm-2">
-            <button class="btn btn-red"><i class="fa fa-trash"></i></button>
-          </div>   
-        </div>
-
-
-
-
-
-
-
+        <!--.producto-->
 
 
         <div class="row header-table">   
@@ -99,9 +64,6 @@
             <button class="btn btn-red btn-lg btn-block"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Comprar</button>
           </div>   
         </div>
-
-
-
 
 			</fieldset>
       <div class="col-sm-12">

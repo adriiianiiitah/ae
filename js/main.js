@@ -98,9 +98,5 @@ $(function () {
 });
 
 
-function login() {
-      }
-
-
 
 

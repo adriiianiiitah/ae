@@ -18,6 +18,7 @@
       </ul>
     </div>
     <div class="col-xs-12 col-sm-7">
+      <form method="post" action="index.php?ctrl=shopping-cart&action=agregar-carrito">
       <h3>{{nombre}}</h3>
       <p class="code"><strong>Cod:</strong> {{codigo}} <span><strong>Mod:</strong> {{modelo}}</span></p>
       <p class="description"><strong>Descripcion:</strong> {{descripcion}}</p>
@@ -25,26 +26,25 @@
       <p><strong>Material:</strong> {{material}}</p>
       <p><strong>Altura:</strong> {{altura}}cm</p>
       <p><strong>Marca:</strong> {{marca}}</p>
-
-
-      
+      <input type="hidden" name="producto_id" value="{{id}}"/>
 
       <nav class="filters">
         <p><strong>Tallas:</strong> </p>
         <ul class="sizes">
           <!--talla-->
           <li>
-            <div class="checkbox" for="{{talla_id}}">
+            <div class="checkbox" for="talla{{talla_id}}">
               <label>
                 {{talla}}
-                <input id="{{talla_id}}" type="radio" value="{{talla_id}}">
+                <input id="talla{{talla_id}}" name="talla_id" type="radio" value="{{talla_id}}">
               </label>
             </div>
           <!--.talla-->
         </ul>
       </nav>
       <p class="price pull-right">${{precio}}</p>
-      <button href="#" class="btn btn-red btn-lg btn-block"><i class="fa fa-check"></i> Comprar</button>
+      <button type="submit" class="btn btn-red btn-lg btn-block"><i class="fa fa-check"></i> Comprar</button>
+      </form>
     </div>
   </section>
 </div>
