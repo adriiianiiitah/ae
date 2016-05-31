@@ -19,7 +19,9 @@
           case 'index':
             $this->showIndex();
             break;
-          
+          case 'logout';
+            $this->logOut();
+            break;
           default:
             $this->showErrorPage();
             break;
@@ -28,6 +30,11 @@
       else {
           $this->showIndex();
         }
+    }
+
+    public function logOut() {
+      $this->closeSession();
+      header ("Location: index.php");
     }
 
     public function showIndex() { 
@@ -75,17 +82,15 @@
 
               header ("Location: index.php");
             } else {
-              $errors['credenciales'] = 'Las credenciales no coinciden';
-              var_dump($errors);
-              echo '<br><pre>';
-              var_dump($credenciales);
-              exit();
+              var_dump($credenciales);exit();
             }
+          } else {
+            var_dump($errors);
+              var_dump($credenciales);exit();
+              header ("Location: index.php");
           }
         }
       }
-
-      //echo $view;
     }
   }
 ?>

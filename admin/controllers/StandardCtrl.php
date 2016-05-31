@@ -101,19 +101,19 @@
     }
 
     function isAdmin(){
-      if( isset($_SESSION['role']) && $_SESSION['role'] == 'admin' )
+      if( isset($_SESSION['rol']) && $_SESSION['rol'] == 'administrador' )
         return true;
       return false;
     }
 
-    function isUser(){
-      if( isset($_SESSION['role']) && $_SESSION['role'] == 'user' )
+    function isUsuario(){
+      if( isset($_SESSION['rol']) && $_SESSION['rol'] == 'usuario' )
         return true;
       return false;
     }
 
-    function isCostumer(){
-      if( isset($_SESSION['role']) && $_SESSION['role'] == 'costumer' )
+    function isGerente(){
+      if( isset($_SESSION['rol']) && $_SESSION['rol'] == 'gerencial' )
         return true;
       return false;
     }
@@ -155,6 +155,14 @@
     }
 
     public function showErrorPage() {
+      http_response_code(404);
+      $navigation = file_get_contents("views/navigation.html");
+      $view =  file_get_contents("views/404.html");
+      $footer = file_get_contents("views/footer.html");
+      echo $navigation.$view.$footer;
+    }
+
+    public function showBlockPage() {
       http_response_code(404);
       $navigation = file_get_contents("views/navigation.html");
       $view =  file_get_contents("views/404.html");
@@ -368,26 +376,52 @@
     }
 
     public function getView($view, $type ='', $modal ='', $modals = array()) {
-      switch ($type) {
-        case 'view':
-        case 'list':
-          $navigation = file_get_contents("views/navigation.html");
-          $modal =  file_get_contents("views/".$modal.".html");
+      if($this->isAdmin()) {
+        switch ($type) {
+          case 'view':
+          case 'list':
+            $navigation = file_get_contents("views/navigation.html");
+            $modal =  file_get_contents("views/".$modal.".html");
 
-          $view =  file_get_contents("views/".$view.".html");
-          $footer = file_get_contents("views/footer.html");
-          return $navigation.$modal.$view.$footer;
-          break;
-        default:
-          $navigation = file_get_contents("views/navigation.html");
-          $modals_ = '';
-          foreach ($modals as $modal) {
-            $modals_ .= file_get_contents("../views/".$modal.".html");
-          }
-          $view =  file_get_contents("views/".$view.".html");
-          $footer = file_get_contents("views/footer.html");
-          return $navigation.$modals_.$view.$footer;
-          break;
+            $view =  file_get_contents("views/".$view.".html");
+            $footer = file_get_contents("views/footer.html");
+            return $navigation.$modal.$view.$footer;
+            break;
+          default:
+            $navigation = file_get_contents("views/navigation.html");
+            $modals_ = '';
+            foreach ($modals as $modal) {
+              $modals_ .= file_get_contents("../views/".$modal.".html");
+            }
+            $view =  file_get_contents("views/".$view.".html");
+            $footer = file_get_contents("views/footer.html");
+            return $navigation.$modals_.$view.$footer;
+            break;
+        }
+      } else if ($this->isGerente() && $view != 'usuarios' && $view != 'usuario-view' && $view != 'usuario-create' && $view != 'usuario-edit' ) {
+        switch ($type) {
+          case 'view':
+          case 'list':
+            $navigation = file_get_contents("views/navigation.html");
+            $modal =  file_get_contents("views/".$modal.".html");
+
+            $view =  file_get_contents("views/".$view.".html");
+            $footer = file_get_contents("views/footer.html");
+            return $navigation.$modal.$view.$footer;
+            break;
+          default:
+            $navigation = file_get_contents("views/navigation.html");
+            $modals_ = '';
+            foreach ($modals as $modal) {
+              $modals_ .= file_get_contents("../views/".$modal.".html");
+            }
+            $view =  file_get_contents("views/".$view.".html");
+            $footer = file_get_contents("views/footer.html");
+            return $navigation.$modals_.$view.$footer;
+            break;
+        }
+      } else {
+        $this->showErrorPage();
       }
     }
 

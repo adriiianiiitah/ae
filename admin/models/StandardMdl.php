@@ -98,10 +98,10 @@
                 ON roles.id = rol 
                 WHERE correo = "'.$correo.'"
                 AND contrasena = "'.$contrasena.'"
+                AND (roles.nombre = "administrador" OR roles.nombre = "gerencial") 
                 LIMIT 1';
       $usuario = $this->connection->execute($_query)->getFirst();
       return $usuario;
     }
-
   }
 ?>
