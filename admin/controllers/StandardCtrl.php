@@ -159,7 +159,9 @@
       $navigation = file_get_contents("views/navigation.html");
       $view =  file_get_contents("views/404.html");
       $footer = file_get_contents("views/footer.html");
-      echo $navigation.$view.$footer;
+      $view = $navigation.$view.$footer;
+      $view = $this->loadDataSession($view);
+      echo $view;
     }
 
     public function showBlockPage() {
@@ -241,6 +243,24 @@
         $list[] = $dictionary;
       }
       return $list;
+    }
+
+    public function getDictionarySesion() {
+      return array(
+        '{{sesion_id}}'               =>$_SESSION['id'],
+        '{{sesion_nombre}}'           =>$_SESSION['nombre'],
+        '{{sesion_apellidos}}'        =>$_SESSION['apellidos'],
+        '{{sesion_correo}}'           =>$_SESSION['correo'],
+        '{{sesion_fecha_nacimiento}}' =>$_SESSION['fecha_nacimiento'],
+        '{{sesion_genero}}'           =>$_SESSION['genero'],
+        '{{sesion_contrasena}}'       =>$_SESSION['contrasena'],
+        '{{sesion_imagen}}'           =>$_SESSION['imagen'],
+        '{{sesion_rol_id}}'           =>$_SESSION['rol_id'],
+        '{{sesion_rol}}'              =>$_SESSION['rol'],
+
+        '{{perfil-view}}'             =>"index.php?ctrl=usuarios&action=perfil&id=".$_SESSION['id'],
+        //'{{usuario-edit}}'        =>"index.php?action=logout",
+      );
     }
 
     public function loadDataProductos($productos) {
@@ -376,6 +396,15 @@
       return $list; 
     }
 
+    public function loadDataSession($view) {
+      $table = '';
+      $content = $view;
+      $diccionary = $this->getDictionarySesion();
+      $content = strtr($view,$diccionary);
+      $view = str_replace($view, $table, $content);
+      return $view;
+    }
+
     public function getView($view, $type ='', $modal ='', $modals = array()) {
       if($this->isAdmin()) {
         switch ($type) {
@@ -386,7 +415,10 @@
 
             $view =  file_get_contents("views/".$view.".html");
             $footer = file_get_contents("views/footer.html");
-            return $navigation.$modal.$view.$footer;
+
+            $view = $navigation.$modal.$view.$footer;
+            $view = $this->loadDataSession($view);
+            return $view;
             break;
           default:
             $navigation = file_get_contents("views/navigation.html");
@@ -396,7 +428,10 @@
             }
             $view =  file_get_contents("views/".$view.".html");
             $footer = file_get_contents("views/footer.html");
-            return $navigation.$modals_.$view.$footer;
+
+            $view = $navigation.$modals_.$view.$footer;
+            $view = $this->loadDataSession($view);
+            return $view; 
             break;
         }
       } else if ($this->isGerente() && $view != 'usuarios' && $view != 'usuario-view' && $view != 'usuario-create' && $view != 'usuario-edit' ) {
@@ -408,7 +443,10 @@
 
             $view =  file_get_contents("views/".$view.".html");
             $footer = file_get_contents("views/footer.html");
-            return $navigation.$modal.$view.$footer;
+            
+            $view = $navigation.$modal.$view.$footer;
+            $view = $this->loadDataSession($view);
+            return $view;
             break;
           default:
             $navigation = file_get_contents("views/navigation.html");
@@ -418,9 +456,13 @@
             }
             $view =  file_get_contents("views/".$view.".html");
             $footer = file_get_contents("views/footer.html");
-            return $navigation.$modals_.$view.$footer;
+            $view = $navigation.$modals_.$view.$footer;
+            $view = $this->loadDataSession($view);
+            return $view;
             break;
         }
+      } else if ($this->isGerente()) {
+        $this->showErrorPage();
       } else {
         $this->showBlockPage();
       }

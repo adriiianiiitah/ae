@@ -47,14 +47,14 @@
             <li class="dropdown">
               <a href="#" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <div class="pull-left image">
-                  <img src="user.jpg" class="img-circle" alt="User Image" />
+                  <img src="{{sesion_imagen}}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                    <p>Jane Lee <span class="caret"></span></p>
+                    <p>{{sesion_nombre}} {{sesion_apellidos}} <span class="caret"></span></p>
                 </div>
               </a>
               <ul class="dropdown-menu user-settings">
-                <li><a href="#"><i class="fa fa-user"></i> Mi perfil</a></li>
+                <li><a href="{{perfil-view}}"><i class="fa fa-user"></i> Mi perfil</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="index.php?action=logout"><i class="fa fa-power-off"></i> Salir</a></li>
               </ul>
@@ -68,10 +68,10 @@
               </div>
               <div class="user-panel">
                   <div class="pull-left image">
-                      <img src="user.jpg" class="img-circle" alt="User Image" />
+                      <img src="{{sesion_imagen}}" class="img-circle" alt="User Image" />
                   </div>
                   <div class="pull-left info">
-                      <p>¡Hola, Jane!</p>
+                      <p>¡Hola, {{sesion_nombre}}!</p>
 
                       <a href="#"><i class="fa fa-circle text-success"></i> Conectado</a>
                   </div>
