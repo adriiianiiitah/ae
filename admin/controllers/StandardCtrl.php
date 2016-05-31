@@ -164,10 +164,11 @@
 
     public function showBlockPage() {
       http_response_code(404);
-      $navigation = file_get_contents("views/navigation.html");
+      $header =  file_get_contents("views/header.html");
       $view =  file_get_contents("views/404.html");
       $footer = file_get_contents("views/footer.html");
-      echo $navigation.$view.$footer;
+
+      echo $header.$view.$footer;
     }
 
     public function showData($view, $data,$start_tag = '', $end_tag = '') {
@@ -421,7 +422,7 @@
             break;
         }
       } else {
-        $this->showErrorPage();
+        $this->showBlockPage();
       }
     }
 
