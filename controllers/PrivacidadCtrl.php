@@ -37,19 +37,16 @@
 
     public function showAviso() {
       $view = $this->getView("aviso");
-      $view = $this->showDataMenu($view);
       $this->showView($view);
     }
 
     public function showTerminos() {
       $view = $this->getView("terminos");
-      $view = $this->showDataMenu($view);
       $this->showView($view);
     }
 
     public function showCambios() {
       $view = $this->getView("cambios");
-      $view = $this->showDataMenu($view);
       $this->showView($view);
     }
 

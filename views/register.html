@@ -7,42 +7,42 @@
         <div  class="form-group">
           <label for="nombre" class="control-label">Nombre <span class="required">*</span></label>
           <div>
-            <input class="form-control " id="nombre" name="nombre" type="text" data-required data-name/>
+            <input class="form-control " id="nombre" name="nombre" type="text" data-required data-name value="{{nombre}}" />
           </div>
         </div>
 
         <div  class="form-group">      
           <label for="apellidos" class="control-label">Apellidos <span class="required">*</span></label>
           <div>
-            <input class="form-control" id="apellidos" name="apellidos" type="text" data-required data-lastname/>
+            <input class="form-control" id="apellidos" name="apellidos" type="text" data-required data-lastname value="{{apellidos}}" />
           </div>
         </div>
 
         <div class="form-group">                      
           <label for="correo" class="control-label">Correo <span class="required">*</span></label>
           <div>
-            <input class="form-control" type="text" id="correo" name="correo" data-required data-email/>
+            <input class="form-control" type="text" id="correo" name="correo" data-required data-email value="{{correo}}" />
           </div>
         </div>
 
         <div class="form-group">
           <label for="contrasena" class="control-label">Contraseña <span class="required">*</span></label>
           <div>
-            <input class="form-control" type="password" name="contrasena" data-required data-password data-samepassword/>
+            <input class="form-control" type="password" id="contrasena" name="contrasena" data-required data-password data-samepassword value="{{contrasena}}" />
           </div>
         </div>
 
         <div  class="form-group">
           <label for="repetir_contrasena" class="control-label">Repetir contraseña <span class="required">*</span></label>
           <div>
-            <input class="form-control" type="password" name="repetir_contrasena" data-required data-password data-samepassword/>
+            <input class="form-control" type="password" name="repetir_contrasena" data-required data-password data-samepassword value="{{contrasena}}" />
           </div>
         </div>
 
-        <div  class="form-group">
-          <label for="fecha_nacimiento" class="control-label">Fecha de nacimiento</label>
+        <div class="form-group">
+          <label for="fecha_nacimiento" class="control-label">Fecha de nacimiento <span class="required">*</span></label>   
           <div>
-            <input class="form-control" type="date" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="aaaa/mm/dd" data-required/>
+            <input class="form-control" type="text" id="fecha_nacimiento" name="fecha_nacimiento" placeholder="aaaa/mm/dd" data-required value="{{fecha_nacimiento}}" />
           </div>
         </div>
 
@@ -50,26 +50,27 @@
           <label class="control-label" for="genero">Género <span class="required">*</span></label>
           <div class="form-group">
             <label class="radio-inline" for="femenino">Mujer</label>
-            <input type="radio" name="genero" id="femenino" value="femenino" checked="checked"/>              
+            <input type="radio" name="genero" id="femenino" value="femenino" {{femenino}}/>              
             <label class="radio-inline"  for="masculino">Hombre</label>  
-            <input type="radio" name="genero" id="masculino" value="masculino"/>    
+            <input type="radio" name="genero" id="masculino" value="masculino" {{masculino}}/>    
           </div>      
         </div>
       </div>
 
-
       <div class="col-sm-5">
         <figure class="row thumbnail">
           <label for="foto" class="text-center">Foto de perfil</label>
-          <img src="img/200x250.png" alt="thumbnail" id="thumbnail-file" data-thumbnail>
+          <img src="{{image}}" alt="thumbnail" id="thumbnail-file" data-thumbnail>
+
           <figcaption class="col-md-6 col-md-offset-3">
             <label class="btn btn-red btn-lg btn-block btn-upload" for="image"><i class="fa fa-cloud-upload"></i> Subir</label>
-            <input type="file" id="image" name="image" accept="image/jpg,image/png" data-thumbnail/>
+            <input type="file" id="image" name="image" accept="image/jpg,image/png,image/jpeg" data-thumbnail/>
           </figcaption>
         </figure>
 
         <div class="row">
           <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3">
+          <!--
             <div class="form-group">
               <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#modal-address"><i class="fa fa-plus"></i> Agregar domicilio </button>
             </div>
@@ -77,6 +78,7 @@
             <div class="form-group">
               <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="modal" data-target="#modal-phone"><i class="fa fa-plus"></i> Agregar teléfono </button>
             </div>
+            -->
 
             <div class="form-group">
               <button class="btn btn-red btn-lg btn-block" type="submit"><i class="fa fa-paper-plane"></i> Guardar</button>

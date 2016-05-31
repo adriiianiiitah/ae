@@ -1,5 +1,5 @@
   $(function () {
-
+/*
     $('#datetimepickerdate_start').datetimepicker({
     icons: {
       time: "fa fa-clock-o",
@@ -16,5 +16,9 @@
         up: "fa fa-arrow-up",
         down: "fa fa-arrow-down"
       }
-  });
+  });*/
+
+
+  
+
 });

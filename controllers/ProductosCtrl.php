@@ -94,7 +94,6 @@
 
     public function showProductos() {
       $view = $this->getView("productos");
-      $view = $this->showDataMenu($view);
       $filtros = array();
 
       if(isset($_GET['categoria']) && !empty($_GET['categoria']) && $this->isAlphanumeric($_GET['categoria'])) {

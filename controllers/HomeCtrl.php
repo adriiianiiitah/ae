@@ -32,8 +32,6 @@
 
     public function showHome() {
       $view = $this->getView("home");
-      $view = $this->showDataMenu($view);
-      
 
       $descuentos = $this->model->getAllDescuentos();
       $data = $this->getDataDescuentos($descuentos);
@@ -42,7 +40,6 @@
       $ofertas = $this->model->getAllOfertas();
       $data = $this->getDataOfertas($ofertas);
       $view = $this->showData($view,$data,OFERTA_TAG_START,OFERTA_TAG_END);
-
 
 
       $catalogos = $this->model->getAllCatalogosByCathegory('Dama');
@@ -61,7 +58,6 @@
       $data = $this->getDataCatalogos($catalogos);
       $view = $this->showData($view,$data,CATALOGO_ESPECIAL_TAG_START,CATALOGO_ESPECIAL_TAG_END);
 
-      
       
       $this->showView($view);
     }

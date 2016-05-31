@@ -7,20 +7,26 @@
 
     }
 
+    function isLogin(){
+      if( isset($_SESSION['usuario']) )
+        return true;
+      return false;
+    }
+
     function isAdmin(){
-      if( isset($_SESSION['role']) && $_SESSION['role'] == 'admin' )
+      if( isset($_SESSION['rol']) && $_SESSION['rol'] == 'administrador' )
         return true;
       return false;
     }
 
-    function isUser(){
-      if( isset($_SESSION['role']) && $_SESSION['role'] == 'user' )
+    function isUsuario(){
+      if( isset($_SESSION['rol']) && $_SESSION['rol'] == 'usuario' )
         return true;
       return false;
     }
 
-    function isCostumer(){
-      if( isset($_SESSION['role']) && $_SESSION['role'] == 'costumer' )
+    function isGerente(){
+      if( isset($_SESSION['rol']) && $_SESSION['rol'] == 'gerencial' )
         return true;
       return false;
     }
@@ -52,6 +58,42 @@
     function isColor($value) {
       return preg_match(COLOR, $value);
     }
+
+    function isName($value) {
+      return preg_match(NAME, $value);
+    }
+
+    function isLastName($value) {
+      return preg_match(LAST_NAME, $value);
+    }
+
+    function isPassword($value) {
+      return preg_match(PASS, $value);
+    }
+
+    function isEmail($value) {
+      return preg_match(EMAIL, $value);
+    }
+
+    function equals($value1, $value2) {
+      return $value1 == $value2;
+    }
+
+    function cryptPassword($password) {
+      return sha1(md5($password));
+    }
+
+    function isDate($value) {
+      return preg_match(DATE, $value);
+    }
+
+    function isGender($value) {
+      if($this->equals($value, FEMENINO) || $this->equals($value, MASCULINO)) {
+        return true;
+      }
+      return false;
+    }
+
 
     public function getRow($view, $start_tag = '', $end_tag = '' ) {
       if($start_tag == '') {
@@ -300,57 +342,106 @@
 
     public function getView($type) {
       $header = file_get_contents("views/header.html");
-      $menu =  file_get_contents("views/menu.html");
+      if($this->isLogin()) {
+        $menu =  file_get_contents("views/menu.html");
+        $footer = file_get_contents("views/footer.html");
+      } else {
+        $menu =  file_get_contents("views/menu-login.html");
+        $footer = file_get_contents("views/footer-login.html");
+      }
       $view =  file_get_contents("views/".$type.".html");
+      $view = $header.$menu.$view.$footer;
+      $view = $this->showDataMenu($view);
+      return $view;
+    }
+
+    public function getForm($view) {
+      $header = file_get_contents("views/header.html");
+      $menu =  file_get_contents("views/menu.html");
+      $modal_address =  file_get_contents("views/modal_address.html");
+      $modal_phone =  file_get_contents("views/modal_phone.html");
+      $view =  file_get_contents("views/".$view.".html");
       $footer = file_get_contents("views/footer.html");
-      return $header.$menu.$view.$footer;
-      /*
-      switch ($type) {
-        case 'home':
-          $header = file_get_contents("views/header.html");
-          $menu =  file_get_contents("views/menu.html");
-          $view =  file_get_contents("views/home.html");
-          $footer = file_get_contents("views/footer.html");
-          return $header.$menu.$view.$footer;
-          break;
-        case 'contacto':
-          $header = file_get_contents("views/header.html");
-          $menu =  file_get_contents("views/menu.html");
-          $view =  file_get_contents("views/contacto.html");
-          $footer = file_get_contents("views/footer.html");
-          return $header.$menu.$view.$footer;
-        case 'descuento':
-          $header = file_get_contents("views/header.html");
-          $menu =  file_get_contents("views/menu.html");
-          $view =  file_get_contents("views/descuento.html");
-          $footer = file_get_contents("views/footer.html");
-          return $header.$menu.$view.$footer;
-          break;
-        case 'descuento':
-          $header = file_get_contents("views/header.html");
-          $menu =  file_get_contents("views/menu.html");
-          $view =  file_get_contents("views/descuento.html");
-          $footer = file_get_contents("views/footer.html");
-          return $header.$menu.$view.$footer;
-          break;
-        case 'producto':
-          $header = file_get_contents("views/header.html");
-          $menu =  file_get_contents("views/menu.html");
-          $view =  file_get_contents("views/producto.html");
-          $footer = file_get_contents("views/footer.html");
-          return $header.$menu.$view.$footer;
-        default:
-          break;
-      }*/
+      return $header.$menu.$modal_address.$modal_phone.$view.$footer;
+    }
+
+    public function showForm($view,$diccionary) {
+      $view = $this->getForm($view);
+      $table = "";
+      $content = $view;
+      $content = strtr($view,$diccionary);
+      $view = str_replace($view, $table, $content);
+
+      echo $view;
     }
 
     public function showErrorPage() {
       http_response_code(404);
-      $header = file_get_contents("views/header.html");
-      $menu =  file_get_contents("views/menu.html");
-      $view =  file_get_contents("views/404.html");
-      $footer = file_get_contents("views/footer.html");
-      echo $header.$menu.$view.$footer;
+      $view = $this->getView('404');
+      echo $view;
+    }
+
+    public function moveImage($temp, $name) {
+      if(file_exists($name)) {
+        unlink($name);
+      }
+      if(move_uploaded_file($temp, $name)) {
+        ;
+      } else {
+        echo 'NO SE PUDO';
+        exit();
+      }
+    }
+
+    public function moveFile($temp, $name) {
+      if(file_exists($name)) {
+        unlink($name);
+      }
+      if(move_uploaded_file($temp, $name)) {
+        ;
+      } else {
+        echo 'NO SE PUDO MOVER EL PDF';
+        exit();
+      }
+    }
+
+    public function getFileExtension($file) {
+      $name = explode(".",$file);
+      return end($name);
+    }
+
+    public function generateNameImage($id, $single, $extension, $url) {
+      return  $url.$single.$id.'.'.$extension;
+    }
+
+    public function generateNameFile($id, $single, $extension, $url) {
+      return $url.$single.$id.'.'.$extension;
+    }
+
+    public function uploadImage($id, $single, $image, $url) {
+      $original = $image['name'];
+      $extension = $this->getFileExtension($original);
+      $name = $this->generateNameImage($id, $single, $extension, $url);
+      $temporal = $image['tmp_name'];
+      $final['original'] = $original;
+      $final['name']= $name;
+      $final['id'] = $id;  
+      
+      $this->moveImage($temporal, $name);
+      return $name;
+    }
+
+    public function uploadFile($id, $single, $file, $url) {
+      $original = $file['name'];
+      $extension = $this->getFileExtension($original);
+      $name = $this->generateNameFile($id, $single, $extension, $url);
+      $temporal = $file['tmp_name'];
+      $final['original'] = $original;
+      $final['name']= $name;
+      $final['id'] = $id;  
+      
+      $this->moveFile($temporal, $name);
+      return $name;
     }
 
   }

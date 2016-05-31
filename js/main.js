@@ -65,6 +65,11 @@ $(function () {
     values:      [0,1200]
   });
 
+  $( "#fecha_nacimiento" ).datepicker({
+    dateFormat: "yy-mm-dd"
+  });
+
+
 
 });
 

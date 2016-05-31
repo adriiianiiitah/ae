@@ -31,7 +31,6 @@
 
     public function showContacto() {
       $view = $this->getView("contacto");
-      $view = $this->showDataMenu($view);
       $this->showView($view);
     }
 

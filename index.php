@@ -39,7 +39,8 @@
       break;
       
         default:
-        http_response_code(404);
+        require_once('controllers/HomeCtrl.php');
+        $controller = new HomeCtrl();
     }
   } else {
     require_once('controllers/HomeCtrl.php');
