@@ -71,7 +71,35 @@ $(function () {
 
 
 
+
+
+  $('#form-login').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "index.php?ctrl=usuario&action=login",
+        data: $('#form-login').serialize(),//_data,
+        dataType: "json",
+        success: function(data) {
+          if(data){
+              $('#mensaje').append( '<div class="alert alert-success succes-message" role="alert">¡Correcto!</div>' );
+              //alert(data);
+              window.location.href = "index.php";
+          } else {
+            $('#mensaje').append( '<div class="alert alert-danger error-message" role="alert">Las credenciales no coinciden.</div>' );
+          }  
+        },
+        error: function(result) {
+          $('#mensaje').append( '<div class="alert alert-danger error-message" role="alert">Las credenciales no coinciden.</div>' );
+        }
+    });
+  });
+
 });
+
+
+function login() {
+      }
 
 
 

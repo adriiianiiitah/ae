@@ -32,10 +32,12 @@
         case 'recuperar':
         $this->showTokenForm();
         break;
-        case 'logout';
+        case 'logout':
         $this->logOut();
         break;
-
+        case 'login':
+          $this->logIn();
+        break;
         default:
         http_response_code(404);
         break;
@@ -49,6 +51,46 @@
     public function logOut() {
       $this->closeSession();
       header ("Location: index.php");
+    }
+
+    public function logIn() {
+      if( isset($_POST['correo']) && !empty($_POST['correo']) && isset($_POST['contrasena']) && !empty($_POST['contrasena'])) {
+        $errors = array();
+
+        if($this->isEmail($_POST['correo'])) {
+          $credenciales['correo'] = $_POST['correo'];
+        } else {
+          $errors['correo'] = 'El correo es incorrecto. Debe formato es usuario@mail.com.';
+        }
+
+        if($this->isPassword($_POST['contrasena'])) {
+          $credenciales['contrasena'] = $this->cryptPassword($_POST['contrasena']);
+        } else {
+          $credenciales['contrasena'] = '';
+          $errors['contrasena'] = 'La contraseña es incorrecta. Debe contener mayúsculas, minúsculas, dígitos y caracteres de puntuación.';
+        }
+
+        if(empty($errors)) {
+          $usuario = $this->model->getFirstUsuarioByCredenciales($credenciales['correo'],$credenciales['contrasena']);
+          if($usuario) {
+      
+            $_SESSION['usuario']          = $usuario;
+            $_SESSION['id']               = $usuario['id'];
+            $_SESSION['nombre']           = $usuario['nombre'];
+            $_SESSION['apellidos']        = $usuario['apellidos'];
+            $_SESSION['correo']           = $usuario['correo'];
+            $_SESSION['fecha_nacimiento'] = $usuario['fecha_nacimiento'];
+            $_SESSION['genero']           = $usuario['genero'];
+            $_SESSION['contrasena']       = $usuario['contrasena'];
+            $_SESSION['imagen']           = $usuario['imagen'];
+            $_SESSION['rol_id']           = $usuario['rol_id'];
+            $_SESSION['rol']              =  $usuario['rol_nombre'];
+            
+            header('Content-type: application/json; charset=utf-8');
+            echo json_encode($usuario);
+          } 
+        }
+      }
     }
 
     public function getDictionary($usuario) {

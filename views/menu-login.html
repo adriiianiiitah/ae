@@ -89,18 +89,22 @@
         </div>
         <div class="modal-body">
           <div class="login">
-            <form method="post" role="form" onsubmit="return validateLogin()" data-validate-login>
+            <form method="post" role="form" id="form-login" onsubmit="return validateLogin()" data-validate-login>
               <div class="form-group">
                 <label class="control-label">Usuario</label>
                 <div>
-                  <input type="text" class="form-control" data-required data-email/>
+                  <input type="text" class="form-control" name="correo" data-required data-email/>
                 </div>
               </div>
               <div class="form-group">
                 <label class="control-label">Contraseña</label>
                 <div>
-                  <input type="password" class="form-control" data-required data-password/>
+                  <input type="password" class="form-control" name="contrasena" data-required data-password/>
                 </div>
+              </div>
+
+              <div id="mensaje">
+                
               </div>
   
               <button class="btn btn-red btn-lg btn-block" type="submit">
