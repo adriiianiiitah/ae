@@ -1,5 +1,5 @@
 footer {
-  background: #383838;
+  background: #000;
   color: #fff;
 }
 
@@ -9,7 +9,7 @@ footer nav {
 
 footer nav h4{
   font-weight: bolder;
-  border-bottom: 2px solid #FF4242;
+  border-bottom: 2px solid #3FB8AF;
   color: #fff;
   display: inline-block;
   letter-spacing: 1px;
@@ -40,5 +40,5 @@ footer nav ul li a {
 footer nav ul li a:hover,
 footer nav ul li a:focus {
   text-decoration: none;
-  color: #000;
+  color: #97E6D0;
 }

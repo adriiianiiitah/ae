@@ -56,7 +56,11 @@
     }
 
     
-
+    function getAllSocios() {
+      $_query = 'SELECT * FROM socios';
+      $socios = $this->connection->execute($_query)->getResult();
+      return $socios;
+    }
 
 
 

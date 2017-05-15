@@ -350,6 +350,20 @@
       }
       return $list; 
     }
+      
+    public function getDataSocios($socios) {
+      $list = array();
+      foreach ($socios as $socio) {
+        $dictionary = array(
+          '{{id}}'                  =>$socio['id'],
+          '{{codigo}}'              =>$socio['codigo'],
+          '{{nombre}}'              =>$socio['nombre'],
+          '{{image}}'               =>$this->getUrl(IMAGE_URL,$socio['image'])
+        );
+        $list[] = $dictionary;
+      }
+      return $list; 
+    }
 
 
     public function showView($view) {

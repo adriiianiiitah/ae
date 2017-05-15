@@ -50,9 +50,9 @@ fieldset[disabled] .btn-white.active {
 
 /*   RED   */
 .btn-red { 
-  color: #FFFFFF; 
-  background-color: #FF6C60; 
-  border-color: #FF6C60; 
+  color: #ffffff; 
+  background-color: #FC9D9A; 
+  border-color: #FC9D9A; 
 } 
  
 .btn-red:hover, 
@@ -60,9 +60,9 @@ fieldset[disabled] .btn-white.active {
 .btn-red:active, 
 .btn-red.active, 
 .open .dropdown-toggle.btn-red { 
-  color: #FFFFFF; 
-  background-color: #ff6c60; 
-  border-color: #FF6C60; 
+  color: #ffffff; 
+  background-color: #FFC2C0; 
+  border-color: #FC9D9A; 
 } 
  
 .btn-red:active, 
@@ -86,13 +86,13 @@ fieldset[disabled] .btn-red:active,
 .btn-red.disabled.active, 
 .btn-red[disabled].active, 
 fieldset[disabled] .btn-red.active { 
-  background-color: #FF6C60; 
-  border-color: #FF6C60; 
+  background-color: #FC9D9A; 
+  border-color: #FC9D9A; 
 } 
  
 .btn-red .badge { 
-  color: #FF6C60; 
-  background-color: #FFFFFF; 
+  color: #FC9D9A; 
+  background-color: #ffffff; 
 }
 
 /* BLACK */
@@ -339,9 +339,9 @@ fieldset[disabled] .btn-edit.active {
 
 /*  CREATE  */
 .btn-create { 
-  color: #ffffff; 
-  background-color: #36BBA6; 
-  border-color: #36BBA6; 
+  color: #FFFFFF; 
+  background-color: #69D0B4; 
+  border-color: #69D0B4; 
 } 
  
 .btn-create:hover, 
@@ -349,9 +349,9 @@ fieldset[disabled] .btn-edit.active {
 .btn-create:active, 
 .btn-create.active, 
 .open .dropdown-toggle.btn-create { 
-  color: #ffffff; 
-  background-color: #36BBA6; 
-  border-color: #36BBA6; 
+  color: #FFFFFF; 
+  background-color: #97E6D0; 
+  border-color: #69D0B4; 
 } 
  
 .btn-create:active, 
@@ -375,42 +375,115 @@ fieldset[disabled] .btn-create:active,
 .btn-create.disabled.active, 
 .btn-create[disabled].active, 
 fieldset[disabled] .btn-create.active { 
-  background-color: #36BBA6; 
-  border-color: #36BBA6; 
+  background-color: #69D0B4; 
+  border-color: #69D0B4; 
 } 
  
 .btn-create .badge { 
-  color: #36BBA6; 
+  color: #69D0B4; 
+  background-color: #FFFFFF; 
+}
+
+
+
+.btn-green { 
+  color: #ffffff; 
+  background-color: #69D0B4; 
+  border-color: #69D0B4; 
+} 
+ 
+.btn-green:hover, 
+.btn-green:focus, 
+.btn-green:active, 
+.btn-green.active, 
+.open .dropdown-toggle.btn-green { 
+  color: #ffffff; 
+  background-color: #97E6D0; 
+  border-color: #69D0B4; 
+} 
+ 
+.btn-green:active, 
+.btn-green.active, 
+.open .dropdown-toggle.btn-green { 
+  background-image: none; 
+} 
+ 
+.btn-green.disabled, 
+.btn-green[disabled], 
+fieldset[disabled] .btn-green, 
+.btn-green.disabled:hover, 
+.btn-green[disabled]:hover, 
+fieldset[disabled] .btn-green:hover, 
+.btn-green.disabled:focus, 
+.btn-green[disabled]:focus, 
+fieldset[disabled] .btn-green:focus, 
+.btn-green.disabled:active, 
+.btn-green[disabled]:active, 
+fieldset[disabled] .btn-green:active, 
+.btn-green.disabled.active, 
+.btn-green[disabled].active, 
+fieldset[disabled] .btn-green.active { 
+  background-color: #69D0B4; 
+  border-color: #69D0B4; 
+} 
+ 
+.btn-green .badge { 
+  color: #69D0B4; 
   background-color: #ffffff; 
 }
 
 
 
 
-/*
-//AMARILLO
-#FFE9AF
 
-
-ROJO
-#FEA6A2
-
-VERDE
-#8DCCAD
-
-CAFE
-#988864
-
-AZUL
-#57c8f2*/
-
-/*
-.alert.alert-error {
-  background-color: #fdeaea !important;
-  color: #f00 !important;
-  border: 1px solid #f27b81 !important;
+.btn-aqua { 
+  color: #ffffff; 
+  background-color: #3FB8AF; 
+  border-color: #99E6E1; 
+} 
+ 
+.btn-aqua:hover, 
+.btn-aqua:focus, 
+.btn-aqua:active, 
+.btn-aqua.active, 
+.open .dropdown-toggle.btn-aqua { 
+  color: #ffffff; 
+  background-color: #99E6E1; 
+  border-color: #99E6E1; 
+} 
+ 
+.btn-aqua:active, 
+.btn-aqua.active, 
+.open .dropdown-toggle.btn-aqua { 
+  background-image: none; 
+} 
+ 
+.btn-aqua.disabled, 
+.btn-aqua[disabled], 
+fieldset[disabled] .btn-aqua, 
+.btn-aqua.disabled:hover, 
+.btn-aqua[disabled]:hover, 
+fieldset[disabled] .btn-aqua:hover, 
+.btn-aqua.disabled:focus, 
+.btn-aqua[disabled]:focus, 
+fieldset[disabled] .btn-aqua:focus, 
+.btn-aqua.disabled:active, 
+.btn-aqua[disabled]:active, 
+fieldset[disabled] .btn-aqua:active, 
+.btn-aqua.disabled.active, 
+.btn-aqua[disabled].active, 
+fieldset[disabled] .btn-aqua.active { 
+  background-color: #3FB8AF; 
+  border-color: #99E6E1; 
+} 
+ 
+.btn-aqua .badge { 
+  color: #3FB8AF; 
+  background-color: #ffffff; 
 }
-*/
+
+
+
 .alert.alert-error {
   background-color: #fff !important;
   color: #f00 !important;
@@ -433,4 +506,8 @@ AZUL
   background-color: #fffee1 !important;
   color: #daac50 !important;
   border: 1px solid #f5c056 !important;
+}
+
+.input-group .input-group-btn .btn-white {
+    padding: 0 10px!important;
 }

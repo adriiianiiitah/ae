@@ -58,7 +58,11 @@
       $data = $this->getDataCatalogos($catalogos);
       $view = $this->showData($view,$data,CATALOGO_ESPECIAL_TAG_START,CATALOGO_ESPECIAL_TAG_END);
 
-      
+      $socios = $this->model->getAllSocios();
+      $data = $this->getDataSocios($socios);
+      $view = $this->showData($view,$data,SOCIOS_TAG_START,SOCIOS_TAG_END);
+          
+          
       $this->showView($view);
     }
 

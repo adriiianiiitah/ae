@@ -16,12 +16,12 @@ html {
 body {
 	height: 100%;
 	font-family:Quicksand,sans-serif;
-  padding-top: 125px;
+  padding-top: 90px;
   background: #fff;
 }
 
 h1 {
-  border-bottom: 4px solid #FF4242;
+  border-bottom: 4px solid  #3FB8AF;
   color: #3b3b3b;
   display: inline-block;
   letter-spacing: 1px;
@@ -68,6 +68,7 @@ section {
   transition: all 0.2s linear;
 }
 
+.socio .overlay,
 .catalogo .overlay {
   position: absolute;
   top: 0;
@@ -81,10 +82,16 @@ section {
   transition: all 0.3s ease-in-out;
 }
 
+.socio .overlay {
+  width: 250px;
+  height: 250px;
+}
+
 .catalogo:hover img {
   transform: scale(1.1);
 }
 
+.socio:hover .overlay,
 .catalogo:hover .overlay {
   opacity: 1;
 }
@@ -115,18 +122,15 @@ section {
 
 #slider-marcas .item{
   background: #f9f9f9;
-  padding: 30px 0px;
   margin: 5px;
   text-align: center;
 }
 
 #slider-marcas .item a {
-  background-position: 0 -236px;
-  height: 18px;
-  background: url("../img/brands.png");
-  display: block;
-  width: 100px;
-  margin: auto;
+    height: 80px;
+    background: url(../admin/images/marcas/marca.jpg);
+    display: block;
+    width: 100%;
 }
 
 
@@ -150,7 +154,7 @@ section {
 
 #filter-bar h3{
   text-align: center;
-  background: #FF4242;
+  background:  #3FB8AF;
   color: #fff;
   padding: 5px 0;
 }
@@ -181,8 +185,8 @@ section {
 #filter-bar nav.categories ul li ul li a:hover,
 #filter-bar nav.categories ul li ul li a:focus{
   text-decoration: none;
-  color: #f00;
   font-weight: bold;
+  color: #FC9D9A;
 }
 
 #filter-bar nav.categories ul li ul li a{
@@ -275,7 +279,7 @@ section {
 }
 
 #catalog .item figure {
-  border: 1px solid #ccc;
+  padding: 0;
 }
 
 #catalog .item figure img {
@@ -295,7 +299,7 @@ section {
 
 #catalog .item figure figcaption .price {
 	width: 100%;
-  color: #f00;
+  color: #FC9D9A;
 }
 
 #catalog .item figure .overlay {
@@ -307,6 +311,11 @@ section {
   width: 100%;
   height: 100%;
   transition: opacity .5s;
+    opacity: 0;
+}
+
+#catalog .item figure .overlay:hover {
+    opacity: 1;
 }
 
 #catalog .item ul{
@@ -344,7 +353,7 @@ section {
 }
 
 .pagination li a:hover {
-  background: #FF4242;
+  background:  #3FB8AF;
   color: #fff;
 }
 
@@ -427,6 +436,9 @@ section {
   display: block;
 }
 
+.padding-0 {
+    padding: 0;
+}
 
 
 
@@ -553,12 +565,12 @@ section {
 }
 
 #producto .code {
-  color: #f00;
+  color: #FC9D9A;
   padding: 20px 0;
 }
 
 #producto .price {
-  color: #f00;
+  color: #FC9D9A;
   font-size: 2.5em;
   font-weight: bolder;
   padding: 30px 0;
@@ -597,12 +609,38 @@ section {
 }
 
 
+.dropdown-menu {
+    padding: 0;
+}
+/*
+
+
+#EF746F
+
+#FC9D9A
+
+#2FB8AC
+#027B7F
+
+
+#00A0B0
+#F6F6F6
+#E8E8E8
+#333333
+#3FB8AF
+#c0c0c0
+
+#8f8f8f
 
 
 
+#FC9D9A
+#FFC2C0
 
 
-
+#69D0B4
+#97E6D0
+*/
 
 
 

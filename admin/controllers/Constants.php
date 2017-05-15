@@ -96,4 +96,7 @@
   define('FILTRO_TAG_START',               '<!--filtro-->');
   define('FILTRO_TAG_END',                 '<!--.filtro-->');
 
+  define('SOCIOS_TAG_START',                 '<!--socios-->');
+  define('SOCIOS_TAG_END',                 '<!--.socios-->');
+
 ?>

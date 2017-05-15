@@ -46,10 +46,6 @@
       return $producto;
     }
 
-    function getColoresById($id) {
-    
-    }
-
     function getTallasById($id) {
       $_query = 'SELECT tallas.id AS talla_id, tallas.talla, stock 
                  FROM tallas 

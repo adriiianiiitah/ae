@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-  border-bottom: 4px solid #FF4242;
+  border-bottom: 4px solid #3FB8AF;
   color: #3b3b3b;
   display: inline-block;
   letter-spacing: 1px;
@@ -182,7 +182,7 @@ ul li button {
 }
 
 .skin-orange .left-side {
-    background: #000;
+    background: #3FB8AF;
 }
 
 .skin-orange .sidebar {
@@ -208,7 +208,7 @@ ul li button {
 
 .skin-orange .sidebar > .sidebar-menu > li > a:hover, 
 .skin-orange .sidebar > .sidebar-menu > li.active > a {
-    color: #FF0000;
+    color: #297973;
     background: #fff;
 }
 
@@ -228,13 +228,13 @@ ul li button {
 }
 
 .skin-orange .user-settings > li > a {
-    color: #FF0000;
+    color: #297973;
     background: #fff;
 }
 
 .skin-orange .user-settings > li > a:hover {
     color: #fff;
-    background: #FF0000;
+    background: #3FB8AF;
 }
 
 .skin-orange .sidebar > .sidebar-menu > li:first-of-type > a {
